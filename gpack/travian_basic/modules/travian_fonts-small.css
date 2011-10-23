@@ -1,0 +1,447 @@
+@CHARSET "UTF-8";
+
+/*
+ *------------------------------------------------------------------------------
+ * TRAVIAN_FONTS is used to define the font styling for small or medium fonts.
+ * This includes all font styles.
+ *
+ * Contains:
+ * font-size, font-family, font-weight, color, text-decoration
+ *------------------------------------------------------------------------------
+ */
+
+/* ------------------- General ------------------- */
+/* ----------------------------------------------- */
+body {color:#000000; font-size:13px; font-family:Verdana, Arial, Helvetica, sans-serif; font-weight:normal;}
+a {text-decoration:none; font-weight:bold; color:#71D000;}
+a:visited {color:#71D000;}
+a:active {color:#FF8000;}
+a:hover {color:#00BC00;}
+h1 {font-size:24px;}
+h2 {font-size:18px;}
+
+/* ------------------- Layout ------------------- */
+/* ---------------------------------------------- */
+div#header {font-size:0px;}
+
+/* standard table */
+table td, table th {font-weight:normal; font-size:13px;}
+table thead th, table tfoot th {font-weight:bold;}
+
+/* form elements */
+input.text, select.dropdown, textarea {font-size:11px; font-family:Verdana, Arial, Helvetica, sans-serif;}
+
+/* ------------------- General elements ------------------- */
+/* -------------------------------------------------------- */
+/* text menu */
+div#textmenu {font-size:13px; font-weight:normal;}
+div#textmenu span {font-weight:bold; color:#C0C0C0;}
+div#textmenu a.selected {border-bottom:dashed 1px Silver;}
+
+/* grayed-out / errors for different html elements */
+.none {color:#C0C0C0;}
+.error {color:#FF8000;}
+
+/* special travian plus colors */
+span.plus_g {color:#71D000; font-weight:bold;}
+span.plus_o {color:#FF6F0F; font-weight:bold;}
+
+/* ------------------- Servertime ------------------- */
+/* -------------------------------------------------- */
+div#ltime {color:#666666; font-size:10px;}
+
+/* ------------------- Navi ------------------- */
+/* -------------------------------------------- */
+div#mtop {font-size:0px;}
+
+/* ------------------- Side Navi ------------------- */
+/* ------------------------------------------------- */
+div#side_navi {font-size:13px;}
+div#side_navi p {font-size:12px;}
+div#side_navi p a {font-weight:normal; color:#000000;}
+div#side_navi p a:hover {color:#00C000;}
+div#side_navi p.deltimer a {font-weight:bold;}
+div#side_navi p.deltimer a span {color:#FF8000;}
+
+/* ------------------- Side Info ------------------- */
+/* ------------------------------------------------- */
+div#side_info h6 {font-size:13px; color:#FF8000; font-weight:bold;}
+div#side_info table thead td a {font-weight:bold; color:black;}
+div#side_info table tbody td {font-size:11px;}
+div#side_info td.hl {color:#FF8000;}
+div#side_info td.link {font-size:13px;}
+
+/* ------------------- Footer Menu ------------------- */
+/* --------------------------------------------------- */
+div#footer div#mfoot {font-size:11px; color:#666666;}
+div#footer div#mfoot a {color:#666666; text-decoration:none; font-weight:normal;}
+div#footer div#mfoot a:visited, div#footer div#mfoot a:active {color:#666666;}
+div#footer div#mfoot a:hover {color:#00C000;}
+
+/* ------------------- Login ------------------- */
+/* --------------------------------------------- */
+div.login p {font-size:12px;}
+div.login table th, div.login table td {font-size:11px;}
+
+/* ------------------- Signup ------------------- */
+/* ---------------------------------------------- */
+div.signup table th, .signup table td {font-size:11px;}
+div.signup p {font-size:12px;}
+div.signup p.info {color:#FF8000;}
+div.signup p.error2 {color:#FF8000;} 
+div.signup p#timer1 {font-weight:bold; font-size:20px;}
+div.signup span.error {font-size:9px;}
+div.signup span.unavailable {font-size:24px;}
+div.signup .important {color:#FF8000; font-weight:bold;} /*several html-elements*/
+
+/* ------------------- Activate ------------------- */
+/* ------------------------------------------------ */
+div.activate h6 {font-size:12px; color:#FF8000; font-weight:bold;}
+div.activate table th, div.activate table td {font-size:11px;}
+div.activate td.name {color:#FF8000; font-weight:bold;}
+div.activate p {font-size:12px;}
+div.activate p.info {font-size:24px; color:#C0C0C0;}
+div.activate p.info2 {color:#FF8000; font-weight:bold;}
+
+/* ------------------- Village Overview------------------- */
+/* ------------------------------------------------------- */
+/* loyality*/
+div.village1 h1 div#loyality {font-weight:bold; font-size:9px;}
+div.village1 h1 div.re {color:#FF0000;}
+div.village1 h1 div.gr {color:#228B22;}
+
+/* info tables */
+div.village1 table td.num {font-weight:bold;}
+div.village1 table#movements td.typ, div.village1 table#movements div.mov {font-weight:bold;}
+/* movement colors */
+div.village1 table#movements .a1 {color:#FF0000;}
+div.village1 table#movements .d1 {color:#228B22;}
+div.village1 table#movements .a2, div.village1 table#movements .d2 {color:#F2C700;}
+div.village1 table#movements .a3, div.village1 table#movements .d3 {color:#B500A3;}
+
+/* ------------------- Village Center------------------- */
+/* ----------------------------------------------------- */
+/* level display */
+div.village2 div#village_map div#levels div {font-family:Arial, Helvetica; font-size:9px;}
+
+/* ------------------- Village Infos ------------------- */
+/* ----------------------------------------------------- */
+div.village3 table tbody th {font-weight:bold;}
+
+/* ressources */
+div.village3 table#ressources td.tra a {color:black; font-weight:normal;}
+
+/* warehouse */
+div.village3 table#warehouse .crit {color:red;}
+
+/* culture points */
+div.village3 table#culture_points span.dot {color:#C0C0C0; font-weight:bold;}
+
+/* troops */
+div.village3 table#troops tr.small th, div.village3 div.village3 table#troops tr.small td {font-size:11px;}
+
+/* village troops */
+div.village3 table.vil_troops tbody th {font-weight:normal;}
+
+
+/* ------------------- Map ------------------- */
+/* ------------------------------------------- */
+/* rulers */
+div#map div#map_rulers div {font-size:10px;}
+
+/* coordinates */
+div#map div#map_coords {font-weight:bold;}
+
+/* infobox */
+div#map table#map_infobox th, div#map table#map_infobox td {font-size:11px;}
+div#map table.empty thead th, div#map table.oasis_empty thead th, div#map table.oasis thead th {font-weight:normal; font-style:italic;}
+div#map table.default th, div#map table.default td, div#map table.empty th, div#map table.empty td, div#map table.oasis_empty th, div#map table.oasis_empty td {color:#C0C0C0;}
+
+/* raid favorites */
+div.map table#raidFavs td.none a {font-weight:normal; color:#C0C0C0;}
+div.map table#raidDetails td.balance div.booty {color:#00BC00;}
+
+/* detailed map */
+div.map div#dmain {color:#C0C0C0;}
+
+/* raid details */
+div.map table#raidDetails td.balance div.booty {color:#00BC00;}
+div.map table#raidDetails td.balance div.lost {color:#FF6F0F;}
+div.map table#raidDetails td.balance div.sum {font-weight:bold;}
+
+/* ------------------- Player ------------------- */
+/* ---------------------------------------------- */
+/* general */
+div.player span.none2 {font-weight:bold; color:#C0C0C0;}
+div.player span.none3 {color:#C0C0C0;}
+div.player div#textmenu a.none {color:#C0C0C0;}
+
+/* edit profile */
+div.player table#edit td.desc1 textarea, div.player table#edit td.desc2 textarea {font-size:13px;}
+
+/* settings */
+div.player #advertisement span.note {font-size:10px;}
+
+/* account */
+div.player td.note {font-size:11px;}
+
+div.player table#change_pass td.note {font-size:10px;}
+div.player table#change_pass td.generate span {font-size:9px; color:#C0C0C0;}
+div.player table#change_mail th.process {color:red;}
+
+div.player table.account span.count {font-size:10px; color:#C0C0C0;}
+div.player table.account span.max {font-size:10px; color:red;}
+
+div.player table#del_acc td.note {text-align:center;}
+div.player table#del_acc td.count {font-weight:bold;}
+div.player table#del_acc td.count span {color:#FF8000;}
+
+/* grafikpack */
+div.player table#gpack td span.alert {color:#FF0000; font-weight:bold;}
+div.player table#gpack td.info {font-size:11px;}
+div.player table#gpack td div.example {font-size:11px;}
+div.player table#gpack td div.example span.path {color:#FF8000;}
+div.player div#gpack_popup span.error {font-weight:bold;}
+div.player div#gpack_popup span.info {color:#228B22; font-weight:bold;}
+div.player div#gpack_popup span.path {color:#FF8000;}
+div.player div#gpack_popup ul {font-size:11px;}
+
+/* ------------------- Alliance ------------------- */
+/* ------------------------------------------------ */
+/* general */
+div.alliance .error2, div.alliance .error3 {color:#FF8000;}
+div.alliance .error {font-weight:bold;}
+div.alliance .error2 {font-size:9px;}
+
+/* options */
+div.alliance table#edit td.desc1 textarea, div.alliance table#edit td.desc2 textarea {font-size:13px;}
+
+/* diplomacy */
+div.alliance table#hint td, div.alliance table#tip td {font-size:12px;}
+div.alliance table#own td.wait {color:#C0C0C0;}
+
+/* chat */
+div.alliance div.chatHeader {font-weight:bold;}
+div.alliance span.chatTime {font-weight:normal; font-size:10px;}
+
+/* ------------------- Alliance Forum ------------------- */
+/* ------------------------------------------------------ */
+/* general */
+div.forum p.error {font-weight:bold;}
+
+/* forum/topic/post overview */
+div.forum h4 {font-size:11px; font-weight:normal;}
+div.forum table td.tit {font-size:11px;}
+div.forum table td.cou {font-size:10px;}
+div.forum table td.last {font-size:10px;}
+div.forum table td.navi_top, div.forum table td.navi_btm {font-size:11px;}
+div.forum table#posts td.pinfo {font-size:10px;}
+div.forum table#posts td.pinfo .name {font-size:11px; font-weight:bold;}
+div.forum table#posts td.pinfo span.name {color:#888888;}
+div.forum table#posts td.pcontent div.posted {font-size:10px; color:#888888;}
+div.forum table#posts td.pcontent div.text {font-size:11px;}
+div.forum table#posts td.pcontent div.edited {font-size:10px; color:#888888;}
+
+/* new/edit topic/post */
+div.forum table#new_topic tbody th, div.forum table#new_post tbody th, div.forum table#edit_post tbody th {font-weight:bold; font-size:11px;}
+div.forum table#edit_topic tbody th {width:30%; font-weight:bold; font-size:11px;}
+
+/* poll */
+div.forum table#poll thead th {font-size:12px; font-weight:normal;}
+div.forum table#poll td {font-size:11px;}
+
+/* ------------------- Statistics ------------------- */
+/* -------------------------------------------------- */
+/* general */
+div.statistics p.error {font-size:9px;}
+
+/* world */
+div.statistics h4 {font-size:13px; font-weight:bold; color:#FF8000;}
+
+/* worldwonder */
+div.statistics table#wonder td.at {color:#C0C0C0;}
+
+/* search & navi */
+div.statistics table#search_navi div.search span.or {font-style:italic;}
+div.statistics table#search_navi div.navi {color:#C0C0C0; font-weight:bold;}
+
+/* ------------------- Reports ------------------- */
+/* ----------------------------------------------- */
+div.reports .none2 {color:#C0C0C0; font-weight:bold;}
+
+/* overview */
+div.reports table#overview thead th.sent {font-weight:bold;}
+div.reports table#overview thead th.sent a {color:black;}
+div.reports table#overview tfoot th.navi {color:#C0C0C0; font-weight:bold;}
+
+/* read report - header */
+div.reports table#report_surround thead td.sent {font-weight:bold;}
+
+/* read report - content */
+div.reports td.report_content thead td.role {font-weight:bold;}
+
+/* report types */
+div.reports td.report_content table#reinforcement td.role {color:#71D000;}
+div.reports td.report_content table#attacker td.role {color:#FF8000;}
+div.reports td.report_content table.defender td.role {color:#71D000;}
+
+/* ------------------- Messages ------------------- */
+/* ------------------------------------------------ */
+div.messages p.warning {color:#FF0000;}
+
+/* overview */
+div.messages table#overview th.sent a {font-weight:bold; color:black;}
+div.messages table#overview td.dat {white-space:nowrap;}
+div.messages table#overview th.navi {color:#C0C0C0; font-weight:bold;}
+
+/* read message*/
+div.messages div#read_content div#time div {font-size:12px;}
+div.messages div.message {font-size:12px;}
+	
+/* write message */
+div.messages div#write_content textarea {font-size:12px;}
+
+/* adress book */
+div.messages div#adressbook span.enough {font-size:13px; font-weight:bold; color:red;}
+
+/* notice block */
+div.messages div#block textarea {font-size:12px;}
+
+/* ------------------- Buildings ---------------------- */
+/* ---------------------------------------------------- */
+/* build details */
+div#build table.build_details td.desc span.info {font-size:11px;}
+div#build table.build_details td.max {font-size:10px;}
+
+/* development/training details */
+div#build table.under_progress td.desc span.info {font-size:11px; color:#C0C0C0;}
+
+/* new building */
+div#build.gid0 table.new_building td.requ {font-weight:bold;}
+
+/* main building */
+div#build.gid15 input.btn {font-size:11px;}
+
+/* rally point */
+div#build.gid16 h4 {font-size:13px; font-weight:bold;}
+div#build.gid16 p.info a {font-weight:bold; font-size:21px; color:black;}
+div#build.gid16 table.troop_details thead a {color:black;}
+div#build.gid16 table#raidList thead a {font-weight: normal; color:black;}
+div.map table#raidFavs thead a {font-weight: normal; color:black;}
+
+/* marketplace - send ressources */
+div#build.gid17 div.error, div#build.gid17 p.error {font-weight:bold;}
+div#build.gid17 p.error2 {color:#FF8000;}
+div#build.gid17 p.note {font-weight:bold; color:#228B22;}
+
+div#build.gid17 table.send_res td.max {font-size:11px;}
+div#build.gid17 table#send_validate td.max {font-weight:bold; color:#C0C0C0;}
+
+div#build.gid17 table#target_select td.vil, div#build.gid17 table#target_select td.coo {font-size:18px; font-weight:bold;}
+div#build.gid17 table#target_select td.or {font-style:italic;}
+div#build.gid17 table#target_validate td.vil {font-size:18px;}
+
+div#build.gid17 table.traders thead td a {color:black;}
+
+/* marketplace - npc trading */
+div#build.gid17 span.corr {color:#FF4000;}
+
+/* marketplace - trading routes */
+div#build.gid17 p.info {font-size:11px;}
+
+/* embassy */
+div#build.gid18 table#found span.error {font-size:11px;}
+
+/* palace */
+div#build.gid26 table#main td.desc {font-size:11px;}
+
+/* treasury */
+div#build.gid27 table span.bon {font-size:10px;}
+div#build.gid27 table div.info {font-size:11px;}
+div#build.gid27 table#own td.inactive, div#build.gid27 table#own td.inactive a {color:#C0C0C0;}
+div#build.gid27 table#art_details td.desc {font-size:11px;}
+div#build.gid27 table#art_details td.desc span.detail {font-style:italic;}
+
+/* hero's mansion */
+div#build.gid37 table#distribution thead th a {color:black;}
+div#build.gid37 table#distribution thead th span.info {font-weight:normal;}
+div#build.gid37 table#distribution td.rem {color:#228B22; font-weight:bold;}
+
+/* wonder of the world */
+div#build.gid40 p.info {font-size:11px; color:#C0C0C0;}
+div#build.gid40 p.nam {font-size:27px;}
+
+/* ------------------- Manual ------------------- */
+/* ---------------------------------------------- */
+body.manual h1 span.tribe {font-size:12px; color:#C0C0C0; font-weight:normal;}
+body.manual li span.info {font-size:11px; color:#C0C0C0;}
+
+/* ------------------- Quest ------------------- */
+/* --------------------------------------------- */
+div.quest div#qstd span.qcoords {font-size:24px; font-weight:bold;} 
+div.quest div#qstd span.qcoords input {font-size:24px; font-weight:bold;}
+div.quest div.rew p.ta_aw {font-weight:bold;}
+div.quest div#qstd span.org {font-style:normal;}
+
+/* ------------------- Send troops ------------------- */
+/* --------------------------------------------------- */
+div.a2b p.error {font-weight:bold;}
+div.a2b span.info {font-size:11px;}
+
+/* select */
+div.a2b table#troops td {font-size:11px;}
+div.a2b table#troops span.none {font-weight:bold;}
+div.a2b table#coords td.or {font-style:italic;}
+div.a2b table#coords td.vil, div.a2b table#coords td.target {font-size:18px; font-weight:bold;}
+
+/* confirm */
+div.a2b table.troop_details thead td {font-weight:bold;}
+
+/* settle */
+div.a2b table.troop_details thead td a {color:black;}
+
+/* ------------------- Plus ------------------ */
+/* ------------------------------------------- */
+/* products */
+div.plus table th, div.plus table td {font-size:13px; font-family:Verdana, Arial, Helvetica, sans-serif;}
+div.plus table.lang_ar th, div.plus table.lang_ar td {font-size:14px; font-family:Tahoma, Helvetica, Arial, Verdana, sans-serif;}
+
+/* product dropdown */
+div.plus p#product_selection {font-size:10px;}
+div.plus p#product_selection label {font-weight:bold;}
+div.plus p#product_selection select.dropdown {font-size:10px;}
+
+/* orders */
+div.plus p#orders_link {font-size:10px;}
+
+/* payment options */
+div.plus table.rate_details td.pic div {font-size:10px;}
+div.plus table.rate_details td.desc span.alert {color:red; font-style:italic;}
+
+/* open orders */
+div.plus table#open_orders th, div.plus table#open_orders td {font-size:9px;}
+
+/* features */
+div.plus table.features tbody th {font-weight:bold;}
+
+/* plus tables */
+div.plus table.plusFunctions td.cost {font-weight:bold;}
+div.plus table.plusFunctions span.none {font-weight:normal;}
+div.plus table.plusFunctions span.run {font-size:11px;}
+
+/* invite */
+div.plus span.mail, div.plus span.link {font-family:Courier New;}
+div.plus span.notice {font-size:11px; color:#C0C0C0;}
+div.plus p.report {color:#71D000; font-size:21px;}
+div.plus #invite tbody.msg th, div.plus #invite tbody.msg td {font-size:11px;}
+div.plus #brought_in tr.more td {color:#C0C0C0;}
+
+
+/* ------------------- War simulator ------------------- */
+/* ----------------------------------------------------- */
+/* results */
+div.warsim table.attacker td.role {color:#FF8000; font-weight:bold;}
+div.warsim table.defender td.role {color:#71D000; font-weight:bold;}
+
+
+div.activation_time { color:#FF8000; font-size:20px; }

@@ -1,0 +1,1018 @@
+@CHARSET "UTF-8";
+
+/*
+ *------------------------------------------------------------------------------
+ * TRAVIAN_TABLE is used to define the layout of the tables and all elements
+ * within. 
+ *
+ * Contains:
+ * All styles inside of tables except font styles and image styles
+ * (Those styles can be found in the other modules)
+ *------------------------------------------------------------------------------
+ */
+ 
+/* ------------------- Layout ------------------- */
+/* ---------------------------------------------- */
+/* standard form */
+input.text, select.dropdown, textarea {border:1px solid #71D000; padding:2px 3px; margin:0px;}
+body.ie input.radio, body.gecko input.radio, body.webkit input.radio, 
+	body.ie input.check, body.gecko input.check, body.webkit input.check {margin:0px; padding:0px; width:13px; height:13px;}
+
+/* standard table */
+table {border-collapse:separate; background-color:#C0C0C0; line-height:16px; width:100%; empty-cells:show;}
+table td, table th {vertical-align:middle; padding:0px;}
+table thead th, table tfoot th {background-image:url(../img/a/c2.gif); background-repeat:repeat; text-align:center;}
+table thead td, table tfoot td {background-color:#F3F3F3; text-align:center;}
+table tbody th, table tbody td {background-color:#FFFFFF; text-align:left;}
+
+/* highlighted row */
+table tr.hl th, table tr.hl td {background-color:#F0FFF0; border-top:1px solid #71D000; border-bottom:1px solid #71D000;}
+table tr.hl th.fc, table tr.hl td.fc {border-left:1px solid #71D000;}
+table tr.hl th.lc, table tr.hl td.lc {border-right:1px solid #71D000;}
+
+/* table cell for decoration */
+table td.empty {height:5px; padding:0px;}
+
+/* ------------------- Side Info ------------------- */
+/* ------------------------------------------------- */
+/* general */
+div#side_info table {width:auto; background-color:#FFFFFF;}
+div#side_info table td {padding:0px; line-height:18px; text-align:left; white-space:nowrap;}
+div#side_info table thead td {background-color:#FFFFFF; height:22px;}
+div#side_info td.dot {width:10px; padding:0px 6px;}
+div#side_info td.link {padding-right:10px;}
+
+/* ------------------- Login ------------------- */
+/* --------------------------------------------- */
+div.login table {border:1px dashed #C0C0C0; background-color:#FFFFFF;}
+div.login table tr.top th, div.login table tr.top td {padding-top:9px; padding-bottom:2px;}
+div.login table tr.btm th, div.login table tr.btm td {padding-top:2px; padding-bottom:9px;}
+div.login table th {width:38%; padding-left:20px;}
+div.login table td {width:62%;}
+div.login table td input.text {width:113px;}
+
+/* ------------------- Signup ------------------- */
+/* ---------------------------------------------- */
+div.signup table {border:1px dashed #C0C0C0; background-color:#FFFFFF;}
+div.signup table tr.top th, div.signup table tr.top td {padding-top:9px; padding-bottom:2px;}
+div.signup table tr.btm th, div.signup table tr.btm td {padding-top:2px; padding-bottom:9px;}
+div.signup table th, div.signup table td {padding-top:2px; padding-bottom:2px;}
+div.signup input.text {width:113px;}
+div.signup input.radio {position:relative; top:2px; margin-left:5px; float:left;}
+div.signup input.check {position:relative; top:2px; margin-right:5px; float:left;}
+div.signup table#sign_input th {width:38%; padding-left:20px;}
+div.signup table#sign_input td {width:62%;}
+div.signup table#sign_select {line-height:19px;}
+div.signup table#sign_select th, .signup #sign_select td {padding-left:10px;}
+div.signup table#sign_select td.nat {width:35%;}
+div.signup table#sign_select td.pos1 {width:20%;}
+div.signup table#sign_select td.pos2 {width:45%;}
+
+/* ------------------- Activate ------------------- */
+/* ------------------------------------------------ */
+div.activate table {border:1px dashed #C0C0C0; background-color:#FFFFFF;}
+div.activate table tr.top th, div.activate table tr.top td {padding-top:9px; padding-bottom:2px;}
+div.activate table tr.btm th, div.activate table tr.btm td {padding-top:2px; padding-bottom:9px;}
+div.activate table th {width:38%; padding-left:20px;}
+div.activate table td {width:62%;}
+
+/* ------------------- Village Overview------------------- */
+/* ------------------------------------------------------- */
+div.village1 table {line-height:19px; background-color:#FFFFFF;}
+div.village1 table thead th {background-image:none; background-color:#FFFFFF; text-align:left;}
+div.village1 table tbody td {padding:1px 2px;}
+div.village1 table td.ico {width:18px; padding-left:4px;}
+div.village1 table td.num {text-align:right; white-space:nowrap;}
+div.village1 table#movements td {padding:1px 0px;}
+div.village1 table#movements td.empty {height:38px;}
+div.village1 table#movements td.typ {width:32px; vertical-align:top;}
+div.village1 table#movements td.typ img {float:left; position:relative; top:3px; margin-top:0px; margin-right:1px; margin-bottom:0px; margin-left:4px;}
+div.village1 table#movements div.mov {float:left;}
+div.village1 table#movements div.dur_r {float:right; padding-right:2px;}
+div.village1 table#movements td.wrap {line-height:10px;}
+div.village1 table#movements div.dur_l {float:left; padding-bottom:2px;}
+div.village1 table#production td.res {width:20%;}
+div.village1 table#production td.per {width:40%;}
+div.village1 table#troops td.un {width:80%;}
+div.village1 table#building_contract {width:502px;}
+
+/* ------------------- Village Center------------------- */
+/* ----------------------------------------------------- */
+div.village2 table#building_contract {line-height:19px; width:502px; background:none;} /* table covers village map */
+div.village2 table#building_contract thead th {background:none; text-align:left;}
+div.village2 table#building_contract tbody td {background:none; padding:1px 2px;}
+div.village2 table#building_contract td.ico {width:18px; padding-left:4px;}
+
+/* ------------------- Village Infos ------------------- */
+/* ----------------------------------------------------- */
+/* general */
+div.village3 table th, div.village3 table td {padding:2px 4px;}
+div.village3 table tbody td {white-space:nowrap; text-align:center;}
+div.village3 table tbody td.vil {white-space:normal; text-align:left;}
+
+/* overview */
+div.village3 table#overview td {white-space:normal;}
+div.village3 table#overview td.att {width:15%;}
+div.village3 table#overview td.bui {width:10%;}
+div.village3 table#overview td.tro {width:15%;}
+div.village3 table#overview td.tra {width:15%; white-space:nowrap;}
+
+/* ressources */
+div.village3 table#ressources tbody td {text-align:right;}
+div.village3 table#ressources td.vil {text-align:left;}
+div.village3 table#ressources td.lum {width:15%;}
+div.village3 table#ressources td.clay {width:15%;}
+div.village3 table#ressources td.iron {width:15%;}
+div.village3 table#ressources td.crop {width:15%;}
+div.village3 table#ressources td.tra {width:10%;}
+
+/* warehouse */
+div.village3 table#warehouse th, div.village3 table#warehouse td {padding:2px;}
+div.village3 table#warehouse td.vil {padding-left:4px;}
+div.village3 table#warehouse td.lum {width:10%;}
+div.village3 table#warehouse td.clay {width:10%;}
+div.village3 table#warehouse td.iron {width:10%;}
+div.village3 table#warehouse td.max123 {width:15%;}
+div.village3 table#warehouse td.crop {width:10%;}
+div.village3 table#warehouse td.max4 {width:15%;}
+
+/* culture points */
+div.village3 table#culture_points td.cps {width:15%;}
+div.village3 table#culture_points td.cel {width:20%;}
+div.village3 table#culture_points td.tro {width:20%; white-space:normal;}
+div.village3 table#culture_points td.slo {width:10%;}
+
+/* village troops */
+div.village3 table.vil_troops th {padding:2px 7px;}
+div.village3 table.vil_troops tbody th {width:22%;}
+div.village3 table.vil_troops tbody td {padding:2px;}
+div.village3 table.vil_troops tbody.upkeep td {text-align:left; padding-left:7px;}
+
+/* ------------------- Map ------------------- */
+/* ------------------------------------------- */
+/* no border tables */
+div.map table.tableNone {background-color:#FFFFFF;}
+div.map table.tableNone thead th {text-align:left; background-image:none; background-color:#FFFFFF;}
+div.map table.tableNone thead th div {float:left;}
+div.map table.tableNone tbody td, div.map table.tableNone tbody th {padding:1px 4px;}
+
+/* infobox */
+div#map table#map_infobox {width:170px; line-height:19px; }
+div#map table#map_infobox th, div#map table#map_infobox td {line-height:15px; padding:1px 5px;}
+div#map table#map_infobox thead th {text-align:center;}
+div#map table#map_infobox tbody th {width:45%;}
+div#map table.default, div#map table.empty, div#map table.oasis_empty {background-color:#F0F0F0;}
+div#map table.village, div#map table.oasis {background-color:#C0C0C0;}
+div#map table.default thead th, div#map table.empty thead th, div#map table.oasis_empty thead th {background-image:none; background-color:#FFFFFF;}
+div#map table.village thead th, div#map table.oasis thead th {background-image:url(../img/a/c2.gif); background-repeat:repeat;}
+
+/* detailed map */
+div.map table#village_info {width:227px;}
+div.map table#village_info tbody th {width:50%;}
+div.map table#village_info tbody td {font-weight:bold;}
+div.map table#troop_info {width:227px;}
+div.map table#troop_info .ico {width:10%;}
+div.map table#troop_info .val {width:10%; text-align:right; padding-left:10px;}
+div.map table#troop_info .val {font-weight:bold;}
+div.map table#troop_info ul {margin-top:0px; margin-right:0px; margin-bottom:0px; margin-left:2px; padding-left:12px;}
+div.map table#troop_info.rep tbody {line-height:16px;}
+div.map table#troop_info.rep img {float:left; margin-right:5px;}
+div.map table#distribution {width:227px;}
+div.map table#distribution .ico {width:10%;}
+div.map table#distribution .val {width:10%; text-align:right; padding-left:10px;}
+div.map table#distribution .val {font-weight:bold;}
+div.map table#options {width:502px;}
+div.map table#options tbody td {padding-left:4px;}
+
+/* raid favorites */
+div.map table#raidFavs {width:502px;}
+div.map table#raidFavs thead td {white-space:nowrap;}
+div.map table#raidFavs th, div.map table#raidFavs td {padding:2px 7px; text-align:center;}
+div.map table#raidFavs td.del {padding:2px; width:4%;}
+div.map table#raidFavs td.vil {text-align:left;}
+div.map table#raidFavs td.vil img {float:right;}
+div.map table#raidFavs td.aligned_coords {width:94px; padding:2px 0px;}
+div.map table#raidFavs td.aligned_coords div.cox, div.map table#raidFavs td.aligned_coords div.coy {width:42px;}
+div.map table#raidFavs td.rep {text-align:left; width:20%; white-space:nowrap;}
+div.map table#raidFavs td.rep img {float:left; margin-right:3px;}
+div.map table#raidFavs td.goods {width:10%;}
+div.map table#raidFavs td.lost {width:10%;}
+
+/* raid details */
+div.map table#raidDetails {width:502px;}
+div.map table#raidDetails th, div.map table#raidDetails td {padding:2px 7px; text-align:center;}
+div.map table#raidDetails td.day {width:25px; height:100px;}
+div.map table#raidDetails td.day div.booty, div.map table#raidDetails td.day div.lost {position:relative; width:12px; height:100px;}
+div.map table#raidDetails td.day div.booty {float:left; background-color:#CAFFC9;}
+div.map table#raidDetails td.day div.booty div.value {background-color: #00BC00;}
+div.map table#raidDetails td.day div.lost {float:right; background-color:#FFD0B1;}
+div.map table#raidDetails td.day div.lost div.value {background-color: #FF6F0F;}
+div.map table#raidDetails td.day div.value {width: 100%; position: absolute; left: 0px; bottom: 0px; height: 0px; line-height: 0%; font-size: 0em;}
+div.map table#raidDetails td.balance {text-align: left;}
+div.map table#raidDetails td.balance hr {border-color: #C0C0C0;}
+
+div.map table#raidDetails td.day div.value.height100 {height: 100px;}
+div.map table#raidDetails td.day div.value.height95 {height: 95px;}
+div.map table#raidDetails td.day div.value.height90 {height: 90px;}
+div.map table#raidDetails td.day div.value.height85 {height: 85px;}
+div.map table#raidDetails td.day div.value.height80 {height: 80px;}
+div.map table#raidDetails td.day div.value.height75 {height: 75px;}
+div.map table#raidDetails td.day div.value.height70 {height: 70px;}
+div.map table#raidDetails td.day div.value.height65 {height: 65px;}
+div.map table#raidDetails td.day div.value.height60 {height: 60px;}
+div.map table#raidDetails td.day div.value.height55 {height: 55px;}
+div.map table#raidDetails td.day div.value.height50 {height: 50px;}
+div.map table#raidDetails td.day div.value.height45 {height: 45px;}
+div.map table#raidDetails td.day div.value.height40 {height: 40px;}
+div.map table#raidDetails td.day div.value.height35 {height: 35px;}
+div.map table#raidDetails td.day div.value.height30 {height: 30px;}
+div.map table#raidDetails td.day div.value.height25 {height: 25px;}
+div.map table#raidDetails td.day div.value.height20 {height: 20px;}
+div.map table#raidDetails td.day div.value.height15 {height: 15px;}
+div.map table#raidDetails td.day div.value.height10 {height: 10px;}
+div.map table#raidDetails td.day div.value.height5 {height: 5px;}
+div.map table#raidDetails td.day div.value.height0 {height: 1px;}
+
+/* ------------------- Player ------------------- */
+/* ---------------------------------------------- */
+/* general */
+div.player table td, div.player table th {padding:2px 7px;}
+div.player tbody th {text-align:left;}
+div.player td {text-align:center;}
+div.player .none {text-align:center;}
+
+/* show profile */
+div.player table#profile thead td {width:50%;}
+div.player table#profile td.details {width:50%; height:156px; padding:0px; vertical-align:top; border-bottom:none;}
+div.player table#profile td.details table {margin-top:0px; background-color: #FFFFFF; border-collapse: collapse;}
+div.player table#profile td.details table th {width:50%; border-bottom: 1px solid #C0C0C0;border-right: 1px solid #C0C0C0; }
+div.player table#profile td.details table td {text-align:left; border-bottom: 1px solid #C0C0C0;}
+div.player table#profile td.desc1 {width:50%; padding:0px 7px; vertical-align:middle;}
+div.player table#profile td.details table td.desc2 {border-bottom: 0px solid transparent; vertical-align: middle; text-align:center; height: 100%}
+
+/* show villages */
+div.player table#villages td.nam {text-align:left;}
+div.player table#villages td.hab {width:20%;}
+
+/* edit profile */
+div.player table#edit thead td {width:50%;}
+div.player table#edit tbody th {width:20%; white-space:nowrap;}
+div.player table#edit tbody td {line-height:19px;}
+div.player table#edit input.text {width:94%;}
+div.player table#edit td.birth input.day {float:left; width:17px;}
+div.player table#edit td.birth select.dropdown {float:left; width:60px; margin:auto 5px; padding:1px 2px;}
+div.player table#edit td.birth input.year {float:left; width:30px;}
+div.player table#edit td.gend {text-align:left;}
+div.player table#edit td.gend input.radio {position: relative; top: 1px; margin-right:2px;}
+body.presto div.player table#edit td.gend input.radio {top:0px;}
+body.ie6 div.player table#edit td.gend input.radio, body.ie7 div.player table#edit td.gend input.radio {top:-2px;}
+div.player table#edit td.desc1, div.player table#edit td.desc2 {padding:0px;}
+div.player table#edit td.desc1 textarea, div.player table#edit td.desc2 textarea {overflow-x:hidden; overflow-y:scroll; text-align:center; padding:0px;}
+div.player table#edit td.desc1 textarea {width:249px; height:264px;}
+div.player table#edit td.desc2 textarea {width:248px; height:158px;}
+
+/* medals */
+div.player table#medals td.typ {text-align:left;}
+div.player table#medals td.ra {width:15%; white-space:nowrap;}
+div.player table#medals td.we {width:15%;}
+div.player table#medals td.bb {width:20%;}
+
+/* settings */
+div.player table.set td.sel {width:5%; text-align:center;}
+div.player table.set td {text-align:left;}
+div.player table.set input.radio {position:relative; top:1px;}
+body.presto div.player table.set input.radio {top:0px;}
+body.ie6 div.player table.set input.radio, body.ie7 div.player table.set input.radio {top:-2px;}
+div.player table#links td.nr input.text {width:25px;}
+div.player table#links td.nam input.text {width:150px;}
+div.player table#links td.link input.text {width:255px;}
+
+div.player table#time tbody th {width:25%;}
+div.player table#time select.dropdown {width:200px;}
+
+div.player table#adsettings tbody th {width:25%;}
+div.player table#adsettings span.note {margin-left:10px; font-size: 10px;}
+
+/* account */
+div.player table.account tbody th {width:50%;}
+div.player table.account input.text {width:94%;}
+div.player table#change_pass td.note {text-align:left;}
+
+/* table ohne alles */
+div.player table.account table.sitter {background-color: transparent; margin: 0px;}
+div.player table.account table.sitter td {padding: 0px; vertical-align: top;}
+div.player table.account table.sitter td.flags {text-align: left;}
+div.player table.account table.sitter td.name {padding-bottom: 10px;}
+div.player table.account td.container {padding: 0px; width: 50%;}
+div.player table.account input.text {width:50%;}
+div.player table.account span.count {margin-left:5px;}
+div.player table.account span.max {margin-left:5px;}
+
+div.player table#del_acc td.del_selection {text-align:left;}
+div.player table#del_acc input.radio {position:relative; top:1px;}
+body.presto div.player table#del_acc input.radio {top:0px;}
+body.ie6 div.player table#del_acc input.radio, body.ie7 div.player table#del_acc input.radio {top:-2px;}
+
+/* gpack */
+div.player table#gpack td {text-align:left; height:24px;}
+div.player table#gpack th.empty {height:5px; background-color:#f3f3f3;}
+div.player table#gpack td.info {text-align:center;}
+div.player table#gpack td input.radio {position: relative; top: 1px; margin-left: 2px; margin-right: 2px;}
+body.presto div.player table#gpack td input.radio {top:0px;}
+body.ie6 div.player table#gpack td input.radio, body.ie7 div.player table#gpack td input.radio {top:-2px;}
+div.player table#gpack td input.text {margin-left:15px; width:220px;}
+div.player table#gpack td div.example {margin-left:22px;}
+
+div.player table#download thead td {white-space:nowrap;}
+div.player table#download td.nam {text-align:left;}
+div.player table#download td.size {width:22%;}
+div.player table#download td.act {width:22%;}
+div.player table#download td.down {width:22%;}
+
+/* ------------------- Alliance ------------------- */
+/* ------------------------------------------------ */
+/* general */
+div.alliance table td, div.alliance table th {padding:2px 7px;}
+div.alliance tbody th {text-align:left;}
+div.alliance td {text-align:center;}
+div.alliance .none {text-align:center;}
+div.alliance td.abo {width:5%;}
+
+/* profile */
+div.alliance table#profile thead td {width:50%;}
+div.alliance table#profile td.details {width:50%; height:156px; padding:0px; vertical-align:top; border-bottom:none;}
+div.alliance table#profile td.details table {margin-top:0px; background-color: #FFFFFF; border-collapse: collapse;}
+div.alliance table#profile td.details table th {width:50%; border-bottom: 1px solid #C0C0C0;border-right: 1px solid #C0C0C0; }
+div.alliance table#profile td.details table td {text-align:left; border-bottom: 1px solid #C0C0C0;}
+div.alliance table#profile td.desc1 {width:50%; padding:0px 7px; vertical-align:middle;}
+div.alliance table#profile td.details table td.desc2 {border-bottom: 0px solid transparent; vertical-align: middle; text-align:center; height: 100%}
+
+/* members */
+div.alliance table#member td.ra {width:5%; text-align:right; white-space:nowrap;}
+div.alliance table#member td.pla {text-align:left;}
+div.alliance table#member td.hab {width:25%;}
+div.alliance table#member td.vil {width:20%;}
+div.alliance table#member td.on {width:5%;}
+
+/* offs */
+div.alliance table#offs td.sub {text-align:left;}
+div.alliance table#offs td.sub img {float:left;}
+div.alliance table#offs td.sub div {padding-left:24px}
+div.alliance table#offs td.al {width:20%; white-space:nowrap;}
+div.alliance table#offs td.dat {width:23%; white-space:nowrap;}
+
+/* news */
+div.alliance table#events td.event {text-align:left;}
+div.alliance table#events td.dat {width:25%; white-space:nowrap;}
+
+/* options */
+div.alliance table.small_option {width:50%;}
+div.alliance table.small_option input.text {width:94%;}
+div.alliance table.small_option tbody th {width:30%;}
+div.alliance td.sel {width:15%;}
+
+div.alliance table#options td.val {text-align:left;}
+
+div.alliance table#name td {text-align:left;}
+div.alliance table#name input.tag {width:50%;}
+
+div.alliance table#edit thead td {width:50%;}
+div.alliance table#edit tbody th {width:30%;}
+div.alliance table#edit tbody td {line-height:19px; text-align:left;}
+div.alliance table#edit input.text {width:94%;}
+div.alliance table#edit td.desc1, div.alliance table#edit td.desc2 {padding:0px;}
+div.alliance table#edit td.desc1 textarea, div.alliance table#edit td.desc2 textarea {overflow-x:hidden; overflow-y:scroll; text-align:center; padding:0px;}
+div.alliance table#edit td.desc1 textarea {width:249px; height:264px;}
+div.alliance table#edit td.desc2 textarea {width:248px; height:140px;}
+
+div.alliance table#medals td.typ {text-align:left;}
+div.alliance table#medals td.ra {width:15%; white-space:nowrap;}
+div.alliance table#medals td.we {width:15%;}
+div.alliance table#medals td.bb {width:20%;}
+
+div.alliance table#invitations td {text-align:left;}
+div.alliance table#invitations td.abo {text-align:center;}
+
+/* diplomacy */
+div.alliance table.dipl, div.alliance div#box {width:60%;}
+div.alliance table.dipl td {text-align:left;}
+div.alliance table.infos {width:37%;}
+div.alliance table.infos td {padding:2px;}
+div.alliance table td.none {text-align:center;}
+div.alliance table td.acc {width:25%; text-align:center;}
+div.alliance table#diplomacy input.text {width:94%;}
+div.alliance table#diplomacy input.radio {margin:3px;}
+div.alliance table#own td.wait {width:25%;}
+
+/* ------------------- Alliance Forum ------------------- */
+/* ------------------------------------------------------ */
+/* general */
+div.forum table {width:502px;}
+div.forum table td, div.forum table th {padding:2px 7px;}
+div.forum table td.ico {width:32px; text-align:center; padding:5px; white-space:nowrap;}
+div.forum table td.ico a img {margin:2px;}
+div.forum table td.tit {padding:5px;}
+div.forum table td.cou {width:62px; text-align:center;}
+div.forum table td.last {width:120px; text-align:right; padding-top:2px; padding-right:5px; padding-bottom:2px; padding-left:2px; white-space:nowrap;}
+div.forum table td.none {text-align:center;}
+div.forum table td.navi_top, div.forum table td.navi_btm {float:right; text-align:right; margin-right:20px;}
+div.forum table td.navi_btm {margin-top:15px;}
+
+/* forum/topic/post overview */
+div.forum h4 {margin-top:0px; margin-right:0px; margin-bottom:15px; margin-left:5px;}
+div.forum table#public, div.forum table#confederation, div.forum table#alliance, div.forum table#closed {margin-top:10px;}
+
+div.forum table#posts td.poll {background-color:#FFFFFF; padding:5px 2px;}
+div.forum table#posts td.pinfo {width:21%; vertical-align:top;}
+div.forum table#posts td.pcontent {vertical-align:top; padding:0px;}
+div.forum table#posts td.pcontent div {vertical-align:top;}
+div.forum table#posts td.pcontent div.posted {float:left; padding:2px 10px 0px;}
+div.forum table#posts td.pcontent div.admin {float:right; padding:2px 10px 0px;}
+div.forum table#posts td.pcontent div.admin img {margin-left:3px;}
+div.forum table#posts td.pcontent div.dotted {height:1px; width:100%; border-bottom:1px dotted #C0C0C0; padding:0px;}
+div.forum table#posts td.pcontent div.text {padding:4px 10px 30px; width:376px; min-height:70px; overflow-x:auto;}
+div.forum table#posts td.pcontent div.edited {border-top:1px dotted #C0C0C0; padding:0px 10px 2px;}
+
+/* new/edit forum */
+div.forum table#new_forum tbody th, div.forum table#edit_forum tbody th {width:30%;}
+div.forum table#new_forum input.text, div.forum table#new_forum input.text {width:97%;}
+div.forum table#conf_list td.ally, div.forum table#user_list td.ally, div.forum table#non_conf_list td.ally {width:70%;}
+div.forum table#conf_list td.sel, div.forum table#non_conf_list td.sel, div.forum table#open_user td.sel {width:5%; text-align:center;}
+div.forum table#conf_list td.tag, div.forum table#non_conf_list td.tag {width:25%; text-align:center;}
+div.forum table#ally_list input.text, div.forum table#user_list input.text {width:95%;}
+div.forum table#ally_list tag.tag, div.forum table#ally_list tag.ally, div.forum table#user_list tag.id, div.forum table#user_list tag.pla {width:40%;}
+div.forum table#ally_list td.ad, div.forum table#user_list td.ad {width:20%; text-align:center;}
+div.forum table#ally_list img.add, div.forum table#user_list img.add {cursor:pointer;}
+
+/* new/edit topic/post */
+div.forum table#new_topic tbody th, div.forum table#new_post tbody th, div.forum table#edit_post tbody th {width:87px;}
+div.forum table#edit_topic tbody th {width:30%;}
+div.forum table#new_topic td.input_icons, div.forum table#new_post td.input_icons, div.forum table#edit_post td.input_icons {width:87px; text-align:center;
+	vertical-align:top;	padding:10px 3px 0px;}
+div.forum table#new_topic td.input_icons img, div.forum table#new_post td.input_icons img, div.forum table#edit_post td.input_icons img {cursor:pointer;}
+div.forum table#new_topic td.input_icons img.smiley, div.forum table#new_post td.input_icons img.smiley, div.forum table#edit_post td.input_icons img.smiley {margin:3px 1px;}
+div.forum table#new_topic textarea, div.forum table#new_post textarea, div.forum table#edit_post textarea {width:381px; height:250px; overflow:auto;}
+div.forum table#new_topic td.sel {text-align:center;}
+div.forum table#new_topic table#options td {padding-bottom:0px;}
+div.forum table#new_topic table#options input.text {margin-bottom:2px}
+div.forum table#new_topic select.dropdown {margin-right:1px;}
+div.forum table#edit_topic select.dropdown {width:100%;}
+
+/* poll */
+div.forum table#poll {background-color:#FFFFFF; width:496px;}
+div.forum table#poll thead th {text-align:center; padding:4px;}
+div.forum table#poll td {text-align:center;}
+div.forum table#poll td.sel {width:30%; text-align:right; white-space:nowrap;}
+div.forum table#poll td.stat {width:280px; text-align:left;}
+div.forum table#poll td.stat img {float:left;}
+div.forum table#poll td.count {text-align:center;}
+
+/* ------------------- Statistics ------------------- */
+/* -------------------------------------------------- */
+/* general */
+div.statistics table td, div.statistics table th {padding:2px 7px; text-align:center;}
+div.statistics td.ra {width:5%; text-align:right; white-space:nowrap;}
+div.statistics td.pop {width:20%;}
+div.statistics td.al {text-align:left;}
+div.statistics td.vil {width:10%;}
+div.statistics td.po {width:20%;}
+div.statistics td.pla {width:18%;}
+div.statistics td.av {width:18%;}
+div.statistics td.po {width:20%;}
+
+/* player */
+div.statistics table#player td.pla {width:auto; text-align:left;}
+div.statistics table#player td.al {text-align:center;}
+div.statistics table#player_off td.pla {width:auto; text-align:left;}
+div.statistics table#player_def td.pla {width:auto; text-align:left;}
+
+/* alliance */
+div.statistics table#alliance td.al {width:auto;}
+div.statistics table#alliance_off td.al {width:auto;}
+div.statistics table#alliance_def td.al {width:auto;}
+
+/* top10 */
+div.statistics table.top10 {width:246px;}
+div.statistics table.top10 td {padding:2px;}
+div.statistics table.top10 td.pla {width:auto; text-align:left;}
+div.statistics table.top10 td.val {width:10%;}
+div.statistics table.top10 tr.none td {background-color:#EFEFEF;}
+div.statistics table.top10 tr.own.hl td.ra {text-align:center; white-space:nowrap;}
+div.statistics table#top10_offs, div.statistics table#top10_climbers {float:left;}
+div.statistics table#top10_defs, div.statistics table#top10_raiders {float:right;}
+
+/* villages */
+div.statistics table#villages td.vil {width:auto; text-align:left;}
+div.statistics table#villages td.pla {width:25%; text-align:left;}
+div.statistics table#villages td.hab {width:15%;}
+div.statistics table#villages td.aligned_coords {padding:2px 0px;}
+
+/* heroes */
+div.statistics table#heroes td.hero {text-align:left;}
+div.statistics table#heroes td.hero img {position:relative; top:1px; margin:-2px;}
+div.statistics table#heroes td.pla {width:30%; text-align:left;}
+div.statistics table#heroes td.lev {width:10%;}
+div.statistics table#heroes td.xp {width:15%;}
+
+/* world */
+div.statistics table#world_tribes, div.statistics table#world_misc {margin-top:15px;}
+div.statistics table#world_player th {width:60%;}
+div.statistics table#world_tribes td, div.statistics table#world_misc td {width:33%;}
+
+/* worldwonder */
+div.statistics table#wonder td.nam {width:35%;}
+div.statistics table#wonder td.al {width:15%;}
+div.statistics table#wonder td.lev {width:10%;}
+div.statistics table#wonder td.at {width:2%;}
+
+/* search & navi */
+div.statistics table#search_navi {margin-top:15px;}
+div.statistics table#search_navi div {vertical-align:top;}
+div.statistics table#search_navi div.search {float:left; text-align:left}
+div.statistics table#search_navi div.search span {white-space:nowrap;}
+div.statistics table#search_navi div.search input {vertical-align:middle; margin-top:2px; margin-bottom:2px;}
+div.statistics table#search_navi div.search input.ra {margin-left:4px; width:32px;}
+div.statistics table#search_navi div.search input.name {margin-left:4px; width:50px;}
+div.statistics table#search_navi div.search span.or {margin:auto 8px;}
+div.statistics table#search_navi div.navi {float:right; text-align:right; line-height:22px; white-space:nowrap;}
+
+/* ------------------- Reports ------------------- */
+/* ----------------------------------------------- */
+div.reports table td, div.reports  table th {padding:2px 7px;}
+div.reports .none {text-align:center;}
+
+/* overview */
+div.reports table#overview td, div.reports table#overview th {padding:3px 7px; line-height:17px;}
+div.reports table#overview tbody td {vertical-align:top;} 
+div.reports table#overview td.sel {width:5%; padding:5px; text-align:center;}
+div.reports table#overview td.sub img {float:left;}
+div.reports table#overview td.sub div {padding-left:24px}
+div.reports table#overview td.dat {width:23%; text-align:center; white-space:nowrap; padding:3px 2px;}
+div.reports table#overview tfoot th.buttons {text-align:left;}
+div.reports table#overview tfoot th.buttons input {vertical-align:middle;}
+div.reports table#overview tfoot th.navi {text-align:right;}
+
+/* read report - header */
+div.reports table#report_surround thead th, div.reports table#report_surround thead td {text-align:left;}
+div.reports table#report_surround thead td.sent {width:25%;}
+
+/* read report - content */
+div.reports table#report_surround td.report_content {padding:15px 2px 0px;}
+div.reports table#report_surround td.report_content table {margin-bottom:15px;}
+div.reports table#report_surround td.report_content table thead td {text-align:center; background-color:#F3F3F3;}
+div.reports table#report_surround td.report_content table tbody th {text-align:center; width:20%; text-align:left;}
+div.reports table#report_surround td.report_content table tbody.units td {width:7.2%; text-align:center; padding:2px;}
+div.reports table#report_surround td.report_content table tbody.infos th, div.reports table#report_surround td.report_content table tbody.infos td,
+	div.reports table#report_surround td.report_content table tbody.goods th, div.reports table#report_surround td.report_content table tbody.goods td,
+	div.reports table#report_surround td.report_content table tbody.res th, div.reports table#report_surround td.report_content table tbody.res td,
+	div.reports table#report_surround td.report_content table tbody.regards th, div.reports table#report_surround td.report_content table tbody.regards td
+	{background-color:#F3F3F3;}
+div.reports table#report_surround td.report_content table tbody.infos td img {display:inline; margin-right:2px;}
+/* report types */
+div.reports td.report_content table#attacker tbody.goods div.res {float:left;}
+div.reports td.report_content table#attacker tbody.goods div.carry {float:right; margin-left:20px;}
+
+/* ------------------- Messages ------------------- */
+/* ------------------------------------------------ */
+div.messages td.none {text-align:center;}
+
+/* overview */
+div.messages table#overview td, div.messages table#overview th {padding:3px 7px; line-height:17px; text-align:center;}
+div.messages table#overview tr.sup td.sel {background-color:#71D000;}
+div.messages table#overview tr.multi td.sel {background-color:#FF6F0F;}
+div.messages table#overview td.sel {width:5%;}
+div.messages table#overview td.top {text-align:left;}
+div.messages table#overview td.send {width:25%;}
+div.messages table#overview td.dat {width:22%; white-space:nowrap;}
+div.messages table#overview th.buttons {text-align:left;}
+div.messages table#overview th.buttons input {vertical-align:middle;}
+div.messages table#overview th.navi {text-align:right;}
+
+/* friendlist */
+div.messages table#friendlist td {padding:2px; text-align:center; height:20px;}
+.webkit div.messages table#friendlist td {height: 16px;}
+div.messages table#friendlist td.end {width:5%; padding:0px;}
+div.messages table#friendlist td.pla {width:40%; padding:0px;}
+div.messages table#friendlist td.on {width:5%; padding:0px;}
+div.messages table#friendlist td.pla input.text {border:none;}
+div.messages table#friendlist img.del, div.messages table#friendlist img.accept {cursor:pointer;}
+
+/* ------------------- Buildings ---------------------- */
+/* ---------------------------------------------------- */
+/* building infos */
+div#build table#build_value {width:auto; line-height:19px; background-color:#FFFFFF;}
+div#build table#build_value th, div#build table#build_value td {white-space:nowrap;}
+div#build table#build_value th {padding-right:35px;}
+div#build table#build_value td {text-align:right;}
+
+/* build details */
+div#build table.build_details td {padding:2px 7px;}
+div#build table.build_details td.desc {line-height:19px;}
+div#build table.build_details td.desc div.tit img {margin:0px 5px; position:relative; top:3px;}
+div#build table.build_details td.desc div.details {padding-left:30px;}
+div#build table.build_details td.desc div.details span {white-space:nowrap;}
+div#build table.build_details td.desc div.details span.none {white-space: normal;}
+div#build table.build_details td.act {width:29%; text-align:center;}
+div#build table.build_details td.val {width:12%; text-align:center;}
+div#build table.build_details td.val input.text {width:30px;}
+div#build table.build_details td.max {width:12%; text-align:center;}
+
+/* development/training details */
+div#build table.under_progress {margin-top:15px;}
+div#build table.under_progress td {padding:2px 7px; text-align:center;}
+div#build table.under_progress td.desc {text-align:left;}
+div#build table.under_progress td.desc img {margin:0px 5px; position:relative; top:3px;}
+div#build table.under_progress div.val {padding-left:5px; float:left; text-align:right;}
+div#build table.under_progress td.dur {width:20%;}
+div#build table.under_progress td.fin {width:20%;}
+div#build table.under_progress tr.next td {background-color:#F5F5F5;}
+
+/* build contract */
+div#build p#contract {line-height:19px;}
+
+/* founded/conquered villages */
+div#build table#expansion td, div#build #expansion th {padding:2px 7px;}
+div#build table#expansion thead td {padding:2px;}
+div#build table#expansion td {text-align:center;}
+div#build table#expansion td.ra {width:2%; text-align:right; white-space:nowrap;}
+div#build table#expansion td.vil {text-align:left;}
+div#build table#expansion td.ha {width:16%;}
+div#build table#expansion td.dat {width:14%; white-space:nowrap;}
+
+/* new building */
+div#build.gid0 h1 {margin-bottom:25px;}
+div#build.gid0 h2 {margin-bottom:15px;}
+div#build.gid0 div.hide {display:none;}
+div#build.gid0 table.new_building {margin-bottom:25px; background-color:#FFFFFF;}
+div#build.gid0 table.new_building td.desc {padding-bottom:15px;}
+div#build.gid0 table.new_building td.bimg {padding-left:15px; padding-right:5px; vertical-align:top;}
+div#build.gid0 table.new_building td.res {padding-bottom:3px;}
+div#build.gid0 table.new_building td.requ {padding-bottom:3px;}
+
+/* main building */
+div#build.gid15 table#demolish {background-color:#FFFFFF;}
+
+/* rally point */
+div#build.gid16 table.troop_details th, div#build.gid16 table.troop_details td {padding:2px 7px;}
+div#build.gid16 table.troop_details th {width:20%;}
+div#build.gid16 table.troop_details tbody.units td {text-align:center; width:7.2%; padding:2px;}
+div#build.gid16 table.troop_details tbody.infos th, div#build.gid16 table.troop_details tbody.infos td {background-color:#F3F3F3;}
+div#build.gid16 table.troop_details div {width:50%; float:left; text-align:center;}
+div#build.gid16 table.troop_details div.small {width:45%;}
+div#build.gid16 table.troop_details div.abort {width:5%; float:right; text-align:right;}
+div#build.gid16 table.troop_details div.abort img {margin-top:3px;}
+div#build.gid16 table.troop_details div.sup {text-align:left;}
+div#build.gid16 table.troop_details div.sback {text-align:right;}
+div#build.gid16 table.troop_details div.free {text-align:right;}
+div#build.gid16 table.troop_details div.gback {text-align:right;}
+div#build.gid16 table.troop_details div.diss {text-align:right;}
+div#build.gid16 table.troop_details a.attack_marker {float: right; position: relative; top: 2px; right: -1px;}
+
+/* raid list */
+div#build.gid16 table#raidList thead td {white-space:nowrap;}
+div#build.gid16 table#raidList th, div#build.gid16 table#raidList td {padding:2px 7px; text-align:center;}  
+div#build.gid16 table#raidList td.check {padding:2px; width:1%;}
+div#build.gid16 table#raidList td.check img {float:left;}
+div#build.gid16 table#raidList td.vil {text-align:left;}
+div#build.gid16 table#raidList td.vil img {float:right;}
+div#build.gid16 table#raidList td.raids {width:10%;}
+div#build.gid16 table#raidList td.goods {width:10%;}
+div#build.gid16 table#raidList td.lost {width:10%;}
+div#build.gid16 table#raidList td.rep {text-align:left; width:20%; white-space:nowrap;}
+div#build.gid16 table#raidList td.rep img {float:left; margin-right:3px;}
+
+/* raid troops */
+div#build.gid16 table#raidTroops {border:1px dashed #C0C0C0; background-color:#FFFFFF;}
+div#build.gid16 table#raidTroops td.column-first {padding-left:8px;}
+div#build.gid16 table#raidTroops td.column-last {padding-right:8px;}
+div#build.gid16 table#raidTroops td.line-first {padding-top:8px;}
+div#build.gid16 table#raidTroops td.line-last {padding-bottom:8px;}
+div#build.gid16 table#raidTroops td {width:25%; padding:1px;}
+div#build.gid16 table#raidTroops img {vertical-align:bottom; position:relative; bottom:3px; margin-right:2px;}
+div#build.gid16 table#raidTroops input.text {width:60px;}
+div#build.gid16 table#raidTroops input.disabled {background-color:#EEEEEE; border-color:#AAAAAA;}
+
+/* Troop Escape */
+div#build.gid16 table#troopEscape thead td {white-space:nowrap;}
+div#build.gid16 table#troopEscape th, div#build.gid16 table#troopEscape td {padding: 2px 7px; text-align:center;}
+div#build.gid16 table#troopEscape td.sel {padding:2px; width:5%;}
+div#build.gid16 table#troopEscape td.vil {text-align:left;}
+div#build.gid16 table#troopEscape td.own {width:25%;}
+div#build.gid16 table#troopEscape td.rein {width:25%;}
+	
+/* marketplace - send ressources */
+div#build.gid17 table.send_res {width:40%; line-height:24px; background-color:#FFFFFF;}
+div#build.gid17 table.send_res td {vertical-align:top; padding-right:4px;}
+div#build.gid17 table.send_res td.ico {width:5%;}
+div#build.gid17 table.send_res td.ico img {position:relative; top:4px;}
+div#build.gid17 table.send_res td.nam {width:16%;}
+div#build.gid17 table.send_res td.val {width:12%;}
+div#build.gid17 table.send_res td.val input.text {width:39px;}
+div#build.gid17 table.send_res td.max {width:20%;}
+
+div#build.gid17 table.res_target {width:40%; line-height:21px; background-color:#FFFFFF;}
+div#build.gid17 table.res_target th, div#build.gid17 table.res_target td {vertical-align:top;}
+div#build.gid17 table.res_target th {width:30%;}
+
+div#build.gid17 table#target_select td.mer {padding-bottom:9px;}
+div#build.gid17 table#target_select td.vil *, div#build.gid17 table#target_select td.coo * {float:left;}
+div#build.gid17 table#target_select td.vil input.text {width:100px; margin-left:10px;}
+div#build.gid17 table#target_select td.coo input.text {width:40px; margin:0px 10px;}
+
+div#build.gid17 table#target_validate td.vil {padding-bottom:11px;}
+
+div#build.gid17 table.traders th, div#build.gid17 table.traders td {padding:2px 7px;}
+div#build.gid17 table.traders tr.res th, div#build.gid17 table.traders tr.res td {background-color:#F5F5F5;}
+div#build.gid17 table.traders th {width:20%;}
+div#build.gid17 table.traders div.in {text-align:center; width:45%; float:left;}
+div#build.gid17 table.traders div.at {text-align:center; width:45%; float:right;}
+div#build.gid17 table.traders div.repeat {text-align:right; width:20px; float:right;}
+
+/* marketplace - buy ressources */
+div#build.gid17 table.buy_select td {text-align:center; height:21px;}
+div#build.gid17 table.buy_select td.hl {background-color:#ffe4b5;}
+div#build.gid17 table#search_select {width:120px;}
+div#build.gid17 table#ratio_select {width:30px;}
+div#build.gid17 table#bid_select {width:120px;}
+
+div#build.gid17 table#range th, div#build.gid17 table#range td {padding:2px; text-align:center;}
+div#build.gid17 table#range tfoot td {text-align:right; padding-right:7px;}
+div#build.gid17 table#range td.val {width:16%; text-align:left; white-space:nowrap;}
+div#build.gid17 table#range td.dur {width:13%; white-space:nowrap;}
+div#build.gid17 table#range td.act {width:35%;}
+
+div#build.gid17 table#summary th, div#build.gid17 table#summary td {padding:2px 7px;}
+div#build.gid17 table#summary td.desc {text-align:center; background-color:#F3F3F3;}
+div#build.gid17 table#summary td.ico {width:5%; padding-right:2px;}
+div#build.gid17 table#summary td.val {width:16%; padding-left:2px; white-space:nowrap;}
+
+/* marketplace - sell ressources */
+div#build.gid17 table#sell {background-color:#FFFFFF;}
+div#build.gid17 table#sell th, div#build.gid17 table#sell td {padding:2px;}
+div#build.gid17 table#sell th {width:10%;}
+div#build.gid17 table#sell input.check {position:relative; top:1px;}
+div#build.gid17 table#sell select.dropdown {padding:1px;}
+div#build.gid17 table#sell td.val {width:13%;}
+div#build.gid17 table#sell td.val input.text {width:50px;}
+div#build.gid17 table#sell td.res {width:20%;}
+div#build.gid17 table#sell td.res input.text {width:75px;}
+div#build.gid17 table#sell td.tra input.text {width:20px;}
+
+/* marketplace - own offers */
+div#build.gid17 table#sell_overview th, div#build.gid17 table#sell_overview td {padding:2px 7px; text-align:center;}
+div#build.gid17 table#sell_overview td.abo {width:5%;}
+div#build.gid17 table#sell_overview td.val {width:22%; text-align:left;}
+
+/* marketplace - npc trading */
+div#build.gid17 table#npc th,div#build.gid17 table#npc td {padding:2px 7px; text-align:center;}
+div#build.gid17 table#npc td.all {width:18%;}
+div#build.gid17 table#npc td.sum {text-align:left;}
+
+/* marketplace - trading routes */
+div#build.gid17 table#trading_routes th {padding:4px 7px;}
+div#build.gid17 table#trading_routes tfoot th {text-align:left; font-weight:normal;}
+div#build.gid17 table#trading_routes td {padding:2px 7px; text-align:center;}
+div#build.gid17 table#trading_routes td.desc {text-align:left;}
+div#build.gid17 table#trading_routes td.sel {width:5%; padding:5px; vertical-align:top;}
+div#build.gid17 table#trading_routes td.start {width:12%; white-space:nowrap;}
+div#build.gid17 table#trading_routes td.trad {width:15%;}
+div#build.gid17 table#trading_routes td.dur {width:20%;}
+div#build.gid17 table#trading_edit th, div#build.gid17 table#trading_edit td {padding:2px 7px;}
+div#build.gid17 table#trading_edit tbody th, div#build.gid17 table#trading_edit tbody td {line-height:20px;}
+div#build.gid17 table#trading_edit tbody th {width:25%;}
+div#build.gid17 table#trading_edit select option {padding-right:10px;}
+div#build.gid17 table#trading_edit td.res {white-space:nowrap;}
+div#build.gid17 table#trading_edit td.res input {margin-right:5px;}
+div#build.gid17 table#trading_edit td.res img {margin-right:3px;}
+
+/* embassy */
+div#build.gid18 table {width:60%;}
+div#build.gid18 table th, div#build.gid18 table td {padding:2px 7px;}
+div#build.gid18 table th {width:30%;}
+
+div#build.gid18 table#join th, div#build.gid18 #join td {text-align:center;}
+div#build.gid18 table#join td.abo {width:5%;}
+div#build.gid18 table#join td.nam {width:30%;}
+
+div#build.gid18 table#found td.tag input.text {width:80px;}
+div#build.gid18 table#found td.nam input.text {width:160px;}
+
+/* academy */
+div.build.gid22 table#researchFuture td.desc {vertical-align:top; white-space:nowrap; width:40%;}
+div.build.gid22 table#researchFuture td.cond {line-height:19px;}
+
+/* town hall */
+div#build.gid24 table.build_details td.desc div.details {padding-left:0px;}
+
+/* palace */
+div#build.gid26 table#main {margin-top:15px;}
+div#build.gid26 table#main th, div#build.gid26 #main td {padding:2px 7px;}
+div#build.gid26 table#main tbody th {width:50%;}
+div#build.gid26 table#main td.desc {text-align:center;}
+div#build.gid26 table#main input.text {width:94%;}
+
+/* treasury */
+div#build.gid27 table#near {margin-top:20px;}
+
+div#build.gid27 table th, div#build.gid27 table td {padding:2px 7px; text-align:center;}
+div#build.gid27 table td.nam {text-align:left;}
+div#build.gid27 table div.man {float:right; width:15px;}
+div#build.gid27 table td.pla {width:20%;}
+div#build.gid27 table#own td.vil {width:20%;}
+div#build.gid27 table#own td.cap {width:25%;}
+div#build.gid27 table#near td.dist {width:20%;}
+div#build.gid27 table#show_artefacts td.al {width:20%;}
+div#build.gid27 table#art_details tbody th {width:35%;}
+div#build.gid27 table.art_details {margin-top: 25px;}
+
+/* brewery */
+div#build.gid35 table.build_details td.desc div.details {padding-left:0px;}
+
+/* hero's mansion */
+div#build.gid37 table th, div#build.gid37 table td {padding:2px 7px;}
+div#build.gid37 table td.nam {width:30%; text-align:left;}
+
+div#build.gid37 table#rename {width:60%;}
+div#build.gid37 table#rename tbody th {width:40%;}
+div#build.gid37 table#rename input.text {width:94%;}
+
+div#build.gid37 table#distribution tbody th {width:26%;}
+div#build.gid37 table#distribution td.xp {width:205px;}
+div#build.gid37 table#distribution td.up {width:7%; text-align:center;}
+div#build.gid37 table#distribution td.po {width:7%; text-align:center;}
+div#build.gid37 table#distribution td.rem {text-align:center;}
+
+div#build.gid37 table#oases td {text-align:center;}
+div#build.gid37 table#oases thead td {padding:2px;}
+div#build.gid37 table#oases td.nam img {position:relative; top:1px;}
+div#build.gid37 table#oases td.zp {width:14%;}
+
+div#build.gid37 table#leave thead td {padding:2px;}
+div#build.gid37 table#leave tbody td {text-align:center;}
+
+/* wonder of the world */
+div#build.gid40 table#rename {width:50%;}
+div#build.gid40 table#rename th, div#build.gid40 table#rename td {padding:2px 7px;}
+div#build.gid40 table#rename td {text-align:center;}
+div#build.gid40 table#rename tbody th {width:25%;}
+div#build.gid40 table#rename input.text {width:94%;}
+
+/* ------------------- Manual ------------------- */
+/* ---------------------------------------------- */
+body.manual table td, body.manual table th {padding:2px;}
+
+/* troops */
+body.manual table#troop_info {width:406px;}
+body.manual table#troop_info td {width:14.2%; text-align:center;}
+body.manual table#troop_details {width:60%; background-color:#FFFFFF;}
+
+/* others */
+body.manual table#examples {width:406px; margin-left:2px;}
+body.manual table#examples tbody th {width:40%;}
+
+/* ------------------- Quest ------------------- */
+/* --------------------------------------------- */
+div.quest div#qstd table.altquest th, div.quest div#qstd table.altquest td {padding:2px;}
+div.quest div#qstd table.altquest td {text-align:center;}
+div.quest div#qstd table.altquest td.ra {width:5%;}
+div.quest div#qstd table.altquest td.desc {text-align:left;}
+
+/* ------------------- Send troops ------------------- */
+/* --------------------------------------------------- */
+div.a2b table th, div.a2b table td {padding:2px 7px;}
+
+/* select */
+div.a2b table#troops {border:1px dashed #C0C0C0; background-color:#FFFFFF;}
+div.a2b table#troops td.column-first {padding-left:8px;}
+div.a2b table#troops td.column-last {padding-right:8px;}
+div.a2b table#troops td.line-first {padding-top:8px;}
+div.a2b table#troops td.line-last {padding-bottom:8px;}
+div.a2b table#troops td.large {width:26%;}
+div.a2b table#troops td.regular {width:25%;}
+div.a2b table#troops td.small {width:23%;}
+div.a2b table#troops img {vertical-align:bottom; position:relative; bottom:3px; margin-right:2px;}
+div.a2b table#troops input.text {width:30px;}
+div.a2b table#troops input.disabled {background-color:#EEEEEE; border-color:#AAAAAA;}
+div.a2b table#coords {line-height:18px; background-color:#FFFFFF;}
+div.a2b table#coords td {vertical-align:top; padding:0px;}
+div.a2b table#coords td.sel {width:35%; white-space:nowrap;}
+div.a2b table#coords td.sel input.radio {position:relative; top:1px;}
+body.presto div.a2b table#coords td.sel input.radio {top:-1px;}
+* html div.a2b table#coords td.sel input.radio {top:-2px;} /* IE 6 */
+*+html div.a2b table#coords td.sel input.radio {top:-2px;} /* IE 7 */
+div.a2b table#coords td.vil *, div.a2b table#coords td.target * {float:left; margin-right:10px;}
+div.a2b table#coords td.vil input.text {width:100px;}
+div.a2b table#coords td.target input.text {width:40px;}
+
+/* confirm */
+div.a2b table#short_info {background-color:#FFFFFF;}
+div.a2b table#short_info th {width:15%;padding-left:0px;}
+div.a2b table.troop_details tbody th {width:20%;}
+div.a2b table.troop_details tbody.units td {width:7.2%; text-align:center; padding:2px;}
+div.a2b table.troop_details tbody.units input.text {width:73%;}
+div.a2b table.troop_details tbody.options input.radio {position: relative; top: 2px; margin-right: 2px;}
+body.presto div.a2b table.troop_details tbody.options input.radio {top:0px;}
+body.ie6 div.a2b table.troop_details tbody.options input.radio, body.ie7 div.a2b table.troop_details tbody.options input.radio {top:-2px;}
+div.a2b table.troop_details tbody.cata select.dropdown {margin:1px 0px;}
+div.a2b table.troop_details tbody.infos th, div.a2b table.troop_details tbody.infos td {background-color:#F5F5F5;}
+div.a2b table.troop_details tbody.infos div {width:49%; text-align:center;}
+div.a2b table.troop_details tbody.infos div.in {float:left;}
+div.a2b table.troop_details tbody.infos div.at {float:right;}
+
+/* ------------------- Cropfinder ------------------ */
+/* ------------------------------------------------- */
+div.cropfinder table#croplist th, div.cropfinder table#croplist td {padding:2px 7px;}
+div.cropfinder table#croplist td.none {text-align:center;}
+div.cropfinder table#croplist td.dist {width:12%; white-space:nowrap;}
+div.cropfinder table#croplist td.typ {width:12%;}
+div.cropfinder table#croplist td.oase {width:18%;}
+div.cropfinder table#croplist td.footer {text-align:right;}
+
+/* ------------------- Plus ------------------ */
+/* ------------------------------------------- */
+/* language specific */
+div.plus table.lang_ltr th, div.plus table.lang_ltr td {text-align:left;}
+div.plus table.lang_rtl th, div.plus table.lang_rtl td {text-align:right;}
+
+/* products */
+div.plus div#products table.product {width:116px;}
+div.plus div#products table.product td, div.plus div#products table.product th {padding:2px 7px;}
+div.plus div#products table.product th {text-align: center;}
+div.plus div#products table.product td.pic {padding:2px; text-align:center;}
+
+/* payment options */
+div.plus table.rate_details th, div.plus table.rate_details td {padding:3px 7px;}
+div.plus table.rate_details td.pic {width:120px; padding:2px; text-align:center; vertical-align:top;}
+div.plus table.rate_details td.pic img {margin:10px 0px;}
+div.plus table.rate_details td.desc {text-align:center;}
+
+/* open orders */
+div.plus table#open_orders {background-color:#FFFFFF; border-collapse:collapse;}
+div.plus table#open_orders th, div.plus table#open_orders td {padding:2px 7px; text-align:center; border-top:1px solid #C0C0C0; border-bottom:1px solid #C0C0C0;}
+div.plus table#open_orders tr.dark td {background-color:#efefef;}
+
+/* features */
+div.plus table.features th, div.plus table.features td {padding:2px 7px;}
+div.plus table.features tbody th {background-color:#F5F5F5; text-align:center;}
+div.plus table.features td.preview {text-align:center; width:200px; padding:0px;}
+div.plus table.features td.text {padding:4px 7px;}
+
+/* plus tables */
+div.plus table.plusFunctions th, div.plus table.plusFunctions td {padding:2px 7px; text-align:center;}
+div.plus table.plusFunctions td.man {width:4%; padding:0px;}
+div.plus table.plusFunctions td.desc {text-align:left;}
+div.plus table.plusFunctions td.dur {width:15%;}
+div.plus table.plusFunctions td.cost {width:9%; white-space:nowrap;}
+div.plus table.plusFunctions td.act {width:20%;}
+
+/* invite */
+div.plus table#invite th, div.plus table#invite td {padding:2px 7px;}
+div.plus table#invite tbody.mails td {background-color:#F5F5F5;}
+div.plus table#invite tbody.msg pre {margin:10px 5px;}
+div.plus table#invite tbody.msg th {background-color:#F5F5F5;}
+div.plus table#invite tbody.msg textarea {width:480px; height:200px;}
+
+/* brought in */
+div.plus #brought_in th, div.plus #brought_in td {padding:2px 7px;}
+
+/* ------------------- War simulator ------------------- */
+/* ----------------------------------------------------- */
+/* tribe select */ 
+div.warsim table#select {margin-top:10px;}
+div.warsim table#select thead td {padding:2px 7px;}
+div.warsim table#select tbody td {padding:5px 7px; vertical-align:top; line-height:20px; width:33%;}
+div.warsim table#select input.radio {position:relative; top:1px;}
+body.presto div.warsim table#select input.radio {top:0px;}
+body.ie6 div.warsim table#select input.radio, body.ie7 div.warsim table#select input.radio {top:-2px;}
+
+/* troop form */
+div.warsim table.fill_in {width:49%;}
+div.warsim table.fill_in th {padding:2px;}
+div.warsim table.fill_in td {padding:1px;}
+div.warsim table.fill_in tbody th {text-align:center; background-color:#F5F5F5;}
+div.warsim table.fill_in td.details {padding:0px;}
+div.warsim table.fill_in td.details table {background-color:#FFFFFF;}
+div.warsim table.fill_in td.details table td.ico {width:16px; padding-left:4px; padding-right:2px;}
+div.warsim table.fill_in td.details table td.value {width:43px;}
+div.warsim table.fill_in td.details table td.value input.text {width:35px;}
+div.warsim table.fill_in td.details table td.research {width:23px; padding-right:4px;}
+div.warsim table.fill_in td.details table td.research input.text {width:15px;}
+
+/* results */
+div.warsim table.results th {padding:2px 7px;}
+div.warsim table.results td {padding:2px 1px;}
+div.warsim table.results tbody th {width:20%;}
+div.warsim table.results tbody td {width:8%; text-align:center;}
+
+/* ------------------- Support ------------------- */
+/* ----------------------------------------------- */
+div.support table {line-height:16px;}
+div.support table th, div.support table td {padding:2px 3px;}
+div.support table td {padding-left:7px;}
+
+/* ------------------- Suport form ------------------- */
+/* ----------------------------------------------------- */
+/* form */ 
+td.form_table_label {width: 30%; white-space:pre; }
+td.form_table_element {width: 70%; }
+table.form_table { background-color: transparent; }

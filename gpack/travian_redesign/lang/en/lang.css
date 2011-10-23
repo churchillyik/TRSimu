@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+/*
+ *------------------------------------------------------------------------------
+ * LANG is used to define the language-specific images and settings.
+ *
+ * Contains:
+ * width, height, background-image, background-repeat, background-position
+ *------------------------------------------------------------------------------
+ */
+  
+@import "../../modules/new_layout_ltr.css";
+
+/* --- Colors ------------------------- */
+@import "../../modules/new_colors.css";
+
+/* --- Icons, Images and Backgrounds ---------- */
+@import "../../modules/new_images.css";

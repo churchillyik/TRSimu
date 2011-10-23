@@ -1,0 +1,895 @@
+@CHARSET "UTF-8";
+
+/*
+ *------------------------------------------------------------------------------
+ * TRAVIAN_IMAGES is used to define the non-language-specific images
+ * for reading direction left to right (ltr) or right to left (rtl).
+ *
+ * Contains:
+ * width, height, background-image, background-repeat, background-position
+ *------------------------------------------------------------------------------
+ */
+ 
+/* ------------------- General ------------------- */
+/* ----------------------------------------------- */
+img, a, div {background-repeat:no-repeat; background-position:top left;}
+
+/* ------------------- Mouseover ------------------- */
+/* ------------------------------------------------- */
+input.dynamic_img, img.dynamic_img {background-position:top; height:20px;}
+input.over, img.over {background-position:bottom;}
+input.clicked, img.clicked {background-position:center;}
+
+/* ------------------- Icons ------------------- */
+/* --------------------------------------------- */
+/* general */
+img.help {width:15px; height:12px; background-image:url(../img/a/help.gif);}
+img.del {width:12px; height:12px; background-image:url(../img/a/del.gif);}
+img.clock {width:18px; height:12px; background-image:url(../img/a/clock.gif);}
+img.clock.inactive {background-image:url(../img/a/clock-inactive.gif);}
+img.npc {width:18px; height:12px; background-image:url(../img/a/npc.gif); background-position:top;}
+img.npc_inactive {width:18px; height:12px; background-image:url(../img/a/npc.gif); background-position:bottom;}
+img.gold {width:12px; height:12px; background-image:url(../img/a/gold.gif);}
+img.gold_g {width:12px; height:12px; background-image:url(../img/a/gold_g.gif);}
+img.vip {width: 1px; height: 1px; /*width:12px; height:12px; background-image:url(../img/misc/vip.gif);*/}
+
+/* ressources */
+img.r1, img.r2, img.r3, img.r4, img.r5 {height:12px; width:18px; background-image:url(../img/a/res2.gif);}
+img.r1 {background-position:  0px 0px;}
+img.r2 {background-position:-21px 0px;}
+img.r3 {background-position:-42px 0px;}
+img.r4 {background-position:-63px 0px;}
+img.r5 {background-position:-84px 0px;}
+
+/* attack symbol */
+img.attack_symbol_grey, img.attack_symbol_green, img.attack_symbol_yellow, img.attack_symbol_red {width:12px; height:12px; background-image:url(../img/a/mark_attack.gif);}
+img.attack_symbol_green {background-position:  0px 0px;}
+img.attack_symbol_yellow {background-position:-15px 0px;}
+img.attack_symbol_red {background-position:-30px 0px;}
+img.attack_symbol_grey {background-position:-45px 0px;}
+
+/* units */
+img.unit {width:16px; height:16px;}
+img.unit_card_detail {margin-right: 5px; background: no-repeat;}
+img.u1, img.u2, img.u3, img.u4, img.u5, img.u6, img.u7, img.u8, img.u9, img.u10 {background-image:url(../img/u/v1_romans2.gif);}
+img.u11, img.u12, img.u13, img.u14, img.u15, img.u16, img.u17, img.u18, img.u19, img.u20 {background-image:url(../img/u/v2_teutons2.gif);}
+img.u21, img.u22, img.u23, img.u24, img.u25, img.u26, img.u27, img.u28, img.u29, img.u30 {background-image:url(../img/u/v3_gauls2.gif);}
+img.u31, img.u32, img.u33, img.u34, img.u35, img.u36, img.u37, img.u38, img.u39, img.u40 {background-image:url(../img/u/v4_nature2.gif);}
+img.u41, img.u42, img.u43, img.u44, img.u45, img.u46, img.u47, img.u48, img.u49, img.u50 {background-image:url(../img/u/v5_natars2.gif);}
+img.u51, img.u52, img.u53, img.u54, img.u55, img.u56, img.u57, img.u58, img.u59, img.u60 {background-image:url(../img/u/v6_monsters2.gif);}
+img.uhab, img.ucata, img.ustock, img.uwall, img.ubarr, img.upal, img.ugeb, img.uhero, img.uunits, img.app {background-image:url(../img/u/specials.gif);}
+img.u1, img.u11, img.u21, img.u31, img.u41, img.u51, img.uhab {background-position:0px 0px;}
+img.u2, img.u12, img.u22, img.u32, img.u42, img.u52, img.ucata {background-position:-19px 0px;}
+img.u3, img.u13, img.u23, img.u33, img.u43, img.u53, img.ustock {background-position:-38px 0px;}
+img.u4, img.u14, img.u24, img.u34, img.u44, img.u54, img.uwall {background-position:-57px 0px;}
+img.u5, img.u15, img.u25, img.u35, img.u45, img.u55, img.ubarr {background-position:-76px 0px;}
+img.u6, img.u16, img.u26, img.u36, img.u46, img.u56, img.upal {background-position:-95px 0px;}
+img.u7, img.u17, img.u27, img.u37, img.u47, img.u57, img.ugeb {background-position:-114px 0px;}
+img.u8, img.u18, img.u28, img.u38, img.u48, img.u58, img.uhero {background-position:-133px 0px;}
+img.u9, img.u19, img.u29, img.u39, img.u49, img.u59, img.uunits {background-position:-152px 0px;}
+img.app {background-position:-170px 0px;}
+img.u10, img.u20, img.u30, img.u40, img.u50, img.u60 {background-position:-171px 0px;}
+img.u98 {background-image:url(../img/u/98.gif);}
+img.u99 {background-image:url(../img/u/99.gif);}
+
+/* tribes */
+span.tribe {height: 16px; background-repeat: no-repeat; background-position: left center; padding-left: 20px;}
+span.tribe1 {background-image:url(../img/u/9.gif);}
+span.tribe2 {background-image:url(../img/u/19.gif);}
+span.tribe3 {background-image:url(../img/u/29.gif);}
+
+/* battle icons */
+img.att_all {width:16px; height:16px; background-image:url(../img/a/att_all.gif);}
+img.att1 {width:16px; height:16px; background-image:url(../img/a/att1.gif);}
+img.att2 {width:16px; height:16px; background-image:url(../img/a/att2.gif);}
+img.att3 {width:16px; height:16px; background-image:url(../img/a/att3.gif);}
+img.def1 {width:16px; height:16px; background-image:url(../img/a/def1.gif);}
+img.def2 {width:16px; height:16px; background-image:url(../img/a/def2.gif);}
+img.def3 {width:16px; height:16px; background-image:url(../img/a/def3.gif);}
+img.def_c {width:16px; height:16px; background-image:url(../img/a/def_c.gif);}
+img.def_i {width:16px; height:16px; background-image:url(../img/a/def_i.gif);}
+
+/* battle icons */
+div#map div#map_content div span {width:18px; height:16px;}
+div#map div#map_content div span.m3 {background-image:url(../img/m/matt.gif);}
+div#map div#map_content div span.m4 {background-image:url(../img/m/matt.gif);}
+div#map div#map_content div span.m5 {background-image:url(../img/m/msup.gif);}
+div#map div#map_content div span.m6 {background-image:url(../img/m/mspy.gif);}
+div#map div#map_content div span.m9 {background-image:url(../img/m/mret.gif);}
+
+/* report icons */
+img.iReport {background-image:url(../img/a/report_icons.gif); width:19px; height:17px;}
+img.iReport0 {background-position:  0px   -3px;}
+img.iReport1 {background-position:  0px  -53px;}
+img.iReport2 {background-position:  0px -103px;}
+img.iReport3 {background-position:  0px -153px;}
+img.iReport4 {background-position:  0px -203px;}
+img.iReport5 {background-position:  0px -253px;}
+img.iReport6 {background-position:  0px -303px;}
+img.iReport7 {background-position:  0px -353px;}
+img.iReport8 {background-position:  0px -403px;}
+img.iReport9 {background-position:  0px -453px;}
+img.iReport10 {background-position: 0px -503px;}
+img.iReport11 {background-position: 0px -553px;}
+img.iReport12 {background-position: 0px -603px;}
+img.iReport13 {background-position: 0px -653px;}
+img.iReport14 {background-position: 0px -703px;}
+img.iReport15 {background-position: 0px -753px;}
+img.iReport16 {background-position: 0px -803px;}
+img.iReport17 {background-position: 0px -853px;}
+img.iReport18 {background-position: 0px -903px;}
+img.iReport19 {background-position: 0px -953px;}
+
+/* switch to big map */
+div#map a#map_makelarge img {width:33px; height:25px; background-image:url(../img/m/max.gif);}
+
+/* big map close */
+div#mbig a#map_popclose img {width:22px; height:22px; background-image:url(../img/a/close.gif);}
+
+/* online points */
+img.online1, img.online2, img.online3, img.online4, img.online5 {width:12px; height:12px; background-image:url(../img/a/online.gif);}
+img.online1 {background-position:  0px 0px;}
+img.online2 {background-position:-15px 0px;}
+img.online3 {background-position:-30px 0px;}
+img.online4 {background-position:-45px 0px;}
+img.online5 {background-position:-60px 0px;}
+
+/* header point */
+h1 img.point {width:16px; height:16px; background-image:url(../img/u/point.gif);}
+
+/* external links */
+div#side_info table#llist img.external, body.manual img.external {width:10px; height:10px; background-image:url(../img/a/external.gif);}
+
+/* carry capacity */
+div.reports div.carry img.car, #build.gid16 div.carry img.car {height:12px; width:18px; background:url(../img/a/car.gif) no-repeat;}
+
+/* building contracts */
+div.village3 table#overview td.bui img.bau {width:10px; height:16px; background-image:url(../img/a/bau.gif);}
+
+/* newbie dove */
+div.player img.tn, div.player img.tnd {width:65px; height:45px;}
+div.player img.tn {background-image:url(../img/t/tn.gif);}
+div.player img.tnd {background-image:url(../img/t/tnd.gif);}
+
+/* medal size */
+div.player img.medal, div.alliance img.medal, body.manual img.medal {width:35px; height:48px;}
+
+/* player medals */
+div.player img.t1_1, body.manual img.t1_1 {background-image:url(../img/t/t1_1.jpg);}
+div.player img.t1_2, body.manual img.t1_2 {background-image:url(../img/t/t1_2.jpg);}
+div.player img.t1_3, body.manual img.t1_3 {background-image:url(../img/t/t1_3.jpg);}
+div.player img.t1_4, body.manual img.t1_4 {background-image:url(../img/t/t1_4.jpg);}
+div.player img.t1_5 {background-image:url(../img/t/t1_5.jpg);}
+div.player img.t1_6 {background-image:url(../img/t/t1_6.jpg);}
+div.player img.t1_7 {background-image:url(../img/t/t1_7.jpg);}
+div.player img.t1_8 {background-image:url(../img/t/t1_8.jpg);}
+div.player img.t1_9 {background-image:url(../img/t/t1_9.jpg);}
+div.player img.t1_10 {background-image:url(../img/t/t1_10.jpg);}
+div.player img.t100_1 {background-image:url(../img/t/t100_1.jpg);}
+div.player img.t101_1 {background-image:url(../img/t/t101_1.jpg);}
+div.player img.t102_1 {background-image:url(../img/t/t102_1.jpg);}
+div.player img.t110_1 {background-image:url(../img/t/t110_1.jpg);}
+div.player img.t111_1 {background-image:url(../img/t/t111_1.jpg);}
+div.player img.t112_1 {background-image:url(../img/t/t112_1.jpg);}
+div.player img.t120_1 {background-image:url(../img/t/t120_1.jpg);}
+div.player img.t121_1 {background-image:url(../img/t/t121_1.jpg);}
+div.player img.t122_1 {background-image:url(../img/t/t122_1.jpg);}
+div.player img.t130_1 {background-image:url(../img/t/t130_1.jpg);}
+div.player img.t131_1 {background-image:url(../img/t/t131_1.jpg);}
+div.player img.t132_1 {background-image:url(../img/t/t132_1.jpg);}
+div.player img.t140_1 {background-image:url(../img/t/t140_1.jpg);}
+div.player img.t141_1 {background-image:url(../img/t/t141_1.jpg);}
+div.player img.t142_1 {background-image:url(../img/t/t142_1.jpg);}
+div.player img.t150_1 {background-image:url(../img/t/t150_1.jpg);}
+div.player img.t151_1 {background-image:url(../img/t/t151_1.jpg);}
+div.player img.t152_1 {background-image:url(../img/t/t152_1.jpg);}
+div.player img.t160_1 {background-image:url(../img/t/t160_1.jpg);}
+div.player img.t161_1 {background-image:url(../img/t/t161_1.jpg);}
+div.player img.t162_1 {background-image:url(../img/t/t162_1.jpg);}
+div.player img.t170_1 {background-image:url(../img/t/t170_1.jpg);}
+div.player img.t171_1 {background-image:url(../img/t/t171_1.jpg);}
+div.player img.t172_1 {background-image:url(../img/t/t172_1.jpg);}
+div.player img.t180_1 {background-image:url(../img/t/t180_1.jpg);}
+div.player img.t181_1 {background-image:url(../img/t/t181_1.jpg);}
+div.player img.t182_1 {background-image:url(../img/t/t182_1.jpg);}
+div.player img.t190_1 {background-image:url(../img/t/t190_1.jpg);}
+div.player img.t191_1 {background-image:url(../img/t/t191_1.jpg);}
+div.player img.t192_1 {background-image:url(../img/t/t192_1.jpg);}
+div.player img.t2_1 {background-image:url(../img/t/t2_1.jpg);}
+div.player img.t2_10 {background-image:url(../img/t/t2_10.jpg);}
+div.player img.t2_2 {background-image:url(../img/t/t2_2.jpg);}
+div.player img.t2_3 {background-image:url(../img/t/t2_3.jpg);}
+div.player img.t2_4 {background-image:url(../img/t/t2_4.jpg);}
+div.player img.t2_5 {background-image:url(../img/t/t2_5.jpg);}
+div.player img.t2_6 {background-image:url(../img/t/t2_6.jpg);}
+div.player img.t2_7 {background-image:url(../img/t/t2_7.jpg);}
+div.player img.t2_8 {background-image:url(../img/t/t2_8.jpg);}
+div.player img.t2_9 {background-image:url(../img/t/t2_9.jpg);}
+div.player img.t200_1 {background-image:url(../img/t/t200_1.jpg);}
+div.player img.t201_1 {background-image:url(../img/t/t201_1.jpg);}
+div.player img.t202_1 {background-image:url(../img/t/t202_1.jpg);}
+div.player img.t210_1 {background-image:url(../img/t/t210_1.jpg);}
+div.player img.t211_1 {background-image:url(../img/t/t211_1.jpg);}
+div.player img.t212_1 {background-image:url(../img/t/t212_1.jpg);}
+div.player img.t220_1 {background-image:url(../img/t/t220_1.jpg);}
+div.player img.t221_1 {background-image:url(../img/t/t221_1.jpg);}
+div.player img.t222_1 {background-image:url(../img/t/t222_1.jpg);}
+div.player img.t3_1 {background-image:url(../img/t/t3_1.jpg);}
+div.player img.t3_10 {background-image:url(../img/t/t3_10.jpg);}
+div.player img.t3_2 {background-image:url(../img/t/t3_2.jpg);}
+div.player img.t3_3 {background-image:url(../img/t/t3_3.jpg);}
+div.player img.t3_4 {background-image:url(../img/t/t3_4.jpg);}
+div.player img.t3_5 {background-image:url(../img/t/t3_5.jpg);}
+div.player img.t3_6 {background-image:url(../img/t/t3_6.jpg);}
+div.player img.t3_7 {background-image:url(../img/t/t3_7.jpg);}
+div.player img.t3_8 {background-image:url(../img/t/t3_8.jpg);}
+div.player img.t3_9 {background-image:url(../img/t/t3_9.jpg);}
+div.player img.t4_1 {background-image:url(../img/t/t4_1.jpg);}
+div.player img.t4_10 {background-image:url(../img/t/t4_10.jpg);}
+div.player img.t4_2 {background-image:url(../img/t/t4_2.jpg);}
+div.player img.t4_3 {background-image:url(../img/t/t4_3.jpg);}
+div.player img.t4_4 {background-image:url(../img/t/t4_4.jpg);}
+div.player img.t4_5 {background-image:url(../img/t/t4_5.jpg);}
+div.player img.t4_6 {background-image:url(../img/t/t4_6.jpg);}
+div.player img.t4_7 {background-image:url(../img/t/t4_7.jpg);}
+div.player img.t4_8 {background-image:url(../img/t/t4_8.jpg);}
+div.player img.t4_9 {background-image:url(../img/t/t4_9.jpg);}
+div.player img.t5_1 {background-image:url(../img/t/t5_1.jpg);}
+div.player img.t5_10 {background-image:url(../img/t/t5_10.jpg);}
+div.player img.t5_2 {background-image:url(../img/t/t5_2.jpg);}
+div.player img.t5_3 {background-image:url(../img/t/t5_3.jpg);}
+div.player img.t5_4 {background-image:url(../img/t/t5_4.jpg);}
+div.player img.t5_5 {background-image:url(../img/t/t5_5.jpg);}
+div.player img.t5_6 {background-image:url(../img/t/t5_6.jpg);}
+div.player img.t5_7 {background-image:url(../img/t/t5_7.jpg);}
+div.player img.t5_8 {background-image:url(../img/t/t5_8.jpg);}
+div.player img.t5_9 {background-image:url(../img/t/t5_9.jpg);}
+div.player img.t6_1 {background-image:url(../img/t/t6_1.jpg);}
+div.player img.t6_10 {background-image:url(../img/t/t6_10.jpg);}
+div.player img.t6_2 {background-image:url(../img/t/t6_2.jpg);}
+div.player img.t6_3 {background-image:url(../img/t/t6_3.jpg);}
+div.player img.t6_4 {background-image:url(../img/t/t6_4.jpg);}
+div.player img.t6_5 {background-image:url(../img/t/t6_5.jpg);}
+div.player img.t6_6 {background-image:url(../img/t/t6_6.jpg);}
+div.player img.t6_7 {background-image:url(../img/t/t6_7.jpg);}
+div.player img.t6_8 {background-image:url(../img/t/t6_8.jpg);}
+div.player img.t6_9 {background-image:url(../img/t/t6_9.jpg);}
+
+div.player img.t10_1 {background-image:url(../img/t/t10_1.jpg);}
+div.player img.t10_2 {width:247px; height:195px; background-image:url(../img/t/t10_2.jpg);}
+
+/* medals for allies */
+div.alliance img.a1_1, body.manual img.a1_1 {background-image:url(../img/t/a1_1.jpg);}
+div.alliance img.a1_2, body.manual img.a1_2 {background-image:url(../img/t/a1_2.jpg);}
+div.alliance img.a1_3, body.manual img.a1_3 {background-image:url(../img/t/a1_3.jpg);}
+div.alliance img.a1_4, body.manual img.a1_4 {background-image:url(../img/t/a1_4.jpg);}
+div.alliance img.a1_5 {background-image:url(../img/t/a1_5.jpg);}
+div.alliance img.a1_6 {background-image:url(../img/t/a1_6.jpg);}
+div.alliance img.a1_7 {background-image:url(../img/t/a1_7.jpg);}
+div.alliance img.a1_8 {background-image:url(../img/t/a1_8.jpg);}
+div.alliance img.a1_9 {background-image:url(../img/t/a1_9.jpg);}
+div.alliance img.a1_10 {background-image:url(../img/t/a1_10.jpg);}
+div.alliance img.a2_1 {background-image:url(../img/t/a2_1.jpg);}
+div.alliance img.a2_2 {background-image:url(../img/t/a2_2.jpg);}
+div.alliance img.a2_3 {background-image:url(../img/t/a2_3.jpg);}
+div.alliance img.a2_4 {background-image:url(../img/t/a2_4.jpg);}
+div.alliance img.a2_5 {background-image:url(../img/t/a2_5.jpg);}
+div.alliance img.a2_6 {background-image:url(../img/t/a2_6.jpg);}
+div.alliance img.a2_7 {background-image:url(../img/t/a2_7.jpg);}
+div.alliance img.a2_8 {background-image:url(../img/t/a2_8.jpg);}
+div.alliance img.a2_9 {background-image:url(../img/t/a2_9.jpg);}
+div.alliance img.a2_10 {background-image:url(../img/t/a2_10.jpg);}
+div.alliance img.a3_1 {background-image:url(../img/t/a3_1.jpg);}
+div.alliance img.a3_2 {background-image:url(../img/t/a3_2.jpg);}
+div.alliance img.a3_3 {background-image:url(../img/t/a3_3.jpg);}
+div.alliance img.a3_4 {background-image:url(../img/t/a3_4.jpg);}
+div.alliance img.a3_5 {background-image:url(../img/t/a3_5.jpg);}
+div.alliance img.a3_6 {background-image:url(../img/t/a3_6.jpg);}
+div.alliance img.a3_7 {background-image:url(../img/t/a3_7.jpg);}
+div.alliance img.a3_8 {background-image:url(../img/t/a3_8.jpg);}
+div.alliance img.a3_9 {background-image:url(../img/t/a3_9.jpg);}
+div.alliance img.a3_10 {background-image:url(../img/t/a3_10.jpg);}
+div.alliance img.a4_1 {background-image:url(../img/t/a4_1.jpg);}
+div.alliance img.a4_2 {background-image:url(../img/t/a4_2.jpg);}
+div.alliance img.a4_3 {background-image:url(../img/t/a4_3.jpg);}
+div.alliance img.a4_4 {background-image:url(../img/t/a4_4.jpg);}
+div.alliance img.a4_5 {background-image:url(../img/t/a4_5.jpg);}
+div.alliance img.a4_6 {background-image:url(../img/t/a4_6.jpg);}
+div.alliance img.a4_7 {background-image:url(../img/t/a4_7.jpg);}
+div.alliance img.a4_8 {background-image:url(../img/t/a4_8.jpg);}
+div.alliance img.a4_9 {background-image:url(../img/t/a4_9.jpg);}
+div.alliance img.a4_10 {background-image:url(../img/t/a4_10.jpg);}
+
+/* message player acp */
+div.messages table#overview td.send img.acp {width:10px; height:10px; background-image:url(../img/a/external.gif);}
+
+/* accept friend */
+div.messages table#friendlist img.accept {width:12px; height:12px; background-image:url(../img/a/acc.gif);}
+
+/* holiday visits */
+div.reports td.report_content img.easter {width:44px; height:18px; background-image:url(../img/r/easter.gif);}
+div.reports td.report_content img.xmas {width:21px; height:24px; background-image:url(../img/r/xmas.gif);}
+div.reports td.report_content img.newy {width:28px; height:24px; background-image:url(../img/r/newy.gif);}
+
+/* alliance forum */
+div.forum img.add {width:16px; height:16px; background-image:url(../img/f/plus.gif);}
+div.forum a.mad img {width:31px; height:29px; background-image:url(../img/f/mad.gif);}
+
+div.forum table td.ico img {width:26px; height:25px;}
+div.forum table td.ico a img, div.forum table td.pcontent div.admin a img {width:12px; height:12px;}
+div.forum table td.ico a.edit img, div.forum table td.pcontent div.admin a.edit img {background-image:url(../img/f/edit.gif);}
+div.forum table td.ico a.fdel img, div.forum table td.pcontent div.admin a.fdel img {background-image:url(../img/f/del.gif);}
+div.forum table td.ico a.down_arr img {background-image:url(../img/f/down_arr.gif);}
+div.forum table td.ico a.up_arr img {background-image:url(../img/f/up_arr.gif);}
+div.forum table td.ico a.unlock img {background-image:url(../img/f/unlock.gif);}
+div.forum table td.ico a.lock img {background-image:url(../img/f/lock.gif);}
+div.forum table td.ico a.pin img {background-image:url(../img/f/pin.gif);}
+div.forum table td.ico a.unpin img {background-image:url(../img/f/unpin.gif);}
+
+div.forum table td.ico img.folder {background-image:url(../img/f/folder.gif);}
+div.forum table td.ico img.folder_lock {background-image:url(../img/f/folder_lock.gif);}
+div.forum table td.ico img.folder_new {background-image:url(../img/f/folder_new.gif);}
+div.forum table td.ico img.folder_new_lock {background-image:url(../img/f/folder_new_lock.gif);}
+div.forum table td.ico img.folder_sticky {background-image:url(../img/f/folder_sticky.gif);}
+div.forum table td.ico img.folder_sticky_lock {background-image:url(../img/f/folder_sticky_lock.gif);}
+div.forum table td.ico img.folder_new_sticky {background-image:url(../img/f/folder_new_sticky.gif);}
+div.forum table td.ico img.folder_new_sticky_lock {background-image:url(../img/f/folder_new_sticky_lock.gif);}
+div.forum table td.ico img.v_folder {background-image:url(../img/f/v_folder.gif);}
+div.forum table td.ico img.v_folder_lock {background-image:url(../img/f/v_folder_lock.gif);}
+div.forum table td.ico img.v_folder_new {background-image:url(../img/f/v_folder_new.gif);}
+div.forum table td.ico img.v_folder_new_lock {background-image:url(../img/f/v_folder_new_lock.gif);}
+div.forum table td.ico img.v_folder_sticky {background-image:url(../img/f/v_folder_sticky.gif);}
+div.forum table td.ico img.v_folder_sticky_lock {background-image:url(../img/f/v_folder_sticky_lock.gif);}
+div.forum table td.ico img.v_folder_new_sticky {background-image:url(../img/f/v_folder_new_sticky.gif);}
+div.forum table td.ico img.v_folder_new_sticky_lock {background-image:url(../img/f/v_folder_new_sticky_lock.gif);}
+
+div.forum table#topics td.last img.latest_reply {width:18px; height:9px; background-image:url(../img/f/icon_latest_reply.gif);}
+
+/* artefact icons */
+div#build.gid27 table td.icon img {width:16px; height:16px; background-image:url(../img/misc/artefacts.gif);}
+div#build.gid27 table td.icon img.artefact_icon_1 {background-position: 0px 0px;}
+div#build.gid27 table td.icon img.artefact_icon_2 {background-position: -16px 0px;}
+div#build.gid27 table td.icon img.artefact_icon_4 {background-position: -32px 0px;}
+div#build.gid27 table td.icon img.artefact_icon_5 {background-position: -48px 0px;}
+div#build.gid27 table td.icon img.artefact_icon_6 {background-position: -64px 0px;}
+div#build.gid27 table td.icon img.artefact_icon_8 {background-position: -80px 0px;}
+div#build.gid27 table td.icon img.artefact_icon_9 {background-position: -96px 0px;}
+div#build.gid27 table td.icon img.artefact_icon_10 {background-position: -112px 0px;}
+div#build.gid27 table td.icon img.artefact_icon_fool {background-position: -128px 0px;}
+
+/* cropfinder icon */
+img.cropfinder_icon {width: 20px; height:20px; background-image:url(../img/misc/cropfinder.gif);}
+
+/* artefact images */
+div#build.gid27 div.artefact {background-position: center bottom; background-repeat: no-repeat;}
+div#build.gid27 div.artefact.image-1 {padding-bottom: 160px; background-image:url(../img/artefact/type-1.gif);}
+div#build.gid27 div.artefact.image-2 {padding-bottom: 223px; background-image:url(../img/artefact/type-2.gif);}
+div#build.gid27 div.artefact.image-4 {padding-bottom: 200px; background-image:url(../img/artefact/type-4.gif);}
+div#build.gid27 div.artefact.image-5 {padding-bottom: 157px; background-image:url(../img/artefact/type-5.gif);}
+div#build.gid27 div.artefact.image-6 {padding-bottom: 170px; background-image:url(../img/artefact/type-6.gif);}
+div#build.gid27 div.artefact.image-8 {padding-bottom: 160px; background-image:url(../img/artefact/type-8.gif);}
+div#build.gid27 div.artefact.image-9 {padding-bottom: 198px; background-image:url(../img/artefact/type-9.gif);}
+div#build.gid27 div.artefact.image-10 {padding-bottom: 161px; background-image:url(../img/artefact/type-10.gif);}
+div#build.gid27 div.artefact.image-fool {padding-bottom: 252px; background-image:url(../img/artefact/type-fool.gif);}
+
+/* smileys */
+div.forum table img.smiley, div.forum table#posts td.pcontent div.text img.smiley, div.messages img.smiley {width:19px; height:16px; background-image:url(../img/f/smileys.gif);}
+div.forum table img.aha, div.forum table#posts td.pcontent div.text img.aha, div.messages img.aha {background-position: 0px 0px;}
+div.forum img.angry, div.forum table#posts td.pcontent div.text img.angry, div.messages img.angry {background-position: -22px 0px;}
+div.forum img.cool, div.forum table#posts td.pcontent div.text img.cool, div.messages img.cool {background-position: -44px 0px;}
+div.forum img.cry, div.forum table#posts td.pcontent div.text img.cry, div.messages img.cry {background-position: -66px 0px;}
+div.forum img.cute, div.forum table#posts td.pcontent div.text img.cute, div.messages img.cute {background-position: -88px 0px;}
+div.forum img.depressed, div.forum table#posts td.pcontent div.text img.depressed, div.messages img.depressed {background-position: -110px 0px;}
+div.forum img.eek, div.forum table#posts td.pcontent div.text img.eek, div.messages img.eek {background-position: -132px 0px;}
+div.forum img.ehem, div.forum table#posts td.pcontent div.text img.ehem, div.messages img.ehem {background-position: -154px 0px;}
+div.forum img.emotional, div.forum table#posts td.pcontent div.text img.emotional, div.messages img.emotional {background-position: -176px 0px;}
+div.forum img.grin, div.forum table#posts td.pcontent div.text img.grin, div.messages img.grin {background-position: -198px 0px;}
+div.forum img.happy, div.forum table#posts td.pcontent div.text img.happy, div.messages img.happy {background-position: -220px 0px;}
+div.forum img.hit, div.forum table#posts td.pcontent div.text img.hit, div.messages img.hit {background-position: -242px 0px;}
+div.forum img.hmm, div.forum table#posts td.pcontent div.text img.hmm, div.messages img.hmm {background-position: -264px 0px;}
+div.forum img.hmpf, div.forum table#posts td.pcontent div.text img.hmpf, div.messages img.hmpf {background-position: -286px 0px;}
+div.forum img.hrhr, div.forum table#posts td.pcontent div.text img.hrhr, , div.messages img.hrhr {background-position: -308px 0px;}
+div.forum img.huh, div.forum table#posts td.pcontent div.text img.huh, div.messages img.huh {background-position: -330px 0px;}
+div.forum img.lazy, div.forum table#posts td.pcontent div.text img.lazy, div.messages img.lazy {background-position: -352px 0px;}
+div.forum img.love, div.forum table#posts td.pcontent div.text img.love, div.messages img.love {background-position: -374px 0px;}
+div.forum img.nocomment, div.forum table#posts td.pcontent div.text img.nocomment, div.messages img.nocomment {background-position: -396px 0px;}
+div.forum img.noemotion, div.forum table#posts td.pcontent div.text img.noemotion, div.messages img.noemotion {background-position: -418px 0px;}
+div.forum img.notamused, div.forum table#posts td.pcontent div.text img.notamused, div.messages img.notamused {background-position: -440px 0px;}
+div.forum img.pout, div.forum table#posts td.pcontent div.text img.pout, div.messages img.pout {background-position: -462px 0px;}
+div.forum img.redface, div.forum table#posts td.pcontent div.text img.redface, div.messages img.redface {background-position: -484px 0px;}
+div.forum img.rolleyes, div.forum table#posts td.pcontent div.text img.rolleyes, div.messages img.rolleyes {background-position: -506px 0px;}
+div.forum img.sad, div.forum table#posts td.pcontent div.text img.sad, div.messages img.sad {background-position: -528px 0px;}
+div.forum img.shy, div.forum table#posts td.pcontent div.text img.shy, div.messages img.shy {background-position: -550px 0px;}
+div.forum img.smile, div.forum table#posts td.pcontent div.text img.smile, div.messages img.smile {background-position: -572px 0px;}
+div.forum img.tongue, div.forum table#posts td.pcontent div.text img.tongue, div.messages img.tongue {background-position: -594px 0px;}
+div.forum img.veryangry, div.forum table#posts td.pcontent div.text img.veryangry, div.messages img.veryangry {background-position: -616px 0px;}
+div.forum img.veryhappy, div.forum table#posts td.pcontent div.text img.veryhappy, div.messages img.veryhappy {background-position: -638px 0px;}
+div.forum img.wink, div.forum table#posts td.pcontent div.text img.wink {background-position: -660px 0px;}
+
+/* ------------------- Buttons ------------------- */
+/* ----------------------------------------------- */
+/* village/link list */
+div#side_info table thead td img.tSwitch {width:13px; height:13px;}
+table#llist img.closed, table#vlist img.closed {background-image:url(../img/a/closed.gif);}
+table#llist img.opened, table#vlist img.opened {background-image:url(../img/a/opened.gif);}
+
+/* level display switch */
+div.village2 img#lswitch {background:url(../img/g/s/glvlp.gif);}
+div.village2 img#lswitch.on {background:url(../img/g/s/glvlm.gif);}
+
+/* switch on/off */
+img.plus {width:13px; height:13px; background-image:url(../img/a/plus.gif);}
+img.minus {width:13px; height:13px; background-image:url(../img/a/minus.gif);}
+
+/* statistic/reports submenu */
+div.alliance div#submenu img, div.statistics div#submenu img {background-position:0px top; width:30px; height:30px;}
+div.alliance div#submenu img.active, div.statistics div#submenu img.active {background-position:0px bottom;}
+div.alliance div#submenu img.btn_def, div.statistics div#submenu img.btn_def {background-image:url(../img/s/def.gif);}
+div.alliance div#submenu img.btn_off, div.statistics div#submenu img.btn_off {background-image:url(../img/s/off.gif);}
+div.statistics div#submenu img.btn_top10 {background-image:url(../img/s/top10.gif);}
+
+/* alliance forum */
+div.forum img.switch_admin {background-image:url(../img/f/switch_admin.gif); width:47px; height:20px;}
+
+/* ------------------- Backgrounds ------------------- */
+/* --------------------------------------------------- */
+/* layout */
+div#header {background-image:url(../img/l/mw.gif); background-repeat:repeat-x; background-position:0px -28px;}
+div#mid {background-image:url(../img/a/rand.gif); background-repeat:repeat-y; background-position:left 0px;}
+div#footer {background-image:url(../img/a/btm.gif); background-repeat:repeat-x;}
+
+/* left menu */
+div#side_navi p.deltimer a:hover {background:none; width:auto; height:auto;}
+div#side_navi a:hover {background-image:url(../img/a/n12.gif); width:113px; height:20px;}
+
+
+
+/* small map */
+div.map div#map div#map_content {background-image:url(../img/m/map.jpg); background-position:2px 0px;}
+
+/* big map */
+div#mbig {background-color:#ffffff;}
+div#mbig div#map {background-image:url(../img/m/mapl.gif);}
+
+/* read message*/
+div.messages div#read_head {background-image:url(../img/msg/block_bg21.gif); background-position:top left;}
+div.messages div#read_content {background-image:url(../img/msg/block_bg22.gif); background-repeat:repeat-y; background-position:top left;}
+div.messages div#read_content #heading div {background-image:url(../img/msg/underline.gif); background-repeat:repeat-x; background-position:left -2px;}
+div.messages div#read_content .line {background-image:url(../img/msg/block_bg25.gif); background-position:bottom left;}
+div.messages div.message {background-image:url(../img/msg/underline.gif); background-repeat:repeat;}
+div.messages div#read_foot {background-image:url(../img/msg/block_bg23.gif); background-position:bottom left;}
+    
+/* write message */
+div.messages div#write_head {background-image:url(../img/msg/block_bg21.gif); background-position:top left;}
+div.messages div#write_content {background-image:url(../img/msg/block_bg22.gif); background-repeat:repeat-y; background-position:top left;}
+div.messages div#write_content .line {background-image:url(../img/msg/block_bg25.gif); background-position:bottom left;}
+div.messages div#write_content #heading input {background-image:url(../img/msg/underline.gif); background-repeat:repeat-x; background-position:left -2px;}
+div.messages div#write_content textarea {background-image:url(../img/msg/underline.gif); background-repeat:repeat;}
+div.messages div#write_foot {background-image:url(../img/msg/block_bg23.gif); background-position:bottom left;}
+
+/* bb editor */
+div.messages div#message_container div.bbButton, div#text_container div.bbButton { margin: 1px; float:left; background-image:url(../img/msg/bb_buttons.png); height: 25px; width: 25px; }
+div.messages div#message_container div.bbBold, div#text_container div.bbBold { background-position: 0px 0px; }
+div.messages div#message_container div.bbItalic, div#text_container div.bbItalic { background-position: -27px 0px; }
+div.messages div#message_container div.bbUnderscore, div#text_container div.bbUnderscore { background-position: -54px 0px; }
+div.messages div#message_container div.bbAlliance, div#text_container div.bbAlliance { margin-left: 8px; background-position: -81px 0px; }
+div.messages div#message_container div.bbPlayer, div#text_container div.bbPlayer { background-position: -108px 0px; }
+div.messages div#message_container div.bbCoordinate, div#text_container div.bbCoordinate { background-position: -135px 0px; }
+div.messages div#message_container div.bbReport, div#text_container div.bbReport { background-position: -162px 0px; }
+div.messages div#message_container div.bbPreview, div#text_container div.bbPreview { background-position: -189px 0px; float:right; } 
+div.messages div#message_container div.bbResource, div#text_container div.bbResource { margin-left: 8px; background-position: -216px 0px; }
+div.messages div#message_container div.bbSmilie, div#text_container div.bbSmilie { background-position: -243px 0px; }
+div.messages div#message_container div.bbTroop, div#text_container div.bbTroop { background-position: -270px 0px; } 
+div.messages div#message_container .bbLine, div#text_container .bbLine { background-position: 0px 0px; }
+div.messages div#message_container div#message_toolbar, div#text_container div#text_toolbar { padding: 0px 10px; }
+div.messages div#message_container div#message_preview, div#text_container div#text_preview { padding: 0px; height:258px; overflow-x: none; overflow-y: auto;}
+div.messages div#message_container div#message_toolbarWindows div, div#text_container div#text_toolbarWindows div { position: absolute; left: 180px; margin-top: 5px; border: 1px solid #71D000; padding: 5px; background: #efefef; max-width: 240px; display: none }
+div#text_container div#text_toolbarWindows div { left: 290px; }
+div.messages div#message_container div#message_toolbar img, div#text_container div#text_toolbar img { margin: 4px; }
+div.forum textarea#text, div.forum div#text_preview { margin-top: 10px; width: 400px; padding: 5px; }
+
+
+div.messages  .quote-body { font-style: italic; }
+
+/* adress book */
+div.messages div#adressbook {background-image:url(../img/a/adr.gif);}
+
+/* notepad */
+div.messages div#block {background-image:url(../img/msg/block_bg.gif);}
+div.messages div#block textarea {background-image:url(../img/msg/underline.gif); background-repeat:repeat;}
+
+/* hero's atrribute bar */
+div#build.gid37 table#distribution td.xp img.bar {height:10px; background-image:url(../img/a/c3.gif); background-repeat:repeat-x;}
+
+/* advertisement */
+div#dynamic_header {background-image:url(../img/l/dyn_bg1.jpg); background-position:-80px -50px;}
+body.mod1 div#dynamic_header, body.mod2 div#dynamic_header {background-image:none;} 
+body.mod1 div#dynamic_header div.dyn1 {background-image:url(../img/l/ad1.jpg); background-position:-20px 0px;}
+body.mod1 div#dynamic_header div.dyn2 {background-image:url(../img/l/ad2.jpg);}
+body.mod2 div#dynamic_header div.dyn1 {background-image:url(../img/l/bigsize_bg.jpg); background-position:-100px 0px;}
+body.mod3 div#dynamic_header div.dyn1 {background-image:url(../img/l/skyscraper_bg.gif);}
+
+/* alliance forum */
+div.forum table#poll thead th {background-image:url(../img/f/c4.gif); background-repeat:repeat;}
+
+/* alliance chat header */
+div.alliance div.chatHeader {background-image:url(../img/a/c2.gif); background-repeat:repeat;}
+
+/* popup */
+div.popup3 {background-image:url(../img/a/anl.gif);}
+div.popup3 img.xlo {width:32px; height:32px; background-image:url(../img/misc/xlo.gif);}
+
+/* gpack error */
+div.player div#gpack_popup {background-image:url(../img/a/gp.gif);}
+
+/* taskmaster */
+div#side_info div#qge img#qgei {height:174px;}
+div#side_info div#qge img.q_l1 {width:125px; background-image:url(../img/q/l1.jpg);}
+div#side_info div#qge img.q_l1g {width:125px; background-image:url(../img/q/l1g.jpg);}
+div#side_info div#qge img.q_l2 {width:164px; background-image:url(../img/q/l2.jpg);}
+div#side_info div#qge img.q_l2g {width:164px; background-image:url(../img/q/l2g.jpg);}
+div#side_info div#qge img.q_l3 {width:146px; background-image:url(../img/q/l3.jpg);}
+div#side_info div#qge img.q_l3g {width:146px; background-image:url(../img/q/l3g.jpg);}
+
+/* quest popup */
+div.quest div#qstbg{height:398px; width:428px; position:absolute; left:11px; top:75px; z-index:1; background-position:bottom; background-color:white;}
+div.quest div.allres {height:160px; background-image:url(../img/q/allres.jpg);}
+div.quest div.army {height:169px; background-image:url(../img/q/army.jpg);}
+div.quest div.barracks {height:180px; background-image:url(../img/q/barracks.jpg);}
+div.quest div.clay_iron {height:199px; background-image:url(../img/q/clay_iron.jpg);}
+div.quest div.cost {height:242px; background-image:url(../img/q/cost.jpg);}
+div.quest div.farm {height:181px; background-image:url(../img/q/farm.jpg);}
+div.quest div.granary_rally {height:163px; background-image:url(../img/q/granary_rally.jpg);}
+div.quest div.hide {height:179px; background-image:url(../img/q/hide.jpg); display:block;}
+div.quest div.intro {height:165px; background-image:url(../img/q/intro.jpg);}
+div.quest div.main {height:234px; background-image:url(../img/q/main.jpg);}
+div.quest div.market {height:165px; background-image:url(../img/q/market.jpg);}
+div.quest div.medal {height:214px; background-image:url(../img/q/medal.jpg);}
+div.quest div.msg {height:167px; background-image:url(../img/q/msg.jpg);}
+div.quest div.neighbour {height:160px; background-image:url(../img/q/neighbour.jpg);}
+div.quest div.new_village {height:208px; background-image:url(../img/q/new_village.jpg);}
+div.quest div.rank {height:238px; background-image:url(../img/q/rank.jpg);}
+div.quest div.units {height:166px; background-image:url(../img/q/units.jpg);}
+div.quest div.village_name {height:160px; background-image:url(../img/q/village_name.jpg);}
+div.quest div.warehouse {height:179px; background-image:url(../img/q/warehouse.jpg);}
+div.quest div.wood {height:237px; background-image:url(../img/q/wood.jpg);}
+
+/* ------------------- Images ------------------- */
+/* ---------------------------------------------- */
+/* navigation */
+a#n1 img, a#n2 img, a#n3 img, a#n4 img, div#n5 {background-position:0px -21px; background-repeat:no-repeat; height:67px; width:70px;}
+/* 3.5 */
+body.v35 a#n1 img {background-image:url(../img/l/n1.gif);}
+body.v35 a#n2 img {background-image:url(../img/l/n2.gif);}
+body.v35 a#n3 img {background-image:url(../img/l/n3.gif);}
+body.v35 a#n4 img {background-image:url(../img/l/n4.gif);}
+/* 3.1 */
+body.v3 a#n1 img {background-image:url(../img/l/n1_30.gif);}
+body.v3 a#n2 img {background-image:url(../img/l/n2_30.gif);}
+body.v3 a#n3 img {background-image:url(../img/l/n3_30.gif);}
+body.v3 a#n4 img {background-image:url(../img/l/n4_30.gif);}
+a#n1:hover img, a#n2:hover img, a#n3:hover img, a#n4:hover img {background-position:0px -121px;}
+div#n5 img {height:67px; width:35px;}
+/* 3.5 */
+body.v35 div.i1 {background-image:url(../img/l/m1.gif);}
+body.v35 div.i2 {background-image:url(../img/l/m2.gif);}
+body.v35 div.i3 {background-image:url(../img/l/m3.gif);}
+body.v35 div.i4 {background-image:url(../img/l/m4.gif);}
+/* 3.1 */
+body.v3 div.i1 {background-image:url(../img/l/m1_30.gif);}
+body.v3 div.i2 {background-image:url(../img/l/m2_30.gif);}
+body.v3 div.i3 {background-image:url(../img/l/m3_30.gif);}
+body.v3 div.i4 {background-image:url(../img/l/m4_30.gif);}
+
+/* buildings */
+img.building {width:75px; height:100px;}
+img.g16, img.g16b, img.g16n, img.dx1 {width:69px; height:120px;}
+img.g40, img.ww {width:214px;}
+img.g1 {background-image:url(../img/g/g1.gif);}
+img.g2 {background-image:url(../img/g/g2.gif);}
+img.g3 {background-image:url(../img/g/g3.gif);}
+img.g4 {background-image:url(../img/g/g4.gif);}
+img.g5 {background-image:url(../img/g/g5.gif);}
+img.g5b {background-image:url(../img/g/g5b.gif);}
+img.g6 {background-image:url(../img/g/g6.gif);}
+img.g6b {background-image:url(../img/g/g6b.gif);}
+img.g7 {background-image:url(../img/g/g7.gif);}
+img.g7b {background-image:url(../img/g/g7b.gif);}
+img.g8 {background-image:url(../img/g/g8.gif);}
+img.g8b {background-image:url(../img/g/g8b.gif);}
+img.g9 {background-image:url(../img/g/g9.gif);}
+img.g9b {background-image:url(../img/g/g9b.gif);}
+img.g10 {background-image:url(../img/g/g10.gif);}
+img.g10b {background-image:url(../img/g/g10b.gif);}
+img.g11 {background-image:url(../img/g/g11.gif);}
+img.g11b {background-image:url(../img/g/g11b.gif);}
+img.g12 {background-image:url(../img/g/g12.gif);}
+img.g12b {background-image:url(../img/g/g12b.gif);}
+img.g13 {background-image:url(../img/g/g13.gif);}
+img.g13b {background-image:url(../img/g/g13b.gif);}
+img.g14 {background-image:url(../img/g/g14.gif);}
+img.g14b {background-image:url(../img/g/g14b.gif);}
+img.g15 {background-image:url(../img/g/g15.gif);}
+img.g15b {background-image:url(../img/g/g15b.gif);}
+img.g16 {background-image:url(../img/g/g16.gif);}
+img.g16b {background-image:url(../img/g/g16b.gif);}
+img.g16e {background-image:url(../img/g/g16e.gif);}
+img.g17 {background-image:url(../img/g/g17.gif);}
+img.g17b {background-image:url(../img/g/g17b.gif);}
+img.g18 {background-image:url(../img/g/g18.gif);}
+img.g18b {background-image:url(../img/g/g18b.gif);}
+img.g19 {background-image:url(../img/g/g19.gif);}
+img.g19b {background-image:url(../img/g/g19b.gif);}
+img.g20 {background-image:url(../img/g/g20.gif);}
+img.g20b {background-image:url(../img/g/g20b.gif);}
+img.g21 {background-image:url(../img/g/g21.gif);}
+img.g21b {background-image:url(../img/g/g21b.gif);}
+img.g22 {background-image:url(../img/g/g22.gif);}
+img.g22b {background-image:url(../img/g/g22b.gif);}
+img.g23 {background-image:url(../img/g/g23.gif);}
+img.g23b {background-image:url(../img/g/g23b.gif);}
+img.g24 {background-image:url(../img/g/g24.gif);}
+img.g24b {background-image:url(../img/g/g24b.gif);}
+img.g25 {background-image:url(../img/g/g25.gif);}
+img.g25b {background-image:url(../img/g/g25b.gif);}
+img.g26 {background-image:url(../img/g/g26.gif);}
+img.g26b {background-image:url(../img/g/g26b.gif);}
+img.g27 {background-image:url(../img/g/g27.gif);}
+img.g27b {background-image:url(../img/g/g27b.gif);}
+img.g28 {background-image:url(../img/g/g28.gif);}
+img.g28b {background-image:url(../img/g/g28b.gif);}
+img.g29 {background-image:url(../img/g/g29.gif);}
+img.g29b {background-image:url(../img/g/g29b.gif);}
+img.g30 {background-image:url(../img/g/g30.gif);}
+img.g30b {background-image:url(../img/g/g30b.gif);}
+img.g34 {background-image:url(../img/g/g34.gif);}
+img.g34b {background-image:url(../img/g/g34b.gif);}
+img.g36 {background-image:url(../img/g/g36.gif);}
+img.g36b {background-image:url(../img/g/g36b.gif);}
+img.g37 {background-image:url(../img/g/g37.gif);}
+img.g37b {background-image:url(../img/g/g37b.gif);}
+img.g38 {background-image:url(../img/g/g38.gif);}
+img.g38b {background-image:url(../img/g/g38b.gif);}
+img.g39 {background-image:url(../img/g/g39.gif);}
+img.g39b {background-image:url(../img/g/g39b.gif);}
+img.g40 {background-image:url(../img/g/g40.gif); height:154px;}
+img.g40_1 {background-image:url(../img/g/g40_1.gif); height:167px;}
+img.g40_2 {background-image:url(../img/g/g40_2.gif); height:193px;}
+img.g40_3 {background-image:url(../img/g/g40_3.gif); height:230px;}
+img.g40_4 {background-image:url(../img/g/g40_4.gif); height:239px;}
+img.g40_5 {background-image:url(../img/g/g40_5.gif); height:302px;}
+img.g41 {background-image:url(../img/g/g41.gif);}
+img.g41b {background-image:url(../img/g/g41b.gif);}
+img.g42 {background-image:url(../img/g/g42.gif);}
+img.g42b {background-image:url(../img/g/g42b.gif);}
+img.g43 {background-image:url(../img/g/g43.gif);}
+img.g43b {background-image:url(../img/g/g43b.gif);}
+img.g44 {background-image:url(../img/g/g44.gif);}
+img.g44b {background-image:url(../img/g/g44b.gif);}
+
+/* ressource field */
+div.village1 div.f1, div.map img.f1 {background-image:url(../img/g/f1.jpg);}
+div.village1 div.f2, div.map img.f2 {background-image:url(../img/g/f2.jpg);}
+div.village1 div.f3, div.map img.f3 {background-image:url(../img/g/f3.jpg);}
+div.village1 div.f4, div.map img.f4 {background-image:url(../img/g/f4.jpg);}
+div.village1 div.f5, div.map img.f5 {background-image:url(../img/g/f5.jpg);}
+div.village1 div.f6, div.map img.f6 {background-image:url(../img/g/f6.jpg);}
+div.village1 div.f7, div.map img.f7 {background-image:url(../img/g/f7.jpg);}
+div.village1 div.f8, div.map img.f8 {background-image:url(../img/g/f8.jpg);}
+div.village1 div.f9, div.map img.f9 {background-image:url(../img/g/f9.jpg);}
+div.village1 div.f10, div.map img.f10 {background-image:url(../img/g/f10.jpg);}
+div.village1 div.f11, div.map img.f11 {background-image:url(../img/g/f11.jpg);}
+div.village1 div.f12, div.map img.f12 {background-image:url(../img/g/f12.jpg);}
+div.village1 div.f99, div.map img.f99 {background-image:url(../img/g/f99.jpg);}
+
+/* ressource field levels */
+div.village1 div#village_map img.level1, div.village1 div#village_map img.level2, div.village1 div#village_map img.level3,
+	div.village1 div#village_map img.level4, div.village1 div#village_map img.level5, div.village1 div#village_map img.level6,
+	div.village1 div#village_map img.level7, div.village1 div#village_map img.level8, div.village1 div#village_map img.level9,
+	div.village1 div#village_map img.level10 {background-image:url(../img/g/s/lvl1_10.gif);}
+div.village1 div#village_map img.level11, div.village1 div#village_map img.level12, div.village1 div#village_map img.level13,
+	div.village1 div#village_map img.level14, div.village1 div#village_map img.level15, div.village1 div#village_map img.level16,
+	div.village1 div#village_map img.level17, div.village1 div#village_map img.level18, div.village1 div#village_map img.level19,
+	div.village1 div#village_map img.level20 {background-image:url(../img/g/s/lvl11_20.gif);}
+div.village1 div#village_map img.level21, div.village1 div#village_map img.level22, div.village1 div#village_map img.level23,
+	div.village1 div#village_map img.level24, div.village1 div#village_map img.level25 {background-image:url(../img/g/s/lvl21_30.gif);}
+div.village1 div#village_map img.level1, div.village1 div#village_map img.level11, div.village1 div#village_map img.level21 {background-position:0px 0px;}
+div.village1 div#village_map img.level2, div.village1 div#village_map img.level12, div.village1 div#village_map img.level22 {background-position:-17px 0px;}
+div.village1 div#village_map img.level3, div.village1 div#village_map img.level13, div.village1 div#village_map img.level23 {background-position:-34px 0px;}
+div.village1 div#village_map img.level4, div.village1 div#village_map img.level14, div.village1 div#village_map img.level24 {background-position:-51px 0px;}
+div.village1 div#village_map img.level5, div.village1 div#village_map img.level15, div.village1 div#village_map img.level25 {background-position:-68px 0px;}
+div.village1 div#village_map img.level6, div.village1 div#village_map img.level16 {background-position:-85px 0px;}
+div.village1 div#village_map img.level7, div.village1 div#village_map img.level17 {background-position:-102px 0px;}
+div.village1 div#village_map img.level8, div.village1 div#village_map img.level18 {background-position:-119px 0px;}
+div.village1 div#village_map img.level9, div.village1 div#village_map img.level19 {background-position:-136px 0px;}
+div.village1 div#village_map img.level10, div.village1 div#village_map img.level20 {background-position:-153px 0px;}
+
+/* oases */
+div.map img#detailed_map {width:300px; height:264px;}
+div.map img.w1 {background-image:url(../img/m/w1.jpg);}
+div.map img.w2 {background-image:url(../img/m/w2.jpg);}
+div.map img.w3 {background-image:url(../img/m/w3.jpg);}
+div.map img.w4 {background-image:url(../img/m/w4.jpg);}
+div.map img.w5 {background-image:url(../img/m/w5.jpg);}
+div.map img.w6 {background-image:url(../img/m/w6.jpg);}
+div.map img.w7 {background-image:url(../img/m/w7.jpg);}
+div.map img.w8 {background-image:url(../img/m/w8.jpg);}
+div.map img.w9 {background-image:url(../img/m/w9.jpg);}
+div.map img.w10 {background-image:url(../img/m/w10.jpg);}
+div.map img.w11 {background-image:url(../img/m/w11.jpg);}
+div.map img.w12 {background-image:url(../img/m/w12.jpg);}
+
+/* village center map */
+div.village2 div.d2_0 {background-image:url(../img/g/bg0.jpg);}
+div.village2 div.d2_1 {background-image:url(../img/g/bg1.jpg);}
+div.village2 div.d2_11 {background-image:url(../img/g/bg11.jpg);}
+div.village2 div.d2_12 {background-image:url(../img/g/bg12.jpg);}
+
+/* new buildings */
+div.village2 div#village_map img.iso {background-image:url(../img/g/iso.gif);}
+
+/* village building levels */
+div.village2 div#levels div {background:url(../img/g/s/glvl.gif);}
+
+/* rockets */
+div.village2 div#village_map img.tur {background-image:url(../img/special/NewyearRocket_turquoise_1a.gif);}
+div.village2 div#village_map img.purp {background-image:url(../img/special/NewyearRocket_purple_1a.gif);}
+div.village2 div#village_map img.yell {background-image:url(../img/special/NewyearRocket_yellow_1a.gif);}
+div.village2 div#village_map img.oran {background-image:url(../img/special/NewyearRocket_orange_1a.gif);}
+div.village2 div#village_map img.green {background-image:url(../img/special/NewyearRocket_green_1a.gif);}
+div.village2 div#village_map img.red {background-image:url(../img/special/NewyearRocket_red_1a.gif);}
+
+/* village fields */
+div#map div#map_content div.b00 {background-image:url(../img/m/d00.gif)}
+div#map div#map_content div.b01 {background-image:url(../img/m/d01.gif)}
+div#map div#map_content div.b02 {background-image:url(../img/m/d02.gif)}
+div#map div#map_content div.b03 {background-image:url(../img/m/d03.gif)}
+div#map div#map_content div.b04 {background-image:url(../img/m/d04.gif)}
+div#map div#map_content div.b05 {background-image:url(../img/m/d05.gif)}
+div#map div#map_content div.b06 {background-image:url(../img/m/d06.gif)}
+div#map div#map_content div.b07 {background-image:url(../img/m/d07.gif)}
+div#map div#map_content div.b08 {background-image:url(../img/m/d08.gif)}
+div#map div#map_content div.b09 {background-image:url(../img/m/d09.gif)}
+div#map div#map_content div.b10 {background-image:url(../img/m/d10.gif)}
+div#map div#map_content div.b11 {background-image:url(../img/m/d11.gif)}
+div#map div#map_content div.b12 {background-image:url(../img/m/d12.gif)}
+div#map div#map_content div.b13 {background-image:url(../img/m/d13.gif)}
+div#map div#map_content div.b14 {background-image:url(../img/m/d14.gif)}
+div#map div#map_content div.b15 {background-image:url(../img/m/d15.gif)}
+div#map div#map_content div.b16 {background-image:url(../img/m/d16.gif)}
+div#map div#map_content div.b17 {background-image:url(../img/m/d17.gif)}
+div#map div#map_content div.b18 {background-image:url(../img/m/d18.gif)}
+div#map div#map_content div.b19 {background-image:url(../img/m/d19.gif)}
+div#map div#map_content div.b20 {background-image:url(../img/m/d20.gif)}
+div#map div#map_content div.b21 {background-image:url(../img/m/d21.gif)}
+div#map div#map_content div.b22 {background-image:url(../img/m/d22.gif)}
+div#map div#map_content div.b23 {background-image:url(../img/m/d23.gif)}
+div#map div#map_content div.b24 {background-image:url(../img/m/d24.gif)}
+div#map div#map_content div.b25 {background-image:url(../img/m/d25.gif)}
+div#map div#map_content div.b26 {background-image:url(../img/m/d26.gif)}
+div#map div#map_content div.b27 {background-image:url(../img/m/d27.gif)}
+div#map div#map_content div.b28 {background-image:url(../img/m/d28.gif)}
+div#map div#map_content div.b29 {background-image:url(../img/m/d29.gif)}
+div#map div#map_content div.b30 {background-image:url(../img/m/d30.gif)}
+div#map div#map_content div.b31 {background-image:url(../img/m/d31.gif)}
+div#map div#map_content div.b32 {background-image:url(../img/m/d32.gif)}
+div#map div#map_content div.b33 {background-image:url(../img/m/d33.gif)}
+div#map div#map_content div.b34 {background-image:url(../img/m/d34.gif)}
+div#map div#map_content div.b35 {background-image:url(../img/m/d35.gif)}
+
+/* oasis fields */
+div#map div#map_content div.o0 {background-image:url(../img/m/o0.gif)}
+div#map div#map_content div.o1 {background-image:url(../img/m/o1.gif)}
+div#map div#map_content div.o2 {background-image:url(../img/m/o2.gif)}
+div#map div#map_content div.o3 {background-image:url(../img/m/o3.gif)}
+div#map div#map_content div.o4 {background-image:url(../img/m/o4.gif)}
+div#map div#map_content div.o5 {background-image:url(../img/m/o5.gif)}
+div#map div#map_content div.o6 {background-image:url(../img/m/o6.gif)}
+div#map div#map_content div.o7 {background-image:url(../img/m/o7.gif)}
+div#map div#map_content div.o8 {background-image:url(../img/m/o8.gif)}
+div#map div#map_content div.o9 {background-image:url(../img/m/o9.gif)}
+div#map div#map_content div.o10 {background-image:url(../img/m/o10.gif)}
+div#map div#map_content div.o11 {background-image:url(../img/m/o11.gif)}
+div#map div#map_content div.o12 {background-image:url(../img/m/o12.gif)}
+div#map div#map_content div.o99 {background-image:url(../img/m/o99.gif)}
+
+/* empty fields */
+div#map div#map_content div.t0 {background-image:url(../img/m/t0.gif)}
+div#map div#map_content div.t1 {background-image:url(../img/m/t1.gif)}
+div#map div#map_content div.t2 {background-image:url(../img/m/t2.gif)}
+div#map div#map_content div.t3 {background-image:url(../img/m/t3.gif)}
+div#map div#map_content div.t4 {background-image:url(../img/m/t4.gif)}
+div#map div#map_content div.t5 {background-image:url(../img/m/t5.gif)}
+div#map div#map_content div.t6 {background-image:url(../img/m/t6.gif)}
+div#map div#map_content div.t7 {background-image:url(../img/m/t7.gif)}
+div#map div#map_content div.t8 {background-image:url(../img/m/t8.gif)}
+div#map div#map_content div.t9 {background-image:url(../img/m/t9.gif)}
+
+/* navigation box */
+div#map img#map_navibox {width:100px; height:60px; background-image:url(../img/m/dir.gif);}
+
+/* alliance forum */
+div.forum table#poll td.stat img {height:12px;}
+div.forum table#poll td.stat img.stats-start {width:5px; background-image:url(../img/f/stats_left.gif);}
+div.forum table#poll td.stat img.stats-middle {background-image:url(../img/f/stats_middle.gif); background-repeat:repeat-x;}
+div.forum table#poll td.stat img.stats-end {width:5px; background-image:url(../img/f/stats_right.gif);}
+
+/* write message */
+div.messages div#write_content a#adbook img {width:48px; height:29px; background-image:url(../img/a/friends.gif);}
+
+/* gpack errors */
+div.player div#gpack_popup img.logo {width:40px; height:40px;}
+div.player div#gpack_popup img.firefox {background-image:url(../img/a/firefox.gif);}
+div.player div#gpack_popup img.opera {background-image:url(../img/a/opera.gif);}
+div.player div#gpack_popup img.ie {background-image:url(../img/a/ie.gif);}
+div.player div#gpack_popup img.unknown {background-image:url(../img/a/unknown.gif);}
+
+/* gpack logo */
+div.player div#gpack_popup div#gpack_activate img#preview {width:0px; height:0px; background-image:none;}
+
+/* manual kategories */
+body.manual img.troops {width:140px; height:89px; background-image:url(../img/a/troops.gif);}
+body.manual img.buildings {width:140px; height:89px; background-image:url(../img/a/buildings.gif);}
+body.manual img.navi {width:116px; height:18px; background-image:url(../img/a/navi.gif);}
+
+/* big units */
+body.manual img#big_unit {width:150px; height:120px;}
+body.manual img.big_u1 {background-image:url(../img/u2/u1.gif);}
+body.manual img.big_u2 {background-image:url(../img/u2/u2.gif);}
+body.manual img.big_u3 {background-image:url(../img/u2/u3.gif);}
+body.manual img.big_u4 {background-image:url(../img/u2/u4.gif);}
+body.manual img.big_u5 {background-image:url(../img/u2/u5.gif);}
+body.manual img.big_u6 {background-image:url(../img/u2/u6.gif);}
+body.manual img.big_u7 {background-image:url(../img/u2/u7.gif);}
+body.manual img.big_u8 {background-image:url(../img/u2/u8.gif);}
+body.manual img.big_u9 {background-image:url(../img/u2/u9.gif);}
+body.manual img.big_u10 {background-image:url(../img/u2/u10.gif);}
+body.manual img.big_u11 {background-image:url(../img/u2/u11.gif);}
+body.manual img.big_u12 {background-image:url(../img/u2/u12.gif);}
+body.manual img.big_u13 {background-image:url(../img/u2/u13.gif);}
+body.manual img.big_u14 {background-image:url(../img/u2/u14.gif);}
+body.manual img.big_u15 {background-image:url(../img/u2/u15.gif);}
+body.manual img.big_u16 {background-image:url(../img/u2/u16.gif);}
+body.manual img.big_u17 {background-image:url(../img/u2/u17.gif);}
+body.manual img.big_u18 {background-image:url(../img/u2/u18.gif);}
+body.manual img.big_u19 {background-image:url(../img/u2/u19.gif);}
+body.manual img.big_u20 {background-image:url(../img/u2/u20.gif);}
+body.manual img.big_u21 {background-image:url(../img/u2/u21.gif);}
+body.manual img.big_u22 {background-image:url(../img/u2/u22.gif);}
+body.manual img.big_u23 {background-image:url(../img/u2/u23.gif);}
+body.manual img.big_u24 {background-image:url(../img/u2/u24.gif);}
+body.manual img.big_u25 {background-image:url(../img/u2/u25.gif);}
+body.manual img.big_u26 {background-image:url(../img/u2/u26.gif);}
+body.manual img.big_u27 {background-image:url(../img/u2/u27.gif);}
+body.manual img.big_u28 {background-image:url(../img/u2/u28.gif);}
+body.manual img.big_u29 {background-image:url(../img/u2/u29.gif);}
+body.manual img.big_u30 {background-image:url(../img/u2/u30.gif);}
+
+/* plus features */
+div.plus table#gold_features td.preview img {width:150px; height:150px;}
+div.plus table#gold_features td.preview img.p1_25 {background-image:url(../img/p/p1_25.jpg);}
+div.plus table#gold_features td.preview img.p2_25 {background-image:url(../img/p/p2_25.jpg);}
+div.plus table#gold_features td.preview img.p3_25 {background-image:url(../img/p/p3_25.jpg);}
+div.plus table#gold_features td.preview img.p4_25 {background-image:url(../img/p/p4_25.jpg);}
+div.plus table#gold_features td.preview img.off10 {background-image:url(../img/p/off10.jpg);}
+div.plus table#gold_features td.preview img.def10 {background-image:url(../img/p/def10.jpg);}
+div.plus table#gold_features td.preview img.bau0 {background-image:url(../img/p/bau0.jpg);}
+div.plus table#gold_features td.preview img.npc {background-image:url(../img/p/npc.jpg);}
+div.plus table#plus_features td.preview img.att_mark {width:200px; height:100px; background-image:url(../img/p/attack_marker.gif);}
+
+/* roman character */
+div.logout img.roman, div.signup img.roman {width:129px; height:156px; background-image:url(http://img.travian.org/img/de/temp/roemer.gif);}
+
+/* error pages */
+div.error_site img.e403 {width:165px; height:211px; background-image:url(../img/misc/403.gif);}
+div.error_site img.e404 {width:190px; height:155px; background-image:url(../img/misc/404.gif);}
+div.error_site img.e500 {width:254px; height:207px; background-image:url(../img/misc/500.gif);}
+
+/* peace */
+div.peace {font-size: 18pt; left: 110px; position: absolute; top: -5px; z-index: 999;}
+div.peace.active {color: #FF8000;}
+div.peace.comming {color: #C0C0C0;}
+
+/* time of day icons */
+img.day {width:18px; height:18px;; position:absolute; left:104px; top:-5px; background-image:url(../img/l/day.gif)}
+img.night {width:18px; height:18px;; position:absolute; left:104px; top:-5px; background-image:url(../img/l/night.gif)}

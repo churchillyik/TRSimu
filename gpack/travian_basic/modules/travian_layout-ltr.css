@@ -1,0 +1,1033 @@
+@CHARSET "UTF-8";
+/*
+ *------------------------------------------------------------------------------
+ * TRAVIAN_LAYOUT is used to define the basic layout for reading
+ * direction left to right (ltr) or right to left (rtl).
+ * This includes the positioning of general elements in the game and the space
+ * between them.
+ *
+ * Contains:
+ * All styles outside of tables except font styles and image styles
+ * (Those styles can be found in the other modules)
+ *------------------------------------------------------------------------------
+ */
+
+/* ------------------- General ------------------- */
+/* ----------------------------------------------- */
+body {text-align:left; direction:ltr; margin:0px; background-color:#FFFFFF;}
+img {border:0px;}
+h1, h2, span, form, img, li {margin:0px; padding:0px;}
+h1 {margin-bottom:8px;}
+p {margin:14px 0px; padding:0px;}
+label {white-space:nowrap;}
+#msfilter {width:1px; height:1px; position:absolute; z-index:99;}
+.hide {display:none;}
+
+/* ------------------- Layout ------------------- */
+/* ---------------------------------------------- */
+/* layout divs */
+div#header {width:100%; min-width:980px; height:67px;}
+div#mid {float:left; width:100%; min-width:980px; margin-bottom:15px;}
+div#content {float:left; min-height:450px; position:relative; overflow:hidden;}
+
+/* content paddings */
+div.universal {width:502px; padding:0px 25px 0px;}
+div.login {width:502px; padding:0px 25px 0px;}
+div.logout {width:502px; padding:0px 25px 0px;}
+div.signup {width:502px; padding:0px 25px 0px;}
+div.activate {width:502px; padding:0px 25px 0px;}
+div.banned_cn {width:502px; padding:0px 25px 0px;}
+div.player {width:502px; padding:43px 25px 0px;}
+div.alliance {width:502px; padding:43px 25px 0px;}
+div.forum {width:502px; padding:43px 25px 0px;}
+div.statistics {width:502px; padding:43px 25px 0px;}
+div.cropfinder {width:502px; padding:43px 25px 0px;}
+div.reports {width:502px; padding:43px 25px 0px;}
+div.messages {width:502px; padding:43px 25px 0px;}
+div.a2b {width:502px; padding:43px 25px 0px;}
+div.village3 {width:502px; padding:43px 25px 0px;}
+div.plus {width:502px; padding:43px 25px 0px;}
+div.warsim {width:502px; padding:43px 25px 0px;}
+div.map {width:552px; padding:43px 0px 0px;}
+div.support {width:502px; padding:15px 25px 0px;}
+div.village1 {width:537px; padding-top:43px; padding-right:0px; padding-bottom:0px; padding-left:15px;}
+div.village2 {width:540px; padding:43px 6px 0px;}
+div.build {width:552px;}
+div#build {width:502px; padding:43px 25px 0px;}
+div.error_site {width:552px; padding:0px;}
+
+/* ------------------- General elements ------------------- */
+/* -------------------------------------------------------- */
+/* ingame buttons */
+p.btn {text-align:center;}
+
+/* text menu */
+div#textmenu {margin:14px 0px;}
+
+/* float clear */
+div.clear {clear:both; width:0px; height:0px;}
+
+/* table layout */
+table {margin:0px;}
+
+/* coords */
+td.aligned_coords {width:84px; padding:2px 0px; white-space:nowrap;}
+td.aligned_coords div {float:left;}
+td.aligned_coords div.cox {width:38px; text-align:right;}
+td.aligned_coords div.pi {width:8px; text-align:center;}
+td.aligned_coords div.coy {width:38px; text-align:left;}
+
+/* ressources */
+span.dur {white-space:nowrap;}
+
+/* system messages */
+div#sysmsg {width:502px; margin:auto;}
+
+/* popup window */
+div#ce {position:fixed; left:0px; top:0px; z-index:999;}
+div.popup3 {position:absolute; display:inline; width:430px; height:456px; z-index:80; border: 0px solid #000000; padding-top:31px; padding-bottom:0px; padding-left:20px; left:180px; top:99px;}
+div.popup3 div#drag {position:absolute; left:11px; top:11px; height:20px; width:408px; z-index:2; cursor:move; background-color:#F3F3F3;}
+img.popup4 {position:absolute; width:30px; height:30px; z-index:81; border:0px solid #000000; right: 0px; top: 0px;}
+
+/* ------------------- Servertime ------------------- */
+/* -------------------------------------------------- */
+div#ltime {width:220px; height:15px; position:absolute; top:42px; left:5px; z-index:3;}
+
+/* ------------------- Dynamic Header ------------------- */
+/* ------------------------------------------------------ */
+div#dynamic_header {width:100%; min-width:980px; height:28px; background-color:#747273; overflow:hidden;}
+
+/* fullsize 468x60 */
+body.mod1 div#dynamic_header {height:70px;}
+body.mod1 div#dynamic_header div.dyn1 {float:left; width:780px; height:70px;}
+body.mod1 div#dynamic_header div.dyn2 {float:right; width:151px; height:70px;}
+body.mod1 iframe#ad_iframe {position:absolute; left:168px; width:468px; height:60px; z-index:10;}
+body.mod1 div#ltime {top:83px;}
+body.mod1 div#res {top:137px;}
+
+/* bigsize 728x90 */
+body.mod2 div#dynamic_header {height:100px;}
+body.mod2 div#dynamic_header div.dyn1 {min-width:900px; width:100%; height:100px;}
+body.mod2 iframe#ad_iframe {position:absolute; left:82px; top:0px; width:728px; height:90px; z-index:10;}
+body.mod2 div#ltime {top:113px;}
+body.mod2 div#res {top:167px;}
+
+/* skyscraper 120x600 */
+body.mod3 div#dynamic_header div.dyn1 {width:127px; height:604px; position:absolute; left:692px; top:6px; z-index:5;}
+body.mod3 iframe#ad_iframe {width:120px; height:600px; position:absolute; left:696px; top:10px; z-index:10;}
+body.mod3 div#mtop {width:692px;}
+body.mod3 div#plus_div {margin-left:237px;}
+body.mod3 div#content {min-height:469px;}
+body.mod3 div#side_info {margin-left:132px;}
+
+/* ------------------- Navi ------------------- */
+/* -------------------------------------------- */
+div#mtop {width:570px; height:67px; position:relative; left:231px; top:-7px;}
+div#mtop a#n1, div#mtop a#n2, div#mtop a#n3, div#mtop a#n4, div#mtop div#n5 {float:left; padding:0px; margin:0px;}
+div#mtop div#n5 a {float:left;}
+div#mtop a#plus {float:left; padding:0px; margin-left:115px;}
+div#mtop a#plus span {display: none;}
+
+/* ------------------- Side Navi ------------------- */
+/* ------------------------------------------------- */
+div#side_navi {float:left; width:130px; position:relative;}
+div#side_navi p {margin:0px 0px 28px; line-height:20px;}
+div#side_navi p a {padding-left:12px; display:block;}
+div#side_navi p.deltimer {width:120px; margin-left:5px;}
+div#side_navi p.deltimer a {text-align:center; padding:0px;}
+
+/* ------------------- Side Info ------------------- */
+/* ------------------------------------------------- */
+div#side_info {float:left; padding-left:10px; padding-top:5px; position:relative;}
+div#side_info h5 {margin-left:10px;}
+div#side_info h6 {margin:0px; padding:0px;}
+div#side_info div.news {margin-left:10px; width:186px; padding:6px; border:dashed Silver 1px;}
+div#side_info div.news ul {padding:0px; margin-left:15px;}
+
+/* link list */
+div#side_info table#llist {margin-top:25px;}
+
+/* ------------------- Footer Menue ------------------- */
+/* -------------------------------------------------- */
+div#footer {width:100%; clear:both;}
+div#footer div#mfoot {width:812px; padding-top:15px; padding-bottom:30px; text-align:center;}
+div#footer div#mfoot div.copyright {direction:ltr;}
+
+/* ------------------- Ressources ------------------- */
+/* -------------------------------------------------- */
+div#res {left: 130px; height: 20px; position: absolute; top: 100px; width: 552px; z-index: 3;}
+div#res table {background-color: #FFFFFF; margin: auto; width: auto;}
+div#res table td {padding: 1px;}
+div#res table img {margin-left: 5px;}
+
+/* ------------------- Login ------------------- */
+/* --------------------------------------------- */
+div.login h1 {text-align:center;}
+div.login p {line-height:17px;}
+div.login p.error_box {padding:6px; border:1px dashed #C0C0C0;}
+
+/* ------------------- Logout ------------------- */
+/* ---------------------------------------------- */
+div.logout img.roman {float:right;}
+
+/* ------------------- Signup ------------------- */
+/* ---------------------------------------------- */
+div.signup h1 {text-align:center;}
+div.signup p {line-height:17px;}
+div.signup p.info {text-align:center;}
+div.signup img.roman {float:right;}
+div.signup table#sign_input {margin-bottom:15px;}
+div.signup div#activation {float:left; width:40%; margin-top:15px;}
+div.signup div#not_yet {text-align:center;}
+div.signup div#no_mail {float:right; width:60%; margin-top:15px;}
+div.signup .timer, div.signup .timer #timer1 { text-align: center; }
+
+
+/* ------------------- Activate ------------------- */
+/* ------------------------------------------------ */
+div.activate h1 {text-align:center;}
+div.activate h6 {margin:0px;}
+div.activate p {line-height:17px;}
+div.activate p.info {text-align:center;}
+div.activate ul {margin:14px 0px 20px; padding-left:20px;}
+
+/* ------------------- Village Overview------------------- */
+/* ------------------------------------------------------- */
+div.village1 h1 {position:relative; left:10px; height:29px; position:relative; z-index:500;}
+div.village1 h1 div {float:left;}
+div.village1 h1 div#loyality {position:absolute; top:30px;}
+
+/* ressource map */
+div.village1 div#village_map {float:left; width:300px; height:264px; position:relative; margin-bottom:15px;}
+div.village1 img#resfeld {width:300px; height:264px; position:absolute; z-index:20; left:0px;}
+div.village1 img.reslevel {position:absolute; z-index:10; width:17px; height:12px;}
+div.village1 img.rf1 {left:93px; top:27px;}
+div.village1 img.rf2 {left:156px; top:26px;}
+div.village1 img.rf3 {left:216px; top:41px;}
+div.village1 img.rf4 {left:38px; top:59px;}
+div.village1 img.rf5 {left:130px; top:67px;}
+div.village1 img.rf6 {left:195px; top:87px;}
+div.village1 img.rf7 {left:253px; top:81px;}
+div.village1 img.rf8 {left:23px; top:111px;}
+div.village1 img.rf9 {left:74px; top:104px;}
+div.village1 img.rf10 {left:205px; top:136px;}
+div.village1 img.rf11 {left:260px; top:139px;}
+div.village1 img.rf12 {left:33px; top:165px;}
+div.village1 img.rf13 {left:84px; top:158px;}
+div.village1 img.rf14 {left:151px; top:178px;}
+div.village1 img.rf15 {left:230px; top:192px;}
+div.village1 img.rf16 {left:79px; top:211px;}
+div.village1 img.rf17 {left:132px; top:223px;}
+div.village1 img.rf18 {left:182px; top:227px;}
+
+/* map infos */
+div.village1 div#map_details {float:right; width:229px; margin-top:-29px; margin-right:1px;}
+div.village1 div#map_details table {margin-bottom:14px;}
+div.village1 table#building_contract {clear:both; margin:0px 25px;}
+
+/* ------------------- Village Center------------------- */
+/* ----------------------------------------------------- */
+div.village2 h1 {position:absolute; left:25px; z-index:30;}
+div.village2 div#village_map {width:540px; height:448px; position:relative;}
+div.village2 div#village_map img {position:absolute;}
+
+/* buildings size */
+div.village2 div#village_map img.ww {z-index:20; left:155px;}	/* wonder of the world */
+
+/* levels display */
+div.village2 div#village_map div#levels {width:494px; height:370px; position:absolute; top:40px; left:23px; z-index:97; visibility:hidden;}
+div.village2 div#village_map div#levels div {width:17px; height:17px; position:absolute; text-align:center; line-height:17px; visibility:hidden;}
+div.village2 div#village_map div#levels.on {visibility:visible;}
+div.village2 div#village_map div#levels.on div {visibility:visible;}
+div.village2 img#lswitch {width:18px; height:17px; position:absolute; top:443px; left:500px; cursor:pointer; z-index:500;}
+
+/* building img & level div positions */
+div.village2 div#village_map .dx1 {z-index:5; left:316px; top:161px;}
+div.village2 div#village_map .d1 {z-index:6; left:115px; top:52px;}
+div.village2 div#village_map .d2 {z-index:9; left:198px; top:27px;}
+div.village2 div#village_map .d3 {z-index:8; left:258px; top:17px;}
+div.village2 div#village_map .d4 {z-index:9; left:332px; top:32px;}
+div.village2 div#village_map .d5 {z-index:10; left:388px; top:81px;}
+div.village2 div#village_map .d6 {z-index:11; left:80px; top:91px;}
+div.village2 div#village_map .d7 {z-index:12; left:161px; top:98px;}
+div.village2 div#village_map .d8 {z-index:13; left:247px; top:81px;}
+div.village2 div#village_map .d9 {z-index:14; left:395px; top:122px;}
+div.village2 div#village_map .d10 {z-index:15; left:66px; top:161px;}
+div.village2 div#village_map .d11 {z-index:16; left:192px; top:126px;}
+div.village2 div#village_map .d12 {z-index:17; left:155px; top:152px;}
+div.village2 div#village_map .d13 {z-index:18; left:402px; top:180px;}
+div.village2 div#village_map .d14 {z-index:19; left:84px; top:200px;}
+div.village2 div#village_map .d15 {z-index:20; left:227px; top:196px;}
+div.village2 div#village_map .d16 {z-index:21; left:354px; top:213px;}
+div.village2 div#village_map .d17 {z-index:22; left:158px; top:236px;}
+div.village2 div#village_map .d18 {z-index:23; left:286px; top:247px;}
+div.village2 div#village_map .d19 {z-index:24; left:144px; top:267px;}
+div.village2 div#village_map .d20 {z-index:25; left:262px; top:276px;}
+div.village2 div#village_map .g40 {top:138px;}
+div.village2 div#village_map .g40_1 {top:125px;}
+div.village2 div#village_map .g40_2 {top:99px;}
+div.village2 div#village_map .g40_3 {top:62px;}
+div.village2 div#village_map .g40_4 {top:53px;}
+div.village2 div#village_map .g40_5 {top:-10px;}
+/* off-size level positions */
+div.village2 div#village_map .l39 {left:320px; top:190px;}
+div.village2 div#village_map .l40 {left:240px; top:350px;}
+
+/* ImgMap for buildings links */
+div.village2 img.map1 {width:540px; height:448px; z-index:98;}
+div.village2 img.map2 {width:422px; height:339px; left:63px; top:40px; z-index:99;}
+
+/* rockets */
+div.village2 div#village_map img.rocket {z-index:20; width:75px; height:140px;}
+div.village2 div#village_map img.tur {left:161px; top:168px;}
+div.village2 div#village_map img.purp {left:265px; top:148px;}
+div.village2 div#village_map img.yell {left:200px; top:248px;}
+div.village2 div#village_map img.oran {left:300px; top:0px;}
+div.village2 div#village_map img.green {left:110px; top:230px;}
+div.village2 div#village_map img.red {left:328px; top:210px;}
+
+/* building contracts */
+div.village2 table#building_contract {position:relative; z-index:150; margin:-40px 19px 0px;}
+
+/* ------------------- Village Infos ------------------- */
+/* ----------------------------------------------------- */
+/* village troops */
+div.village3 table.vil_troops {margin-bottom:10px;}
+
+/* ------------------- Map ------------------- */
+/* ------------------------------------------- */
+/* div.map -> small map */
+/* div#mbig -> big map */
+/* div#map -> both */
+
+/* big map window */
+div#mbig {width:997px; height:572px; border:1px #5a595a solid;}
+div#mbig div#lightframe {width:979px; height:554px; position:relative; left:7px; top:7px; border:2px #dedfde solid;}
+div#mbig div#darkframe {width:975px; height:550px; border:2px #9c9a9c solid;}
+div#mbig a#map_popclose {position:absolute; top:0px; right:0px; z-index:30;}
+
+/* general */
+div.map h1 {margin-left:25px;}
+div#mbig h1 {position:absolute; top:10px; left:10px; z-index:10;}
+
+/* surrounding */
+div#map {position:relative;}
+div.map div#map {width:552px; height:375px; top:-26px;}
+div#mbig div#map {width:975px; height:550px; top:0px; left:0px;}
+
+/* map content */
+div#map div#map_content {position:relative;}
+div.map div#map div#map_content {width:540px; height:316px; left:5px; top:33px;}
+div#mbig div#map #map_content {width:971px; height:550px; top:0px; left:0px;}
+div#map div#map_content div {width:74px; height:74px; position:absolute;}
+div#map div#map_content div span {display:block; position:absolute; top:56px; left:30px; z-index:49;}
+div#map div#map_content div span.m6 {top:58px; left:32px;}
+
+/* switch to big map */
+div#map a#map_makelarge {position:absolute; left:26px; top:39px; z-index:50;}
+
+/* image maps */
+div#map img#map_links {position:absolute;}
+div.map div#map img#map_links {width:540px; height:316px; left:5px; top:33px; z-index:50;}
+div#mbig div#map img#map_links {width:971px; height:550px; top:0px; left:0px; z-index:20;}
+
+/* navigation box */
+div#map img#map_navibox {position:absolute; z-index:50;}
+div#mbig div#map img#map_navibox {bottom:5px; right:32px;}
+div.map div#map img#map_navibox {right:20px; bottom:0px;}
+
+/* rulers */
+div#map div#map_rulers {position:absolute;}
+div#map div#map_rulers div {width:35px; height:12px; text-align:center; position:absolute;}
+
+/* coordinates */
+div#map div#map_coords {width:180px; height:30px; position:absolute; line-height:20px; z-index:50; vertical-align:top;}
+div.map div#map div#map_coords {bottom:26px; left:30px;}
+div#mbig div#map div#map_coords {bottom:5px; left:10px;}
+div#map div#map_coords span, div#map div#map_coords input {float:left; margin-right:5px;}
+div#map div#map_coords input.text {width:28px; margin-right:8px;}
+
+/* infobox */
+div#map table#map_infobox {position:absolute; z-index:50;}
+div.map div#map table#map_infobox {top:-7px; right:20px;}
+div#mbig div#map table#map_infobox {top:10px; right:50px;}
+
+/* cropfinder */
+div.map div.cropfinder_icon {z-index:100; position:absolute; left:493px; top:312px;}
+
+/* field positions - small map */
+div.map div#map div#map_content div#i_0_0 {z-index:1; left:16px; top:104px;}
+div.map div#map div#map_content div#i_0_1 {z-index:2; left:52px; top:84px;}
+div.map div#map div#map_content div#i_0_2 {z-index:3; left:88px; top:64px;}
+div.map div#map div#map_content div#i_0_3 {z-index:4; left:124px; top:44px;}
+div.map div#map div#map_content div#i_0_4 {z-index:5; left:160px; top:24px;}
+div.map div#map div#map_content div#i_0_5 {z-index:6; left:196px; top:4px;}
+div.map div#map div#map_content div#i_0_6 {z-index:7; left:232px; top:-16px;}
+div.map div#map div#map_content div#i_1_0 {z-index:2; left:53px; top:124px;}
+div.map div#map div#map_content div#i_1_1 {z-index:2; left:89px; top:104px;}
+div.map div#map div#map_content div#i_1_2 {z-index:3; left:125px; top:84px;}
+div.map div#map div#map_content div#i_1_3 {z-index:4; left:161px; top:64px;}
+div.map div#map div#map_content div#i_1_4 {z-index:5; left:197px; top:44px;}
+div.map div#map div#map_content div#i_1_5 {z-index:6; left:233px; top:24px;}
+div.map div#map div#map_content div#i_1_6 {z-index:7; left:269px; top:4px;}
+div.map div#map div#map_content div#i_2_0 {z-index:3; left:90px; top:144px;}
+div.map div#map div#map_content div#i_2_1 {z-index:3; left:126px; top:124px;}
+div.map div#map div#map_content div#i_2_2 {z-index:3; left:162px; top:104px;}
+div.map div#map div#map_content div#i_2_3 {z-index:4; left:198px; top:84px;}
+div.map div#map div#map_content div#i_2_4 {z-index:5; left:234px; top:64px;}
+div.map div#map div#map_content div#i_2_5 {z-index:6; left:270px; top:44px;}
+div.map div#map div#map_content div#i_2_6 {z-index:7; left:306px; top:24px;}
+div.map div#map div#map_content div#i_3_0 {z-index:4; left:127px; top:164px;}
+div.map div#map div#map_content div#i_3_1 {z-index:4; left:163px; top:144px;}
+div.map div#map div#map_content div#i_3_2 {z-index:4; left:199px; top:124px;}
+div.map div#map div#map_content div#i_3_3 {z-index:4; left:235px; top:104px;}
+div.map div#map div#map_content div#i_3_4 {z-index:5; left:271px; top:84px;}
+div.map div#map div#map_content div#i_3_5 {z-index:6; left:307px; top:64px;}
+div.map div#map div#map_content div#i_3_6 {z-index:7; left:343px; top:44px;}
+div.map div#map div#map_content div#i_4_0 {z-index:5; left:164px; top:184px;}
+div.map div#map div#map_content div#i_4_1 {z-index:5; left:200px; top:164px;}
+div.map div#map div#map_content div#i_4_2 {z-index:5; left:236px; top:144px;}
+div.map div#map div#map_content div#i_4_3 {z-index:5; left:272px; top:124px;}
+div.map div#map div#map_content div#i_4_4 {z-index:5; left:308px; top:104px;}
+div.map div#map div#map_content div#i_4_5 {z-index:6; left:344px; top:84px;}
+div.map div#map div#map_content div#i_4_6 {z-index:7; left:380px; top:64px;}
+div.map div#map div#map_content div#i_5_0 {z-index:6; left:201px; top:204px;}
+div.map div#map div#map_content div#i_5_1 {z-index:6; left:237px; top:184px;}
+div.map div#map div#map_content div#i_5_2 {z-index:6; left:273px; top:164px;}
+div.map div#map div#map_content div#i_5_3 {z-index:6; left:309px; top:144px;}
+div.map div#map div#map_content div#i_5_4 {z-index:6; left:345px; top:124px;}
+div.map div#map div#map_content div#i_5_5 {z-index:6; left:381px; top:104px;}
+div.map div#map div#map_content div#i_5_6 {z-index:7; left:417px; top:84px;}
+div.map div#map div#map_content div#i_6_0 {z-index:7; left:238px; top:224px;}
+div.map div#map div#map_content div#i_6_1 {z-index:7; left:274px; top:204px;}
+div.map div#map div#map_content div#i_6_2 {z-index:7; left:310px; top:184px;}
+div.map div#map div#map_content div#i_6_3 {z-index:7; left:346px; top:164px;}
+div.map div#map div#map_content div#i_6_4 {z-index:7; left:382px; top:144px;}
+div.map div#map div#map_content div#i_6_5 {z-index:7; left:418px; top:124px;}
+div.map div#map div#map_content div#i_6_6 {z-index:7; left:454px; top:104px;}
+
+/* field positions - big map */
+div#mbig div#map div#map_content div#i_0_0 {z-index:1; left:11px; top:220px;}
+div#mbig div#map div#map_content div#i_0_1 {z-index:2; left:47px; top:200px;}
+div#mbig div#map div#map_content div#i_0_2 {z-index:3; left:83px; top:180px;}
+div#mbig div#map div#map_content div#i_0_3 {z-index:4; left:119px; top:160px;}
+div#mbig div#map div#map_content div#i_0_4 {z-index:5; left:155px; top:140px;}
+div#mbig div#map div#map_content div#i_0_5 {z-index:6; left:191px; top:120px;}
+div#mbig div#map div#map_content div#i_0_6 {z-index:7; left:227px; top:100px;}
+div#mbig div#map div#map_content div#i_0_7 {z-index:8; left:263px; top:80px;}
+div#mbig div#map div#map_content div#i_0_8 {z-index:9; left:299px; top:60px;}
+div#mbig div#map div#map_content div#i_0_9 {z-index:10; left:335px; top:40px;}
+div#mbig div#map div#map_content div#i_0_10 {z-index:11; left:371px; top:20px;}
+div#mbig div#map div#map_content div#i_0_11 {z-index:12; left:407px; top:0px;}
+div#mbig div#map div#map_content div#i_0_12 {z-index:13; left:443px; top:-20px;}
+div#mbig div#map div#map_content div#i_1_0 {z-index:2; left:48px; top:240px;}
+div#mbig div#map div#map_content div#i_1_1 {z-index:2; left:84px; top:220px;}
+div#mbig div#map div#map_content div#i_1_2 {z-index:3; left:120px; top:200px;}
+div#mbig div#map div#map_content div#i_1_3 {z-index:4; left:156px; top:180px;}
+div#mbig div#map div#map_content div#i_1_4 {z-index:5; left:192px; top:160px;}
+div#mbig div#map div#map_content div#i_1_5 {z-index:6; left:228px; top:140px;}
+div#mbig div#map div#map_content div#i_1_6 {z-index:7; left:264px; top:120px;}
+div#mbig div#map div#map_content div#i_1_7 {z-index:8; left:300px; top:100px;}
+div#mbig div#map div#map_content div#i_1_8 {z-index:9; left:336px; top:80px;}
+div#mbig div#map div#map_content div#i_1_9 {z-index:10; left:372px; top:60px;}
+div#mbig div#map div#map_content div#i_1_10 {z-index:11; left:408px; top:40px;}
+div#mbig div#map div#map_content div#i_1_11 {z-index:12; left:444px; top:20px;}
+div#mbig div#map div#map_content div#i_1_12 {z-index:13; left:480px; top:0px;}
+div#mbig div#map div#map_content div#i_2_0 {z-index:3; left:85px; top:260px;}
+div#mbig div#map div#map_content div#i_2_1 {z-index:3; left:121px; top:240px;}
+div#mbig div#map div#map_content div#i_2_2 {z-index:3; left:157px; top:220px;}
+div#mbig div#map div#map_content div#i_2_3 {z-index:4; left:193px; top:200px;}
+div#mbig div#map div#map_content div#i_2_4 {z-index:5; left:229px; top:180px;}
+div#mbig div#map div#map_content div#i_2_5 {z-index:6; left:265px; top:160px;}
+div#mbig div#map div#map_content div#i_2_6 {z-index:7; left:301px; top:140px;}
+div#mbig div#map div#map_content div#i_2_7 {z-index:8; left:337px; top:120px;}
+div#mbig div#map div#map_content div#i_2_8 {z-index:9; left:373px; top:100px;}
+div#mbig div#map div#map_content div#i_2_9 {z-index:10; left:409px; top:80px;}
+div#mbig div#map div#map_content div#i_2_10 {z-index:11; left:445px; top:60px;}
+div#mbig div#map div#map_content div#i_2_11 {z-index:12; left:481px; top:40px;}
+div#mbig div#map div#map_content div#i_2_12 {z-index:13; left:517px; top:20px;}
+div#mbig div#map div#map_content div#i_3_0 {z-index:4; left:122px; top:280px;}
+div#mbig div#map div#map_content div#i_3_1 {z-index:4; left:158px; top:260px;}
+div#mbig div#map div#map_content div#i_3_2 {z-index:4; left:194px; top:240px;}
+div#mbig div#map div#map_content div#i_3_3 {z-index:4; left:230px; top:220px;}
+div#mbig div#map div#map_content div#i_3_4 {z-index:5; left:266px; top:200px;}
+div#mbig div#map div#map_content div#i_3_5 {z-index:6; left:302px; top:180px;}
+div#mbig div#map div#map_content div#i_3_6 {z-index:7; left:338px; top:160px;}
+div#mbig div#map div#map_content div#i_3_7 {z-index:8; left:374px; top:140px;}
+div#mbig div#map div#map_content div#i_3_8 {z-index:9; left:410px; top:120px;}
+div#mbig div#map div#map_content div#i_3_9 {z-index:10; left:446px; top:100px;}
+div#mbig div#map div#map_content div#i_3_10 {z-index:11; left:482px; top:80px;}
+div#mbig div#map div#map_content div#i_3_11 {z-index:12; left:518px; top:60px;}
+div#mbig div#map div#map_content div#i_3_12 {z-index:13; left:554px; top:40px;}
+div#mbig div#map div#map_content div#i_4_0 {z-index:5; left:159px; top:300px;}
+div#mbig div#map div#map_content div#i_4_1 {z-index:5; left:195px; top:280px;}
+div#mbig div#map div#map_content div#i_4_2 {z-index:5; left:231px; top:260px;}
+div#mbig div#map div#map_content div#i_4_3 {z-index:5; left:267px; top:240px;}
+div#mbig div#map div#map_content div#i_4_4 {z-index:5; left:303px; top:220px;}
+div#mbig div#map div#map_content div#i_4_5 {z-index:6; left:339px; top:200px;}
+div#mbig div#map div#map_content div#i_4_6 {z-index:7; left:375px; top:180px;}
+div#mbig div#map div#map_content div#i_4_7 {z-index:8; left:411px; top:160px;}
+div#mbig div#map div#map_content div#i_4_8 {z-index:9; left:447px; top:140px;}
+div#mbig div#map div#map_content div#i_4_9 {z-index:10; left:483px; top:120px;}
+div#mbig div#map div#map_content div#i_4_10 {z-index:11; left:519px; top:100px;}
+div#mbig div#map div#map_content div#i_4_11 {z-index:12; left:555px; top:80px;}
+div#mbig div#map div#map_content div#i_4_12 {z-index:13; left:591px; top:60px;}
+div#mbig div#map div#map_content div#i_5_0 {z-index:6; left:196px; top:320px;}
+div#mbig div#map div#map_content div#i_5_1 {z-index:6; left:232px; top:300px;}
+div#mbig div#map div#map_content div#i_5_2 {z-index:6; left:268px; top:280px;}
+div#mbig div#map div#map_content div#i_5_3 {z-index:6; left:304px; top:260px;}
+div#mbig div#map div#map_content div#i_5_4 {z-index:6; left:340px; top:240px;}
+div#mbig div#map div#map_content div#i_5_5 {z-index:6; left:376px; top:220px;}
+div#mbig div#map div#map_content div#i_5_6 {z-index:7; left:412px; top:200px;}
+div#mbig div#map div#map_content div#i_5_7 {z-index:8; left:448px; top:180px;}
+div#mbig div#map div#map_content div#i_5_8 {z-index:9; left:484px; top:160px;}
+div#mbig div#map div#map_content div#i_5_9 {z-index:10; left:520px; top:140px;}
+div#mbig div#map div#map_content div#i_5_10 {z-index:11; left:556px; top:120px;}
+div#mbig div#map div#map_content div#i_5_11 {z-index:12; left:592px; top:100px;}
+div#mbig div#map div#map_content div#i_5_12 {z-index:13; left:628px; top:80px;}
+div#mbig div#map div#map_content div#i_6_0 {z-index:7; left:233px; top:340px;}
+div#mbig div#map div#map_content div#i_6_1 {z-index:7; left:269px; top:320px;}
+div#mbig div#map div#map_content div#i_6_2 {z-index:7; left:305px; top:300px;}
+div#mbig div#map div#map_content div#i_6_3 {z-index:7; left:341px; top:280px;}
+div#mbig div#map div#map_content div#i_6_4 {z-index:7; left:377px; top:260px;}
+div#mbig div#map div#map_content div#i_6_5 {z-index:7; left:413px; top:240px;}
+div#mbig div#map div#map_content div#i_6_6 {z-index:7; left:449px; top:220px;}
+div#mbig div#map div#map_content div#i_6_7 {z-index:8; left:485px; top:200px;}
+div#mbig div#map div#map_content div#i_6_8 {z-index:9; left:521px; top:180px;}
+div#mbig div#map div#map_content div#i_6_9 {z-index:10; left:557px; top:160px;}
+div#mbig div#map div#map_content div#i_6_10 {z-index:11; left:593px; top:140px;}
+div#mbig div#map div#map_content div#i_6_11 {z-index:12; left:629px; top:120px;}
+div#mbig div#map div#map_content div#i_6_12 {z-index:13; left:665px; top:100px;}
+div#mbig div#map div#map_content div#i_7_0 {z-index:8; left:270px; top:360px;}
+div#mbig div#map div#map_content div#i_7_1 {z-index:8; left:306px; top:340px;}
+div#mbig div#map div#map_content div#i_7_2 {z-index:8; left:342px; top:320px;}
+div#mbig div#map div#map_content div#i_7_3 {z-index:8; left:378px; top:300px;}
+div#mbig div#map div#map_content div#i_7_4 {z-index:8; left:414px; top:280px;}
+div#mbig div#map div#map_content div#i_7_5 {z-index:8; left:450px; top:260px;}
+div#mbig div#map div#map_content div#i_7_6 {z-index:8; left:486px; top:240px;}
+div#mbig div#map div#map_content div#i_7_7 {z-index:8; left:522px; top:220px;}
+div#mbig div#map div#map_content div#i_7_8 {z-index:9; left:558px; top:200px;}
+div#mbig div#map div#map_content div#i_7_9 {z-index:10; left:594px; top:180px;}
+div#mbig div#map div#map_content div#i_7_10 {z-index:11; left:630px; top:160px;}
+div#mbig div#map div#map_content div#i_7_11 {z-index:12; left:666px; top:140px;}
+div#mbig div#map div#map_content div#i_7_12 {z-index:13; left:702px; top:120px;}
+div#mbig div#map div#map_content div#i_8_0 {z-index:9; left:307px; top:380px;}
+div#mbig div#map div#map_content div#i_8_1 {z-index:9; left:343px; top:360px;}
+div#mbig div#map div#map_content div#i_8_2 {z-index:9; left:379px; top:340px;}
+div#mbig div#map div#map_content div#i_8_3 {z-index:9; left:415px; top:320px;}
+div#mbig div#map div#map_content div#i_8_4 {z-index:9; left:451px; top:300px;}
+div#mbig div#map div#map_content div#i_8_5 {z-index:9; left:487px; top:280px;}
+div#mbig div#map div#map_content div#i_8_6 {z-index:9; left:523px; top:260px;}
+div#mbig div#map div#map_content div#i_8_7 {z-index:9; left:559px; top:240px;}
+div#mbig div#map div#map_content div#i_8_8 {z-index:9; left:595px; top:220px;}
+div#mbig div#map div#map_content div#i_8_9 {z-index:10; left:631px; top:200px;}
+div#mbig div#map div#map_content div#i_8_10 {z-index:11; left:667px; top:180px;}
+div#mbig div#map div#map_content div#i_8_11 {z-index:12; left:703px; top:160px;}
+div#mbig div#map div#map_content div#i_8_12 {z-index:13; left:739px; top:140px;}
+div#mbig div#map div#map_content div#i_9_0 {z-index:10; left:344px; top:400px;}
+div#mbig div#map div#map_content div#i_9_1 {z-index:10; left:380px; top:380px;}
+div#mbig div#map div#map_content div#i_9_2 {z-index:10; left:416px; top:360px;}
+div#mbig div#map div#map_content div#i_9_3 {z-index:10; left:452px; top:340px;}
+div#mbig div#map div#map_content div#i_9_4 {z-index:10; left:488px; top:320px;}
+div#mbig div#map div#map_content div#i_9_5 {z-index:10; left:524px; top:300px;}
+div#mbig div#map div#map_content div#i_9_6 {z-index:10; left:560px; top:280px;}
+div#mbig div#map div#map_content div#i_9_7 {z-index:10; left:596px; top:260px;}
+div#mbig div#map div#map_content div#i_9_8 {z-index:10; left:632px; top:240px;}
+div#mbig div#map div#map_content div#i_9_9 {z-index:10; left:668px; top:220px;}
+div#mbig div#map div#map_content div#i_9_10 {z-index:11; left:704px; top:200px;}
+div#mbig div#map div#map_content div#i_9_11 {z-index:12; left:740px; top:180px;}
+div#mbig div#map div#map_content div#i_9_12 {z-index:13; left:776px; top:160px;}
+div#mbig div#map div#map_content div#i_10_0 {z-index:11; left:381px; top:420px;}
+div#mbig div#map div#map_content div#i_10_1 {z-index:11; left:417px; top:400px;}
+div#mbig div#map div#map_content div#i_10_2 {z-index:11; left:453px; top:380px;}
+div#mbig div#map div#map_content div#i_10_3 {z-index:11; left:489px; top:360px;}
+div#mbig div#map div#map_content div#i_10_4 {z-index:11; left:525px; top:340px;}
+div#mbig div#map div#map_content div#i_10_5 {z-index:11; left:561px; top:320px;}
+div#mbig div#map div#map_content div#i_10_6 {z-index:11; left:597px; top:300px;}
+div#mbig div#map div#map_content div#i_10_7 {z-index:11; left:633px; top:280px;}
+div#mbig div#map div#map_content div#i_10_8 {z-index:11; left:669px; top:260px;}
+div#mbig div#map div#map_content div#i_10_9 {z-index:11; left:705px; top:240px;}
+div#mbig div#map div#map_content div#i_10_10 {z-index:11; left:741px; top:220px;}
+div#mbig div#map div#map_content div#i_10_11 {z-index:12; left:777px; top:200px;}
+div#mbig div#map div#map_content div#i_10_12 {z-index:13; left:813px; top:180px;}
+div#mbig div#map div#map_content div#i_11_0 {z-index:12; left:418px; top:440px;}
+div#mbig div#map div#map_content div#i_11_1 {z-index:12; left:454px; top:420px;}
+div#mbig div#map div#map_content div#i_11_2 {z-index:12; left:490px; top:400px;}
+div#mbig div#map div#map_content div#i_11_3 {z-index:12; left:526px; top:380px;}
+div#mbig div#map div#map_content div#i_11_4 {z-index:12; left:562px; top:360px;}
+div#mbig div#map div#map_content div#i_11_5 {z-index:12; left:598px; top:340px;}
+div#mbig div#map div#map_content div#i_11_6 {z-index:12; left:634px; top:320px;}
+div#mbig div#map div#map_content div#i_11_7 {z-index:12; left:670px; top:300px;}
+div#mbig div#map div#map_content div#i_11_8 {z-index:12; left:706px; top:280px;}
+div#mbig div#map div#map_content div#i_11_9 {z-index:12; left:742px; top:260px;}
+div#mbig div#map div#map_content div#i_11_10 {z-index:12; left:778px; top:240px;}
+div#mbig div#map div#map_content div#i_11_11 {z-index:12; left:814px; top:220px;}
+div#mbig div#map div#map_content div#i_11_12 {z-index:13; left:850px; top:200px;}
+div#mbig div#map div#map_content div#i_12_0 {z-index:13; left:455px; top:460px;}
+div#mbig div#map div#map_content div#i_12_1 {z-index:13; left:491px; top:440px;}
+div#mbig div#map div#map_content div#i_12_2 {z-index:13; left:527px; top:420px;}
+div#mbig div#map div#map_content div#i_12_3 {z-index:13; left:563px; top:400px;}
+div#mbig div#map div#map_content div#i_12_4 {z-index:13; left:599px; top:380px;}
+div#mbig div#map div#map_content div#i_12_5 {z-index:13; left:635px; top:360px;}
+div#mbig div#map div#map_content div#i_12_6 {z-index:13; left:671px; top:340px;}
+div#mbig div#map div#map_content div#i_12_7 {z-index:13; left:707px; top:320px;}
+div#mbig div#map div#map_content div#i_12_8 {z-index:13; left:743px; top:300px;}
+div#mbig div#map div#map_content div#i_12_9 {z-index:13; left:779px; top:280px;}
+div#mbig div#map div#map_content div#i_12_10 {z-index:13; left:815px; top:260px;}
+div#mbig div#map div#map_content div#i_12_11 {z-index:13; left:851px; top:240px;}
+div#mbig div#map div#map_content div#i_12_12 {z-index:13; left:887px; top:220px;}
+
+/* rulers - small map */
+div.map div#map div#map_rulers {width:540px; height:316px; left:5px; top:34px; z-index:30;}
+div.map div#map div#map_rulers #mx0 {left:9px; top:172px;}
+div.map div#map div#map_rulers #mx1 {left:45px; top:192px;}
+div.map div#map div#map_rulers #mx2 {left:81px; top:212px;}
+div.map div#map div#map_rulers #mx3 {left:117px; top:232px;}
+div.map div#map div#map_rulers #mx4 {left:153px; top:252px;}
+div.map div#map div#map_rulers #mx5 {left:189px; top:272px;}
+div.map div#map div#map_rulers #mx6 {left:225px; top:292px;}
+div.map div#map div#map_rulers #my0 {left:9px; top:128px;}
+div.map div#map div#map_rulers #my1 {left:45px; top:108px;}
+div.map div#map div#map_rulers #my2 {left:81px; top:88px;}
+div.map div#map div#map_rulers #my3 {left:117px; top:68px;}
+div.map div#map div#map_rulers #my4 {left:153px; top:48px;}
+div.map div#map div#map_rulers #my5 {left:189px; top:28px;}
+div.map div#map div#map_rulers #my6 {left:225px; top:8px;}
+
+/* rulers - big map */
+div#mbig div#map div#map_rulers {width:971px; height:550px; top:0px; left:0px; z-index:10;}
+div#mbig div#map div#map_rulers div#mx0 {left:4px; top:288px;}
+div#mbig div#map div#map_rulers div#mx1 {left:40px; top:308px;}
+div#mbig div#map div#map_rulers div#mx2 {left:76px; top:328px;}
+div#mbig div#map div#map_rulers div#mx3 {left:112px; top:348px;}
+div#mbig div#map div#map_rulers div#mx4 {left:148px; top:368px;}
+div#mbig div#map div#map_rulers div#mx5 {left:184px; top:388px;}
+div#mbig div#map div#map_rulers div#mx6 {left:220px; top:408px;}
+div#mbig div#map div#map_rulers div#mx7 {left:256px; top:428px;}
+div#mbig div#map div#map_rulers div#mx8 {left:292px; top:448px;}
+div#mbig div#map div#map_rulers div#mx9 {left:328px; top:469px;}
+div#mbig div#map div#map_rulers div#mx10 {left:364px; top:489px;}
+div#mbig div#map div#map_rulers div#mx11 {left:400px; top:509px;}
+div#mbig div#map div#map_rulers div#mx12 {left:436px; top:529px;}
+div#mbig div#map div#map_rulers div#my0 {left:4px; top:244px;}
+div#mbig div#map div#map_rulers div#my1 {left:40px; top:224px;}
+div#mbig div#map div#map_rulers div#my2 {left:76px; top:204px;}
+div#mbig div#map div#map_rulers div#my3 {left:112px; top:184px;}
+div#mbig div#map div#map_rulers div#my4 {left:148px; top:164px;}
+div#mbig div#map div#map_rulers div#my5 {left:184px; top:144px;}
+div#mbig div#map div#map_rulers div#my6 {left:220px; top:124px;}
+div#mbig div#map div#map_rulers div#my7 {left:256px; top:104px;}
+div#mbig div#map div#map_rulers div#my8 {left:292px; top:84px;}
+div#mbig div#map div#map_rulers div#my9 {left:328px; top:64px;}
+div#mbig div#map div#map_rulers div#my10 {left:364px; top:43px;}
+div#mbig div#map div#map_rulers div#my11 {left:400px; top:23px;}
+div#mbig div#map div#map_rulers div#my12 {left:436px; top:3px;}
+div#mbig div#map div#map_rulers div#mapa {width:960px; height:548px;}
+
+/* detailed map */
+div.map h1 div {float:left;}
+div.map div#dmain {position:relative; top:-7px; left:25px; z-index:100; margin-bottom:-16px;}
+div.map img#detailed_map {float:left; position:relative; left:15px; margin-bottom:15px;}
+
+div.map div#map_details {float:right; margin-top:25px; margin-right:3px;}
+div.map div#map_details table {margin-bottom:15px;}
+div.map table#options {clear:both; margin:0px 25px;}
+
+/* raid favorites */
+div.map table#raidFavs {margin:0px auto;}
+
+/* raid details */
+div.map table#raidDetails {margin:25px auto 0px;}
+
+/* ------------------- Player ------------------- */
+/* ---------------------------------------------- */
+div.player table {margin-top:25px;}
+div.player table#profile{margin-top:0px;}
+div.player table#edit {margin-top:0px;}
+div.player table#links {margin-top:0px;}
+div.player table#change_pass {margin-top:0px;}
+div.player table#gpack {margin-top:0px;}
+
+/* gpack popup */
+div.player div#gpack_popup {width:442px; height:290px; padding:30px; position:absolute; z-index:80; top:80px; border:0px solid #000000;}
+div.player div#gpack_popup img.logo {float:left; margin-right:20px;}
+div.player div#gpack_popup ul {margin-top:20px; margin-left:0px; padding-left:25px;}
+div.player div#gpack_popup div.btn {position:absolute; bottom:20px; width:442px; text-align:center;}
+
+/* gpack activate */
+div.player div#gpack_popup div#gpack_activate {display:none;}
+div.player div#gpack_popup div#gpack_activate img#preview {margin:10px 0px;}
+div.player p.ie_notice {padding:6px; border:1px dashed #C0C0C0;}
+
+/* ------------------- Alliance ------------------- */
+/* ------------------------------------------------ */
+div.alliance table#member {margin-top:25px;}
+div.alliance table#rights {margin-top:10px;}
+div.alliance table#medals {margin-top:25px;}
+div.alliance table#own {margin-top:25px;}
+
+/* chat */
+div.alliance table#chat_input {background-color:white;}
+div.alliance div#rooms img.del {position:relative; top:3px;}
+div.alliance span.roomselector {float:left; width:140px; height:17px; padding:3px; border:1px solid #C0C0C0; background-color:#FFF;}
+div.alliance span.roomselectorActive {float:left; width:140px; height:17px; padding:3px; border:1px solid #71D000; background-color:#F0FFF0;}
+div.alliance div.chatHeader {border: 1px solid #C0C0C0; width:496px; padding:2px; height:16px; background-color: #FFFFFF; text-align:center;}
+
+/* diplomacy */
+div.alliance table.dipl, div.alliance div#box {float:left;}
+div.alliance table.infos {float:right;}
+div.alliance table#own {margin-top:25px;}
+div.alliance table#foreign {margin-top:10px;}
+div.alliance table#existing {margin-top:10px;}
+div.alliance table#tip {margin-top:25px;}
+
+/* submenu attacs */
+div.alliance div#submenu {position:absolute; right:29px; top:104px;}
+div.alliance div#submenu img {float:right; margin-left:5px;}
+
+/* ------------------- Alliance Forum ------------------- */
+/* ------------------------------------------------------ */
+/* general */
+div.forum a.mad {position:relative; left:-15px; top:50px; margin-left:50%;}
+div.forum img.switch_admin {margin-left:5px;}
+
+/* forum/topic/post overview */
+div.forum h4 {margin-top:0px; margin-right:0px; margin-bottom:15px; margin-left:5px;}
+div.forum table#public, div.forum table#confederation, div.forum table#alliance, div.forum table#closed {margin-top:10px;}
+
+/* new/edit forum */
+div.forum table#conf_list, div.forum table#ally_list, div.forum table#user_list, div.forum table#non_conf_list, div.forum table#open_user {margin-top:15px;}
+
+/* ------------------- Statistics ------------------- */
+/* -------------------------------------------------- */
+/* general */
+div.statistics table {margin-top:5px;}
+
+/* submenu */
+div.statistics div#submenu {position:absolute; right:29px; top:107px;}
+div.statistics div#submenu img {float:right; margin-left:5px;}
+
+/* top10 */
+div.statistics table.top10 {margin-top:10px; margin-bottom:5px;}
+
+/* plus */
+div.statistics div.graph {padding-top:20px; padding-left:60px; width:430px; height:220px;}
+div.statistics div.legende {border:solid black 1px; background-color:#ebebeb; padding:3px 5px; float:left; line-height:17px;}
+div.statistics div.legende div.box {width:9px; height:9px; font-size:0px; border:solid 1px black; float:left; margin:4px 4px 0px;}
+
+/* ------------------- Reports ------------------- */
+/* ----------------------------------------------- */
+/* read report - content */
+div.reports td.report_content table {margin-bottom:15px;}
+
+/* ------------------- Messages ------------------- */
+/* ------------------------------------------------ */
+/* general */
+div.messages div.msg_head {width:440px; height:41px;}
+div.messages div.msg_content {width:440px; padding-top:3px; position:relative;}
+div.messages div.msg_content img#label {float:left; margin-left:12px;}
+div.messages div.msg_content div#heading {float:left; padding-left:8px;}
+div.messages div.msg_content div#heading * {padding:0px; margin:0px; height:19px;}
+div.messages div.msg_content div.line {width:440px; height:30px;}
+div.messages div.msg_content p.btn {margin:7px 0px 0px; text-align: center; }
+div.messages div.msg_foot {width:440px; height:18px;}
+
+/* read message*/
+div.messages div#read_content div#heading div {width:250px;}
+div.messages div#read_content div#time {float:right; padding-right:12px; margin-top:2px;}
+div.messages div#read_content div#time div {padding:0px; margin:0px; height:19px; text-align:right;}
+div.messages div.message {width:412px; min-height:256px; border:none; padding:0px 0px 20px; margin-left:12px; overflow-x:auto; overflow-y:hidden;  line-height:16px;}
+	
+/* write message */
+div.messages #write_content div#heading input {border:none; width:267px;}
+div.messages #write_content a#adbook {width:48px; height:29px; float:right; display:block; margin:7px 12px 0px; }
+div.messages #write_content textarea {width:412px; height:258px; border:none; padding:0px; margin-left:12px; line-height:16px;}
+
+/* adress book */
+div.messages div#adressbook {width:405px; height:273px; position:absolute; left:1px; bottom:-9px; z-index:80; text-align:center; padding:15px;}
+div.messages div#adressbook img#close {position:absolute; width:20px; height:20px; z-index:81; border:0px solid #000000; left:404px; top:9px;}
+div.messages div#adressbook span.enough {text-align:center; margin-top:6px;}
+div.messages table#friendlist {margin-top:5px;}
+	
+/* notice block */
+div.messages div#block {width:430px; height:419px; position:relative; margin:0px auto;}
+div.messages div#block textarea {width:265px; height:256px; position:absolute; top:40px; left:80px; border:none; padding:0px; line-height:16px;}
+div.messages div#block p.btn {position:relative; top:305px;}
+
+/* ------------------- Buildings ---------------------- */
+/* ---------------------------------------------------- */
+/* general */
+div#build p.switch {text-align:right;}
+div#build h2 {margin:15px 0px 10px;}
+div#build a.build_logo img {margin-left:5px; position:absolute; right:13px; top:35px;}
+div#build p.build_desc {padding-right:70px;}
+
+/* development/training details */
+div#build table.under_progress {margin-top:15px;}
+
+/* new building */
+div#build.gid0 h1 {margin-bottom:25px;}
+div#build.gid0 h2 {margin-bottom:15px;}
+div#build.gid0 table.new_building {margin-bottom:25px;}
+
+/* main building */
+div#build.gid15 h2 {margin-top:25px;}
+div#build.gid15 select.dropdown {width:200px;}
+div#build.gid15 input#btn_demolish {margin-left:15px; position:relative; top:5px;}
+
+/* rally point */
+div#build a.build_logo img.g16 {top:45px;}
+div#build.gid16 div#textmenu {white-space:nowrap; position:relative;}
+div#build.gid16 div#textmenu a {background-color:#FFFFFF;}
+div#build.gid16 h4 {margin-top:20px;}
+div#build.gid16 table.troop_details {margin-bottom:15px;}
+div#build.gid16 table#raidList {margin-bottom:10px;}
+
+/* marketplace - send ressources */
+div#build.gid17 table.send_res {float:left;}
+div#build.gid17 table.res_target {float:left; margin-left:20px;}
+
+/* marketplace - buy ressources */
+div#build.gid17 table.buy_select {float:left;}
+div#build.gid17 table#ratio_select {margin-left:20px;}
+div#build.gid17 table#bid_select {margin-left:20px;}
+div#build.gid17 table#range {margin-top:20px;}
+
+/* marketplace - npc trading */
+div#build.gid17 p#submitText {margin-top:5px; display:block;}
+div#build.gid17 p#submitButton {margin-top:5px; display:none;}
+
+/* marketplace - traders on their way */
+div#build.gid17 table.traders {margin-bottom:15px;}
+
+/* marketplace - trading routes */
+div#build.gid17 p.info {margin-top:5px;}
+div#build.gid17 p.info img {margin-right:2px;}
+
+/* palace */
+div#build.gid26 table#main {margin-top:15px;}
+
+/* treasury */
+div#build.gid27 table#near {margin-top:20px;}
+
+/* wonder of the world */
+div#build.gid40 p.build_desc {padding-right:200px;}
+div#build.gid40 p.nam {text-align:center;}
+
+/* ------------------- Manual ------------------- */
+/* ---------------------------------------------- */
+body.manual img.troops {position:absolute; right:10px; top:80px;}
+body.manual img.buildings {position:absolute; right:10px; top:170px;}
+body.manual img.navi {position:absolute; z-index:82; left:145px; top:420px}
+
+/* troops */
+body.manual table#troop_info {margin-top:6px; margin-right:0px; margin-bottom:30px; margin-left:2px;}
+body.manual div#t_desc {margin-top:30px;}
+body.manual img#big_unit {position:absolute; left:260px; top:95px;}
+body.manual div#prereqs {margin-top:15px;}
+
+/* buildings */
+body.manual img.building {float:right; margin-top:-40px; margin-right:25px; margin-bottom:10px; margin-left:10px;}
+body.manual img.g16 {margin-top:0px; margin-right:25px; margin-bottom:10px; margin-left:10px;}
+body.manual img.g40 {margin-top:-20px; margin-right:15px; margin-bottom:10px; margin-left:10px;}
+
+/* others */
+body.manual p.medals {text-align:center;}
+
+/* goldclub */
+body.manual ul.goldclub {padding-left:25px; margin-top:0px;}
+
+/* ------------------- Quest ------------------- */
+/* --------------------------------------------- */
+/* taskmaster */
+div#side_info div#anm {border:1px #555 solid; position:absolute; z-index:1000;}
+div#side_info div#qge {padding:4px;}
+div#side_info div#qge img {display:block; cursor:pointer; position:relative;}
+
+/* questpopup */
+div.quest div#qstd {width:415px; position:relative; z-index:10;}
+div.quest div#qstd span#qst_accpt a.qle, div.quest div#qstd span#qst_accept a.qri {display:block;}
+div.quest div#qstd span#qst_accpt a.qle {float:left; text-align:left;}
+div.quest div#qstd span#qst_accpt a.qri {float:right; text-align:right;}
+div.quest div#qstd span.qcoords input {width:60px;}
+div.quest div.rew p.ta_aw {margin:0px 0px 5px;}
+div.quest div#qstd input.qb1 {float:left; margin:0px 12px;}
+div.quest div#qstd input.qb2 {float:right; margin:0px 12px;}
+
+/* ------------------- Send troops ------------------- */
+/* --------------------------------------------------- */
+div.a2b p.btn {text-align:left;}
+
+/* Slots */
+div.a2b .slots {margin-top: 5px; margin-bottom: 10px;}
+
+/* select */
+div.a2b table#troops {margin-top:5px;}
+div.a2b table#coords {margin-top:25px; margin-right:0px; margin-bottom:10px; margin-left:5px;}
+
+/* confirm */
+div.a2b table.troop_details {margin:15px 0px;}
+
+/* ------------------- Cropfinder ------------------ */
+/* ------------------------------------------------- */
+div.cropfinder div.cropfinder_input {margin:15px 0px; padding:5px;}
+div.cropfinder div.cropfinder_input div.row {height:19px; line-height:19px; margin:10px 0px; vertical-align: middle;}
+div.cropfinder div.cropfinder_input div.row span.cropfinder_head {width:250px; display:block; float:left;}
+div.cropfinder div.cropfinder_input div.row input.text {margin:0px 5px; width:50px;}
+div.cropfinder div.cropfinder_input div.row input.radio {position:relative; top:1px; margin-right:1px;}
+body.presto div.cropfinder div.cropfinder_input div.row input.radio {top:0px;}
+body.ie6 div.cropfinder div.cropfinder_input div.row input.radio, body.ie7 div.cropfinder div.cropfinder_input div.row input.radio {top:-2px;}
+div.cropfinder div.cropfinder_input div.row input.check {position:relative; top:2px;}
+div.cropfinder div.cropfinder_input p.btn {margin-top:20px; text-align:left;}
+
+
+/* ------------------- Plus ------------------ */
+/* ------------------------------------------- */
+/* language specific */
+div.plus table.lang_ltr {direction:ltr;}
+div.plus table.lang_rtl {direction:rtl;}
+
+/* general */
+div.plus .none {text-align:center;}
+div.plus p.btn {text-align:left;}
+div.plus img.gold {margin-right:2px;}
+
+/* product dropdown */
+div.plus p#product_selection {text-align:right; margin:2px 0px;}
+div.plus p#product_selection select.dropdown {padding:2px 3px;}
+
+/* orders */
+div.plus p#orders_link {text-align:right; margin:2px 0px;}
+
+/* products */
+div.plus div#products {width:512px; margin-left:-6px;}
+div.plus div#products table.product {margin:10px 6px 5px;}
+body.ie6 div.plus div#products table.product {margin:10px 5px 5px;}
+div.plus div#products table.lang_ltr {float:left;}
+div.plus div#products table.lang_rtl {float:right;}
+
+/* plus info */
+div.plus p#plus_info {padding-top:30px; text-align:center;}
+
+/* payment options */
+div.plus table.rate_details {margin-top:10px; margin-bottom:25px;}
+
+/* open orders */
+div.plus table#open_orders {margin-top:10px;}
+
+/* gold features */
+div.plus table#gold_features {margin-top:25px;}
+
+/* functions */
+div.plus table.plusFunctions {margin-bottom:25px;}
+
+/* ------------------- War simulator ------------------- */
+/* ----------------------------------------------------- */
+/* tribe select */ 
+div.warsim table#select {margin-top:10px;}
+
+/* troop form */
+div.warsim table#attacker {float:left;}
+div.warsim table#defender {float:right;}
+div.warsim table.fill_in {margin-bottom:15px;}
+
+/* results */
+div.warsim table.results {margin-top:15px;}
+
+/* ------------------- Banned Users ------------------- */
+/* ---------------------------------------------------- */
+div.banned_cn table {margin-bottom:15px; line-height:16px;}
+div.banned_cn table th, div.banned_cn table td {padding:2px 3px;}
+div.banned_cn table td {text-align:center;}
+div.banned_cn table .ra {text-align:right; padding-right:7px; width:5%; white-space:nowrap;}
+div.banned_cn table .pla {text-align:left; padding-left:7px;}
+div.banned_cn table .rea, div.banned_cn table .dur, div.banned_cn table .al {width:25%;}
+div.banned_cn .no_info {color:#C0C0C0;}
+
+/* ------------------- Medal description ------------------- */
+/* --------------------------------------------------------- */
+#medal_mouseover {width:250px; position:absolute; z-index:999; border:1px solid #BBBBBB; padding:2px 5px;
+background-color:#F5F5F5;}
+#medal_mouseover table {background:none;}
+#medal_mouseover table th, #medal_mouseover table td {background:none;}
+#medal_mouseover table th {width:50px; padding-right:10px;}
+
+
+
+/* ------------------------------------------------------------- ALT -------------------------------------*/
+/* -------------------------------------------------------------------------------------------------------*/
+
+
+/* ------------------- Format ------------------- */
+/* ---------------------------------------------- */
+.left {text-align: left;}
+.right {text-align: right;}
+.center {text-align: center;}
+.middle {vertical-align: middle;}
+.nbr {white-space:nowrap;}
+
+input.disable {background-color: #EEE; border-color: #AAA;}
+
+
+
+/* fontsize */
+.f16 {font-size:16pt;}
+.f135 {font-size:13.5pt;}
+.f10 {font-size:10pt;}
+.f9 {font-size:9pt; line-height:140%; font-weight:normal;}
+.f8 {font-size:8pt;}
+.f75 {font-size:7.5pt;}
+.f7 {font-size:7pt;}
+.f6 {font-size:6pt;}
+
+/* bold/thin font */
+.b {font-weight:bold}
+.t {font-weight:normal;}
+
+/* color for errors in login/signup */
+.e {color:#FF8000;}
+
+/* links colors */
+.c {color:#C0C0C0;}
+.c0 {color:#000000;}
+.c1 {color:#71D000;}
+.c2 {color:#FF8000;}
+.c3 {color:#228B22;}
+.c4 {color:#F2C700;}
+.c5 {color:#FF0000;}
+.c6 {color:#B500A3;}
+
+/* table border */
+.dashed {border:1px dashed #C0C0C0; border-collapse:separate;}
+
+
+/* Msgboxen */
+
+#lmid3 .nb {position:absolute; width:200px; z-index:5; left:580px; top:63px; background-color:#fff;}
+
+#igm {border:0px; font-family: Verdana, Arial, Helvetica, sans-serif;}
+
+input.std {font-weight:bold; font-size:8pt; height:14pt;} /* Berichte, Nachrichten verschieben */
+
+.old_p1 {border-style:dashed; border-width:1px; border-color:#C0C0C0; padding:6px;}
+.p2 {border-style:dashed; border-width:1px; border-color:#C0C0C0; padding:3px;}
+
+/* Rahmenfarbe der Tabelle */
+.tbg {background-color: #C0C0C0; width:100%; text-align:center;}
+/* Zellenfarbe der Tabelle */
+table.tbg tr {background-color: #FFFFFF;}
+/* Hintergrundbild f&uuml;r Tabellenkopf  */
+.rbg {background-color: #FFFFFF; font-weight:bold; background-image: url(../img/a/c2.gif);}
+table.tbg tr.cbg1 td, td.cbg1 {background-color:#F5F5F5;}
+td.cbg2 {background-color:#71D000;}
+
+/* Laenderflaggen */
+.dflags1 {position:relative; float:right; text-align:center; font-size:6pt; color:#FFF; padding-left:1px; padding-right:1px; padding-top:1px;}
+.dflags2 {padding-top:1px;}
+
+/* RTL/LTR-Korrektur */
+.ddb {float:left;}
+
+/* Profil */
+.desc2div { overflow:hidden;width:235px;}
+div.activation_time { text-align:center; padding-top:5px; padding-left:5px; }

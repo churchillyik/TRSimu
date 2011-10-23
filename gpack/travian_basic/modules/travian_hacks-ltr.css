@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+
+/*
+ *------------------------------------------------------------------------------
+ * TRAVIAN_HACKS is used to define define quick fixes for reading direction
+ * left to right (ltr) or right to left (rtl).
+ *------------------------------------------------------------------------------
+ */ /* styles fix for old payment layouts */
+div.plus div#payment table td {
+	border: none;
+}
+
+div.plus div#payment table table tr.rbg td {
+	font-weight: bold;
+	text-align: center;
+	background-image: url(../img/a/c2.gif);
+	background-repeat: repeat;
+}
+
+div.plus div#payment table {
+	border-collapse: separate;
+}
+
+div.plus div#payment table td {
+	padding: 2px;
+	text-align: center;
+}
+
+div.plus div#payment table tr.s7 td {
+	text-align: left;
+}
+
+/* styles fix for new payment layouts */
+div.plus div#payment table table td.th_bg {
+	background-image: url(../img/a/c2.gif);
+	background-repeat: repeat;
+}
+
+/*
+ * WM-Specials
+ */
+div.wmError {margin-top: 15px;color: #FF8000;}
+div.wmMsg {margin-top: 15px;color: #71D000;}
+table.tippTable {margin: 20px 0;background-color: transparent;}
+div.wmInfo {width: 80%;float: left;}
+img.wmInfo {width: 100px;float: right;display: inline;}
+div#wmContent {margin-top: 40px;}
+div#wmContent input.disabled {cursor: default;height: 20px;background-position: center center;}
+div#side_navi img.wm_logo {background: url(../img/wm/wm99.gif) no-repeat;width:33px;height: 33px;position: absolute;left: 103px;top: -21px;}
+td.wm_getippt {background-color: #e2ffb9;}

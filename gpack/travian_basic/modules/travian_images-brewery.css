@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+/*
+ *------------------------------------------------------------------------------
+ * TRAVIAN_IMAGES-BREWERY is used to define the image of the brewery.
+ *
+ * Contains:
+ * background-image
+ *------------------------------------------------------------------------------
+ */	   
+
+img.g35 {background-image:url(../img/g/g35.gif);}
+img.g35b {background-image:url(../img/g/g35b.gif);}
