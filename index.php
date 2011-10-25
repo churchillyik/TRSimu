@@ -60,11 +60,12 @@ include("GameEngine/Account.php");
 					?>
 				</td>
 				</tr>
-				<!--<tr>
-					<th><?php //echo ACTIVE_PLAYERS; ?></th>
+				<!---->
+				<tr>
+					<th><?php echo ACTIVE_PLAYERS; ?></th>
 					<td>0
 					</td></tr>
-				<tr>-->
+				<tr>
 				<th><?php echo ONLINE_PLAYERS; ?></th>
 				<td>
 				<?php
@@ -98,19 +99,19 @@ include("GameEngine/Account.php");
 		<div class="news">
 			<h4><center></center></h4>
 			<p class="date"></p>
-			<br></br>
+			<p><p>
 			<center>
 			<b>You are using TravianX for free at the moment.<br /> Lets keep it that way by donating small anmount!</b>
-			<br />
-			<br />
+			<p><p>
 			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 				<input type="hidden" name="cmd" value="_s-xclick">
 				<input type="hidden" name="hosted_button_id" value="B2UG5JHKGMQUE">
-				<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
+				<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" 
+				name="submit" alt="PayPal - The safer, easier way to pay online.">
 				<img alt="" border="0" src="https://www.paypalobjects.com/nl_NL/i/scr/pixel.gif" width="1" height="1">
 			</form>
 			</center>
-			<br></br></p>
+			<p><p>
 		</div>
 	</div>
 	</div>
@@ -118,7 +119,9 @@ include("GameEngine/Account.php");
 	</div>
 	<div id="footer">
 	<div class="container">
+		<!--
 		<a href="#" class="logo"><img src="img/x.gif" alt="<?php echo SERVER_NAME; ?> Games" class="logo_traviangames" /></a>
+		-->
 		<li class="copyright">&copy; 2010 - 2011 <?php echo TRAVIAN_COPYRIGHT; ?> </li>
 	</div>
 	</div>
@@ -158,8 +161,10 @@ include("GameEngine/Account.php");
 			<img id="screen_view" src="img/x.gif" alt="Screenshot"/>
 			<div id="screen_desc"></div>
 		</div>
+		<!--
 		<a href="#prev" class="navi prev" onclick="galarie.showPrev();"><img class="dynamic_img" src="img/x.gif" alt="previous"/></a>
 		<a href="#next" class="navi next" onclick="galarie.showNext();"><img class="dynamic_img" src="img/x.gif" alt="next"/></a>
+		-->
 		<div class="footer"></div>
 	</div>
 	</div>
@@ -203,7 +208,7 @@ include("GameEngine/Account.php");
 	}
 	];
 
-	var galarie = new Fx.Screenshots('screen_view', 'screen_hl', 'screen_desc', screenshots);
+	//var galarie = new Fx.Screenshots('screen_view', 'screen_hl', 'screen_desc', screenshots);
 </script>
 
 </body>
