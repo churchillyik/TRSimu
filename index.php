@@ -6,11 +6,13 @@ include("GameEngine/Account.php");
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Powered by: ÕÆÁª¿Æ¼¼ - <?php echo SERVER_NAME; ?></title>
+	<title>æŒè”ç§‘æŠ€ <?php echo SERVER_NAME; ?></title>
+	<link REL="shortcut icon" HREF="favicon.ico"/>
 	<link rel="stylesheet" type="text/css" href="gpack/travian/main.css"/>
 	<link rel="stylesheet" type="text/css" href="gpack/travian/flaggs.css"/>
 	<meta name="content-language" content="en"/>
 	<meta http-equiv="imagetoolbar" content="no"/>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<script src="mt-core.js" type="text/javascript"></script>
 	<script src="new.js" type="text/javascript"></script>
 	<style type="text/css" media="screen"></style>
@@ -30,7 +32,7 @@ include("GameEngine/Account.php");
 		<table class="menu">
 			<tr>
 				<td><a href="anleitung.php"><span><?php echo MANUAL; ?></span></a></td>
-				<td><a href="http://forum.ragezone.com/f582/" target="_blank"><span><?php echo FORUM; ?></span></a></td>
+				<td><a href="#" target="_blank"><span><?php echo FORUM; ?></span></a></td>
 				<td><a href="anmelden.php"><span><?php echo REG; ?></span></a></td>
 				<td><a href="login.php"><span><?php echo LOGIN; ?></span></a></td>
 			</tr>
@@ -95,6 +97,7 @@ include("GameEngine/Account.php");
 		</div>
 	</div>
 	<div id="newsbox">
+		<!--
 		<h2><center>Donate for this script:</center></h2>
 		<div class="news">
 			<h4><center></center></h4>
@@ -113,6 +116,7 @@ include("GameEngine/Account.php");
 			</center>
 			<p><p>
 		</div>
+		-->
 	</div>
 	</div>
 	<div class="clear"></div>

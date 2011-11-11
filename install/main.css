@@ -17,21 +17,21 @@ img {border: 0;}
 #ltop1 {position:relative; width:100%; height:90px; text-align:right;}
 #lleft {width:130px;}
 
-#lmidlc {width:682px;}
+#lmidlc {width:800px;}
 #lleft, #lmid1, #lmidlc {float: left;}
  
-#lmid1 {width:552px;}
+#lmid1 {width:650px;}
 
 #lmid2 div {float: left;}
 #lmid2 div.headline {width: 100%;}
 #lmid2 div.lbox {width: 280px; padding-left: 29px; padding-bottom: 15px;}
-#lmid2 div.rbox {width: 196px; padding-left: 10px; padding-bottom: 15px;}
-#lmid2 div.wholebox {width: 494px; padding-left: 29px; padding-bottom: 15px;}
+#lmid2 div.rbox {width: 280px; padding-left: 29px; padding-bottom: 15px;}
+#lmid2 div.wholebox {width: 600px; padding-left: 29px; padding-bottom: 15px;}
 #lmid2 div.wholebox div {float:none;}
 
 div.lbox ul, div.rbox ul {margin: 0 0 0 15px; padding: 0 15px 0 0;}
 
-#lmenu {width: 116px; margin-bottom: 10px; line-height: 14px;}
+#lmenu {width: 130px; margin-bottom: 10px; line-height: 14px;}
 #lmenu a.m_forum, #lmenu a.m_impressum {margin-top: 23px;}
 
 /* Font Settings, Colors and Backgrounds

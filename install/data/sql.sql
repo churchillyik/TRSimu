@@ -17,13 +17,13 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Tabelstructuur voor tabel `%PREFIX%destroy_log`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%destroy_log` (
+DROP TABLE IF EXISTS `%PREFIX%destroy_log`;
+CREATE TABLE `%PREFIX%destroy_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `wid` int(10) unsigned NOT NULL,
   `log` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Gegevens worden uitgevoerd voor tabel `%PREFIX%destroy_log`
@@ -37,8 +37,8 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%destroy_log` (
 --
 -- Tabelstructuur voor tabel `%PREFIX%abdata`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%abdata` (
+DROP TABLE IF EXISTS `%PREFIX%abdata`;
+CREATE TABLE `%PREFIX%abdata` (
   `vref` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `a1` tinyint(2) unsigned NOT NULL DEFAULT '0',
   `a2` tinyint(2) unsigned NOT NULL DEFAULT '0',
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%abdata` (
   `b7` tinyint(2) unsigned NOT NULL DEFAULT '0',
   `b8` tinyint(2) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`vref`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Gegevens worden uitgevoerd voor tabel `%PREFIX%abdata`
@@ -69,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%abdata` (
 --
 -- Tabelstructuur voor tabel `%PREFIX%active`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%active` (
+DROP TABLE IF EXISTS `%PREFIX%active`;
+CREATE TABLE `%PREFIX%active` (
   `username` varchar(15) NOT NULL,
   `timestamp` int(11) unsigned NOT NULL,
   PRIMARY KEY (`username`)
@@ -86,8 +86,8 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%active` (
 --
 -- Tabelstructuur voor tabel `%PREFIX%alidata`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%alidata` (
+DROP TABLE IF EXISTS `%PREFIX%alidata`;
+CREATE TABLE `%PREFIX%alidata` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(25) NOT NULL,
   `tag` varchar(8) NOT NULL,
@@ -111,8 +111,8 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%alidata` (
 --
 -- Tabelstructuur voor tabel `%PREFIX%ali_invite`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%ali_invite` (
+DROP TABLE IF EXISTS `%PREFIX%ali_invite`;
+CREATE TABLE `%PREFIX%ali_invite` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(10) unsigned NOT NULL,
   `alliance` int(10) unsigned NOT NULL,
@@ -132,8 +132,8 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%ali_invite` (
 --
 -- Tabelstructuur voor tabel `%PREFIX%ali_log`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%ali_log` (
+DROP TABLE IF EXISTS `%PREFIX%ali_log`;
+CREATE TABLE `%PREFIX%ali_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `aid` int(10) NOT NULL,
   `comment` text NOT NULL,
@@ -151,8 +151,8 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%ali_log` (
 --
 -- Tabelstructuur voor tabel `%PREFIX%ali_permission`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%ali_permission` (
+DROP TABLE IF EXISTS `%PREFIX%ali_permission`;
+CREATE TABLE `%PREFIX%ali_permission` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(10) unsigned NOT NULL,
   `alliance` int(10) unsigned NOT NULL,
@@ -178,8 +178,8 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%ali_permission` (
 --
 -- Tabelstructuur voor tabel `%PREFIX%attacks`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%attacks` (
+DROP TABLE IF EXISTS `%PREFIX%attacks`;
+CREATE TABLE `%PREFIX%attacks` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `vref` int(11) unsigned NOT NULL,
   `t1` int(11) unsigned NOT NULL,
@@ -200,9 +200,8 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%attacks` (
 --
 -- Gegevens worden uitgevoerd voor tabel `%PREFIX%attacks`
 --
-
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%banlist` (
+DROP TABLE IF EXISTS `%PREFIX%banlist`;
+CREATE TABLE `%PREFIX%banlist` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(10) NOT NULL,
   `name` varchar(30) NOT NULL,
@@ -219,8 +218,8 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%banlist` (
 --
 -- Tabelstructuur voor tabel `%PREFIX%bdata`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%bdata` (
+DROP TABLE IF EXISTS `%PREFIX%bdata`;
+CREATE TABLE `%PREFIX%bdata` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `wid` int(10) unsigned NOT NULL,
   `field` tinyint(2) unsigned NOT NULL,
@@ -240,8 +239,8 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%bdata` (
 --
 -- Tabelstructuur voor tabel `%PREFIX%build_log`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%build_log` (
+DROP TABLE IF EXISTS `%PREFIX%build_log`;
+CREATE TABLE `%PREFIX%build_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `wid` int(10) unsigned NOT NULL,
   `log` text NOT NULL,
@@ -251,8 +250,8 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%build_log` (
 --
 -- Gegevens worden uitgevoerd voor tabel `%PREFIX%build_log`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%chat` (
+DROP TABLE IF EXISTS `%PREFIX%chat`;
+CREATE TABLE `%PREFIX%chat` (
   `id` int(20) unsigned NOT NULL auto_increment,
   `id_user` int(10) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -262,8 +261,10 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%chat` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
+--
+-- Gegevens worden uitgevoerd voor tabel `%PREFIX%demolition`
+--
+DROP TABLE IF EXISTS `%PREFIX%demolition`;
 CREATE TABLE `%PREFIX%demolition` (
 `vref` int(10) unsigned NOT NULL auto_increment,
 `buildnumber` int(10) unsigned NOT NULL default '0',
@@ -275,44 +276,30 @@ PRIMARY KEY (`vref`)
 --
 -- Tabelstructuur voor tabel `%PREFIX%deleting`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%deleting` (
+DROP TABLE IF EXISTS `%PREFIX%deleting`;
+CREATE TABLE `%PREFIX%deleting` (
   `uid` int(10) unsigned NOT NULL,
   `timestamp` int(10) unsigned NOT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%deleting`
---
-
-
--- --------------------------------------------------------
-
---
 -- Tabelstructuur voor tabel `%PREFIX%diplomacy`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%diplomacy` (
+DROP TABLE IF EXISTS `%PREFIX%diplomacy`;
+CREATE TABLE `%PREFIX%diplomacy` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `alli1` int(10) unsigned NOT NULL,
   `alli2` int(10) unsigned NOT NULL,
   `type` tinyint(1) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%diplomacy`
---
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%enforcement`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%enforcement` (
+DROP TABLE IF EXISTS `%PREFIX%enforcement`;
+CREATE TABLE `%PREFIX%enforcement` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `u1` int(11) unsigned NOT NULL DEFAULT '0',
   `u2` int(11) unsigned NOT NULL DEFAULT '0',
@@ -369,18 +356,12 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%enforcement` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%enforcement`
---
-
-
--- --------------------------------------------------------
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%fdata`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%fdata` (
+DROP TABLE IF EXISTS `%PREFIX%fdata`;
+CREATE TABLE `%PREFIX%fdata` (
   `vref` int(10) unsigned NOT NULL,
   `f1` tinyint(2) unsigned NOT NULL DEFAULT '0',
   `f1t` tinyint(2) unsigned NOT NULL DEFAULT '0',
@@ -470,7 +451,7 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%fdata` (
 --
 -- Gegevens worden uitgevoerd voor tabel `%PREFIX%fdata`
 --
-
+DROP TABLE IF EXISTS `%PREFIX%forum_cat`;
 CREATE TABLE `%PREFIX%forum_cat` (
   `id` int(11) NOT NULL auto_increment,
   `owner` varchar(255) NOT NULL,
@@ -481,7 +462,7 @@ CREATE TABLE `%PREFIX%forum_cat` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-
+DROP TABLE IF EXISTS `%PREFIX%forum_edit`;
 CREATE TABLE `%PREFIX%forum_edit` (
   `id` int(11) NOT NULL auto_increment,
   `alliance` varchar(255) NOT NULL,
@@ -489,7 +470,7 @@ CREATE TABLE `%PREFIX%forum_edit` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-
+DROP TABLE IF EXISTS `%PREFIX%forum_post`;
 CREATE TABLE `%PREFIX%forum_post` (
   `id` int(11) NOT NULL auto_increment,
   `post` longtext NOT NULL,
@@ -499,7 +480,7 @@ CREATE TABLE `%PREFIX%forum_post` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-
+DROP TABLE IF EXISTS `%PREFIX%forum_topic`;
 CREATE TABLE `%PREFIX%forum_topic` (
   `id` int(11) NOT NULL auto_increment,
   `title` varchar(255) NOT NULL,
@@ -513,27 +494,24 @@ CREATE TABLE `%PREFIX%forum_topic` (
   `close` varchar(255) NOT NULL,
   `stick` varchar(255) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;   
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%gold_fin_log`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%gold_fin_log` (
+DROP TABLE IF EXISTS `%PREFIX%gold_fin_log`;
+CREATE TABLE `%PREFIX%gold_fin_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `wid` int(10) unsigned NOT NULL,
   `log` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Gegevens worden uitgevoerd voor tabel `%PREFIX%gold_fin_log`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%hero` (
+DROP TABLE IF EXISTS `%PREFIX%hero`;
+CREATE TABLE `%PREFIX%hero` (
   `pointgain` text NOT NULL,
   `uid` text NOT NULL,
   `heroname` text NOT NULL,
@@ -549,49 +527,33 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%hero` (
   `pointused` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
 -- Tabelstructuur voor tabel `%PREFIX%illegal_log`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%illegal_log` (
+DROP TABLE IF EXISTS `%PREFIX%illegal_log`;
+CREATE TABLE `%PREFIX%illegal_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user` int(10) unsigned NOT NULL,
   `log` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%illegal_log`
---
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%login_log`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%login_log` (
+DROP TABLE IF EXISTS `%PREFIX%login_log`;
+CREATE TABLE `%PREFIX%login_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(10) unsigned NOT NULL,
   `ip` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%login_log`
---
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%market`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%market` (
+DROP TABLE IF EXISTS `%PREFIX%market`;
+CREATE TABLE `%PREFIX%market` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `vref` int(11) unsigned NOT NULL,
   `gtype` tinyint(1) unsigned NOT NULL,
@@ -603,38 +565,24 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%market` (
   `alliance` int(11) unsigned NOT NULL,
   `merchant` tinyint(2) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%market`
---
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%market_log`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%market_log` (
+DROP TABLE IF EXISTS `%PREFIX%market_log`;
+CREATE TABLE `%PREFIX%market_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `wid` int(10) unsigned NOT NULL,
   `log` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%market_log`
---
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%mdata`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%mdata` (
+DROP TABLE IF EXISTS `%PREFIX%mdata`;
+CREATE TABLE `%PREFIX%mdata` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `target` int(10) unsigned NOT NULL,
   `owner` int(10) unsigned NOT NULL,
@@ -645,20 +593,13 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%mdata` (
   `send` tinyint(1) unsigned NOT NULL,
   `time` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%mdata`
---
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%medal`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%medal` (
+DROP TABLE IF EXISTS `%PREFIX%medal`;
+CREATE TABLE `%PREFIX%medal` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `userid` int(10) unsigned NOT NULL,
   `categorie` int(10) unsigned NOT NULL,
@@ -667,20 +608,13 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%medal` (
   `points` varchar(15) NOT NULL,
   `img` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%medal`
---
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%movement`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%movement` (
+DROP TABLE IF EXISTS `%PREFIX%movement`;
+CREATE TABLE `%PREFIX%movement` (
   `moveid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `sort_type` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `from` int(11) unsigned NOT NULL DEFAULT '0',
@@ -689,20 +623,13 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%movement` (
   `endtime` int(11) unsigned NOT NULL DEFAULT '0',
   `proc` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`moveid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%movement`
---
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%ndata`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%ndata` (
+DROP TABLE IF EXISTS `%PREFIX%ndata`;
+CREATE TABLE `%PREFIX%ndata` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(10) unsigned NOT NULL,
   `topic` text NOT NULL,
@@ -712,63 +639,44 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%ndata` (
   `viewed` tinyint(1) unsigned NOT NULL,
   `archive` tinyint(1) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%ndata`
---
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%odata`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%odata` (
+DROP TABLE IF EXISTS `%PREFIX%odata`;
+CREATE TABLE `%PREFIX%odata` (
   `wref` int(10) unsigned NOT NULL,
   `type` tinyint(2) unsigned NOT NULL,
   `conqured` int(10) unsigned NOT NULL,
   PRIMARY KEY (`wref`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%odata`
---
 
+DROP TABLE IF EXISTS `%PREFIX%online`;
 CREATE TABLE `%PREFIX%online` (
   `name` varchar(32) NOT NULL,
   `time` varchar(32) NOT NULL,
   UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-
--- --------------------------------------------------------
-
 --
 -- Tabelstructuur voor tabel `%PREFIX%research`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%research` (
+DROP TABLE IF EXISTS `%PREFIX%research`;
+CREATE TABLE `%PREFIX%research` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `vref` int(10) unsigned NOT NULL,
   `tech` varchar(3) NOT NULL,
   `timestamp` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%research`
---
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%send`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%send` (
+DROP TABLE IF EXISTS `%PREFIX%send`;
+CREATE TABLE `%PREFIX%send` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `wood` int(11) unsigned NOT NULL,
   `clay` int(11) unsigned NOT NULL,
@@ -776,20 +684,13 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%send` (
   `crop` int(11) unsigned NOT NULL,
   `merchant` tinyint(2) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%send`
---
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%tdata`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%tdata` (
+DROP TABLE IF EXISTS `%PREFIX%tdata`;
+CREATE TABLE `%PREFIX%tdata` (
   `vref` int(10) unsigned NOT NULL,
   `t2` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `t3` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -819,35 +720,21 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%tdata` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%tdata`
---
-
-
--- --------------------------------------------------------
-
---
 -- Tabelstructuur voor tabel `%PREFIX%tech_log`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%tech_log` (
+DROP TABLE IF EXISTS `%PREFIX%tech_log`;
+CREATE TABLE `%PREFIX%tech_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `wid` int(10) unsigned NOT NULL,
   `log` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%tech_log`
---
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%training`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%training` (
+DROP TABLE IF EXISTS `%PREFIX%training`;
+CREATE TABLE `%PREFIX%training` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `vref` int(10) unsigned NOT NULL,
   `unit` tinyint(2) unsigned NOT NULL,
@@ -857,20 +744,13 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%training` (
   `eachtime` int(10) unsigned NOT NULL,
   `commence` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%training`
---
-
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%units`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%units` (
+DROP TABLE IF EXISTS `%PREFIX%units`;
+CREATE TABLE `%PREFIX%units` (
   `vref` int(10) unsigned NOT NULL,
   `u1` int(11) unsigned NOT NULL DEFAULT '0',
   `u2` int(11) unsigned NOT NULL DEFAULT '0',
@@ -926,17 +806,10 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%units` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%units`
---
-
-
--- --------------------------------------------------------
-
---
 -- Tabelstructuur voor tabel `%PREFIX%users`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%users` (
+DROP TABLE IF EXISTS `%PREFIX%users`;
+CREATE TABLE `%PREFIX%users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
@@ -975,18 +848,12 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%users` (
 
 INSERT INTO `%PREFIX%users` (`id`, `username`, `password`, `email`, `tribe`, `access`) VALUES (0, 'Multihunter', '21232f297a57a5a743894a0e4a801fc3', 'multihunter@travianx.mail', 0, 9);
 INSERT INTO `%PREFIX%users` (`id`, `username`, `password`, `email`, `tribe`, `access`) VALUES (1, 'Support', '21232f297a57a5a743894a0e4a801fc3', 'support@travianx.mail', 1, 2);
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%users`
---
-
-
--- --------------------------------------------------------
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%vdata`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%vdata` (
+DROP TABLE IF EXISTS `%PREFIX%vdata`;
+CREATE TABLE `%PREFIX%vdata` (
   `wref` int(10) unsigned NOT NULL,
   `owner` int(10) unsigned NOT NULL,
   `name` varchar(45) NOT NULL,
@@ -1012,17 +879,10 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%vdata` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%vdata`
---
-
-
--- --------------------------------------------------------
-
---
 -- Tabelstructuur voor tabel `%PREFIX%wdata`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%wdata` (
+DROP TABLE IF EXISTS `%PREFIX%wdata`;
+CREATE TABLE `%PREFIX%wdata` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `fieldtype` tinyint(2) unsigned NOT NULL,
   `oasistype` tinyint(2) unsigned NOT NULL,
@@ -1031,21 +891,13 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%wdata` (
   `occupied` tinyint(1) NOT NULL,
   `image` varchar(3) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%wdata`
---
-
--- --------------------------------------------------------
-
-
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%a2b`
 --
-
-CREATE TABLE IF NOT EXISTS `%PREFIX%a2b` (
+DROP TABLE IF EXISTS `%PREFIX%a2b`;
+CREATE TABLE `%PREFIX%a2b` (
   `id` int(255) unsigned NOT NULL AUTO_INCREMENT,
   `ckey` varchar(255) NOT NULL,
   `time_check` int(255) unsigned NOT NULL DEFAULT '0',
@@ -1063,21 +915,12 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%a2b` (
   `u11` int(11) unsigned NOT NULL,
   `type` smallint(1) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%a2b`
---
-
--- --------------------------------------------------------
-
-
-
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%activate`
 --
-
+DROP TABLE IF EXISTS `%PREFIX%activate`;
 CREATE TABLE IF NOT EXISTS `%PREFIX%activate` (
   `id` int(255) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
@@ -1090,10 +933,4 @@ CREATE TABLE IF NOT EXISTS `%PREFIX%activate` (
   `location` text NOT NULL,
   `act2` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Gegevens worden uitgevoerd voor tabel `%PREFIX%a2b`
---
-
--- --------------------------------------------------------
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;

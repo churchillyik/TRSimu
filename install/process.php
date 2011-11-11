@@ -1,36 +1,37 @@
 <?php
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                             TRAVIANX                                             //
-//            Only for advanced users, do not edit if you dont know what are you doing!             //
-//                                Made by: Dzoki & Dixie (TravianX)                                 //
-//                              - TravianX = Travian Clone Project -                                //
-//                                 DO NOT REMOVE COPYRIGHT NOTICE!                                  //
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-if(file_exists("include/constant.php")) {
+if (file_exists("include/constant.php"))
+{
 	include("include/database.php");
 }
-class Process {
-			
-	function Process() {
-		if(isset($_POST['subconst'])) {
-				$this->constForm();
+class Process
+{
+	function Process() 
+	{
+		if (isset($_POST['subconst'])) 
+		{
+			$this->constForm();
 		}
-		else if(isset($_POST['substruc'])) {
-				$this->createStruc();
+		else if (isset($_POST['substruc'])) 
+		{
+			$this->createStruc();
 		}
-		else if(isset($_POST['subwdata'])) {
-				$this->createWdata();
+		else if (isset($_POST['subwdata'])) 
+		{
+			$this->createWdata();
 		}
-		else if(isset($_POST['subacc'])) {
-				$this->createAcc();
+		else if (isset($_POST['subacc'])) 
+		{
+			$this->createAcc();
 		}
-		else{
-          header("Location: index.php");
-       }
+		else
+		{
+			header("Location: index.php");
+		}
 	}
 
-	function constForm() {
+	//	创建全局配置文件
+	function constForm() 
+	{
 		$myFile = "include/constant.php";
 		$fh = fopen($myFile, 'w') or die("<br/><br/><br/>Can't open file: install\include\constant.php");
 		$text = file_get_contents("data/constant_format.tpl");
@@ -83,39 +84,50 @@ class Process {
 		$text = preg_replace("'%ERROR%'", $_POST['error'], $text);
 																				
 		fwrite($fh, $text);
-
-		if(file_exists("include/constant.php")) {
-		header("Location: index.php?s=2");
+		
+		if (file_exists("include/constant.php")) 
+		{
+			header("Location: index.php?s=2");
 		}
-		else {
+		else 
+		{
 			header("Location: index.php?s=1&c=1");
 		}
 		
 		fclose($fh);
 	}
 	
-	function createStruc() {
+	//	创建数据库表
+	function createStruc() 
+	{
 		global $database;
 		$str = file_get_contents("data/sql.sql");
-		$str = preg_replace("'%PREFIX%'",TB_PREFIX,$str);
-		if(DB_TYPE){
+		$str = preg_replace("'%PREFIX%'", TB_PREFIX, $str);
+		if (DB_TYPE)
+		{
 			$result = $database->connection->multi_query($str);
 		}
-		else {
+		else 
+		{
 			$result = $database->mysql_exec_batch($str);
 		}
-		if($result) {
+		
+		if ($result) 
+		{
 			header("Location: index.php?s=3");
 		}
-		else {
+		else 
+		{
+			
 			header("Location: index.php?s=2&c=1");
 		}
 	}
 	
-	function createWdata() {
+	//	创建地图数据
+	function createWdata() 
+	{
 		header("Location: include/wdata.php");
 	}
 };
-
 $process = new Process;
 ?>

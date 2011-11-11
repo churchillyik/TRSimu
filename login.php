@@ -28,7 +28,7 @@ if(!isset($_COOKIE['COOKUSR']))
    	<link href="gpack/travian_basic/lang/en/compact.css?f4b7c" rel="stylesheet" type="text/css" />
    	<link href="gpack/travian_basic/lang/en/lang.css?f4b7c" rel="stylesheet" type="text/css" />
 	<link href="<?php echo GP_LOCATE ?>/travian.css?f4b7c" rel="stylesheet" type="text/css" />
-	<link href="<?php echo GP_LOCATE ?>/lang/en/lang.css" rel="stylesheet" type="text/css" />	
+	<link href="<?php echo GP_LOCATE ?>/lang/en/lang.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="v35 ie ie7" onload="initCounter()">
@@ -94,6 +94,7 @@ if(!isset($_COOKIE['COOKUSR']))
 	</div>
 	<div id="side_info" class="outgame">
 		<?php
+		//	侧边栏的新闻公告
 		if(NEWSBOX1) { include("Templates/News/newsbox1.tpl"); }
 		if(NEWSBOX2) { include("Templates/News/newsbox2.tpl"); }
 		if(NEWSBOX3) { include("Templates/News/newsbox3.tpl"); }
