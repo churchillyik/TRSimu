@@ -1,17 +1,17 @@
 <p class=f9>
-At the beginning you should try to get a good economic basis. In order to do so you have to extend the 18 resource fields (village overview). There are four different types of resource fields: Woodcutter, Clay pit, Iron mine and Cropland. If you click one of them, you will get more information and the option to extend it.
+在游戏开始时，您需要先获得一个好的经济基础，所以你得提升18块资源的等级（在外城页面中）。游戏中总共有4种不同的资源：木材、粘土、铁矿以及粮食。点击某块资源，您将获得更多关于该资源的讯息。
 <br>
 <br>
-Later in the game the buildings in the village become important too. In order to construct a new building you have to click on one of the green ovals. A list with every building that is available will appear.
+接下来，就是内城建筑部分了，您可以点击某一个绿色的空地，然后在建筑列表中选取合适的建筑来建造。
 <br>
 <br>
-Some buildings can only be built if you fulfil the prerequisites which are other buildings.
+有一些建筑是要满足一定的前置条件才可以建造的。
 </p>
 
 <!-- 中心大楼 -->
 <h2>中心大楼</h2>
 <p>
-<img src="img/un/h/gid15.gif" width=166 height=150 border=0 alt="Main Building" title="Main Building" align="left" />
+<img src="img/un/h/gid15.gif" width=166 height=150 border=0 alt="中心大楼" title="中心大楼" align="left" />
 这是你村庄内总建筑师的住所。中心大楼的等级越高，其他建筑物及资源的开发速度越快。
 <br>
 <br>
@@ -22,11 +22,11 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />70|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">40|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">60|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">20|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">2|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />70|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">40|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">60|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">20|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">2|
 <img src=img/un/h/clock.gif width=18 height=12>0:33:20
 <br>
 <br>
@@ -38,17 +38,17 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <!-- 仓库 -->
 <h2>仓库</h2>
 <p>
-<img src="img/un/h/gid10.gif" width=166 height=150 border=0 alt="Warehouse" title="Warehouse" align="right" />
+<img src="img/un/h/gid10.gif" width=166 height=150 border=0 alt="仓库" title="仓库" align="right" />
 仓库用来存放你村庄的资源，包括木材、泥土、铁块。仓库等级越高，他所能存放的资源也就越多。当仓库到达最高等级20的时候，如果还有需要，可以再加建一间新的仓库。
 <br>
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />130|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">160|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">90|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">40|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">1|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />130|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">160|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">90|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">40|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">1|
 <img src=img/un/h/clock.gif width=18 height=12>0:33:20
 <br>
 <br>
@@ -60,17 +60,17 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <!-- 粮仓 -->
 <h2>粮仓</h2>
 <p>
-<img src="img/un/h/gid11.gif" width=166 height=150 border=0 alt="Granary" title="Granary" align="right" />
+<img src="img/un/h/gid11.gif" width=166 height=150 border=0 alt="粮仓" title="粮仓" align="right" />
 粮仓用来存放你所生产的粮食。粮仓的等级越高，它可以存放的粮食便会越多。当粮仓到达最高等级20的时候，若还有需要，可以再加建一间新的粮仓。
 <br>
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />80|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">100|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">70|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">20|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">1|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />80|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">100|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">70|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">20|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">1|
 <img src=img/un/h/clock.gif width=18 height=12>0:26:40
 <br>
 <br>
@@ -80,9 +80,9 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 </p>
 
 <!-- 地洞 -->
-<h2>Cranny</h2>
+<h2>地洞</h2>
 <p>
-<img src="img/un/h/gid23.gif" width=166 height=150 border=0 alt="Cranny" title="Cranny" align="left" />
+<img src="img/un/h/gid23.gif" width=166 height=150 border=0 alt="地洞" title="地洞" align="left" />
 当有敌人来攻击时，山洞可以帮你隐藏部分资源以免被掠走。 
 <br>
 <br>
@@ -95,11 +95,11 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />40|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">50|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">30|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">10|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">0|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />40|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">50|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">30|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">10|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">0|
 <img src=img/un/h/clock.gif width=18 height=12>0:12:30
 <br>
 <br>
@@ -111,17 +111,17 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <!-- 大使馆 -->
 <h2>大使馆</h2>
 <p>
-<img src="img/un/h/gid18.gif" width=166 height=150 border=0 alt="Embassy" title="Embassy" align="right" />
+<img src="img/un/h/gid18.gif" width=166 height=150 border=0 alt="大使馆" title="大使馆" align="right" />
 大使馆是外交官的所在地。当你自己的大使馆有等级1时，你可以加入其他联盟，等级3时，你可以自己建立一个联盟。
 <br>
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />180|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">130|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">150|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">80|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">3|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />180|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">130|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">150|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">80|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">3|
 <img src=img/un/h/clock.gif width=18 height=12>0:33:20
 <br>
 <br>
@@ -133,17 +133,17 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <!-- 集结点 -->
 <h2>集结点</h2>
 <p>
-<img src="img/un/h/gid16.gif" width=166 height=150 border=0 alt="Rally Point" title="Rally Point" align="right" />
+<img src="img/un/h/gid16.gif" width=166 height=150 border=0 alt="集结点" title="集结点" align="right" />
 集结点是村落士兵集合的地方。在集结点内你可以分配你军队的行动。
 <br>
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />110|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">160|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">90|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">70|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">1|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />110|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">160|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">90|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">70|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">1|
 <img src=img/un/h/clock.gif width=18 height=12>0:33:20
 <br>
 <br>
@@ -155,7 +155,7 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <!-- 市场 -->
 <h2>市场</h2>
 <p>
-<img src="img/un/h/gid17.gif" width=166 height=150 border=0 alt="Marketplace" title="Marketplace" align="left" />
+<img src="img/un/h/gid17.gif" width=166 height=150 border=0 alt="市场" title="市场" align="left" />
 在市场你可以和其他玩家交易资源。而市场每升一级，你便可以多一个商人帮你运送资源。
 <br>
 <br>
@@ -176,11 +176,11 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />80|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">70|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">120|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">70|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">4|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />80|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">70|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">120|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">70|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">4|
 <img src=img/un/h/clock.gif width=18 height=12>0:30:00
 <br>
 <br>
@@ -192,17 +192,17 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <!-- 兵营 -->
 <h2>兵营</h2>
 <p>
-<img src="img/un/h/gid19.gif" width=166 height=150 border=0 alt="Barracks" title="Barracks" align="left" />
+<img src="img/un/h/gid19.gif" width=166 height=150 border=0 alt="兵营" title="兵营" align="left" />
 兵营是一个训练步兵的场所，每一名强悍的步兵都经由兵营训练出来的。兵营等级越高，训练步兵的速度便越快。
 <br>
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />210|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">140|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">260|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">120|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">4|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />210|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">140|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">260|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">120|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">4|
 <img src=img/un/h/clock.gif width=18 height=12>0:33:20
 <br>
 <br>
@@ -214,17 +214,17 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <!-- 马厩 -->
 <h2>马厩</h2>
 <p>
-<img src="img/un/h/gid20.gif" width=166 height=150 border=0 alt="Stable" title="Stable" align="left" />
+<img src="img/un/h/gid20.gif" width=166 height=150 border=0 alt="马厩" title="马厩" align="left" />
 马厩是一个训练骑兵的场所，每一名强悍的骑兵都经由马厩训练出来的。马厩等级越高，训练骑兵的速度便越快。
 <br>
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />260|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">140|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">220|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">100|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">5|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />260|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">140|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">220|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">100|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">5|
 <img src=img/un/h/clock.gif width=18 height=12>0:36:40
 <br>
 <br>
@@ -236,17 +236,17 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <!-- 工场 -->
 <h2>工场</h2>
 <p>
-<img src="img/un/h/gid21.gif" width=166 height=150 border=0 alt="Workshop" title="Workshop" align="left" />
+<img src="img/un/h/gid21.gif" width=166 height=150 border=0 alt="工场" title="工场" align="left" />
 工场是生产冲撞车和投石器的地方，工场等级越高，生产速度越快。
 <br>
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />460|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">510|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">600|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">320|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">3|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />460|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">510|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">600|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">320|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">3|
 <img src=img/un/h/clock.gif width=18 height=12>0:50:00
 <br>
 <br>
@@ -258,17 +258,17 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <!-- 研发所 -->
 <h2>研发所</h2>
 <p>
-<img src="img/un/h/gid22.gif" width=166 height=150 border=0 alt="Academy" title="Academy" align="right" />
+<img src="img/un/h/gid22.gif" width=166 height=150 border=0 alt="研发所" title="研发所" align="right" />
 研发所是用来研究新的兵种。研发所等级越高，越高级的兵种就可以被开发。
 <br>
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />220|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">160|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">90|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">40|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">4|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />220|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">160|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">90|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">40|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">4|
 <img src=img/un/h/clock.gif width=18 height=12>0:33:20
 <br>
 <br>
@@ -280,17 +280,17 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <!-- 铁匠铺 -->
 <h2>铁匠铺</h2>
 <p>
-<img src="img/un/h/gid12.gif" width=166 height=150 border=0 alt="Blacksmith" title="Blacksmith" align="left" />
+<img src="img/un/h/gid12.gif" width=166 height=150 border=0 alt="铁匠铺" title="铁匠铺" align="left" />
 铁匠铺是用来制造及改良你部队的武器，藉以增加部队的攻击力。铁匠铺等级越高，能够制造出的武器攻击力也会越强。
 <br>
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />170|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">200|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">380|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">130|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">4|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />170|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">200|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">380|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">130|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">4|
 <img src=img/un/h/clock.gif width=18 height=12>0:33:20
 <br>
 <br>
@@ -308,11 +308,11 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />130|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">210|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">410|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">130|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">4|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />130|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">210|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">410|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">130|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">4|
 <img src=img/un/h/clock.gif width=18 height=12>0:33:20
 <br>
 <br>
@@ -328,7 +328,7 @@ Some buildings can only be built if you fulfil the prerequisites which are other
 皇宫里住着你城邦的国王。皇宫达到10级时候，你可以将它所在村庄变成主村。主村不能被征服。
 <br>
 <br>
-At level 10, 15 and 20 three settlers or one administrator (Senator, Chief or Chieftain) can be trained.
+在皇宫达到10级、15级和20级时，可以分别训练3个拓荒者或者1个领袖（参议员、首领或酋长）。
 <br>
 <br>
 石匠铺只有在主村可以建造，同时也只有在主村资源田可以升级至等级10以上。
@@ -336,11 +336,11 @@ At level 10, 15 and 20 three settlers or one administrator (Senator, Chief or Ch
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />550|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">800|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">750|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">250|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">1|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />550|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">800|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">750|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">250|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">1|
 <img src=img/un/h/clock.gif width=18 height=12>1:23:20
 <br>
 <br>
@@ -356,16 +356,16 @@ At level 10, 15 and 20 three settlers or one administrator (Senator, Chief or Ch
 行宫是一个比较小规模的皇宫，给国王或皇后出游时居住的。行宫可以保护村庄以免被敌人征服。
 <br>
 <br>
-At level 10 and 20 three settlers or one administrator (Senator, Chief or Chieftain) can be trained.
+在行宫达到10级和20级时，可以分别训练3个拓荒者或者1个领袖（参议员、首领或酋长）。
 <br>
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />580|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">460|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">350|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">180|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">1|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />580|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">460|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">350|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">180|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">1|
 <img src=img/un/h/clock.gif width=18 height=12>0:33:20
 <br>
 <br>
@@ -381,21 +381,21 @@ At level 10 and 20 three settlers or one administrator (Senator, Chief or Chieft
 在交易所内，你可以为你的商人提供更好的马匹，令他们改善交易的效率。 交易所等级越高，商人的运载量便越大。
 <br>
 <br>
-With each level the capacity increases by 10%. At level 20 your merchants can carry thrice as much as normal.
+每提高1级商人的运输量将提高10%。20级交易所能让商人的运输量提高到原来的3倍。
 <br>
 <br>
-<b>Tribe advantage:</b>
+<b>种族优势：</b>
 <br>
-Romans: In Travian version 3.5 the Roman trade office increases the capacity by 20% per level.
+罗马：罗马的交易所每升1级提高20%的运输量。
 <br>
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />1400|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">1330|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">1200|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">400|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">3|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />1400|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">1330|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">1200|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">400|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">3|
 <img src=img/un/h/clock.gif width=18 height=12>0:50:00
 <br>
 <br>
@@ -413,11 +413,11 @@ Romans: In Travian version 3.5 the Roman trade office increases the capacity by 
 <br>
 等级1的<b>开发成本</b>及<b>建造时间</b>：
 <br>
-<img src=img/un/res/1.gif width=18 height=12 alt=Lumber" title="Lumber" style="padding-top: 4px" />1750|
-<img src=img/un/res/2.gif width=18 height=12 alt="Clay" title="Clay">2250|
-<img src="img/un/res/3.gif" width=18 height=12 alt="Iron" title="Iron">1530|
-<img src=img/un/res/4.gif width=18 height=12 alt="Crop" title="Crop">240|
-<img src=img/un/res/5.gif width=18 height=12 alt="Crop consumption" title="Crop consumption">1|
+<img src=img/un/res/1.gif width=18 height=12 alt=木材" title="木材" style="padding-top: 4px" />1750|
+<img src=img/un/res/2.gif width=18 height=12 alt="粘土" title="粘土">2250|
+<img src="img/un/res/3.gif" width=18 height=12 alt="铁矿" title="铁矿">1530|
+<img src=img/un/res/4.gif width=18 height=12 alt="粮食" title="粮食">240|
+<img src=img/un/res/5.gif width=18 height=12 alt="粮食消耗" title="粮食消耗">1|
 <img src=img/un/h/clock.gif width=18 height=12>0:58:20
 <br>
 <br>

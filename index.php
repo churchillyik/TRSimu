@@ -20,11 +20,8 @@ include("GameEngine/Account.php");
 
 <body class="webkit indexPage">
 <div class="wrapper">
-	<div id="country_select">
-	</div>
-	<div id="header">
-		<h1><?php echo SERVER_NAME; ?></h1>
-	</div>
+	<div id="country_select"></div>
+	<div id="header"><h1><?php echo SERVER_NAME; ?></h1></div>
 	<div id="navigation">
 		<a href="index.php" class="home">
 			<img src="img/x.gif" alt="<?php echo SERVER_NAME; ?>"/>

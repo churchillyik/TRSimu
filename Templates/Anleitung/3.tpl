@@ -1,42 +1,63 @@
 <!-- 问题1 -->
-<p><img src="img/un/h/faq_vp.jpg" width="116" height="128" border="0" alt="Rally point" title="Rally point" align="right"></p>
-<p class="question">How can I build a rally point?</p>
-<p class="answer">The rally point can only be built at one location. This location is found to the right of your villages centre on the meadow.</p>
+<p><img src="img/un/h/faq_vp.jpg" width="116" height="128" border="0" alt="集结点" title="集结点" align="right"></p>
+<p class="question">如何建造集结点？</p>
+<p class="answer">集结点只能在固定位置建造，建造的位置是在内城建筑页面中的中心大楼的右侧。</p>
 
 <!-- 问题2 -->
-<p><img src="img/un/h/faq_botschaft.jpg" width="122" height="150" border="0" alt="Embassy" title="Embassy" align="left"></p>
-<p class="question">How can I found an alliance?</p>
-<p class="answer">To found an alliance you need an embassy at level 3. To be able to join an alliance you just need an embassy at level 1 and, of course, an invitation to join the alliance.</p>
+<p><img src="img/un/h/faq_botschaft.jpg" width="122" height="150" border="0" alt="大使馆" title="大使馆" align="left"></p>
+<p class="question">如何建造大使馆？</p>
+<p class="answer">
+为了建立一个联盟，你需要有一座3级的大使馆。而如果要加入别的联盟，1级大使馆就足够了，当然，前提是你已经接到其他联盟的邀请。
+</p>
 
 <!-- 问题3 -->
-<p class="question">How can I change the name of my village?</p>
-<p class="answer">First select the village you wish to remain by clicking it under <i>Villages</i>. Next click <i>Profile</i> at the left then <i>Change Profile</i>. Change the name in the <i>Village name</i> box and click OK.</p>
+<p class="question">如何修改村庄的名字？</p>
+<p class="answer">
+首先要在<i>村庄列表</i>中选择你想要修改名字的村庄，然后点击页面左边的<i>个人信息</i>，再点击<i>修改个人信息</i>，接下来在<i>村庄名</i>文本框中输入新的村庄名，然后点确认按钮即可。
+</p>
 
 <!-- 问题4 -->
-<p class="question">How do I train troops?</p>
-<p class="answer">You need a rally point which is at least level 1 and a main building which is at least level 3. When you have those you can raise Barracks and there you can train infantry.</p>
+<p class="question">怎样训练军队？</p>
+<p class="answer">
+您至少要有1级的集结点和3级的中心大楼，接下来，你就能建造兵营并训练步兵了。
+</p>
 
 <!-- 问题5 -->
-<p class="question">How do I defend my village?</p>
-<p class="answer">As long as there are troops (your own or troops sent to reinforce you) in your village they defend your village automatically.</p>
+<p class="question">怎样防御村庄？</p>
+<p class="answer">
+只要你你的村庄里有部队（不管是你自己的还是别人增援过来的），他们都会自动守护你的村庄。
+</p>
 
 <!-- 问题6 -->
-<p class="answer">Each building increases the population of your village by a certain number of new inhabitants. How many new inhabitants are produced by raising/extending a building is shown next to the symbol <img src="img/un/res/5.gif" width="18" height="12" border="0" alt="Use of crop" title="use of crop">.</p>
+<p class="question">为什么我的粮食产量会减少？</p>
+<p class="answer">
+你村庄里的每座建筑都会占用一定的人口，而建造或升级建筑而占用的人口数显示在<img src="img/un/res/5.gif" width="18" height="12" border="0" alt="粮食消耗" title="粮食消耗">图标旁边。
+</p>
 
 <!-- 问题7 -->
-<p class="question">Help, my crop production sinks more and more!</p>
-<p class="answer">At <i>Production</i> (e.g. 10) your crop production minus your use of crop because of <i>population</i> (e.g. 5) and <i>Troops</i> is shown. Your total crop production is shown in the upper right corner. e.g. <img src="img/un/res/5.gif" width="18" height="12" border="0" alt="use of crop" title="use of crop"> 5/15
+<p class="question">我快没粮食啦！</p>
+<p class="answer">
+你的粮食总产量减去你的粮食消耗量（建筑以及军队占用的人口），即为<i>产量</i>处显示的数值。总共的粮食产量显示在右上角，例如：<img src="img/un/res/5.gif" width="18" height="12" border="0" alt="粮食消耗" title="粮食消耗"> 8/15，
 <br>
-In the example 8 would be your use of crop, 15 your total crop production, <br>15 - 8 = 7 units of crop per hour. </p>
+在这个例子中，8是粮食的消耗量，15是粮食总产量，
+<br>
+那么每小时实际的粮食产量就是15 - 8 = 7单位。
+</p>
 
 <!-- 问题8 -->
-<p class="question">Why do my troops plunder so few resources?</p>
-<p class="answer">There are two explanations. Firstly, each troop type can only carry a certain number of resources. Secondly, your victim might have a <i>cranny</i> where his or her villagers automatically hide a certain number of resources that your plundering hordes cannot find.</p>
+<p class="question">为什么我的军队只能掠夺这么少的资源？</p>
+<p class="answer">
+这需要一分为二来回答。首先，每个兵种都只能携带一定数目的资源。其次，你攻击的村庄也许建有<i>山洞</i>，而山洞可以自动地把一部分资源隐藏起来而不被掠夺。
+</p>
 
 <!-- 问题9 -->
-<p class="question">How can I found or conquer new villages?</p>
-<p class="answer">You need three settlers to found a new village. To conquer a village you need an administrator (senator, chief or chieftain) which can be trained in your palace/residence at level 10. Additionally you need a certain number of <a href="anleitung.php?s=4">culture points</a>.</p>
+<p class="question">怎样才能建立或征服新的村庄？</p>
+<p class="answer">
+您需要有3个拓荒者才能建立一座新的村庄。要征服一座村庄，您则需要1个领袖（参议员、首领或酋长），而领袖是通过行宫或皇宫训练出来的（行宫或皇宫至少10级）。其次建立村庄您还需要一定的<a href="anleitung.php?s=4">文明点数</a>。
+</p>
 
 <!-- 问题10 -->
-<p class="question">Can I lose a village?</p>
-<p class="answer">Every village can be catapulted to 0 inhabitants and as long as it is not the last of your account it will disappear after a short time. The only village that cannot be conquered is the capital. Note that destroying the capital is still possible.</p>
+<p class="question">我会失去我的村庄吗？</p>
+<p class="answer">
+任何一座村庄都会被投石器砸到0人口，只要这座村庄不是您的最后一座村庄，过一小会这座村庄就会消失。主村是唯一不会被征服的村庄。要注意主村被完全毁灭还是可能的。
+</p>

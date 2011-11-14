@@ -69,11 +69,12 @@ include("GameEngine/Account.php");
 		</div>
 	</div>
 	
-	<div class="footer-stopper outgame"></div>
-	<div class="clear"></div>
-	<?php include("Templates/footer.tpl"); ?>
-	<div id="ce"></div>
-
+	<div id="footer">
+	<div class="container">
+		<li class="copyright">&copy; 2010 - 2011 <?php echo TRAVIAN_COPYRIGHT; ?> </li>
+	</div>
+	</div>
+	
 	<div id="iframe_layer" class="overlay">
 		<div class="mask closer"></div>
 		<div class="overlay_content">

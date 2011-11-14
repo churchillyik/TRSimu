@@ -1,1 +1,1 @@
-<div id="footer">	<div id="mfoot">		<div class="footer-menu">			<center>			<br />			<div class="copyright">&copy 2011 - 2012 掌联科技Travian</div>			<div class="copyright">服务器版本：<b><font color="Red">v1.0.0</font></b></div>			</center>		</div>		<div id="cfoot"></div>	</div></div>
+<div id="footer">	<div id="mfoot">		<div class="footer-menu">			<center>			<br />			<div class="copyright">&copy 2011 - 2012 掌联科技</div>			<div class="copyright">服务器版本：<b><font color="Red">v1.0.0</font></b></div>			</center>		</div>		<div id="cfoot"></div>	</div></div>

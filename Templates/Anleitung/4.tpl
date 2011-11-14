@@ -1,16 +1,19 @@
-<p class="question">How can I found a new village?</p>
-<p class="answer">In order to found a new village you need 3 settlers, an empty spot on the map and enough culture points. You do not have to research settlers as you can directly build them with a palace level 10, 15 or 20 or a residence level 10 or 20. To build the palace you need a main building level 5 and an embassy. To build the residence you only need a level 5 main building. After training the 3 settlers you can choose an empty spot on the map and click "Found new village" (Hint: you need 750 units of each resource!) then your settlers will leave their home village and found the new village for you. </p>
+<p class="question">如何才能建立一座新的村庄？</p>
+<p class="answer">
+建立一座新的村庄，3个拓荒者和足够的文明点数是必要的，然后您就可以在地图上一个空白的方块上建村了。拓荒者无需研究即可训练，您只要把皇宫提升到10级、15级或20级，或者把行宫提升到10级或20级，都可以直接训练出拓荒者。修建皇宫，您需要先把中心大楼升到5级并且修建了大使馆，而修建行宫，您只要有5级的中心大楼就足够了。在训练好3个拓荒者后，你可以选择地图上一个空白的方块，并点击“建立一座新的村庄”（提示：你必须存有750单位的各种资源），然后您的拓荒者将会离开他们所在的村庄去为您建立新的村庄了。
+</p>
 
-<p class="question">How can I conquer a village?</p>
-<p class="answer">For this, too, one needs at least a residence/palace level 10 as well as an enemy village one can conquer. Additionally enough culture points are needed - like for founding a new village. One cannot conquer the last of a player's villages and neither their capital.
-
+<p class="question">如何征服一座村庄？</p>
+<p class="answer">
+要想征服敌人的村庄，和建立新村庄一样，也必须先要建有1座10级的行宫或皇宫，以及有足够的文明点数。但要注意，敌人的最后一个村庄或者主村是无法征服的。
 <br>
 <br>
-
-As soon as the steward of a town (senator, chief, chieftain) as been researched in the academy one can train him in the residence/palace like a settler. However, one may not have already trained settlers in order to be able to train a steward. To conquer a village the steward needs to attack the desired village a couple of times after the enemy residence/palace has been demolished. Once the village's loyalty reached zero the village will become one's own. Once this happened one should build a palace or a residence to raise the loyalty again.
-
-<p class="question">How do I get culture points?</p>
-<p class="answer">One gets culture points (CPs) by constructing and extending buildings. Already produced culture points can be seen in the residence and palace. Additionally information about the required culture points for additional villages is displayed there.</p>
+征服敌人的村庄需要领袖（参议员、首领或酋长），他们都需要先在研发所中研发，然后就能在行宫或皇宫中训练出来。需要注意的是，如果已经训练了拓荒者的话，就不能再训练领袖了。领袖跟随自己的军队攻击敌人的村庄若干次，直到敌人村庄的行宫或皇宫被拆掉才能完全征服之。一旦敌村的忠诚度降为0，敌人的村就是你的了。此后你需要重新建一座行宫或皇宫来提升村庄的忠诚度。
+</p>
+<p class="question">如何获得文明点数？</p>
+<p class="answer">
+建造或升级建筑都能获得文明点。在行宫或皇宫的讯息中可以看到已获得文明点数，同时还能看到建立新村庄所需要的文明点数。
+</p>
 <br/>
 
 <table cellspacing="1" cellpadding="2" class="culture_points table_data">
@@ -788,7 +791,7 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 <table cellspacing="1" cellpadding="2" class="table_data" style="table-layout:fixed;">
 <thead>
     <tr>
-        <td colspan="10"><h3>Culture points needed for additional villages</h3></td>
+        <td colspan="10"><h3>开拓更多村庄时所需要的文明点数</h3></td>
     </tr>
 </thead>
 <tbody>
@@ -820,5 +823,5 @@ As soon as the steward of a town (senator, chief, chieftain) as been researched 
 </table>
 
 <p>
-The more villages one has, the more culture points are necessary to found or conquer additional villages. One cannot lose culture points, however, one needs more for additional villages.
+当村庄的数量越多时，建立一座新村庄所需要的文明点数也会越多，您不会失去文明点数，然而，您需要更多的文明点数来建立新的村庄。
 </p>
