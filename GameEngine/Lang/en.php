@@ -47,7 +47,7 @@ define("ATAG_EXIST","Tag taken");
 define("ANAME_EXIST","Name taken");
 define("TRAVIAN_COPYRIGHT","掌联科技");
 define("CUR_PROD","当前产量");
-define("NEXT_PROD","下一级产量 ");
+define("NEXT_PROD","下级产量");
 define("B1","伐木场");
 define("B1_DESC","伐木场用于生产木材，伐木场的等级越高，木材的产量也越高。");
 define("B2","粘土矿");
@@ -82,7 +82,7 @@ define("SE","东南");
 define("RANDOM","随机");
 define("ACCEPT_RULES","我愿意遵守该游戏的规则。");
 define("ONE_PER_SERVER","每个用户在一个服务器上只能注册一个帐号。");
-define("BEFORE_REGISTER","在注册帐号前，请阅读Travian的<a href='".SERVER."anleitung.php' target='_blank'>新手引导</a>，了解3个种族的特点和优劣。");
+define("BEFORE_REGISTER","在注册帐号前，请阅读Travian的<a href='".SERVER."anleitung.php' target='_blank'>游戏指南</a>，了解3个种族的特点和优劣。");
 define("BUILDING_UPGRADING","建造中：");
 define("HOURS","小时");
 

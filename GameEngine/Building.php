@@ -52,93 +52,125 @@ class Building {
 		}
 	}
 	
-	public function canBuild($id,$tid) {
-		global $village,$session;
-		if($this->isMax($tid,$id)) {
+	public function canBuild($id, $tid) 
+	{
+		global $village, $session;
+		if ($this->isMax($tid, $id)) 
+		{
 			return 1;
 		}
-		else {
-			if($this->isCurrent($id)) {
-				if($this->isLoop($id)) {
+		else 
+		{
+			if ($this->isCurrent($id)) 
+			{
+				if ($this->isLoop($id)) 
+				{
 					return 3;
 				}
-				else {
+				else 
+				{
 					return 2;
 				}
 			}
-			else {
-				if($this->allocated <= $this->maxConcurrent) {
-					if($village->getProd("crop") == 2) {
+			else 
+			{
+				if ($this->allocated <= $this->maxConcurrent) 
+				{
+					if ($village->getProd("crop") == 2 && $tid != 4 && $tid != 8 && $tid != 9) 
+					{
 						return 4;
 					}
-					else {
-						switch($this->checkResource($tid,$id)) {
+					else 
+					{
+						switch ($this->checkResource($tid, $id)) 
+						{
 							case 1:
-							return 5;
-							break;
+								return 5;
+								break;
 							case 2:
-							return 6;
-							break;
+								return 6;
+								break;
 							case 3:
-							return 7;
-							break;
+								return 7;
+								break;
 							case 4:
-							if($id >= 19) {
-								if($session->tribe == 1 || ALLOW_ALL_TRIBE) {
-									if($this->inner == 0) {
-										return 8;
-									}
-									else {
-										if($session->plus) {
-											if($this->plus == 0) {
-												return 9;
+								if ($id >= 19) 
+								{
+									if ($session->tribe == 1 || ALLOW_ALL_TRIBE) 
+									{
+										if ($this->inner == 0) 
+										{
+											return 8;
+										}
+										else 
+										{
+											if ($session->plus) 
+											{
+												if ($this->plus == 0) 
+												{
+													return 9;
+												}
+												else 
+												{
+													return 2;
+												}
 											}
-											else {
+											else 
+											{ 
 												return 2;
 											}
 										}
-										else { 
-											return 2;
+									}
+									else 
+									{
+										if ($this->basic == 0) 
+										{
+											return 8;
 										}
-									}
-								}
-								else {
-									if($this->basic == 0) {
-										return 8;
-									}
-									else {
-										if($session->plus) {
-											if($this->plus == 0) {
-												return 9;
+										else 
+										{
+											if ($session->plus) 
+											{
+												if ($this->plus == 0) 
+												{
+													return 9;
+												}
+												else 
+												{
+													return 2;
+												}
 											}
-											else {
+											else 
+											{
 												return 2;
 											}
 										}
-										else {
+									}
+								}
+								else 
+								{
+									if($this->basic == 1) 
+									{
+										if($session->plus && $this->plus == 0) 
+										{
+											return 9;
+										}
+										else 
+										{
 											return 2;
 										}
 									}
-								}
-							}
-							else {
-								if($this->basic == 1) {
-									if($session->plus && $this->plus == 0) {
-										return 9;
-									}
-									else {
-										return 2;
+									else 
+									{
+										return 8;
 									}
 								}
-								else {
-									return 8;
-								}
-							}
-							break;
+								break;
 						}
 					}
 				}
-				else {
+				else 
+				{
 					return 2;
 				}
 			}

@@ -1,7 +1,7 @@
 <div id="content"  class="map">
-<?php 
-$basearray = $database->getMInfo($_GET['d']);
-?>
+	<?php 
+	$basearray = $database->getMInfo($_GET['d']);
+	?>
 <h1><?php echo !$basearray['occupied']? $basearray['fieldtype']? "Unoccupied oasis" : "Abandoned valley" : $basearray['name']; echo " (".$basearray['x']."|".$basearray['y'].")"; ?></h1>
 <?php if($basearray['occupied'] && $basearray['capital']) { echo "<div id=\"dmain\">(capital)</div>"; } ?>
 
