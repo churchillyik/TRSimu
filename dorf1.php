@@ -55,7 +55,7 @@ else
 	<?php include("Templates/header.tpl"); ?>
 	<div id="mid">
 		<?php include("Templates/menu.tpl"); ?>
-		<div id="content"  class="village1">
+		<div id="content" class="village1">
 			<h1>
 			<?php 
 			echo $village->vname; 

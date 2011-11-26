@@ -1,214 +1,250 @@
-    <?php
-    $db_host=SQL_SERVER; $db_user=SQL_USER; $db_pass=SQL_PASS; $db_name=SQL_DB;
+<?php
+$db_host = SQL_SERVER;
+$db_user = SQL_USER;
+$db_pass = SQL_PASS;
+$db_name = SQL_DB;
+$con = mysql_connect($db_host, $db_user, $db_pass);
+if (!$con)
+{
+	die('无法连接：' . mysql_error());
+}
+for ($i = 1; $i <= 0; $i++)
+{
+	echo "Row ".$i;
+}
+mysql_select_db($db_name, $con);
+$result = mysql_query("SELECT * FROM ".TB_PREFIX."users ORDER BY ap DESC Limit 10");
+$result2 = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE username = '".$session->username."' ORDER BY ap DESC Limit 1");
+?>
 
-    $con = mysql_connect($db_host, $db_user, $db_pass);
-    if (!$con)
-      {
-      die('Could not connect: ' . mysql_error());
-      }
-
-    for($i=1;$i<=0;$i++) {
-    echo "Row ".$i;
-    }
-             
-    mysql_select_db($db_name, $con);
-
-    $result = mysql_query("SELECT * FROM ".TB_PREFIX."users ORDER BY ap DESC Limit 10");
-    $result2 = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE username = '".$session->username."' ORDER BY ap DESC Limit 1");
-	?>
-	<table cellpadding="1" cellspacing="1">
-	<thead>
-		<tr>
-			<th>Top 10 players<div id="submenu"><a title="Top 10" href="statistiken.php?id=1"><img class="active btn_top10" src="img/x.gif" alt="Top 10"></a><a title="defender" href="statistiken.php?id=32"><img class="btn_def" src="img/x.gif" alt="defender"></a><a title="attacker" href="statistiken.php?id=31"><img class="btn_off" src="img/x.gif" alt="attacker"></a></div><div id="submenu2"><a title="Romans" href="statistiken.php?id=11"><img class="btn_v1" src="img/x.gif" alt="attacker"></a><a title="Teutons" href="statistiken.php?id=12"><img class="btn_v2" src="img/x.gif" alt="attacker"></a><a title="Gauls" href="statistiken.php?id=13"><img class="btn_v3" src="img/x.gif" alt="attacker"></a></div></th>
-		</tr>
-	</thead>
+<table cellpadding="1" cellspacing="1">
+<thead>
+	<tr>
+		<th>前10排名
+			<div id="submenu">
+				<a title="前10名" href="statistiken.php?id=1"><img class="active btn_top10" src="img/x.gif" alt="前10名"></a>
+				<a title="防御" href="statistiken.php?id=32"><img class="btn_def" src="img/x.gif" alt="防御"></a>
+				<a title="攻击" href="statistiken.php?id=31"><img class="btn_off" src="img/x.gif" alt="攻击"></a>
+			</div>
+			<div id="submenu2">
+				<a title="罗马" href="statistiken.php?id=11"><img class="btn_v1" src="img/x.gif" alt="攻击者"></a>
+				<a title="条顿" href="statistiken.php?id=12"><img class="btn_v2" src="img/x.gif" alt="攻击者"></a>
+				<a title="高卢" href="statistiken.php?id=13"><img class="btn_v3" src="img/x.gif" alt="攻击者"></a>
+			</div>
+		</th>
+	</tr>
+</thead>
 </table>
+
 <table cellpadding="1" cellspacing="1" id="top10_offs" class="top10 row_table_data">
-	<thead>
-		<tr>
-			<th onclick="return Popup(3,5)"><img src="img/x.gif" class="help" alt="Instructions" title="Instructions">
-			</th>
-			<th colspan="2">Attackers of the week</th>
-		</tr>
-		<tr>
-			<td>No.</td>
-			<td>Player</td>
-			<td>Points</td>
-		</tr>
-	</thead>
-	<tbody>
-<?php
-    while($row = mysql_fetch_array($result))
-      {
-	  if($row['username']==$session->username) {
-	  echo "<tr class=\"own hl\">"; } else { echo "<tr>"; }
-      echo "<td class=\"ra fc\">".$i++.".&nbsp;</td>";
-      echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
-      echo "<td class=\"val lc\">".$row['ap']."</td>";
-      echo "</tr>";
-      }
-?>
-		 <tr>
-			<td colspan="3" class="empty"></td>
-		</tr>
-<?php
-    while($row = mysql_fetch_array($result2))
-      {
-      echo "<tr class=\"own hl\">";
-      echo "<td class=\"ra fc\">?&nbsp;</td>";
-      echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
-      echo "<td class=\"val lc\">".$row['ap']."</td>";
-      echo "</tr>";
-      }
-?>
-         </tbody>
+<thead>
+	<tr>
+		<th onclick="return Popup(3,5)"><img src="img/x.gif" class="help" alt="说明" title="说明"></th>
+		<th colspan="2">每周攻击排行</th>
+	</tr>
+	<tr>
+		<td>排名</td>
+		<td>玩家</td>
+		<td>点数</td>
+	</tr>
+</thead>
+<tbody>
+	<?php
+    while ($row = mysql_fetch_array($result))
+    {
+		if ($row['username'] == $session->username) 
+		{
+			echo "<tr class=\"own hl\">";
+		} 
+		else 
+		{
+			echo "<tr>";
+		}
+		echo "<td class=\"ra fc\">".$i++.".&nbsp;</td>";
+		echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
+		echo "<td class=\"val lc\">".$row['ap']."</td>";
+		echo "</tr>";
+    }
+	?>
+	<tr>
+		<td colspan="3" class="empty"></td>
+	</tr>
+	<?php
+    while ($row = mysql_fetch_array($result2))
+	{
+		echo "<tr class=\"own hl\">";
+		echo "<td class=\"ra fc\">?&nbsp;</td>";
+		echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
+		echo "<td class=\"val lc\">".$row['ap']."</td>";
+		echo "</tr>";
+	}
+	?>
+</tbody>
 </table>
 
-
 <?php
-    for($i=1;$i<=0;$i++) {
-    echo "Row ".$i;
-    }
-    $result = mysql_query("SELECT * FROM ".TB_PREFIX."users ORDER BY dp DESC Limit 10");
-    $result2 = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE username = '".$session->username."' ORDER BY dp DESC Limit 1");
+for ($i = 1; $i <= 0; $i++)
+{
+	echo "Row ".$i;
+}
+$result = mysql_query("SELECT * FROM ".TB_PREFIX."users ORDER BY dp DESC Limit 10");
+$result2 = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE username = '".$session->username."' ORDER BY dp DESC Limit 1");
 ?>
+
 <table cellpadding="1" cellspacing="1" id="top10_defs" class="top10 row_table_data">
-	<thead>
-		<tr>
-			<th onclick="return Popup(3,5)"><img src="img/x.gif" class="help" alt="Instructions" title="Instructions">
-			</th>
-			<th colspan="2">Defenders of the week</th>
-		</tr>
-		<tr>
-			<td>No.</td>
-			<td>Player</td>
-			<td>Points</td>
-		</tr>
-	</thead>
-	<tbody>
-<?php
-    while($row = mysql_fetch_array($result))
-      {
-	  if($row['username']==$session->username) {
-	  echo "<tr class=\"own hl\">"; } else { echo "<tr>"; }
-      echo "<td class=\"ra fc\">".$i++.".&nbsp;</td>";
-	  echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
-      echo "<td class=\"val lc\">".$row['dp']."</td>";
-      echo "</tr>";
-      }
-?>
-	
-		 <tr>
-			<td colspan="3" class="empty"></td>
-		</tr>
-<?php
-    while($row = mysql_fetch_array($result2))
-      {
-      echo "<tr class=\"own hl\">";
-      echo "<td class=\"ra fc\">?&nbsp;</td>";
-      echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
-      echo "<td class=\"val lc\">".$row['dp']."</td>";
-      echo "</tr>";
-      }
-?>
-         </tbody>
+<thead>
+	<tr>
+		<th onclick="return Popup(3,5)"><img src="img/x.gif" class="help" alt="说明" title="说明"></th>
+		<th colspan="2">每周防御排行</th>
+	</tr>
+	<tr>
+		<td>排名</td>
+		<td>玩家</td>
+		<td>点数</td>
+	</tr>
+</thead>
+<tbody>
+	<?php
+	while ($row = mysql_fetch_array($result))
+	{
+		if ($row['username'] == $session->username)
+		{
+			echo "<tr class=\"own hl\">"; 
+		} 
+		else 
+		{ 
+			echo "<tr>"; 
+		}
+		echo "<td class=\"ra fc\">".$i++.".&nbsp;</td>";
+		echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
+		echo "<td class=\"val lc\">".$row['dp']."</td>";
+		echo "</tr>";
+	}
+	?>
+	<tr>
+		<td colspan="3" class="empty"></td>
+	</tr>
+	<?php
+    while ($row = mysql_fetch_array($result2))
+	{
+		echo "<tr class=\"own hl\">";
+		echo "<td class=\"ra fc\">?&nbsp;</td>";
+		echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
+		echo "<td class=\"val lc\">".$row['dp']."</td>";
+		echo "</tr>";
+	}
+	?>
+</tbody>
 </table>
-	
+
 <?php
-    for($i=1;$i<=0;$i++) {
-    echo "Row ".$i;
-    }
-    $result = mysql_query("SELECT * FROM ".TB_PREFIX."users ORDER BY Rc DESC Limit 10");
-    $result2 = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE username = '".$session->username."' ORDER BY Rc DESC Limit 1");
+for ($i = 1; $i <= 0; $i++) 
+{
+	echo "Row ".$i;
+}
+$result = mysql_query("SELECT * FROM ".TB_PREFIX."users ORDER BY Rc DESC Limit 10");
+$result2 = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE username = '".$session->username."' ORDER BY Rc DESC Limit 1");
 ?>
+
 <div class="clear"></div>
 <table cellpadding="1" cellspacing="1" id="top10_climbers" class="top10 row_table_data">
-	<thead>
-		<tr>
-			<th onclick="return Popup(3,5)"><img src="img/x.gif" class="help" alt="Instructions" title="Instructions">
-			</th>
-			<th colspan="2">Climbers of the week</th>
-		</tr>
-		<tr>
-			<td>No.</td>
-			<td>Player</td>
-			<td>Ranks</td>
-		</tr>
-	</thead>
-	<tbody>
+<thead>
+	<tr>
+		<th onclick="return Popup(3,5)"><img src="img/x.gif" class="help" alt="说明" title="说明"></th>
+		<th colspan="2">每周排行爬升</th>
+	</tr>
+	<tr>
+		<td>排名</td>
+		<td>玩家</td>
+		<td>排名上升</td>
+	</tr>
+</thead>
+<tbody>
 <?php
-    while($row = mysql_fetch_array($result))
-      {
-	  if($row['username']==$session->username) {
-	  echo "<tr class=\"own hl\">"; } else { echo "<tr>"; }
-      echo "<td class=\"ra fc\">".$i++.".&nbsp;</td>";
-      echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
-      echo "<td class=\"val lc\">".$row['Rc']."</td>";
-      echo "</tr>";
-      }
+while ($row = mysql_fetch_array($result))
+{
+	if ($row['username'] == $session->username)
+	{
+		echo "<tr class=\"own hl\">"; 
+	} 
+	else 
+	{ 
+		echo "<tr>"; 
+	}
+	echo "<td class=\"ra fc\">".$i++.".&nbsp;</td>";
+	echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
+	echo "<td class=\"val lc\">".$row['Rc']."</td>";
+	echo "</tr>";
+}
 ?>
-		 <tr>
-			<td colspan="3" class="empty"></td>
-		</tr>
+<tr>
+	<td colspan="3" class="empty"></td>
+</tr>
 <?php
-    while($row = mysql_fetch_array($result2))
-      {
-      echo "<tr class=\"own hl\">";
-      echo "<td class=\"ra fc\">?&nbsp;</td>";
-      echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
-      echo "<td class=\"val lc\">".$row['Rc']."</td>";
-      echo "</tr>";
-      }
+while ($row = mysql_fetch_array($result2))
+{
+	echo "<tr class=\"own hl\">";
+	echo "<td class=\"ra fc\">?&nbsp;</td>";
+	echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
+	echo "<td class=\"val lc\">".$row['Rc']."</td>";
+	echo "</tr>";
+}
 ?>
-         </tbody>
+</tbody>
 </table>
+
 <?php
-    for($i=1;$i<=0;$i++) {
-    echo "Row ".$i;
-    }
-    $result = mysql_query("SELECT * FROM ".TB_PREFIX."users ORDER BY RR DESC Limit 10");
-    $result2 = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE username = '".$session->username."' ORDER BY RR DESC Limit 1");
+for ($i = 1; $i <= 0; $i++)
+{
+	echo "Row ".$i;
+}
+$result = mysql_query("SELECT * FROM ".TB_PREFIX."users ORDER BY RR DESC Limit 10");
+$result2 = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE username = '".$session->username."' ORDER BY RR DESC Limit 1");
 ?>
+
 <table cellpadding="1" cellspacing="1" id="top10_raiders" class="top10 row_table_data">
-	<thead>
-		<tr>
-			<th onclick="return Popup(3,5)"><img src="img/x.gif" class="help" alt="Instructions" title="Instructions">
-			</th>
-			<th colspan="2">Robbers of the week</th>
-		</tr>
-		<tr>
-			<td>No.</td>
-			<td>Player</td>
-			<td>Resources</td>
-		</tr>
-	</thead>
-	<tbody>
+<thead>
+	<tr>
+		<th onclick="return Popup(3,5)"><img src="img/x.gif" class="help" alt="说明" title="说明"></th>
+		<th colspan="2">每周掠夺排行</th>
+	</tr>
+	<tr>
+		<td>排名</td>
+		<td>玩家</td>
+		<td>资源</td>
+	</tr>
+</thead>
+<tbody>
 <?php
-    while($row = mysql_fetch_array($result))
-      {
-	  if($row['username']==$session->username) {
-	  echo "<tr class=\"own hl\">"; } else { echo "<tr>"; }
-      echo "<td>".$i++.".&nbsp;</td>";
-      echo "<td><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
-      echo "<td>".$row['RR']."</td>";
-      echo "</tr>";
-      }
+while ($row = mysql_fetch_array($result))
+{
+	if ($row['username'] == $session->username) 
+	{
+		echo "<tr class=\"own hl\">"; 
+	} 
+	else 
+	{ 
+		echo "<tr>"; 
+	}
+	echo "<td>".$i++.".&nbsp;</td>";
+	echo "<td><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
+	echo "<td>".$row['RR']."</td>";
+	echo "</tr>";
+}
 ?>
-		 <tr>
-			<td colspan="3" class="empty"></td>
-		</tr>
+<tr>
+	<td colspan="3" class="empty"></td>
+</tr>
 <?php
-    while($row = mysql_fetch_array($result2))
-      {
-      echo "<tr class=\"own hl\">";
-      echo "<td class=\"ra fc\">?&nbsp;</td>";
-      echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
-      echo "<td class=\"val lc\">".$row['RR']."</td>";
-      echo "</tr>";
-      }
-	  
-	mysql_close($con);
+while ($row = mysql_fetch_array($result2))
+{
+	echo "<tr class=\"own hl\">";
+	echo "<td class=\"ra fc\">?&nbsp;</td>";
+	echo "<td class=\"pla\"><a href='spieler.php?uid=".$row['id']."'>".$row['username']."</a></td>";
+	echo "<td class=\"val lc\">".$row['RR']."</td>";
+	echo "</tr>";
+}
+mysql_close($con);
 ?>
-         </tbody>
+</tbody>
 </table>
-<div>
