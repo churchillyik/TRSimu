@@ -16,13 +16,13 @@ else
 		<th colspan="5">最强玩家
 			<div id="submenu">
 				<a title="前10名" href="statistiken.php?id=7"><img class="btn_top10" src="img/x.gif" alt="前10名" /></a>
-				<a title="防御" href="statistiken.php?id=32"><img class="btn_def" src="img/x.gif" alt="防御" /></a>
-				<a title="攻击" href="statistiken.php?id=31"><img class="btn_off" src="img/x.gif" alt="攻击" /></a>
+				<a title="防御者" href="statistiken.php?id=32"><img class="btn_def" src="img/x.gif" alt="防御者" /></a>
+				<a title="攻击者" href="statistiken.php?id=31"><img class="btn_off" src="img/x.gif" alt="攻击者" /></a>
 			</div>		    
 		</th>
 	</tr>
 	<tr>
-		<td></td>
+		<td>排名</td>
 		<td>玩家</td>
 		<td>联盟</td>
 		<td>人口</td>

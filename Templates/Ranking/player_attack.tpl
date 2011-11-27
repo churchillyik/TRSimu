@@ -12,7 +12,7 @@ else
 <table cellpadding="1" cellspacing="1" id="player_off" class="row_table_data">
 <thead>
 	<tr>
-		<th colspan="5">最强的攻击者
+		<th colspan="5">最成功的攻击者
 			<div id="submenu">
 				<a title="前10名" href="statistiken.php?id=7"><img class="btn_top10" src="img/x.gif" alt="前10名" /></a>
 				<a title="防御" href="statistiken.php?id=32"><img class="btn_def" src="img/x.gif" alt="防御" /></a>
@@ -21,7 +21,7 @@ else
 		</th>
 	</tr>
 	<tr>
-		<td></td>
+		<td>排名</td>
 		<td>玩家</td>
 		<td>人口</td>
 		<td>村庄</td>

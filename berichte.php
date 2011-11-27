@@ -1,18 +1,10 @@
 <?php
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                             TRAVIANX                                             //
-//            Only for advanced users, do not edit if you dont know what are you doing!             //
-//                                Made by: Dzoki & Dixie (TravianX)                                 //
-//                              - TravianX = Travian Clone Project -                                //
-//                                 DO NOT REMOVE COPYRIGHT NOTICE!                                  //
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
 include("GameEngine/Village.php");
 $start = $generator->pageLoadTimeStart();
 $message->noticeType($_GET);
 $message->procNotice($_POST);
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -28,87 +20,96 @@ $message->procNotice($_POST);
 	<script src="new.js?0faaa" type="text/javascript"></script>
 	<link href="gpack/travian_basic/lang/en/lang.css?f4b7c" rel="stylesheet" type="text/css" />
 	<link href="gpack/travian_basic/lang/en/compact.css?f4b7c" rel="stylesheet" type="text/css" />
+	
 	<?php
-	if($session->gpack == null || GP_ENABLE == false) {
-	echo "
-	<link href='".GP_LOCATE."travian.css?e21d2' rel='stylesheet' type='text/css' />
-	<link href='".GP_LOCATE."lang/en/lang.css?e21d2' rel='stylesheet' type='text/css' />";
-	} else {
-	echo "
-	<link href='".$session->gpack."travian.css?e21d2' rel='stylesheet' type='text/css' />
-	<link href='".$session->gpack."lang/en/lang.css?e21d2' rel='stylesheet' type='text/css' />";
+	if($session->gpack == null || GP_ENABLE == false)
+	{
+		echo "
+		<link href='".GP_LOCATE."travian.css?e21d2' rel='stylesheet' type='text/css' />
+		<link href='".GP_LOCATE."lang/en/lang.css?e21d2' rel='stylesheet' type='text/css' />";
+	}
+	else
+	{
+		echo "
+		<link href='".$session->gpack."travian.css?e21d2' rel='stylesheet' type='text/css' />
+		<link href='".$session->gpack."lang/en/lang.css?e21d2' rel='stylesheet' type='text/css' />";
 	}
 	?>
+	
 	<script type="text/javascript">
-
 		window.addEvent('domready', start);
 	</script>
 </head>
- 
- 
+
 <body class="v35 ie ie8">
 <div class="wrapper">
-<img style="filter:chroma();" src="img/x.gif" id="msfilter" alt="" />
-<div id="dynamic_header">
+	<img style="filter:chroma();" src="img/x.gif" id="msfilter" alt="" />
+	<div id="dynamic_header"></div>
+	<?php include("Templates/header.tpl"); ?>
+	<div id="mid">
+		<?php include("Templates/menu.tpl"); ?>
+		<div id="content" class="reports">
+			<h1>报告</h1>
+			<div id="textmenu">
+				<a href="berichte.php" 
+				<?php if (!isset($_GET['t'])) { echo "class=\"selected \""; } ?>
+				>全部</a> | 
+				<a href="berichte.php?t=2" 
+				<?php if (isset($_GET['t']) && $_GET['t'] == 2) { echo "class=\"selected \""; } ?>
+				>交易</a> | 
+				<a href="berichte.php?t=1" 
+				<?php if (isset($_GET['t']) && $_GET['t'] == 1) { echo "class=\"selected \""; } ?>
+				>增援</a> | 
+				<a href="berichte.php?t=3" 
+				<?php if (isset($_GET['t']) && $_GET['t'] == 3) { echo "class=\"selected \""; } ?>
+				>攻击</a> | 
+				<a href="berichte.php?t=4" 
+				<?php if (isset($_GET['t']) && $_GET['t'] == 4) { echo "class=\"selected \""; } ?>
+				>其他</a>
+				<?php 
+				if ($session->plus) 
+				{
+					echo "| <a href=\"berichte.php?t=5\"";
+					if (isset($_GET['t']) && $_GET['t'] == 5) 
+					{ 
+						echo "class=\"selected \""; 
+					} 
+					echo ">Archive</a>";
+				}
+				?>
+			</div>
+			<?php 
+			if (isset($_GET['id']))
+			{
+				$type = ($message->readingNotice['ntype'] == 5)? 
+						$message->readingNotice['archive'] : $message->readingNotice['ntype'];
+				include("Templates/Notice/".$type.".tpl");
+			}
+			else 
+			{
+				include("Templates/Notice/all.tpl");
+			}
+			?>
+		</div>
 	</div>
-<?php include("Templates/header.tpl"); ?>
-<div id="mid">
-<?php include("Templates/menu.tpl"); ?>
-		<div id="content"  class="reports">
-<h1>Reports</h1>
-<div id="textmenu">
-   <a href="berichte.php" <?php if (!isset($_GET['t'])) { echo "class=\"selected \""; } ?>>All</a>
- | <a href="berichte.php?t=2" <?php if (isset($_GET['t']) && $_GET['t'] == 2) { echo "class=\"selected \""; } ?>>Trade</a>
- | <a href="berichte.php?t=1" <?php if (isset($_GET['t']) && $_GET['t'] == 1) { echo "class=\"selected \""; } ?>>Reinforcement</a>
- | <a href="berichte.php?t=3" <?php if (isset($_GET['t']) && $_GET['t'] == 3) { echo "class=\"selected \""; } ?>>Attacks</a>
- | <a href="berichte.php?t=4" <?php if (isset($_GET['t']) && $_GET['t'] == 4) { echo "class=\"selected \""; } ?>>Miscellaneous</a>
- <?php if($session->plus) {
- echo "| <a href=\"berichte.php?t=5\"";
- if (isset($_GET['t']) && $_GET['t'] == 5) { echo "class=\"selected \""; } 
- echo ">Archive</a>";
- }
- ?>
-</div>
-<?php 
-if(isset($_GET['id'])) {
-	$type = ($message->readingNotice['ntype'] == 5)? $message->readingNotice['archive'] : $message->readingNotice['ntype'];
-	include("Templates/Notice/".$type.".tpl");
-}
-else {
-	include("Templates/Notice/all.tpl");
-}
-?>
-</div>
- 
-<div id="side_info">
-<?php
-include("Templates/quest.tpl");
-include("Templates/news.tpl");
-include("Templates/multivillage.tpl");
-include("Templates/links.tpl");
-?>
-</div>
-<div class="clear"></div>
-</div>
-<div class="footer-stopper"></div>
-<div class="clear"></div>
-
-<?php 
-include("Templates/footer.tpl"); 
-include("Templates/res.tpl"); 
-?>
-<div id="stime">
-<div id="ltime">
-<div id="ltimeWrap">
-Calculated in <b><?php
-echo round(($generator->pageLoadTimeEnd()-$start)*1000);
-?></b> ms
- 
-<br />Server time: <span id="tp1" class="b"><?php echo date('H:i:s'); ?></span>
-</div>
+	<div id="side_info">
+		<?php
+		include("Templates/quest.tpl");
+		include("Templates/news.tpl");
+		include("Templates/multivillage.tpl");
+		include("Templates/links.tpl");
+		?>
 	</div>
-</div>
+	<div class="clear"></div>
+	<div class="footer-stopper"></div>
+	<div class="clear"></div>
+	<?php 
+	include("Templates/footer.tpl"); 
+	include("Templates/res.tpl");
+	include("Templates/time.tpl");
+	?>
 
-<div id="ce"></div>
+	<div id="ce"></div>
+</div>
 </body>
 </html>

@@ -549,7 +549,7 @@ div.forum table#poll thead th{text-align:center;padding:4px;}div.forum table#pol
 div.forum table#poll td.sel{width:30%;text-align:right;white-space:nowrap;}div.forum table#poll td.stat{width:280px;text-align:left;}
 div.forum table#poll td.stat img{float:left;}div.forum table#poll td.count{text-align:center;}
 div.statistics table td,div.statistics table th{padding:2px 7px;text-align:center;}
-div.statistics td.ra{width:5%;text-align:right;white-space:nowrap;}div.statistics td.pop{width:20%;}
+div.statistics td.ra{width:30px;text-align:right;white-space:nowrap;}div.statistics td.pop{width:20%;}
 div.statistics td.al{text-align:left;}div.statistics td.vil{width:10%;}div.statistics td.po{width:20%;}
 div.statistics td.pla{width:18%;}div.statistics td.av{width:18%;}div.statistics td.po{width:20%;}
 div.statistics table#player td.pla{width:auto;text-align:left;}div.statistics table#player td.al{text-align:center;}
@@ -557,8 +557,8 @@ div.statistics table#player_off td.pla{width:auto;text-align:left;}div.statistic
 div.statistics table#alliance td.al{width:auto;}div.statistics table#alliance_off td.al{width:auto;}
 div.statistics table#alliance_def td.al{width:auto;}div.statistics table.top10{width:246px;}
 div.statistics table.top10 td{padding:2px;}div.statistics table.top10 td.pla{width:auto;text-align:left;}
-div.statistics table.top10 td.val{width:10%;}div.statistics table.top10 tr.none td{background-color:#EFEFEF;}
-div.statistics table.top10 tr.own.hl td.ra{text-align:center;white-space:nowrap;}
+div.statistics table.top10 td.val{width:25%;}div.statistics table.top10 tr.none td{background-color:#EFEFEF;}
+div.statistics table.top10 tr.own.hl td.ra{text-align:right;white-space:nowrap;}
 div.statistics table#top10_offs,div.statistics table#top10_climbers{float:left;}
 div.statistics table#top10_defs,div.statistics table#top10_raiders{float:right;}
 div.statistics table#villages td.vil{width:auto;text-align:left;}div.statistics table#villages td.pla{width:25%;text-align:left;}
