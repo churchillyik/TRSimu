@@ -45,5 +45,13 @@
 		echo "class=\"selected\"";
 	}
 	?>
-	>常见问题</a>
+	>常见问题</a> | 
+	<a href="plus.php?id=5" 
+	<?php 
+	if (isset($_GET['id']) && $_GET['id'] == 5)
+	{
+		echo "class=\"selected\"";
+	}
+	?>
+	>挣金币</a>
 </div>

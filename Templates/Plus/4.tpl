@@ -1,19 +1,31 @@
 <?php
 include("Templates/Plus/pmenu.tpl");
 ?>
-<p class="f10 b">How do I get Gold?</p>
-<p>Ask owner of the site</p>
 
+<p class="f10 b">
+怎样才能获得金币？
+</p>
+<p>
+去充值就有。
+</p>
 
-<p class="f10 b">Why can't I finish some buildings with Gold?</p>
+<p class="f10 b">
+怎样的建筑才能用金币立即完成建造？
+</p>
+<p>
+行宫、皇宫以及世界奇观之外的建筑才可以。
+</p>
 
-<p>Due to game play reasons the buildings Residence and Palace are excluded from this function. The same applies to villages in which the wonders of the world can be constructed. </p>
+<p class="f10 b">
+我已购买了黄金会员，但我的资源产量没有提高，为什么？
+</p>
+<p>
+资源产量提升的功能与黄金会员无关，如需要使用的话，请在“增值服务”页面激活。
+</p>
 
-<p class="f10 b">I activated the Plus account, however, my resource production did not increase.</p>
-<p>The production did not increase because Plus is separated from these additional features. </p>
-
-<p class="f10 b">Do I need to activate Plus before I can use any other function?</p>
-<p>No, you can use every single gold feature as long as you have enough gold. </p>
-
-</div>
-
+<p class="f10 b">
+是否要激活了黄金会员，才能使用其他增值服务？
+</p>
+<p>
+不，只要你有足够的金币都可以使用。
+</p>
