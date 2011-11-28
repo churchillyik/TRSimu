@@ -85,6 +85,7 @@ else
 	include("Templates/res.tpl"); 
 	include("Templates/time.tpl");
 	?>
+	
 	<div id="ce"></div>
 </div>
 </body>

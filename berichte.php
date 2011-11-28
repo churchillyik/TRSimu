@@ -74,19 +74,21 @@ $message->procNotice($_POST);
 					{ 
 						echo "class=\"selected \""; 
 					} 
-					echo ">Archive</a>";
+					echo ">记事本</a>";
 				}
 				?>
 			</div>
 			<?php 
 			if (isset($_GET['id']))
 			{
+				//	打开某一条报告
 				$type = ($message->readingNotice['ntype'] == 5)? 
 						$message->readingNotice['archive'] : $message->readingNotice['ntype'];
 				include("Templates/Notice/".$type.".tpl");
 			}
 			else 
 			{
+				//	报告列表
 				include("Templates/Notice/all.tpl");
 			}
 			?>

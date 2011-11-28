@@ -47,51 +47,56 @@ $message->procMessage($_POST);
 	<div id="dynamic_header"></div>
 	<?php include("Templates/header.tpl"); ?>
 	<div id="mid">
-		<?php include("Templates/menu.tpl");
-		if (isset($_GET['id']) && !isset($_GET['t']))
-		{
-			$message->loadMessage($_GET['id']);
-			include("Templates/Message/read.tpl");
-		}
-		else if (isset($_GET['t']))
-		{
-			switch ($_GET['t'])
+		<?php include("Templates/menu.tpl"); ?>
+		<div id="content" class="messages">
+			<h1>讯息</h1>
+			<?php 
+			include("Templates/Message/menu.tpl");
+			if (isset($_GET['id']) && !isset($_GET['t']))
 			{
-				case 1:
-					if (isset($_GET['id']))
-					{
-						$id = $_GET['id'];
-					}
-					include("Templates/Message/write.tpl");
-					break;
-				case 2:
-					include("Templates/Message/sent.tpl");
-					break;
-				case 3:
-					if ($session->plus)
-					{
-						include("Templates/Message/archive.tpl");
-					}
-					break;
-				case 4:
-					if ($session->plus)
-					{
-						$message->loadNotes();
-						include("Templates/Message/notes.tpl");
-					}
-					break;
-				default:
-					include("Templates/Message/inbox.tpl");
-					break;
+				$message->loadMessage($_GET['id']);
+				include("Templates/Message/read.tpl");
 			}
-		}
-		else
-		{
-			include("Templates/Message/inbox.tpl");
-		}
-		?>
-		
-		<div id="side_info">
+			else if (isset($_GET['t']))
+			{
+				switch ($_GET['t'])
+				{
+					case 1:
+						if (isset($_GET['id']))
+						{
+							$id = $_GET['id'];
+						}
+						include("Templates/Message/write.tpl");
+						break;
+					case 2:
+						include("Templates/Message/sent.tpl");
+						break;
+					case 3:
+						if ($session->plus)
+						{
+							include("Templates/Message/archive.tpl");
+						}
+						break;
+					case 4:
+						if ($session->plus)
+						{
+							$message->loadNotes();
+							include("Templates/Message/notes.tpl");
+						}
+						break;
+					default:
+						include("Templates/Message/inbox.tpl");
+						break;
+				}
+			}
+			else
+			{
+				include("Templates/Message/inbox.tpl");
+			}
+			?>
+		</div>
+	</div>
+	<div id="side_info">
 		<?php
 		include("Templates/quest.tpl");
 		include("Templates/news.tpl");
