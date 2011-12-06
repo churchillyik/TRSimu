@@ -1,15 +1,19 @@
 <?php
 include("GameEngine/Village.php");
 include("GameEngine/Units.php");
+
 if (isset($_GET['newdid']))
 {
 	$_SESSION['wid'] = $_GET['newdid'];
 	header("Location: ".$_SERVER['PHP_SELF']);
 }
+
 $start = $generator->pageLoadTimeStart();
+
 $alliance->procAlliForm($_POST);
 $technology->procTech($_POST);
 $market->procMarket($_POST);
+
 if (isset($_GET['gid']))
 {
 	$_GET['id'] = $building->getTypeField($_GET['gid']);
@@ -60,7 +64,6 @@ if (isset($_POST['a']) == 533374 && isset($_POST['id']) == 39)
 	<meta http-equiv="expires" content="0" />
 	<meta http-equiv="imagetoolbar" content="no" />
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-
 	<script src="mt-full.js?ebe79" type="text/javascript"></script>
 	<script src="unx.js?ebe79" type="text/javascript"></script>
 	<script src="new.js?ebe79" type="text/javascript"></script>
@@ -93,74 +96,76 @@ if (isset($_POST['a']) == 533374 && isset($_POST['id']) == 39)
 	<div id="dynamic_header"></div>
 	<?php include("Templates/header.tpl"); ?>
 	<div id="mid">
-	<?php include("Templates/menu.tpl"); ?>
-	<div id="content" class="build">
-		<?php
-		if (isset($_GET['id']))
-		{
-			if (isset($_GET['s']))
+		<?php include("Templates/menu.tpl"); ?>
+		<div id="content" class="build">
+			<?php
+			if (isset($_GET['id']))
 			{
-				if (!ctype_digit($_GET['s']))
+				if (isset($_GET['s']))
 				{
-					$_GET['s'] = null;
+					if (!ctype_digit($_GET['s']))
+					{
+						$_GET['s'] = null;
+					}
 				}
-			}
-			if (isset($_GET['t']))
-			{
-				if (!ctype_digit($_GET['t']))
-				{
-					$_GET['t'] = null;
-				}
-			}
-			if (!ctype_digit($_GET['id']))
-			{
-				$_GET['id'] = "1";
-			}
-			$id = $_GET['id'];
-			if ($id == '99' AND $village->resarray['f99t'] == 40)
-			{
-				include("Templates/Build/ww.tpl");
-			}
-			else if ($village->resarray['f'.$_GET['id'].'t'] == 0 && $_GET['id'] >= 19) 
-			{
-				include("Templates/Build/avaliable.tpl");
-			}
-			else
-			{
 				if (isset($_GET['t']))
 				{
-					if ($_GET['t'] == 1)
+					if (!ctype_digit($_GET['t']))
 					{
-						$_SESSION['loadMarket'] = 1;
+						$_GET['t'] = null;
 					}
-					include("Templates/Build/".$village->resarray['f'.$_GET['id'].'t']."_".$_GET['t'].".tpl");
 				}
-				else if (isset($_GET['s']))
+				if (!ctype_digit($_GET['id']))
 				{
-					include("Templates/Build/".$village->resarray['f'.$_GET['id'].'t']."_".$_GET['s'].".tpl");
+					$_GET['id'] = "1";
+				}
+				$id = $_GET['id'];
+				if ($id == '99' AND $village->resarray['f99t'] == 40)
+				{
+					//	世界奇迹
+					include("Templates/Build/ww.tpl");
+				}
+				else if ($village->resarray['f'.$_GET['id'].'t'] == 0 && $_GET['id'] >= 19) 
+				{
+					//	建造新的内城建筑
+					include("Templates/Build/avaliable.tpl");
 				}
 				else
 				{
-					include("Templates/Build/".$village->resarray['f'.$_GET['id'].'t'].".tpl");
+					if (isset($_GET['t']))
+					{
+						if ($_GET['t'] == 1)
+						{
+							$_SESSION['loadMarket'] = 1;
+						}
+						include("Templates/Build/".$village->resarray['f'.$_GET['id'].'t']."_".$_GET['t'].".tpl");
+					}
+					else if (isset($_GET['s']))
+					{
+						include("Templates/Build/".$village->resarray['f'.$_GET['id'].'t']."_".$_GET['s'].".tpl");
+					}
+					else
+					{
+						include("Templates/Build/".$village->resarray['f'.$_GET['id'].'t'].".tpl");
+					}
 				}
 			}
-		}
-		?>
+			?>
+		</div>
 	</div>
-
+	
 	<div id="side_info">
-	<?php
-	include("Templates/quest.tpl");
-	include("Templates/news.tpl");
-	include("Templates/multivillage.tpl");
-	include("Templates/links.tpl");
-	?>
+		<?php
+		include("Templates/quest.tpl");
+		include("Templates/news.tpl");
+		include("Templates/multivillage.tpl");
+		include("Templates/links.tpl");
+		?>
 	</div>
 
 	<div class="clear"></div>
 	<div class="footer-stopper"></div>
 	<div class="clear"></div>
-
 	<?php 
 	include("Templates/footer.tpl"); 
 	include("Templates/res.tpl");

@@ -24,7 +24,5 @@
 	</tr>
 	</table>
 
-	<?php 
-	include("upgrade.tpl");
-	?>
+	<?php include("upgrade.tpl"); ?>
 </div>

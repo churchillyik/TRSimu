@@ -32,7 +32,7 @@ if (mysql_num_rows($MyGold))
 	}
 	else
 	{
-		echo "<p>您现在拥有<b> $session->gold </b>金币</p>";
+		echo "<p>您现在拥有<b> $session->gold </b>金币。</p>";
 	}
 }
 ?>
@@ -436,7 +436,7 @@ if (mysql_num_rows($MyGold))
 		{
 			if ($golds['gold'] > 2)
 			{
-				echo '<a href="build.php?gid=17&t=3"><span>进入交易市场';
+				echo '<a href="plus.php?id=13"><span>进入交易市场';
 			}
 			else
 			{

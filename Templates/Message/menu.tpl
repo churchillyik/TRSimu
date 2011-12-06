@@ -10,12 +10,12 @@
 		{
 			echo "class=\"selected\"";
 		}
-		echo ">Archive</a> | <a href=\"nachrichten.php?t=4\"";
+		echo ">存档</a> | <a href=\"nachrichten.php?t=4\"";
 		if (isset($_GET['t']) && $_GET['t'] == 4)
 		{
 			echo "class=\"selected\"";
 		}
-		echo ">Notes</a>";
+		echo ">记事本</a>";
 	}
 	?>
 </div>
