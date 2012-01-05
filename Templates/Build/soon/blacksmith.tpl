@@ -1,20 +1,24 @@
-<h2>Blacksmith</h2>
-	<table class="new_building" cellpadding="1" cellspacing="1">
-		<tbody><tr>
-			<td class="desc">In the blacksmith&#39;s melting furnaces your warriors&#39; weapons are enhanced. By increasing its level you can order the fabrication of even better weapons.
-
-</td>
-			<td rowspan="3" class="bimg">
-				<a href="#" onClick="return Popup(12,4);">
-				<img class="building g12" src="img/x.gif" alt="Blacksmith" title="Blacksmith" /></a>
-			</td>
-		</tr>
-		<tr>
-		<td class="requ">Prerequisites</td>
-		</tr>
-		<tr>
-			<td>
-				<a href="#" onClick="return Popup(15,4);">Main Building</a> <span title="+2">Level 3</span>, <a href="#" onClick="return Popup(22,4);">Academy</a> <span title="+3">Level 3</span>
-			</td>
-		</tr></tbody>
-	</table>
+<h2>铁匠铺</h2>
+<table class="new_building" cellpadding="1" cellspacing="1">
+<tbody>
+<tr>
+	<td class="desc">
+		铁匠铺是用来制造及改良你部队武器的地方，藉以增加部队的攻击力。铁匠铺等级越高，能升级的攻击力就越高。
+	</td>
+	<td rowspan="3" class="bimg">
+		<a href="#" onClick="return Popup(12,4);">
+			<img class="building g12" src="img/x.gif" alt="铁匠铺" title="铁匠铺" />
+		</a>
+	</td>
+</tr>
+<tr>
+	<td class="requ">开发要求</td>
+</tr>
+<tr>
+	<td>
+		<a href="#" onClick="return Popup(15,4);">中心大楼</a> <span title="+2">等级 3</span>, 
+		<a href="#" onClick="return Popup(22,4);">研发所</a> <span title="+3">等级 3</span>
+	</td>
+</tr>
+</tbody>
+</table>

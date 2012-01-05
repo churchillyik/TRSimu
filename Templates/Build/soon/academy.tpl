@@ -1,18 +1,24 @@
-<h2>Academy</h2>
-	<table class="new_building" cellpadding="1" cellspacing="1">
-		<tbody><tr>
-			<td class="desc">In the academy new unit types can be researched. By increasing its level you can order the research of better units.</td>
-			<td rowspan="3" class="bimg">
-				<a href="#" onClick="return Popup(22,4);">
-				<img class="building g22" src="img/x.gif" alt="Academy" title="Academy" /></a>
-			</td>
-		</tr>
-		<tr>
-		<td class="requ">Prerequisites</td>
-		</tr>
-		<tr>
-			<td>
-				<a href="#" onClick="return Popup(19,4);">Barracks</a> <span title="+3">Level 3</span>, <a href="#" onClick="return Popup(15,4);">Main Building</a> <span title="+2">Level 3</span>
-			</td>
-		</tr></tbody>
-	</table>
+<h2>研发所</h2>
+<table class="new_building" cellpadding="1" cellspacing="1">
+<tbody>
+<tr>
+	<td class="desc">
+		研发所是用来研究新的兵种。研发所等级越高，越高级的兵种就可以被开发。
+	</td>
+	<td rowspan="3" class="bimg">
+		<a href="#" onClick="return Popup(22,4);">
+			<img class="building g22" src="img/x.gif" alt="研发所" title="研发所" />
+		</a>
+	</td>
+</tr>
+<tr>
+	<td class="requ">开发要求</td>
+</tr>
+<tr>
+	<td>
+		<a href="#" onClick="return Popup(19,4);">兵营</a><span title="+3">等级 3</span>, 
+		<a href="#" onClick="return Popup(15,4);">中心大楼</a><span title="+2">等级 3</span>
+	</td>
+</tr>
+</tbody>
+</table>
