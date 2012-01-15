@@ -1,27 +1,29 @@
-<?php			   
-	//gp link
-	if($session->gpack == null || GP_ENABLE == false) {
+<?php
+if ($session->gpack == null || GP_ENABLE == false)
+{
 	$gpack= GP_LOCATE;
-	} else {
+}
+else
+{
 	$gpack= $session->gpack;
-	}
-
-	
-//de bird
-if($displayarray['protect'] > time()){
-$uurover=date('H:i:s', ($displayarray['protect']-time()));
-$profiel = preg_replace("/\[#0]/is",'<img src="'.$gpack.'img/t/tn.gif" border="0" onmouseout="med_closeDescription()" onmousemove="med_mouseMoveHandler(arguments[0],\'<table><tr><td>This player has '.$uurover.' hours of beginners protection left.</td></tr></table>\')">', $profiel, 1);
-} else {
-$geregistreerd=date('d-m-Y', ($displayarray['timestamp']));
-$profiel = preg_replace("/\[#0]/is",'<img src="'.$gpack.'img/t/tnd.gif" border="0" onmouseout="med_closeDescription()" onmousemove="med_mouseMoveHandler(arguments[0],\'<table><tr><td>This player registered his account on '.$geregistreerd.'.</td></tr></table>\')">', $profiel, 1);
 }
 
-//natar image
-if($displayarray['username'] == "Natars"){
-$profiel = preg_replace("/\[#natars]/is",'<img src="'.$gpack.'img/t/t10_2.jpg" border="0" onmouseout="med_closeDescription()" onmousemove="med_mouseMoveHandler(arguments[0],\'<table><tr><td>Official Natar account</td></tr></table>\')">', $profiel, 1);
+if ($displayarray['protect'] > time())
+{
+	$uurover=date('H:i:s', ($displayarray['protect'] - time()));
+	$profiel = preg_replace("/\[#0]/is", '<img src="'.$gpack.'img/t/tn.gif" border="0" onmouseout="med_closeDescription()" onmousemove="med_mouseMoveHandler(arguments[0],\'<table><tr><td>该玩家的新手保护时间还剩下 '.$uurover.' 小时</td></tr></table>\')">', $profiel, 1);
+}
+else
+{
+	$geregistreerd=date('d-m-Y', ($displayarray['timestamp']));
+	$profiel = preg_replace("/\[#0]/is",'<img src="'.$gpack.'img/t/tnd.gif" border="0" onmouseout="med_closeDescription()" onmousemove="med_mouseMoveHandler(arguments[0],\'<table><tr><td>该玩家的注册时间为 '.$geregistreerd.'.</td></tr></table>\')">', $profiel, 1);
 }
 
-//de lintjes
+if ($displayarray['username'] == "Natars")
+{
+	$profiel = preg_replace("/\[#natars]/is",'<img src="'.$gpack.'img/t/t10_2.jpg" border="0" onmouseout="med_closeDescription()" onmousemove="med_mouseMoveHandler(arguments[0],\'<table><tr><td>官方纳塔帐号</td></tr></table>\')">', $profiel, 1);
+}
+
 /******************************
 INDELING CATEGORIEEN:
 ===============================
@@ -36,56 +38,55 @@ INDELING CATEGORIEEN:
 == 9. in top 3 - overval     ==
 ******************************/
 
-foreach($varmedal as $medal) {
+foreach ($varmedal as $medal)
+{
+	switch ($medal['categorie'])
+	{
+	case "1":
+		$titel = "每周攻击手";
+		$woord = "点数";
+		break;
+	case "2":
+		$titel = "每周防御手";
+		$woord = "点数";
+		break;
+	case "3":
+		$titel = "每周人口上升排名";
+		$woord = "排名";
+		break;
+	case "4":
+		$titel = "每周资源掠夺";
+		$woord = "资源";
+		break;
+	case "5":
+		$titel = "同时在攻击榜和防御榜排名前10因而获得该奖牌";
+		$bonus[$medal['id']] = 1;
+		break;
+	case "6":
+		$titel = "在攻击榜上排名前3 ".$medal['points'];
+		$bonus[$medal['id']] = 1;
+		break;
+	case "7":
+		$titel = "在防御榜上排名前3 ".$medal['points'];
+		$bonus[$medal['id']] = 1;
+		break;
+	case "8":
+		$titel = "在人口上升排名上排名前3 ".$medal['points'];
+		$bonus[$medal['id']] = 1;
+		break;
+	case "9":
+		$titel = "在资源掠夺榜上排名前3 ".$medal['points'];
+		$bonus[$medal['id']] = 1;
+		break;
+	}
 
-switch ($medal['categorie']) {
-    case "1":
-        $titel="Attackers of the Week";
-		$woord="Points";
-        break;
-    case "2":
-        $titel="Defenders of the Week";
- 		$woord="Points";
-       break;
-    case "3":
-        $titel="Climbers of the week";
- 		$woord="Ranks";
-       break;
-    case "4":
-        $titel="Robbers of the week";
-		$woord="Resources";
-        break;
-	 case "5":
-        $titel="Receiving this medal shows that you where in the top 10 of both attacckers and defenders of the week.";
-        $bonus[$medal['id']]=1;
-		break;
-	 case "6":
-        $titel="Receiving this medal shows that you were in the top 10 of the attackers of the week ".$medal['points']." in a row";
-        $bonus[$medal['id']]=1;
-		break;
-	 case "7":
-        $titel="Receiving this medal shows that you were in the top 10 of the deffenders of the week ".$medal['points']." in a row";
-        $bonus[$medal['id']]=1;
-		break;
-	 case "8":
-        $titel="Receiving this medal shows that you were in the top 10 of the climbers of the week ".$medal['points']." in a row.";
-        $bonus[$medal['id']]=1;
-		break;
-	 case "9":
-        $titel="Receiving this medal shows that you were in the top 10 of the robbers of the week ".$medal['points']." in a row.";
-        $bonus[$medal['id']]=1;
-		break;
-
+	if (isset($bonus[$medal['id']]))
+	{
+		$profiel = preg_replace("/\[#".$medal['id']."]/is", '<img src="'.$gpack.'img/t/'.$medal['img'].'.jpg" border="0" onmouseout="med_closeDescription()" onmousemove="med_mouseMoveHandler(arguments[0],\'<table><tr><td>'.$titel.'<br /><br />每周内获得的奖牌：'.$medal['week'].'</td></tr></table>\')">', $profiel, 1);
+	}
+	else
+	{
+		$profiel = preg_replace("/\[#".$medal['id']."]/is",'<img src="'.$gpack.'img/t/'.$medal['img'].'.jpg" border="0" onmouseout="med_closeDescription()" onmousemove="med_mouseMoveHandler(arguments[0],\'<table><tr><td>种类：</td><td>'.$titel.'</td></tr><tr><td>周：</td><td>'.$medal['week'].'</td></tr><tr><td>名次：</td><td>'.$medal['plaats'].'</td></tr><tr><td>'.$woord.'：</td><td>'.$medal['points'].'</td></tr></table>\')">', $profiel, 1);
+	}
 }
-
-if(isset($bonus[$medal['id']])){
-$profiel = preg_replace("/\[#".$medal['id']."]/is",'<img src="'.$gpack.'img/t/'.$medal['img'].'.jpg" border="0" onmouseout="med_closeDescription()" onmousemove="med_mouseMoveHandler(arguments[0],\'<table><tr><td>'.$titel.'<br /><br />Received in week: '.$medal['week'].'</td></tr></table>\')">', $profiel, 1);
-} else {
-$profiel = preg_replace("/\[#".$medal['id']."]/is",'<img src="'.$gpack.'img/t/'.$medal['img'].'.jpg" border="0" onmouseout="med_closeDescription()" onmousemove="med_mouseMoveHandler(arguments[0],\'<table><tr><td>Category:</td><td>'.$titel.'</td></tr><tr><td>Week:</td><td>'.$medal['week'].'</td></tr><tr><td>Rank:</td><td>'.$medal['plaats'].'</td></tr><tr><td>'.$woord.':</td><td>'.$medal['points'].'</td></tr></table>\')">', $profiel, 1);
-}
-}
-
-
-
 ?>
-
