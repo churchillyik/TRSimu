@@ -1,50 +1,62 @@
-<h1><img class="unit u14" src="img/x.gif" alt="Scout" title="Scout" /> Scout <span class="tribe">(Teutons)</span></h1>
+<h1>
+	<img class="unit u14" src="img/x.gif" alt="侦察兵" title="侦察兵" /> 侦察兵 
+	<span class="tribe">(日耳曼)</span>
+</h1>
 
 <table id="troop_info" cellpadding="1" cellspacing="1">
-<thead><tr>
-	<th><img class="att_all" src="img/x.gif" alt="attack value" title="attack value" /></th>
-	<th><img class="def_i" src="img/x.gif" alt="defence against infantry" title="defence against infantry" /></th>
-	<th><img class="def_c" src="img/x.gif" alt="defence against cavalry" title="defence against cavalry" /></th><th><img class="r1" src="img/x.gif" alt="Lumber" title="Lumber" /></th><th><img class="r2" src="img/x.gif" alt="Clay" title="Clay" /></th><th><img class="r3" src="img/x.gif" alt="Iron" title="Iron" /></th><th><img class="r4" src="img/x.gif" alt="Crop" title="Crop" /></th></tr></thead>
-<tbody><tr>
+<thead>
+<tr>
+	<th><img class="att_all" src="img/x.gif" alt="攻击力" title="攻击力" /></th>
+	<th><img class="def_i" src="img/x.gif" alt="步兵防御力" title="步兵防御力" /></th>
+	<th><img class="def_c" src="img/x.gif" alt="骑兵防御力" title="骑兵防御力" /></th>
+	<th><img class="r1" src="img/x.gif" alt="木材" title="木材" /></th>
+	<th><img class="r2" src="img/x.gif" alt="粘土" title="粘土" /></th>
+	<th><img class="r3" src="img/x.gif" alt="铁矿" title="铁矿" /></th>
+	<th><img class="r4" src="img/x.gif" alt="粮食" title="粮食" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
 	<td>0</td>
 	<td>10</td>
 	<td>5</td>
-
 	<td>160</td>
 	<td>100</td>
 	<td>50</td>
 	<td>50</td>
-</tr></tbody>
+</tr>
+</tbody>
 </table>
 
 <table id="troop_details" cellpadding="1" cellspacing="1">
-<tbody><tr>
-
-	<th>Velocity</th>
-	<td><b>9</b> fields/hour</td>
+<tbody>
+<tr>
+	<th>速度</th>
+	<td><b>9</b> 幅/小时</td>
 </tr>
 <tr>
-	<th>Can carry</th>
-	<td><b>0</b> resources</td>
-
+	<th>运载量</th>
+	<td><b>0</b> 单位资源</td>
 </tr>
 <tr>
-	<th>Upkeep</th>
-	<td><img class="r5" src="img/x.gif" alt="Crop consumption" title="Crop consumption" /> 1</td>
+	<th>粮食消耗</th>
+	<td><img class="r5" src="img/x.gif" alt="粮食消耗" title="粮食消耗" /> 1</td>
 </tr>
 <tr>
-	<th>Duration of training</th>
-	<td><img class="clock" src="img/x.gif" alt="duration" title="duration" /> 0:18:40</td>
-
+	<th>训练时间</th>
+	<td><img class="clock" src="img/x.gif" alt="训练时间" title="训练时间" /> 0:18:40</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 
-<img id="big_unit" class="big_u14" src="img/x.gif" alt="Scout" title="Scout" /><div id="t_desc">The Scout moves far ahead of the Teuton troops in order to get an impression of the enemy's strength and his villages. He moves on foot, which makes him slower than his Roman or Gaul counterparts. He scouts the enemy units, resources and fortifications. 
+<img id="big_unit" class="big_u14" src="img/x.gif" alt="侦察兵" title="侦察兵" />
+<div id="t_desc">侦察兵是用来侦察敌方强弱的部队。但日尔曼人的侦察兵与其他种族不同，其他种族用骑乘部队侦察，日尔曼人的侦察兵只靠双脚，因此比较慢。
 <br /><br />
-If there are no enemy Scouts, Pathfinders or Equites Legati in the scouted village then the scouting remains unnoticed.</div><div id="prereqs"><b>Prerequisites</b><br /><a href="manual.php?typ=4&amp;gid=22">Academy</a> Level 1, <a href="manual.php?typ=4&amp;gid=15">Main Building</a> Level 5</div><map id="nav" name="nav">
- <area href="manual.php?typ=1&amp;s=13" title="back" coords="0,0,45,18" shape="rect" alt="" />
- <area href="manual.php?s=1" title="Overview" coords="46,0,70,18" shape="rect" alt="" />
-
- <area href="manual.php?typ=1&amp;s=15" title="forward" coords="71,0,116,18" shape="rect" alt="" />
+如果在侦察的村庄没有敌军的使节骑士、探路者或侦察兵，那次的侦察便不会被发现。</div>
+<div id="prereqs"><b>开发要求</b><br /><a href="manual.php?typ=4&amp;gid=22">研发所</a> 等级 1，<a href="manual.php?typ=4&amp;gid=15">中心大楼</a> 等级 5</div>
+<map id="nav" name="nav">
+	<area href="manual.php?typ=1&amp;s=13" title="上一页" coords="0,0,45,18" shape="rect" alt="" />
+	<area href="manual.php?typ=2&amp;s=2" title="返回上级" coords="46,0,70,18" shape="rect" alt="" />
+	<area href="manual.php?typ=1&amp;s=15" title="下一页" coords="71,0,116,18" shape="rect" alt="" />
 </map>
 <img usemap="#nav" src="img/x.gif" class="navi" alt="" />

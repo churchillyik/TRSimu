@@ -1,5 +1,5 @@
 <div id="build" class="gid1">
-	<a href="#" onClick="return Popup(0,4);" class="build_logo">
+	<a href="#" onClick="return Popup(1,4);" class="build_logo">
 		<img class="building g1" src="img/x.gif" alt="<?php echo B1; ?>" title="<?php echo B1; ?>" />
 	</a>
 	<h1>

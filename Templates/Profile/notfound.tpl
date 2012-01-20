@@ -1,2 +1,2 @@
-<h1>Player profile</h1>
-<p>No player found</p>
+<h1>玩家信息</h1>
+<p>找不到该玩家</p>

@@ -333,7 +333,7 @@ function Popup(i, j, sc)
 	if (pb != null)
 	{
 		var tc = '<div class="popup3">'
-		+ '<a href="#" onClick="Close(); return false;"><img src="img/x.gif" border="1" class="popup4" alt="Move"></a>'
+		+ '<a href="#" onClick="Close(); return false;"><img src="img/x.gif" border="1" class="popup4" alt="移动"></a>'
 		+ '<iframe frameborder="0" id="Frame" src="manual.php?'
 		+ sc + '=' + i 
 		+ '&typ=' + j 

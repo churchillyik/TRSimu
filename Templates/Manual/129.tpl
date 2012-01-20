@@ -1,50 +1,62 @@
-<h1><img class="unit u29" src="img/x.gif" alt="Chieftain" title="Chieftain" /> Chieftain <span class="tribe">(Gauls)</span></h1>
+<h1>
+	<img class="unit u29" src="img/x.gif" alt="首领" title="首领" /> 首领 
+	<span class="tribe">(高卢)</span>
+</h1>
 
 <table id="troop_info" cellpadding="1" cellspacing="1">
-<thead><tr>
-	<th><img class="att_all" src="img/x.gif" alt="attack value" title="attack value" /></th>
-	<th><img class="def_i" src="img/x.gif" alt="defence against infantry" title="defence against infantry" /></th>
-	<th><img class="def_c" src="img/x.gif" alt="defence against cavalry" title="defence against cavalry" /></th><th><img class="r1" src="img/x.gif" alt="Lumber" title="Lumber" /></th><th><img class="r2" src="img/x.gif" alt="Clay" title="Clay" /></th><th><img class="r3" src="img/x.gif" alt="Iron" title="Iron" /></th><th><img class="r4" src="img/x.gif" alt="Crop" title="Crop" /></th></tr></thead>
-<tbody><tr>
+<thead>
+<tr>
+	<th><img class="att_all" src="img/x.gif" alt="攻击力" title="攻击力" /></th>
+	<th><img class="def_i" src="img/x.gif" alt="步兵防御力" title="步兵防御力" /></th>
+	<th><img class="def_c" src="img/x.gif" alt="骑兵防御力" title="骑兵防御力" /></th>
+	<th><img class="r1" src="img/x.gif" alt="木材" title="木材" /></th>
+	<th><img class="r2" src="img/x.gif" alt="粘土" title="粘土" /></th>
+	<th><img class="r3" src="img/x.gif" alt="铁矿" title="铁矿" /></th>
+	<th><img class="r4" src="img/x.gif" alt="粮食" title="粮食" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
 	<td>40</td>
 	<td>50</td>
 	<td>50</td>
-
 	<td>30750</td>
 	<td>45400</td>
 	<td>31000</td>
 	<td>37500</td>
-</tr></tbody>
+</tr>
+</tbody>
 </table>
 
 <table id="troop_details" cellpadding="1" cellspacing="1">
-<tbody><tr>
-
-	<th>Velocity</th>
-	<td><b>5</b> fields/hour</td>
+<tbody>
+<tr>
+	<th>速度</th>
+	<td><b>5</b> 幅/小时</td>
 </tr>
 <tr>
-	<th>Can carry</th>
-	<td><b>0</b> resources</td>
-
+	<th>运载量</th>
+	<td><b>0</b> 单位资源</td>
 </tr>
 <tr>
-	<th>Upkeep</th>
-	<td><img class="r5" src="img/x.gif" alt="Crop consumption" title="Crop consumption" /> 4</td>
+	<th>粮食消耗</th>
+	<td><img class="r5" src="img/x.gif" alt="粮食消耗" title="粮食消耗" /> 4</td>
 </tr>
 <tr>
-	<th>Duration of training</th>
-	<td><img class="clock" src="img/x.gif" alt="duration" title="duration" /> 25:11:40</td>
-
+	<th>训练时间</th>
+	<td><img class="clock" src="img/x.gif" alt="训练时间" title="训练时间" /> 25:11:40</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 
-<img id="big_unit" class="big_u29" src="img/x.gif" alt="Chieftain" title="Chieftain" /><div id="t_desc">Each tribe has an ancient and experienced fighter whose presence and speeches are able to convince the population of enemy villages to join his tribe.
+<img id="big_unit" class="big_u29" src="img/x.gif" alt="首领" title="首领" />
+<div id="t_desc">每个种族都会有一些有经验及智慧的人，高卢首领便是这类人。他所说的道理能够令人信服，从而使别人的村落逐渐成为你的新的村庄。
 <br /><br />
-The more often the Chieftain speaks in front of the walls of an enemy village the more its loyalty sinks until it joins the Chieftain's tribe.</div><div id="prereqs"><b>Prerequisites</b><br /><a href="manual.php?typ=4&amp;gid=16">Rally Point</a> Level 10, <a href="manual.php?typ=4&amp;gid=22">Academy</a> Level 20</div><map id="nav" name="nav">
- <area href="manual.php?typ=1&amp;s=28" title="back" coords="0,0,45,18" shape="rect" alt="" />
- <area href="manual.php?s=1" title="Overview" coords="46,0,70,18" shape="rect" alt="" />
-
- <area href="manual.php?typ=1&amp;s=30" title="forward" coords="71,0,116,18" shape="rect" alt="" />
+每一次首领的演说都能减低该村村民对该村的忠诚度，直至那座村庄纳入你的领土。</div>
+<div id="prereqs"><b>开发要求</b><br /><a href="manual.php?typ=4&amp;gid=16">集结点</a> 等级 10，<a href="manual.php?typ=4&amp;gid=22">研发所</a> 等级 20</div>
+<map id="nav" name="nav">
+	<area href="manual.php?typ=1&amp;s=28" title="上一页" coords="0,0,45,18" shape="rect" alt="" />
+	<area href="manual.php?typ=2&amp;s=3" title="返回上级" coords="46,0,70,18" shape="rect" alt="" />
+	<area href="manual.php?typ=1&amp;s=30" title="下一页" coords="71,0,116,18" shape="rect" alt="" />
 </map>
 <img usemap="#nav" src="img/x.gif" class="navi" alt="" />

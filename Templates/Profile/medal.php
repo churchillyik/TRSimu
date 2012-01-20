@@ -24,20 +24,6 @@ if ($displayarray['username'] == "Natars")
 	$profiel = preg_replace("/\[#natars]/is",'<img src="'.$gpack.'img/t/t10_2.jpg" border="0" onmouseout="med_closeDescription()" onmousemove="med_mouseMoveHandler(arguments[0],\'<table><tr><td>官方纳塔帐号</td></tr></table>\')">', $profiel, 1);
 }
 
-/******************************
-INDELING CATEGORIEEN:
-===============================
-== 1. Aanvallers top 10      ==
-== 2. Defence top 10         ==
-== 3. Klimmers top 10        ==
-== 4. Overvallers top 10     ==
-== 5. In att en def tegelijk ==
-== 6. in top 3 - aanval      ==
-== 7. in top 3 - verdediging ==
-== 8. in top 3 - klimmers    ==
-== 9. in top 3 - overval     ==
-******************************/
-
 foreach ($varmedal as $medal)
 {
 	switch ($medal['categorie'])
@@ -51,7 +37,7 @@ foreach ($varmedal as $medal)
 		$woord = "点数";
 		break;
 	case "3":
-		$titel = "每周人口上升排名";
+		$titel = "每周人口上升";
 		$woord = "排名";
 		break;
 	case "4":

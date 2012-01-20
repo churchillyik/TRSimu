@@ -7,7 +7,7 @@
 	| 
 	<a href="spieler.php?s=3" <?php if (isset($_GET['s']) && $_GET['s'] == 3) { echo "class=\"selected\""; } ?>>帐号</a>
 	<?php
-	if (GP_ENABLE)
+	//if (GP_ENABLE)
 	{
 	?>
 	| <a href="spieler.php?s=4" <?php if (isset($_GET['s']) && $_GET['s'] == 4) { echo "class=\"selected\""; } ?>>界面风格</a>
