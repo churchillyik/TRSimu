@@ -25,7 +25,7 @@
 <br>
 该内置帮助系统仅提供简明的信息，
 <br>
-更多帮助请查看<a href="anleitung.php" target=blank>Travian常见问题</a>.
+更多帮助请查看<a href="anleitung.php" target=blank>Travian常见问题</a>。
 </li>
 <br />
 

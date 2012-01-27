@@ -1,33 +1,29 @@
 <h1>
-	<img class="unit ugeb" src="img/x.gif"> Cranny
+	<img class="unit ugeb" src="img/x.gif"> 山洞
 </h1>
-<img class="building g23" src="img/x.gif" alt="Cranny" title="Cranny" />
-The cranny is used to hide at least some of your resources when the village is attacked. These resources cannot be stolen. 
+<img class="building g23" src="img/x.gif" alt="山洞" title="山洞" />
+当有敌人来攻击时，山洞可以帮你隐藏部分资源以免被掠走。
 <br /><br />
-At level 1 the cranny holds 100 units of each resource. Gaulic crannies are twice as big as the others.
+在等级1时，每样资源各有100单位会被隐藏。
 <br /><br />
-HINTS
-<br />
-In T3 the cranny is 66% as effective against Teutons. 
-<br />
-In T3.5 the cranny is 80% as effective against Teutons.
+山洞对日耳曼的军队仅有80%的效果。
 <p>
-	<b>Costs</b> and <b>construction time</b> for level 1:<br />
-	<img class="r1" src="img/x.gif" alt="Lumber" title="Lumber" />40 | 
-	<img class="r2" src="img/x.gif" alt="Clay" title="Clay" />50 | 
-	<img class="r3" src="img/x.gif" alt="Iron" title="Iron" />30 | 
-	<img class="r4" src="img/x.gif" alt="Crop" title="Crop" />10 | 
-	<img class="r5" src="img/x.gif" alt="Crop consumption" title="Crop consumption" />0 | 
+	等级1的<b>开发成本</b>及<b>建造时间</b>：<br />
+	<img class="r1" src="img/x.gif" alt="木材" title="木材" />40 | 
+	<img class="r2" src="img/x.gif" alt="粘土" title="粘土" />50 | 
+	<img class="r3" src="img/x.gif" alt="铁矿" title="铁矿" />30 | 
+	<img class="r4" src="img/x.gif" alt="粮食" title="粮食" />10 | 
+	<img class="r5" src="img/x.gif" alt="粮食消耗" title="粮食消耗" />0 | 
 	<span class="dur">
-	<img class="clock" alt="duration" title="duration" src="img/x.gif" />0:12:30
+	<img class="clock" alt="建造时间" title="建造时间" src="img/x.gif" />0:12:30
 	</span>
 </p>
 <p>
-	<b>Prerequisites</b><br />none
+	<b>开发要求</b><br />无
 </p>
 <map id="nav" name="nav">
-	<area href="manual.php?typ=4&amp;s=25" title="back" coords="0,0,45,18" shape="rect" alt="" />
-	<area href="manual.php?s=1" title="Overview" coords="46,0,70,18" shape="rect" alt="" />
-	<area href="manual.php?typ=4&amp;s=27" title="forward" coords="71,0,116,18" shape="rect" alt="" />
+	<area href="manual.php?typ=4&amp;s=18" title="上一页" coords="0,0,45,18" shape="rect" alt="" />
+	<area href="manual.php?typ=3&amp;s=3" title="返回上级" coords="46,0,70,18" shape="rect" alt="" />
+	<area href="manual.php?typ=4&amp;s=24" title="下一页" coords="71,0,116,18" shape="rect" alt="" />
 </map>
 <img usemap="#nav" src="img/x.gif" class="navi" alt="" />

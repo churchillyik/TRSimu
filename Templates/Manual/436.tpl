@@ -1,35 +1,35 @@
 <h1>
-	<img class="unit ugeb" src="img/x.gif"> Trapper
+	<img class="unit ugeb" src="img/x.gif"> 陷阱机
 </h1>
-<img class="building g36" src="img/x.gif" alt="Trapper" title="Trapper" />
-The trapper protects your village with well hidden traps. This means that unwary enemies can be imprisoned and won't be able to harm your village anymore.
+<img class="building g36" src="img/x.gif" alt="陷阱机" title="陷阱机" />
+陷阱机可以建造陷阱来保护你的村庄。进攻者一不小心就会跌进陷阱机而不能再对村庄造成威胁。陷阱机级别越高，就可以越快地建造陷阱。
 <br /><br />
-One trap costs 
-<img src="img/un/r/1.gif" width="18" height="12">20|
-<img src="img/un/r/2.gif" width="18" height="12">30|
-<img src="img/un/r/3.gif" width="18" height="12">10|
-<img src="img/un/r/4.gif" width="18" height="12">20 
-<img src="img/un/r/5.gif" width="18" height="12">0
+一个陷阱需要：
+<img class="r1" src="img/x.gif" alt="木材" title="木材" />20|
+<img class="r2" src="img/x.gif" alt="粘土" title="粘土" />30|
+<img class="r3" src="img/x.gif" alt="铁矿" title="铁矿" />10|
+<img class="r4" src="img/x.gif" alt="粮食" title="粮食" />20|
+<img class="r5" src="img/x.gif" alt="粮食消耗" title="粮食消耗" />0
 <br /><br />
-Troops cannot be freed with a raid. When the troops get freed with a successful normal attack, 1/3 of the traps are automatically repaired. If the owner of the traps release the captives all of the traps can be repaired. 
+如果囚犯是被武力解放的话，所有的陷阱都会被破坏。但是如果陷阱主人释放囚犯，所有的陷阱都可以免费修复。
 <br /><br />
-Note that this building can only be constructed by Gauls.
+陷阱机是一种只有高卢才可兴建的建筑物。
 <p>
-	<b>Costs</b> and <b>construction time</b> for level 1:<br />
-	<img class="r1" src="img/x.gif" alt="Lumber" title="Lumber" />100 | 
-	<img class="r2" src="img/x.gif" alt="Clay" title="Clay" />100 | 
-	<img class="r3" src="img/x.gif" alt="Iron" title="Iron" />100 | 
-	<img class="r4" src="img/x.gif" alt="Crop" title="Crop" />100 | 
-	<img class="r5" src="img/x.gif" alt="Crop consumption" title="Crop consumption" />4 | 
+	等级1的<b>开发成本</b>及<b>建造时间</b>：<br />
+	<img class="r1" src="img/x.gif" alt="木材" title="木材" />100 | 
+	<img class="r2" src="img/x.gif" alt="粘土" title="粘土" />100 | 
+	<img class="r3" src="img/x.gif" alt="铁矿" title="铁矿" />100 | 
+	<img class="r4" src="img/x.gif" alt="粮食" title="粮食" />100 | 
+	<img class="r5" src="img/x.gif" alt="粮食消耗" title="粮食消耗" />4 | 
 	<span class="dur">
-	<img class="clock" alt="duration" title="duration" src="img/x.gif" />0:33:20
+	<img class="clock" alt="建造时间" title="建造时间" src="img/x.gif" />0:33:20
 	</span>
 </p>
 <p>
-	<b>Prerequisites</b><br />
-	<a href="manual.php?typ=4&gid=16">Rally Point</a> Level 1</p><map id="nav" name="nav">
-	<area href="manual.php?typ=4&amp;s=20" title="back" coords="0,0,45,18" shape="rect" alt="" />
-	<area href="manual.php?s=1" title="Overview" coords="46,0,70,18" shape="rect" alt="" />
-	<area href="manual.php?typ=4&amp;s=22" title="forward" coords="71,0,116,18" shape="rect" alt="" />
+	<b>开发要求</b><br />
+	<a href="manual.php?typ=4&gid=16">集结点</a> 等级 1</p><map id="nav" name="nav">
+	<area href="manual.php?typ=4&amp;s=30" title="上一页" coords="0,0,45,18" shape="rect" alt="" />
+	<area href="manual.php?typ=3&amp;s=2" title="返回上级" coords="46,0,70,18" shape="rect" alt="" />
+	<area href="manual.php?typ=4&amp;s=37" title="下一页" coords="71,0,116,18" shape="rect" alt="" />
 </map>
 <img usemap="#nav" src="img/x.gif" class="navi" alt="" />

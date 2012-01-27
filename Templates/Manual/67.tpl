@@ -1,11 +1,14 @@
 <style type="text/css">
-.red {
+.red
+{
 	color: #F00;
 }
 </style>
-<h1>Complete construction orders &amp; research immediately.</h1>
-In the   current village all construction orders and research in the academy as   well as the blacksmith and armoury will be completed immediately. <br />
+<h1>立即结束当前建筑和研究任务</h1>
+当前村庄中所有队列的建筑任务，包括研究所及铁匠铺中的研发任务都将立即完成。
 <br />
-However, the <em>buildings</em> Residence and Palace and <em>villages</em> with a wonder of the world inside them are excluded. <br>
+<br />
+当然，<em>行宫和皇宫</em>，以及拥有世界奇迹的村庄被排除在外。 
 <br>
-<span class="red">This feature is NOT included in the   gold club!</span>
+<br>
+<span class="red">该功能不包含在黄金会员功能之内！</span>

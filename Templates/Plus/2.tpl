@@ -6,10 +6,7 @@ include("Templates/Plus/pmenu.tpl");
 <thead>
 <tr>
 	<th colspan="2">特色功能：
-		<span class="plus_g">黄</span>
-		<span class="plus_o">金</span>
-		<span class="plus_g">会</span>
-		<span class="plus_o">员</span>
+		会员帐号
 	</th>
 </tr>
 </thead>

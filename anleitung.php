@@ -25,7 +25,7 @@ include("GameEngine/Account.php");
 		<a href="index.php" class="home"><img src="img/x.gif" alt="Travian"/></a>
 		<table class="menu">
 		<tr>
-			<td><a href="#"><span>1分钟指南</span></a></td>
+			<td><a href="tutorial.php"><span>1分钟指南</span></a></td>
 			<td><a href="anleitung.php"><span><?php echo MANUAL; ?></span></a></td>
 			<td><a href="#" target="_blank"><span><?php echo FORUM; ?></span></a></td>
 			<td><a href="anmelden.php"><span><?php echo REG; ?></span></a></td>

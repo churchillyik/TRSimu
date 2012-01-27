@@ -1,11 +1,13 @@
 <style type="text/css">
-.red {
+.red
+{
 	color: #F00;
 }
 </style>
-<h1>Production bonus for lumber</h1>
-With this Gold advantage all your   villages' lumber production will be increased by 25%. <br>
+<h1>木材增产</h1>
+这个金币加成功能将使你的木材产量增长25％。
 <br>
-The bonus will not be added to the single resource fields but to the sum   of the production. <br>
 <br>
-<span class="red">This feature is NOT included in the   gold club!</span>
+这个功能的加成将不被计算于单块资源田上,而是对生产总量进行加成。<br>
+<br>
+<span class="red">该功能不包含在黄金会员功能之内！</span>

@@ -67,46 +67,46 @@ if(!isset($_COOKIE['COOKUSR']))
 				<input type="image" value="<?php echo LOGIN; ?>" name="s1" onclick="xy();" id="btn_login" class="dynamic_img" src="img/x.gif" alt="login button" />
 				</p>
 			</form>
-		<?php
-		if ($form->getError("pw") == LOGIN_PW_ERROR)
-		{
-			echo "<p class=\"error_box\"><span class=\"error\">"
-			.PW_FORGOTTEN
-			."</span><br>"
-			.PW_REQUEST
-			."<br><a href=\"activate.php?npw=71699\">"
-			.PW_GENERATE
-			."</a></p>";
-		}
-		if($form->getError("activate") != "")
-		{
-			echo "<p class=\"error_box\"><span class=\"error\">"
-			.EMAIL_NOT_VERIFIED
-			."</span><br>"
-			.EMAIL_FOLLOW
-			."<br><a href=\"activate.php?usr="
-			.$form->getError("activate")
-			."\">"
-			.VERIFY_EMAIL
-			."</a></p>";
-		}
-		?>
+			<?php
+			if ($form->getError("pw") == LOGIN_PW_ERROR)
+			{
+				echo "<p class=\"error_box\"><span class=\"error\">"
+				.PW_FORGOTTEN
+				."</span><br>"
+				.PW_REQUEST
+				."<br><a href=\"activate.php?npw=71699\">"
+				.PW_GENERATE
+				."</a></p>";
+			}
+			if($form->getError("activate") != "")
+			{
+				echo "<p class=\"error_box\"><span class=\"error\">"
+				.EMAIL_NOT_VERIFIED
+				."</span><br>"
+				.EMAIL_FOLLOW
+				."<br><a href=\"activate.php?usr="
+				.$form->getError("activate")
+				."\">"
+				.VERIFY_EMAIL
+				."</a></p>";
+			}
+			?>
+		</div>
+		<div id="side_info" class="outgame">
+			<?php
+			//	侧边栏的新闻公告
+			if (NEWSBOX1) { include("Templates/News/newsbox1.tpl"); }
+			if (NEWSBOX2) { include("Templates/News/newsbox2.tpl"); }
+			if (NEWSBOX3) { include("Templates/News/newsbox3.tpl"); }
+			?>
+		</div>
+		<div class="clear"></div>
 	</div>
-	<div id="side_info" class="outgame">
-		<?php
-		//	侧边栏的新闻公告
-		if(NEWSBOX1) { include("Templates/News/newsbox1.tpl"); }
-		if(NEWSBOX2) { include("Templates/News/newsbox2.tpl"); }
-		if(NEWSBOX3) { include("Templates/News/newsbox3.tpl"); }
-		?>
-	</div>
+
+	<div class="footer-stopper outgame"></div>
 	<div class="clear"></div>
+	<?php include("Templates/footer.tpl"); ?>
+	<div id="ce"></div>
 </div>
-
-<div class="footer-stopper outgame"></div>
-<div class="clear"></div>
-<?php include("Templates/footer.tpl"); ?>
-<div id="ce"></div>
-
 </body>
 </html>

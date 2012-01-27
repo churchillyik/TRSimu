@@ -15,8 +15,8 @@
 	<li><a href="manual.php?typ=4&amp;gid=35">酿酒厂</a></li>
 	<li><a href="manual.php?typ=4&amp;gid=38">巨型仓库</a></li>
 	<li><a href="manual.php?typ=4&amp;gid=39">巨型粮仓</a></li>
-	<li><a href="manual.php?typ=4&amp;gid=41">世界奇迹</a></li>
-	<li><a href="manual.php?typ=4&amp;gid=40">饮马槽</a></li>
+	<li><a href="manual.php?typ=4&amp;gid=40">世界奇迹</a></li>
+	<li><a href="manual.php?typ=4&amp;gid=41">饮马槽</a></li>
 </ul>
 <map id="nav" name="nav">
 	<area href="manual.php?typ=3&amp;s=2" title="上一页" coords="0,0,45,18" shape="rect" alt="" />

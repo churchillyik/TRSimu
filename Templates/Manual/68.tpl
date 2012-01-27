@@ -1,9 +1,11 @@
 <style type="text/css">
-.red {
+.red
+{
 	color: #F00;
 }
 </style>
-<h1>NPC Merchant</h1>
-The NPC Merchant will exchange any desired amount   of resources in a village with other resources at a ratio of 1:1. <br>
+<h1>和电脑商人交易</h1>
+和电脑商人交易，你可以以1：1的比例交换任何资源。
 <br>
-<span class="red">This feature is NOT included in the   gold club!</span>
+<br>
+<span class="red">该功能不包含在黄金会员功能之内！</span>

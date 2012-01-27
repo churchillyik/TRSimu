@@ -57,13 +57,7 @@ if (mysql_num_rows($MyGold))
 	</td>
 	<td class="desc">
 		<p>
-		<b>
-			<font color="#71D000">黄</font>
-			<font color="#FF6F0F">金</font>
-			<font color="#71D000">会</font>
-			<font color="#FF6F0F">员</font>
-		</b>
-		帐号
+		会员帐号
 		<span class="run">
 			<?php 
 			$datetimep = $golds['plus'];

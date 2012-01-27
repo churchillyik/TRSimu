@@ -1,27 +1,27 @@
 <h1>
-	<img class="unit ugeb" src="img/x.gif"> Stable
+	<img class="unit ugeb" src="img/x.gif"> 马厩
 </h1>
-<img class="building g20" src="img/x.gif" alt="Stable" title="Stable" />
-Cavalry can be trained in the stable. The higher its level the faster the troops are trained.
+<img class="building g20" src="img/x.gif" alt="马厩" title="马厩" />
+马厩是一个训练骑兵的场所，每一名强悍的骑兵都经由马厩训练出来的。马厩等级越高，训练骑兵的速度便越快。
 <p>
-	<b>Costs</b> and <b>construction time</b> for level 1:<br />
-	<img class="r1" src="img/x.gif" alt="Lumber" title="Lumber" />260 | 
-	<img class="r2" src="img/x.gif" alt="Clay" title="Clay" />140 | 
-	<img class="r3" src="img/x.gif" alt="Iron" title="Iron" />220 | 
-	<img class="r4" src="img/x.gif" alt="Crop" title="Crop" />100 | 
-	<img class="r5" src="img/x.gif" alt="Crop consumption" title="Crop consumption" />5 | 
+	等级1的<b>开发成本</b>及<b>建造时间</b>：<br />
+	<img class="r1" src="img/x.gif" alt="木材" title="木材" />260 | 
+	<img class="r2" src="img/x.gif" alt="粘土" title="粘土" />140 | 
+	<img class="r3" src="img/x.gif" alt="铁矿" title="铁矿" />220 | 
+	<img class="r4" src="img/x.gif" alt="粮食" title="粮食" />100 | 
+	<img class="r5" src="img/x.gif" alt="粮食消耗" title="粮食消耗" />5 | 
 	<span class="dur">
-	<img class="clock" alt="duration" title="duration" src="img/x.gif" />0:36:40
+	<img class="clock" alt="建造时间" title="建造时间" src="img/x.gif" />0:36:40
 	</span>
 </p>
 <p>
-	<b>Prerequisites</b><br />
-	<a href="manual.php?typ=4&gid=12">Blacksmith</a> Level 3, 
-	<a href="manual.php?typ=4&gid=22">Academy</a> Level 5
+	<b>开发要求</b><br />
+	<a href="manual.php?typ=4&gid=12">铁匠铺</a> 等级 3，
+	<a href="manual.php?typ=4&gid=22">研发所</a> 等级 5
 </p>
 <map id="nav" name="nav">
-	<area href="manual.php?typ=4&amp;s=15" title="back" coords="0,0,45,18" shape="rect" alt="" />
-	<area href="manual.php?s=1" title="Overview" coords="46,0,70,18" shape="rect" alt="" />
-	<area href="manual.php?typ=4&amp;s=17" title="forward" coords="71,0,116,18" shape="rect" alt="" />
+	<area href="manual.php?typ=4&amp;s=19" title="上一页" coords="0,0,45,18" shape="rect" alt="" />
+	<area href="manual.php?typ=3&amp;s=2" title="返回上级" coords="46,0,70,18" shape="rect" alt="" />
+	<area href="manual.php?typ=4&amp;s=21" title="下一页" coords="71,0,116,18" shape="rect" alt="" />
 </map>
 <img usemap="#nav" src="img/x.gif" class="navi" alt="" />

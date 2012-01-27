@@ -1,22 +1,26 @@
 <style type="text/css">
-.hall {
+.hall
+{
 	color: #808080;
 }
 </style>
-<h1>Gold club</h1>
-You will only be charged once for entry into Gold   club. Afterwards you have access to various exclusive features. Some of   the exclusive features are free, others cost a defined amount of gold   per use.<br />
+<h1>黄金会员</h1>
+只要支付100金币Gold就可以成为黄金会员，而且一直到服务器结束为止。对黄金会员提供的一些功能是没有限制的，而且不是黄金会员要拥有这些功能必须支付相应的费用。
 <br />
-<strong>Free Gold club features:</strong>
+<br />
+<strong>免费的黄金会员功能：</strong>
 <ul>
-  <li>Raid   list</li>
-  <li>Raid statistics</li>
-  <li>Let merchants go thrice</li>
-  <li>Search   for 9 and 15 croppers including oases</li>
+	<li>掠夺清单</li>
+	<li>掠夺统计</li>
+	<li>商人运行3次</li>
+	<li>9田和15田搜索</li>
 </ul>
-<strong>Priced Gold club   features:</strong>
+<strong>需要花费金币的黄金会员功能：</strong>
 <ul>
-  <li>Assign master builder up to 3   construction orders</li>
-  <li>Automated trade routes between your own   villages</li>
-  <li>Hide troops from attacks in the forest<br />
-    <span class="hall">(only possible if in the last <strong>10</strong> seconds no troops   came home)</span></li>
+	<li>建筑师</li>
+	<li>自动交易路线</li>
+	<li>
+		军队在受到攻击前自动隐藏到森林中（仅主村有效）<br />
+		<span class="hall">部队将会在进攻来临之际逃逸并在<strong>180</strong>秒后返回。仅当该村庄在进攻前<strong>10</strong>秒内没有返回部队的情况下，部队方会逃逸，但因使用该选项而返回的部队除外。该功能仅针对在本村训练的部队有效，对于增援部队将不能逃逸。</span>
+	</li>
 </ul>

@@ -18,7 +18,7 @@
 	<b>开发要求</b><br />无
 </p>
 <map id="nav" name="nav">
-	<area href="manual.php?typ=4&amp;s=37" title="上一页" coords="0,0,45,18" shape="rect" alt="" />
+	<area href="manual.php?typ=4&amp;s=41" title="上一页" coords="0,0,45,18" shape="rect" alt="" />
 	<area href="manual.php?typ=3&amp;s=1" title="返回上级" coords="46,0,70,18" shape="rect" alt="" />
 	<area href="manual.php?typ=4&amp;s=2" title="下一页" coords="71,0,116,18" shape="rect" alt="" />
 </map>

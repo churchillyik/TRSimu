@@ -89,18 +89,18 @@
 				}
 				$image = ($maparray[$index]['occupied'] == 1 && $maparray[$index]['fieldtype'] > 0)? 
 				(($maparray[$index]['owner'] == $session->uid)? 
-				($maparray[$index]['pop']>=50? $maparray[$index]['pop']>= 100? $maparray[$index]['pop']>=200? 'b30' : 'b20' : 'b10' : 'b00') : 
+				($maparray[$index]['pop'] >= 50? $maparray[$index]['pop'] >= 100? $maparray[$index]['pop'] >= 200? 'b30' : 'b20' : 'b10' : 'b00') : 
 				(($targetalliance != 0)? 
 				(in_array($targetalliance, $friendarray)? 
-				($maparray[$index]['pop']>=50? $maparray[$index]['pop']>= 100? $maparray[$index]['pop']>=200? 'b31' : 'b21' : 'b11' : 'b01') : 
+				($maparray[$index]['pop'] >= 50? $maparray[$index]['pop'] >= 100? $maparray[$index]['pop'] >= 200? 'b31' : 'b21' : 'b11' : 'b01') : 
 				(in_array($targetalliance, $enemyarray)? 
-				($maparray[$index]['pop']>=50? $maparray[$index]['pop']>= 100? $maparray[$index]['pop']>=200? 'b32' : 'b22' : 'b12' : 'b02') : 
+				($maparray[$index]['pop'] >= 50? $maparray[$index]['pop'] >= 100? $maparray[$index]['pop'] >= 200? 'b32' : 'b22' : 'b12' : 'b02') : 
 				(in_array($targetalliance, $neutralarray)? 
-				($maparray[$index]['pop']>=50? $maparray[$index]['pop']>= 100? $maparray[$index]['pop']>=200? 'b35' : 'b25' : 'b15' : 'b05') : 
+				($maparray[$index]['pop'] >= 50? $maparray[$index]['pop'] >= 100? $maparray[$index]['pop'] >= 200? 'b35' : 'b25' : 'b15' : 'b05') : 
 				($targetalliance == $session->alliance? 
-				($maparray[$index]['pop']>=50? $maparray[$index]['pop']>= 100? $maparray[$index]['pop']>=200? 'b33' : 'b23' : 'b13' : 'b03') : 
-				($maparray[$index]['pop']>=50? $maparray[$index]['pop']>= 100? $maparray[$index]['pop']>=200? 'b34' : 'b24' : 'b14' : 'b04'))))) : 
-				($maparray[$index]['pop']>=50? $maparray[$index]['pop']>= 100? $maparray[$index]['pop']>=200? 'b34' : 'b24' : 'b14' : 'b04'))) : 
+				($maparray[$index]['pop'] >= 50? $maparray[$index]['pop'] >= 100? $maparray[$index]['pop'] >= 200? 'b33' : 'b23' : 'b13' : 'b03') : 
+				($maparray[$index]['pop'] >= 50? $maparray[$index]['pop'] >= 100? $maparray[$index]['pop'] >= 200? 'b34' : 'b24' : 'b14' : 'b04'))))) : 
+				($maparray[$index]['pop'] >= 50? $maparray[$index]['pop'] >= 100? $maparray[$index]['pop'] >= 200? 'b34' : 'b24' : 'b14' : 'b04'))) : 
 				$maparray[$index]['image'];
 				
 				echo "<div id=\"i_".$row1."_".$i."\" class=\"".$image."\" ></div>\n";
