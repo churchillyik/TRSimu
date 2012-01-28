@@ -64,7 +64,7 @@ if(!isset($_COOKIE['COOKUSR']))
 				</table>
 				<p class="btn">
 				<!--<input type="hidden" name="e1d9d0c" value="" />-->
-				<input type="image" value="<?php echo LOGIN; ?>" name="s1" onclick="xy();" id="btn_login" class="dynamic_img" src="img/x.gif" alt="login button" />
+				<input type="image" value="<?php echo LOGIN; ?>" name="s1" onclick="xy();" id="btn_login" class="dynamic_img" src="img/x.gif" alt="登录按钮" />
 				</p>
 			</form>
 			<?php

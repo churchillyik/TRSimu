@@ -1,78 +1,52 @@
 <?php
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                             TRAVIANX                                             //
-//            Only for advanced users, do not edit if you dont know what are you doing!             //
-//                                Made by: Dzoki & Dixie (TravianX)                                 //
-//                              - TravianX = Travian Clone Project -                                //
-//                                 DO NOT REMOVE COPYRIGHT NOTICE!                                  //
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 include("GameEngine/Village.php");
-
-if(isset($_GET['newdid'])) {
+if (isset($_GET['newdid']))
+{
 	$_SESSION['wid'] = $_GET['newdid'];
 	header("Location: ".$_SERVER['PHP_SELF']);
 }
-	$bla = 0;
-	$id= 0;
-	$type= 0;
-	$town = 0;
-	$vil = 0;
-	$woodold = 0;
-	$clayold = 0;
-	$ironold = 0;
-	$cropold = 0;
-	$feld = 0;
-	$level = 0;
-	$time = 0;
-
-	$id=$_GET['id'];
-	$type=$_GET['type'];
-	$town = $database->getVillageField($village->wid, 'wref');
-	$vil = $database->getResourceLevel($village->wid);
-	$woodold = $database->getVillageField($village->wid, 'wood');
-	$clayold = $database->getVillageField($village->wid, 'clay');
-	$ironold = $database->getVillageField($village->wid, 'iron');
-	$cropold = $database->getVillageField($village->wid, 'crop');
+$bla = 0;
+$id = $_GET['id'];
+$type = $_GET['type'];
+$town = $database->getVillageField($village->wid, 'wref');
+$vil = $database->getResourceLevel($village->wid);
+$woodold = $database->getVillageField($village->wid, 'wood');
+$clayold = $database->getVillageField($village->wid, 'clay');
+$ironold = $database->getVillageField($village->wid, 'iron');
+$cropold = $database->getVillageField($village->wid, 'crop');
+$feld = $vil['f'.$id.'t'];
+$level = $vil['f'.$id];
+$time = Time();
 	
-	
-	
-	$feld = $vil['f'.$id.'t'];
-	$level = $vil['f'.$id];
-	$time = Time();
-if($feld == 24)
+if ($feld == 24)
 {
-	if($type == 1)
+	if ($type == 1)
 	{
-		if(6400 < $woodold|| 6650 < $clayold || 5940 < $ironold || 1340 < $cropold) {
-			$endtime = ($sc[$level]/ SPEED) + $time;
+		if(6400 < $woodold || 6650 < $clayold || 5940 < $ironold || 1340 < $cropold)
+		{
+			$endtime = $sc[$level] / SPEED + $time;
 			$wood = 6400;
 			$clay = 6650;		
 			$iron = 5940;
 			$crop = 1340;
-			
-			$database->modifyResource($town,$wood,$clay,$iron,$crop,$mode);
-			$database->addCel($town,$endtime,$type);
-
+			$database->modifyResource($town, $wood, $clay, $iron, $crop, $mode);
+			$database->addCel($town, $endtime, $type);
 		}
 	}
-	else if($type == 2)
+	elseif ($type == 2)
 	{
-			if(29700 < $woodold || 33250 < $clayold || 32000 < $ironold || 6700 < $cropold) {
-			
-			$endtime = ($gc[$level]/ SPEED) + $time;
-			$wood= 29700;
-			$clay= 33250;
-			$iron= 32000;
-			$crop= 6700;
-			$database->modifyResource($town,$wood,$clay,$iron,$crop,$mode);
-			$database->addCel($town,$endtime,$type);
+		if(29700 < $woodold || 33250 < $clayold || 32000 < $ironold || 6700 < $cropold)
+		{
+			$endtime = $gc[$level] / SPEED + $time;
+			$wood = 29700;
+			$clay = 33250;
+			$iron = 32000;
+			$crop = 6700;
+			$database->modifyResource($town, $wood, $clay, $iron, $crop, $mode);
+			$database->addCel($town, $endtime, $type);
 		}
 	}
 }
-
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -92,20 +66,22 @@ if($feld == 24)
 	<link href="gpack/travian_basic/lang/en/lang.css?f4b7c" rel="stylesheet" type="text/css" />
 	<link href="gpack/travian_basic/lang/en/compact.css?f4b7c" rel="stylesheet" type="text/css" />
 	<?php
-	if($session->gpack == null || GP_ENABLE == false) {
-	echo "
-	<link href='".GP_LOCATE."travian.css?e21d2' rel='stylesheet' type='text/css' />
-	<link href='".GP_LOCATE."lang/en/lang.css?e21d2' rel='stylesheet' type='text/css' />";
-	} else {
-	echo "
-	<link href='".$session->gpack."travian.css?e21d2' rel='stylesheet' type='text/css' />
-	<link href='".$session->gpack."lang/en/lang.css?e21d2' rel='stylesheet' type='text/css' />";
+	if ($session->gpack == null || GP_ENABLE == false)
+	{
+		echo "
+		<link href='".GP_LOCATE."travian.css?e21d2' rel='stylesheet' type='text/css' />
+		<link href='".GP_LOCATE."lang/en/lang.css?e21d2' rel='stylesheet' type='text/css' />";
+	}
+	else
+	{
+		echo "
+		<link href='".$session->gpack."travian.css?e21d2' rel='stylesheet' type='text/css' />
+		<link href='".$session->gpack."lang/en/lang.css?e21d2' rel='stylesheet' type='text/css' />";
 	}
 	?>
+	
 	<script type="text/javascript">
-
 		window.addEvent('domready', start);
 	</script>
 </head>
-
 </html>

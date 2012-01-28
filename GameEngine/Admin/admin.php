@@ -1,26 +1,19 @@
 <?php
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                             TRAVIANX                                             //
-//            Only for advanced users, do not edit if you dont know what are you doing!             //
-//                                Made by: Dzoki & Dixie (TravianX)                                 //
-//                              - TravianX = Travian Clone Project -                                //
-//                                 DO NOT REMOVE COPYRIGHT NOTICE!                                  //
-//////////////////////////////////////////////////////////////////////////////////////////////////////
 session_start();
 include("../GameEngine/Database.php");
-include("../GameEngine/Admin/database.php");  
-?>                                             
+include("../GameEngine/Admin/database.php");
+?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <link REL="shortcut icon" HREF="favicon.ico"/>
-	<title>ACP - Travian</title>    
+	<link REL="shortcut icon" HREF="favicon.ico"/>
+	<title>Travian管理面板</title>
 	<link rel=stylesheet type="text/css" href="../img/admin/admin.css">
 	<link rel=stylesheet type="text/css" href="../img/admin/acp.css">
 	<link rel=stylesheet type="text/css" href="../img/../img.css">
-		<script src="mt-full.js?423cb"  type="text/javascript"></script>
+	<script src="mt-full.js?423cb"  type="text/javascript"></script>
 	<script src="ajax.js" type="text/javascript"></script>
-
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="imagetoolbar" content="no">
 </head>

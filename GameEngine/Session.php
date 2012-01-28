@@ -1,13 +1,7 @@
 <?php
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                             TRAVIANX                                             //
-//            Only for advanced users, do not edit if you dont know what are you doing!             //
-//                                Made by: Dzoki & Dixie (TravianX)                                 //
-//                              - TravianX = Travian Clone Project -                                //
-//                                 DO NOT REMOVE COPYRIGHT NOTICE!                                  //
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-if (!file_exists('GameEngine/config.php')) {
-header("Location: install/");
+if (!file_exists('GameEngine/config.php'))
+{
+	header("Location: install/");
 }
 include("Battle.php");
 include("Data/buidata.php");
@@ -30,76 +24,91 @@ include("Alliance.php");
 include("Profile.php");
 include("Protection.php");
 
-class Session {
-	
+class Session
+{
 	private $time;
 	var $logged_in = false;
 	var $referrer, $url;
-	var $username,$uid,$access,$plus,$tribe,$isAdmin,$alliance,$gold;
+	var $username, $uid, $access, $plus, $tribe, $isAdmin, $alliance, $gold;
 	var $bonus = 0;
-	var $checker,$mchecker;
+	var $checker, $mchecker;
 	public $userinfo = array();
 	private $userarray = array();
 	var $villages = array();
 
-	function Session() {
+	function Session()
+	{
 		$this->time = time();
 		session_start();
 		
 		$this->logged_in = $this->checkLogin();
 		
-		if($this->logged_in && TRACK_USR) {
-		  $database->updateActiveUser($this->username,$this->time);
-		 }	
-          $banned = mysql_query("SELECT reason, end FROM ".TB_PREFIX."banlist WHERE active = 1 and time-".time()."<1 and uid = '".$this->uid."';");
-                if (mysql_num_rows($banned)){
-                        $ban = mysql_fetch_assoc($banned);
-                        echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title></title><link REL="shortcut icon" HREF="favicon.ico"/><meta name="content-language" content="en" /><meta http-equiv="cache-control" content="max-age=0" /><meta http-equiv="imagetoolbar" content="no" /><meta http-equiv="content-type" content="text/html; charset=UTF-8" /><link href="gpack/travian_basic/lang/en/compact.css?f4b7c" rel="stylesheet" type="text/css" />  <link href="gpack/travian_default/lang/en/compact.css?f4b7c" rel="stylesheet" type="text/css" /><link href="img/travian_basics.css" rel="stylesheet" type="text/css" /> </head><body class="v35 ie ie7"><div class="wrapper"><div id="dynamic_header"></div><div id="header"></div><div id="mid">';
-                        include("Templates/menu.tpl"); 
-                        echo '<div id="content"  class="login">';
-if ($ban['end'] == 0){                        die("We're sorry but you were banned. <br /><br /><b>Reason:</b> ".$ban['reason']."<br/><b>Lifts: </B>NEVER</div></div></body><html>");}
-die("We're sorry but you were banned. <br /><br /><b>Reason:</b> ".$ban['reason']."<br/><b>Lifts: </B>".date("d.m.Y G:i:s", $ban['end'])."</div></div></body><html>");
-}    
-		if(isset($_SESSION['url'])){
-         $this->referrer = $_SESSION['url'];
-		 }else{
-			 $this->referrer = "/";
+		if ($this->logged_in && TRACK_USR)
+		{
+			$database->updateActiveUser($this->username, $this->time);
+		}	
+		$banned = mysql_query("SELECT reason, end FROM ".TB_PREFIX."banlist WHERE active = 1 and time - ".time()." < 1 and uid = '".$this->uid."';");
+		if (mysql_num_rows($banned))
+		{
+			$ban = mysql_fetch_assoc($banned);
+			echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title></title><link REL="shortcut icon" HREF="favicon.ico"/><meta name="content-language" content="en" /><meta http-equiv="cache-control" content="max-age=0" /><meta http-equiv="imagetoolbar" content="no" /><meta http-equiv="content-type" content="text/html; charset=UTF-8" /><link href="gpack/travian_basic/lang/en/compact.css?f4b7c" rel="stylesheet" type="text/css" />  <link href="gpack/travian_default/lang/en/compact.css?f4b7c" rel="stylesheet" type="text/css" /><link href="img/travian_basics.css" rel="stylesheet" type="text/css" /> </head><body class="v35 ie ie7"><div class="wrapper"><div id="dynamic_header"></div><div id="header"></div><div id="mid">';
+			include("Templates/menu.tpl"); 
+			echo '<div id="content"  class="login">';
+			if ($ban['end'] == 0)
+			{
+				die("很遗憾你已经被永久封号。<br /><br /><b>原因：</b> ".$ban['reason']."<br/><b>解封时间：</B>永久</div></div></body><html>");
+			}
+			die("很遗憾你已经被永久封号。<br /><br /><b>原因：</b> ".$ban['reason']."<br/><b>解封时间：</B>".date("d.m.Y G:i:s", $ban['end'])."</div></div></body><html>");
+		}
+		if (isset($_SESSION['url']))
+		{
+			$this->referrer = $_SESSION['url'];
+		}
+		else
+		{
+			$this->referrer = "/";
 		}
 		$this->url = $_SESSION['url'] = $_SERVER['PHP_SELF'];
 		$this->SurfControl();
 	}
 	
-	public function Login($user) {
-		global $database,$generator,$logging;
+	public function Login($user)
+	{
+		global $database, $generator, $logging;
 		$this->logged_in = true;
 		$_SESSION['sessid'] = $generator->generateRandID();
 		$_SESSION['username'] = $user;	
 		$_SESSION['checker'] = $generator->generateRandStr(3);
 		$_SESSION['mchecker'] = $generator->generateRandStr(5);
-		$_SESSION['qst'] = $database->getUserField($_SESSION['username'],"quest",1);
-    if(!isset($_SESSION['wid'])){
-      $query = mysql_query('SELECT * FROM `' . TB_PREFIX . 'vdata` WHERE `owner` = ' . $database->getUserField($_SESSION['username'],"id",1) . ' LIMIT 1');
-      $data = mysql_fetch_assoc($query);
-      $_SESSION['wid'] = $data['wref'];
-    } else if ($_SESSION['wid'] == ''){
-      $query = mysql_query('SELECT * FROM `' . TB_PREFIX . 'vdata` WHERE `owner` = ' . $database->getUserField($_SESSION['username'],"id",1) . ' LIMIT 1');
-      $data = mysql_fetch_assoc($query);
-      $_SESSION['wid'] = $data['wref'];	
-	}
+		$_SESSION['qst'] = $database->getUserField($_SESSION['username'], "quest", 1);
+		if (!isset($_SESSION['wid']))
+		{
+			$query = mysql_query('SELECT * FROM `' . TB_PREFIX . 'vdata` WHERE `owner` = ' . $database->getUserField($_SESSION['username'],"id",1) . ' LIMIT 1');
+			$data = mysql_fetch_assoc($query);
+			$_SESSION['wid'] = $data['wref'];
+		}
+		else if ($_SESSION['wid'] == '')
+		{
+			$query = mysql_query('SELECT * FROM `' . TB_PREFIX . 'vdata` WHERE `owner` = ' . $database->getUserField($_SESSION['username'], "id", 1) . ' LIMIT 1');
+			$data = mysql_fetch_assoc($query);
+			$_SESSION['wid'] = $data['wref'];
+		}
 		$this->PopulateVar();
 		
-		$logging->addLoginLog($this->uid,$_SERVER['REMOTE_ADDR']);
-		$database->addActiveUser($_SESSION['username'],$this->time);
-		$database->updateUserField($_SESSION['username'],"sessid",$_SESSION['sessid'],0);
+		$logging->addLoginLog($this->uid, $_SERVER['REMOTE_ADDR']);
+		$database->addActiveUser($_SESSION['username'], $this->time);
+		$database->updateUserField($_SESSION['username'], "sessid", $_SESSION['sessid'], 0);
 		
 		header("Location: dorf1.php");
 	}
 	
-	public function Logout() {
+	public function Logout()
+	{
 		global $database;
 		$this->logged_in = false;
 		$database->updateUserField($_SESSION['username'],"sessid","",0);
-		if (ini_get("session.use_cookies")) {
+		if (ini_get("session.use_cookies"))
+		{
 			$params = session_get_cookie_params();
 			setcookie(session_name(), '', time() - 42000,
 				$params["path"], $params["domain"],
@@ -110,36 +119,41 @@ die("We're sorry but you were banned. <br /><br /><b>Reason:</b> ".$ban['reason'
 		session_start();
 	}
 	
-	public function changeChecker() {
+	public function changeChecker()
+	{
 		global $generator;
 		$this->checker = $_SESSION['checker'] = $generator->generateRandStr(3);
 		$this->mchecker = $_SESSION['mchecker'] = $generator->generateRandStr(5);
 	}
 	
-	private function checkLogin() {
+	private function checkLogin()
+	{
 		global $database;
-		if(isset($_SESSION['username']) && isset($_SESSION['sessid'])) {
-			if(!$database->checkActiveSession($_SESSION['username'],$_SESSION['sessid'])) {
+		if (isset($_SESSION['username']) && isset($_SESSION['sessid']))
+		{
+			if (!$database->checkActiveSession($_SESSION['username'], $_SESSION['sessid']))
+			{
 				$this->Logout();
 				return false;
 			}
-			else {
-				//Get and Populate Data
+			else
+			{
 				$this->PopulateVar();
-				//update database
-				$database->addActiveUser($_SESSION['username'],$this->time);
-				$database->updateUserField($_SESSION['username'],"timestamp",$this->time,0);	
+				$database->addActiveUser($_SESSION['username'], $this->time);
+				$database->updateUserField($_SESSION['username'], "timestamp", $this->time,0);
 				return true;
 			}
 		}
-		else {
+		else
+		{
 			return false;
 		}
 	}
 	
-	private function PopulateVar() {
+	private function PopulateVar()
+	{
 		global $database;
-		$this->userarray = $this->userinfo = $database->getUserArray($_SESSION['username'],0);
+		$this->userarray = $this->userinfo = $database->getUserArray($_SESSION['username'], 0);
 		$this->username = $this->userarray['username'];
 		$this->uid = $this->userarray['id'];
 		$this->gpack = $this->userarray['gpack'];
@@ -147,47 +161,56 @@ die("We're sorry but you were banned. <br /><br /><b>Reason:</b> ".$ban['reason'
 		$this->plus = ($this->userarray['plus'] > $this->time);
 		$this->villages = $database->getVillagesID($this->uid);
 		$this->tribe = $this->userarray['tribe'];
-		$this->isAdmin = $this->access >= MODERATOR;
+		$this->isAdmin = ($this->access >= MODERATOR);
 		$this->alliance = $this->userarray['alliance'];
 		$this->checker = $_SESSION['checker'];
 		$this->mchecker = $_SESSION['mchecker'];
 		$this->gold = $this->userarray['gold'];
 		$_SESSION['ok'] = $this->userarray['ok'];
-		if($this->userarray['b1'] > $this->time) {
+		if ($this->userarray['b1'] > $this->time)
+		{
 			$this->bonus += 1000;
 		}
-		if($this->userarray['b2'] > $this->time) {
+		if ($this->userarray['b2'] > $this->time)
+		{
 			$this->bonus += 200;
 		}
-		if($this->userarray['b3'] > $this->time) {
+		if ($this->userarray['b3'] > $this->time)
+		{
 			$this->bonus += 30;
 		}
-		if($this->userarray['b4'] > $this->time) {
+		if ($this->userarray['b4'] > $this->time)
+		{
 			$this->bonus += 4;
 		}
 	}
 	
-	private function SurfControl() {
-		if(SERVER_WEB_ROOT) {
+	private function SurfControl()
+	{
+		if (SERVER_WEB_ROOT)
+		{
 			$page = $_SERVER['SCRIPT_NAME'];
 		}
-		else {
-			$explode = explode("/",$_SERVER['SCRIPT_NAME']);
-			$i = count($explode)-1;
+		else
+		{
+			$explode = explode("/", $_SERVER['SCRIPT_NAME']);
+			$i = count($explode) - 1;
 			$page = $explode[$i];
-			
 		}
-		$pagearray = array("index.php","anleitung.php","tutorial.php","login.php","activate.php","anmelden.php","xaccount.php");
-		if(!$this->logged_in) {
-			if(!in_array($page,$pagearray) || $page == "logout.php") {				
+		$pagearray = array("index.php", "anleitung.php", "tutorial.php", "login.php", "activate.php", "anmelden.php", "xaccount.php");
+		if (!$this->logged_in)
+		{
+			if (!in_array($page, $pagearray) || $page == "logout.php")
+			{				
 				header("Location: login.php");
 			}
 		}
-		else {
-			if(in_array($page,$pagearray)) {
+		else
+		{
+			if (in_array($page, $pagearray))
+			{
 				header("Location: dorf1.php");
 			}
-
 		}
 	}
 };

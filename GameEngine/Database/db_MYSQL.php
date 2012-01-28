@@ -212,11 +212,14 @@ class MYSQL_DB {
 	References: Alliance ID
 	*****************************************/	
 	
-	function getUserArray($ref,$mode) {
-		if(!$mode) {
+	function getUserArray($ref, $mode)
+	{
+		if (!$mode)
+		{
 			$q = "SELECT * FROM ".TB_PREFIX."users where username = '$ref'";
 		}
-		else {
+		else
+		{
 			$q = "SELECT * FROM ".TB_PREFIX."users where id = $ref";
 		}
 		$result = mysql_query($q, $this->connection);
@@ -391,13 +394,15 @@ class MYSQL_DB {
 
    }
    
-	function getVillagesID($uid) {
+	function getVillagesID($uid)
+	{
 		$q = "SELECT wref from ".TB_PREFIX."vdata where owner = $uid order by capital DESC";
 		$result = mysql_query($q, $this->connection);
 		$array = $this->mysql_fetch_all($result);
 		$newarray = array();
-		for($i=0;$i<count($array);$i++) {
-			array_push($newarray,$array[$i]['wref']);
+		for ($i = 0; $i < count($array); $i++)
+		{
+			array_push($newarray, $array[$i]['wref']);
 		}
 		return $newarray;
 	}
