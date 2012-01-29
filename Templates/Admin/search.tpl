@@ -8,12 +8,11 @@
 	<tr class="slr3">
 		<td>
 		<select name="p" size="1" class="slr3">
-			<option value="player" <?php if ($_POST['p'] == 'player') { echo "selected=true"; } ?>>搜索用户</option>
-			<option value="alliances" <?php if ($_POST['p'] == 'alliances') { echo "selected=true"; } ?>>搜索联盟</option>
-			<option value="villages" <?php if ($_POST['p'] == 'villages') { echo "selected=true"; } ?>>搜索村庄</option>
-			<option value="email" <?php if ($_POST['p'] == 'email') { echo "selected=true"; } ?>>搜索EMail</option>
-			<option value="ip" <?php if ($_POST['p'] == 'ip') { echo "selected=true"; } ?>>搜索IP</option>
-			<option value="deleted_players" <?php if ($_POST['p'] == 'deleted_players') { echo "selected=true"; } ?>>搜索删号用户</option>
+			<option value="player" <?php if ($_POST['p'] == 'player') { echo 'selected="selected"'; } ?>>搜索用户</option>
+			<option value="alliances" <?php if ($_POST['p'] == 'alliances') { echo 'selected="selected"'; } ?>>搜索联盟</option>
+			<option value="villages" <?php if ($_POST['p'] == 'villages') { echo 'selected="selected"'; } ?>>搜索村庄</option>
+			<option value="email" <?php if ($_POST['p'] == 'email') { echo 'selected="selected"'; } ?>>搜索电子邮箱</option>
+			<option value="ip" <?php if ($_POST['p'] == 'ip') { echo 'selected="selected"'; } ?>>搜索IP</option>
 		</select>
 		</td>
 		<td><input name="s" value="<?php echo $_POST['s'];?>"></td>

@@ -354,7 +354,7 @@ class Village
 
 if ($session->isAdmin)
 {
-	header("Location: /Admin/admin.php");
+	header("Location: Admin/admin.php");
 }
 else
 {
