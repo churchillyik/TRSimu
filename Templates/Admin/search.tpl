@@ -1,4 +1,4 @@
-<form action="" method="post">
+<form action="admin.php?p=search" method="post">
 	<table id="member">
 	<thead>
 	<tr>

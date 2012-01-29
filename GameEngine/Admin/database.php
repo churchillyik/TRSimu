@@ -15,7 +15,7 @@ class adm_DB
 	
 	function Login($username, $password)
 	{
-		$q = "SELECT password FROM ".TB_PREFIX."users where username = '$username' and access = ".ADMIN;
+		$q = "SELECT password FROM ".TB_PREFIX."users where username = '$username' and access >= ".MODERATOR;
 		$result = mysql_query($q, $this->connection);
 		$dbarray = mysql_fetch_array($result);
 		if ($dbarray['password'] == md5($password))

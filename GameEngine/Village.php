@@ -352,7 +352,7 @@ class Village
 	}
 };
 
-if ($session->isAdmin)
+if ($session->access >= MODERATOR)
 {
 	header("Location: Admin/admin.php");
 }

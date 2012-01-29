@@ -182,7 +182,7 @@ define("PW_MIN_LENGTH", 4);
 define("BANNED", 0);
 define("AUTH", 1);
 define("USER", 2);
-define("MODERATOR", 8);
+define("MODERATOR", 5);
 define("ADMIN", 9);
 define("COOKIE_EXPIRE", 60*60*24*7); 
 define("COOKIE_PATH", "/"); 

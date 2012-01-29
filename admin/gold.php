@@ -1,4 +1,4 @@
-<?phpinclude_once("GameEngine/Account.php");
+<?phpinclude("GameEngine/Account.php");
 mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
 mysql_select_db(SQL_DB);
 if ($session->access < ADMIN){	die("权限不足，无法发金币！");}

@@ -847,7 +847,7 @@ CREATE TABLE `%PREFIX%users` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 INSERT INTO `%PREFIX%users` (`id`, `username`, `password`, `email`, `tribe`, `access`) VALUES (0, 'Multihunter', '21232f297a57a5a743894a0e4a801fc3', 'multihunter@travianx.mail', 0, 9);
-INSERT INTO `%PREFIX%users` (`id`, `username`, `password`, `email`, `tribe`, `access`) VALUES (1, 'Support', '21232f297a57a5a743894a0e4a801fc3', 'support@travianx.mail', 0, 2);
+INSERT INTO `%PREFIX%users` (`id`, `username`, `password`, `email`, `tribe`, `access`) VALUES (1, 'Support', '21232f297a57a5a743894a0e4a801fc3', 'support@travianx.mail', 0, 5);
 
 --
 -- Tabelstructuur voor tabel `%PREFIX%vdata`

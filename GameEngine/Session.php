@@ -1,28 +1,28 @@
 <?php
-if (!file_exists('GameEngine/config.php'))
+if (!file_exists(dirname(__FILE__).'/config.php'))
 {
 	header("Location: install/");
 }
-include("Battle.php");
-include("Data/buidata.php");
-include("Data/cp.php");
-include("Data/cel.php");
-include("Data/resdata.php");
-include("Data/unitdata.php");
-include("config.php");
-include("Database.php");
-include("Mailer.php");
-include("Form.php");
-include("Generator.php");
-include("Automation.php");
-include("Lang/".LANG.".php");
-include("Logging.php");
-include("Message.php");
-include("Multisort.php");
-include("Ranking.php");
-include("Alliance.php");
-include("Profile.php");
-include("Protection.php");
+include(dirname(__FILE__)."/Battle.php");
+include(dirname(__FILE__)."/Data/buidata.php");
+include(dirname(__FILE__)."/Data/cp.php");
+include(dirname(__FILE__)."/Data/cel.php");
+include(dirname(__FILE__)."/Data/resdata.php");
+include(dirname(__FILE__)."/Data/unitdata.php");
+include(dirname(__FILE__)."/config.php");
+include(dirname(__FILE__)."/Database.php");
+include(dirname(__FILE__)."/Mailer.php");
+include(dirname(__FILE__)."/Form.php");
+include(dirname(__FILE__)."/Generator.php");
+include(dirname(__FILE__)."/Automation.php");
+include(dirname(__FILE__)."/Lang/".LANG.".php");
+include(dirname(__FILE__)."/Logging.php");
+include(dirname(__FILE__)."/Message.php");
+include(dirname(__FILE__)."/Multisort.php");
+include(dirname(__FILE__)."/Ranking.php");
+include(dirname(__FILE__)."/Alliance.php");
+include(dirname(__FILE__)."/Profile.php");
+include(dirname(__FILE__)."/Protection.php");
 
 class Session
 {
@@ -106,7 +106,7 @@ class Session
 	{
 		global $database;
 		$this->logged_in = false;
-		$database->updateUserField($_SESSION['username'],"sessid","",0);
+		$database->updateUserField($_SESSION['username'], "sessid", "", 0);
 		if (ini_get("session.use_cookies"))
 		{
 			$params = session_get_cookie_params();

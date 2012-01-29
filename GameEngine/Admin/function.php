@@ -3,13 +3,13 @@ class funct
 {
 	function CheckLogin()
 	{
-		if ($_SESSION['access'] == ADMIN and $_SESSION['id'] == 0)
+		if ($_SESSION['access'] >= MODERATOR)
 		{
-			return true;
+			return $_SESSION['access'];
 		}
 		else
 		{
-			return false;
+			return 0;
 		}
 	}
          
