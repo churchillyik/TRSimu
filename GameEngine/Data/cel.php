@@ -1,15 +1,5 @@
 <?php
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                             TRAVIANX                                             //
-//            Only for advanced users, do not edit if you dont know what are you doing!             //
-//                                Made by: Dzoki & Dixie (TravianX)                                 //
-//                              - TravianX = Travian Clone Project -                                //
-//                                 DO NOT REMOVE COPYRIGHT NOTICE!                                  //
-//                        Authors of cel.php: G3n3s!s / JimJam32 / loppylukas                       //
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+//	小型活动的持续时间
 $sc = array(
 1 => 86400,
 2 => 83290,
@@ -32,6 +22,7 @@ $sc = array(
 19 => 44658,
 20 => 43050);
 
+//	大型活动的持续时间
 $gc= array( 
 10 => 155291,
 11 => 149701,

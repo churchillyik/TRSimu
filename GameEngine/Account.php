@@ -7,7 +7,7 @@
 //                                 DO NOT REMOVE COPYRIGHT NOTICE!                                  //
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-include("Session.php");
+include_once("Session.php");
 
 class Account {
 	

@@ -5,8 +5,7 @@ if(!$session->logged_in){
 <?php
 }
 else {
-?>	<div id="side_navi">		<a id="logo" href="<?php echo HOMEPAGE; ?>">		<img src="img/x.gif" <?php if ($session->plus) { echo "class=\"logo_plus\""; } ?> alt="Travian" /></a>				<p>		<a href="<?php echo HOMEPAGE; ?>"><?php echo HOME; ?></a>		<a href="spieler.php?uid=<?php echo $session->uid ?>"><?php echo PROFILE; ?></a>		<?php 		if($session->access == ADMIN)		{			echo "<a href=\"Admin/admin.php\">管理面板</a>";			echo "<a href=\"Admin/massmessage.php\">群消息</a>";			echo "<a href=\"Admin/medals.php\">更新前10玩家</a>";			echo "<a href=\"#\"><strike>系统讯息</strike></a>";
-			echo "<a href=\"Admin/gold.php\">赠送35金币</a>";		}		?>		<a href="logout.php"><?php echo LOGOUT; ?></a>		</p>				<p>		<a href="#">论坛</a>		</p>		
+?>	<div id="side_navi">		<a id="logo" href="<?php echo HOMEPAGE; ?>">		<img src="img/x.gif" <?php if ($session->plus) { echo "class=\"logo_plus\""; } ?> alt="Travian" /></a>				<p>		<a href="<?php echo HOMEPAGE; ?>"><?php echo HOME; ?></a>		<a href="spieler.php?uid=<?php echo $session->uid ?>"><?php echo PROFILE; ?></a>		<a href="logout.php"><?php echo LOGOUT; ?></a>		</p>				<p>		<a href="#">论坛</a>		</p>		
 		<p>
 		</p>				<p>		<a href="plus.php?id=3"> 			<b>				<span class="plus_g">金</span>				<span class="plus_o">币</span>				<span class="plus_g">功</span>				<span class="plus_o">能</span>			</b>		</a>
 		</p>

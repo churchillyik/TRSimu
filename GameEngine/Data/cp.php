@@ -1,15 +1,5 @@
 <?php
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                             TRAVIANX                                             //
-//            Only for advanced users, do not edit if you dont know what are you doing!             //
-//                                Made by: Dzoki & Dixie (TravianX)                                 //
-//                              - TravianX = Travian Clone Project -                                //
-//                                 DO NOT REMOVE COPYRIGHT NOTICE!                                  //
-//                        Authors of cp.php: G3n3s!s / JimJam32 / loppylukas                        //
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+//	开村需要的文明度（快速）
 $cp0 = array(
 	1 => 0,
 	2 => 500,
@@ -137,6 +127,7 @@ $cp0 = array(
 	124 => 34180700,
 	125 => 34823200);
 
+//	开村需要的文明度（慢）
 $cp1= array( 
 	1 => 0,
 	2 => 2000,

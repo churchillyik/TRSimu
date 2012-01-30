@@ -3,26 +3,26 @@ if (!file_exists(dirname(__FILE__).'/config.php'))
 {
 	header("Location: install/");
 }
-include(dirname(__FILE__)."/Battle.php");
-include(dirname(__FILE__)."/Data/buidata.php");
-include(dirname(__FILE__)."/Data/cp.php");
-include(dirname(__FILE__)."/Data/cel.php");
-include(dirname(__FILE__)."/Data/resdata.php");
-include(dirname(__FILE__)."/Data/unitdata.php");
-include(dirname(__FILE__)."/config.php");
-include(dirname(__FILE__)."/Database.php");
-include(dirname(__FILE__)."/Mailer.php");
-include(dirname(__FILE__)."/Form.php");
-include(dirname(__FILE__)."/Generator.php");
-include(dirname(__FILE__)."/Automation.php");
-include(dirname(__FILE__)."/Lang/".LANG.".php");
-include(dirname(__FILE__)."/Logging.php");
-include(dirname(__FILE__)."/Message.php");
-include(dirname(__FILE__)."/Multisort.php");
-include(dirname(__FILE__)."/Ranking.php");
-include(dirname(__FILE__)."/Alliance.php");
-include(dirname(__FILE__)."/Profile.php");
-include(dirname(__FILE__)."/Protection.php");
+include_once(dirname(__FILE__)."/Battle.php");
+include_once(dirname(__FILE__)."/Data/buidata.php");
+include_once(dirname(__FILE__)."/Data/cp.php");
+include_once(dirname(__FILE__)."/Data/cel.php");
+include_once(dirname(__FILE__)."/Data/resdata.php");
+include_once(dirname(__FILE__)."/Data/unitdata.php");
+include_once(dirname(__FILE__)."/config.php");
+include_once(dirname(__FILE__)."/Database.php");
+include_once(dirname(__FILE__)."/Mailer.php");
+include_once(dirname(__FILE__)."/Form.php");
+include_once(dirname(__FILE__)."/Generator.php");
+include_once(dirname(__FILE__)."/Automation.php");
+include_once(dirname(__FILE__)."/Lang/".LANG.".php");
+include_once(dirname(__FILE__)."/Logging.php");
+include_once(dirname(__FILE__)."/Message.php");
+include_once(dirname(__FILE__)."/Multisort.php");
+include_once(dirname(__FILE__)."/Ranking.php");
+include_once(dirname(__FILE__)."/Alliance.php");
+include_once(dirname(__FILE__)."/Profile.php");
+include_once(dirname(__FILE__)."/Protection.php");
 
 class Session
 {
