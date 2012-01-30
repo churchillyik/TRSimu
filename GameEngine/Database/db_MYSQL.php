@@ -9,25 +9,16 @@ class MYSQL_DB
 		mysql_select_db(SQL_DB, $this->connection) or die(mysql_error());
 	}
 
+	//--------------------------------------------------------------------
+	//	user表
+	//--------------------------------------------------------------------
+	
+	//	注册
 	function register($username, $password, $email, $tribe, $locate, $act)
 	{
 		$time = time();
 		$timep = time() + PROTECTION;
-		$q = "INSERT INTO ".TB_PREFIX."users (username,password,access,email,timestamp,tribe,location,act,protect) VALUES ('$username', '$password', ".USER.", '$email', $time, $tribe, $locate, '$act', $timep)";
-		if (mysql_query($q,$this->connection))
-		{
-			return mysql_insert_id($this->connection);
-		}
-		else
-		{
-			return false;
-		}
-	}
-	
-	function activate($username, $password, $email, $tribe, $locate, $act, $act2)
-	{
-		$time = time();
-		$q = "INSERT INTO ".TB_PREFIX."activate (username, password, access, email, tribe, timestamp, location, act, act2) VALUES ('$username', '$password', ".USER.", '$email', $tribe, $time, $locate, '$act', '$act2')";
+		$q = "INSERT INTO ".TB_PREFIX."users (username, password, access, email, timestamp, tribe, location, act, protect) VALUES ('$username', '$password', ".USER.", '$email', $time, $tribe, $locate, '$act', $timep)";
 		if (mysql_query($q, $this->connection))
 		{
 			return mysql_insert_id($this->connection);
@@ -38,25 +29,7 @@ class MYSQL_DB
 		}
 	}
 	
-	function unreg($username)
-	{
-		$q = "DELETE from ".TB_PREFIX."activate where username = '$username'";
-		return mysql_query($q, $this->connection);
-	}
-	
-	function deleteReinf($id)
-	{
-		$q = "DELETE from ".TB_PREFIX."enforcement where id = '$id'";
-		mysql_query($q, $this->connection);
-	}
-	
-	function updateResource($vid, $what, $number)
-	{
-		$q = "UPDATE ".TB_PREFIX."vdata set ".$what."=".$number." where wref = $vid";
-		$result = mysql_query($q, $this->connection);
-		return mysql_query($q, $this->connection);
-	}
-	
+	//	检查用户名或电子邮箱是否存在
 	function checkExist($ref, $mode)
 	{
 		if (!$mode)
@@ -77,28 +50,8 @@ class MYSQL_DB
 			return false;
 		}
 	}
-
-	function checkExist_activate($ref, $mode)
-	{
-		if (!$mode)
-		{
-			$q = "SELECT username FROM ".TB_PREFIX."activate where username = '$ref' LIMIT 1";
-		}
-		else
-		{
-			$q = "SELECT email FROM ".TB_PREFIX."activate where email = '$ref' LIMIT 1";
-		}
-		$result = mysql_query($q, $this->connection);
-		if (mysql_num_rows($result))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
 	
+	//	根据用户名或用户ID更新用户信息
 	function updateUserField($ref, $field, $value, $switch)
 	{
 		if (!$switch)
@@ -112,13 +65,15 @@ class MYSQL_DB
 		return mysql_query($q, $this->connection);
 	}
 	
+	//	检查某用户都是哪些用户的代管
 	function getSitee($uid)
 	{
-		$q = "SELECT id from ".TB_PREFIX."users where sit1 = $uid or sit2 = $uid";
+		$q = "SELECT id FROM ".TB_PREFIX."users where sit1 = $uid or sit2 = $uid";
 		$result = mysql_query($q, $this->connection);
 		return $this->mysql_fetch_all($result);
 	}
 	
+	//	移除某用户的代管
 	function removeMeSit($uid, $uid2)
 	{
 		$q = "UPDATE ".TB_PREFIX."users set sit1 = 0 where id = $uid and sit1 = $uid2";
@@ -128,6 +83,7 @@ class MYSQL_DB
 		mysql_query($q2, $this->connection);
 	}
 	
+	//	获取user表的字段信息
 	function getUserField($ref, $field, $mode)
 	{
 		if (!$mode)
@@ -142,22 +98,23 @@ class MYSQL_DB
 		$dbarray = mysql_fetch_array($result);
 		return $dbarray[$field];
 	}
-
-	function getActivateField($ref, $field, $mode)
+	
+	//	根据用户名或用户ID取得user表的所有字段信息
+	function getUserArray($ref, $mode)
 	{
 		if (!$mode)
 		{
-			$q = "SELECT $field FROM ".TB_PREFIX."activate where id = '$ref'";
+			$q = "SELECT * FROM ".TB_PREFIX."users where username = '$ref'";
 		}
 		else
 		{
-			$q = "SELECT $field FROM ".TB_PREFIX."activate where username = '$ref'";
+			$q = "SELECT * FROM ".TB_PREFIX."users where id = $ref";
 		}
-		$result = mysql_query($q, $this->connection) or die(mysql_error());
-		$dbarray = mysql_fetch_array($result);
-		return $dbarray[$field];
+		$result = mysql_query($q, $this->connection);
+		return mysql_fetch_array($result);
 	}
 	
+	//	检查用户登录信息
 	function login($username, $password)
 	{
 		$q = "SELECT password, sessid FROM ".TB_PREFIX."users where username = '$username' and access != ".BANNED;
@@ -173,14 +130,7 @@ class MYSQL_DB
 		}
 	}
 	
-	function checkActivate($act)
-	{
-		$q = "SELECT * FROM ".TB_PREFIX."activate where act = '$act'";
-		$result = mysql_query($q, $this->connection);
-		$dbarray = mysql_fetch_array($result);	
-		return $dbarray;
-	}
-	
+	//	检查代管登录信息
 	function sitterLogin($username, $password)
 	{
 		$q = "SELECT sit1, sit2 FROM ".TB_PREFIX."users where username = '$username' and access != ".BANNED;
@@ -216,28 +166,7 @@ class MYSQL_DB
         }
 	}
 	
-	function setDeleting($uid, $mode)
-	{
-		$time = time() + 72*3600;
-		if (!$mode)
-		{
-			$q = "INSERT INTO ".TB_PREFIX."deleting values ($uid, $time)";
-		}
-		else
-		{
-			$q = "DELETE FROM ".TB_PREFIX."deleting where uid = $uid";
-		}
-		mysql_query($q, $this->connection);
-	}
-	
-	function isDeleting($uid)
-	{
-		$q = "SELECT timestamp from ".TB_PREFIX."deleting where uid = $uid";
-		$result = mysql_query($q, $this->connection);
-		$dbarray = mysql_fetch_array($result);
-		return $dbarray['timestamp'];
-	}
-	
+	//	修改用户的金币数
 	function modifyGold($userid, $amt, $mode)
 	{
 		if (!$mode)
@@ -251,20 +180,141 @@ class MYSQL_DB
 		return mysql_query($q, $this->connection);
 	}
 	
-	function getUserArray($ref, $mode)
+	//	检查用户会话是否处于激活状态
+	function checkactiveSession($username, $sessid)
 	{
-		if (!$mode)
+		$q = "SELECT username FROM ".TB_PREFIX."users where username = '$username' and sessid = '$sessid' LIMIT 1";
+		$result = mysql_query($q, $this->connection);
+		if (mysql_num_rows($result) != 0)
 		{
-			$q = "SELECT * FROM ".TB_PREFIX."users where username = '$ref'";
+			return true;
 		}
 		else
 		{
-			$q = "SELECT * FROM ".TB_PREFIX."users where id = $ref";
+			return false;
 		}
-		$result = mysql_query($q, $this->connection);
-		return mysql_fetch_array($result);
 	}
 	
+	//	更新用户个人资料
+	function submitProfile($uid, $gender, $location, $birthday, $des1, $des2)
+	{
+		$q = "UPDATE ".TB_PREFIX."users set gender = $gender, location = '$location', birthday = '$birthday', desc1 = '$des1', desc2 = '$des2' where id = $uid";
+		return mysql_query($q, $this->connection);
+	}
+
+	//	更新用户的皮肤包
+	function gpack($uid, $gpack)
+	{
+		$q = "UPDATE ".TB_PREFIX."users set gpack = '$gpack' where id = $uid";
+		return mysql_query($q, $this->connection);
+	}
+	
+	//--------------------------------------------------------------------
+	//	activate表
+	//--------------------------------------------------------------------
+	
+	//	激活
+	function activate($username, $password, $email, $tribe, $locate, $act, $act2)
+	{
+		$time = time();
+		$q = "INSERT INTO ".TB_PREFIX."activate (username, password, access, email, tribe, timestamp, location, act, act2) VALUES ('$username', '$password', ".USER.", '$email', $tribe, $time, $locate, '$act', '$act2')";
+		if (mysql_query($q, $this->connection))
+		{
+			return mysql_insert_id($this->connection);
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	//	取消激活
+	function unreg($username)
+	{
+		$q = "DELETE from ".TB_PREFIX."activate where username = '$username'";
+		return mysql_query($q, $this->connection);
+	}
+
+	//	检查用户名或电子邮箱是否在激活中
+	function checkExist_activate($ref, $mode)
+	{
+		if (!$mode)
+		{
+			$q = "SELECT username FROM ".TB_PREFIX."activate where username = '$ref' LIMIT 1";
+		}
+		else
+		{
+			$q = "SELECT email FROM ".TB_PREFIX."activate where email = '$ref' LIMIT 1";
+		}
+		$result = mysql_query($q, $this->connection);
+		if (mysql_num_rows($result))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	//	获取activate表的字段信息
+	function getActivateField($ref, $field, $mode)
+	{
+		if (!$mode)
+		{
+			$q = "SELECT $field FROM ".TB_PREFIX."activate where id = '$ref'";
+		}
+		else
+		{
+			$q = "SELECT $field FROM ".TB_PREFIX."activate where username = '$ref'";
+		}
+		$result = mysql_query($q, $this->connection) or die(mysql_error());
+		$dbarray = mysql_fetch_array($result);
+		return $dbarray[$field];
+	}
+	
+	//	检查用户是否激活
+	function checkActivate($act)
+	{
+		$q = "SELECT * FROM ".TB_PREFIX."activate where act = '$act'";
+		$result = mysql_query($q, $this->connection);
+		$dbarray = mysql_fetch_array($result);	
+		return $dbarray;
+	}
+	
+	//--------------------------------------------------------------------
+	//	deleting表
+	//--------------------------------------------------------------------
+	
+	//	设置或撤销帐号删除
+	function setDeleting($uid, $mode)
+	{
+		$time = time() + 72 * 3600;
+		if (!$mode)
+		{
+			$q = "INSERT INTO ".TB_PREFIX."deleting values ($uid, $time)";
+		}
+		else
+		{
+			$q = "DELETE FROM ".TB_PREFIX."deleting where uid = $uid";
+		}
+		mysql_query($q, $this->connection);
+	}
+	
+	//	取得帐号删除的时刻
+	function isDeleting($uid)
+	{
+		$q = "SELECT timestamp from ".TB_PREFIX."deleting where uid = $uid";
+		$result = mysql_query($q, $this->connection);
+		$dbarray = mysql_fetch_array($result);
+		return $dbarray['timestamp'];
+	}
+	
+	//--------------------------------------------------------------------
+	//	active表
+	//--------------------------------------------------------------------
+	
+	//	增加或删除活跃用户
 	function activeModify($username, $mode)
 	{
 		$time = time();
@@ -273,14 +323,15 @@ class MYSQL_DB
 			$q = "INSERT INTO ".TB_PREFIX."active VALUES ('$username', $time)";
 		}
 		else {
-			$q = "DELETE FROM ".TB_PREFIX."active where username = '$username'";
+			$q = "DELETE FROM ".TB_PREFIX."active WHERE username = '$username'";
 		}
 		return mysql_query($q, $this->connection);
 	}
 
+	//	更新用户活跃度
 	function addActiveUser($username, $time)
 	{
-		$q = "REPLACE into ".TB_PREFIX."active values ('$username', $time)";
+		$q = "REPLACE INTO ".TB_PREFIX."active values ('$username', $time)";
 		if (mysql_query($q, $this->connection))
 		{
 			return true;
@@ -291,6 +342,7 @@ class MYSQL_DB
 		}
 	}
 	
+	//	更新用户活跃度
 	function updateActiveUser($username, $time)
 	{
 		$q = "REPLACE into ".TB_PREFIX."active values ('$username', $time)";
@@ -306,33 +358,12 @@ class MYSQL_DB
 			return false;
 		}
 	}
-   
-	function checkactiveSession($username, $sessid)
-	{
-		$q = "SELECT username FROM ".TB_PREFIX."users where username = '$username' and sessid = '$sessid' LIMIT 1";
-		$result = mysql_query($q, $this->connection);
-		if (mysql_num_rows($result) != 0)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-   
-	function submitProfile($uid, $gender, $location, $birthday, $des1, $des2)
-	{
-		$q = "UPDATE ".TB_PREFIX."users set gender = $gender, location = '$location', birthday = '$birthday', desc1 = '$des1', desc2 = '$des2' where id = $uid";
-		return mysql_query($q, $this->connection);
-	}
-   
-	function gpack($uid, $gpack)
-	{
-		$q = "UPDATE ".TB_PREFIX."users set gpack = '$gpack' where id = $uid";
-		return mysql_query($q, $this->connection);
-	}
 	
+	//--------------------------------------------------------------------
+	//	online表
+	//--------------------------------------------------------------------
+	
+	//	更新用户的在线状态
 	function UpdateOnline($mode, $name = "", $time = "")
 	{
 		global $session;
@@ -348,6 +379,11 @@ class MYSQL_DB
 		}
 	}
 
+	//--------------------------------------------------------------------
+	//	wdata表
+	//--------------------------------------------------------------------
+	
+	//	分配给用户初始村庄
 	function generateBase($sector)
 	{
 		$qeinde = "9999";
@@ -416,12 +452,36 @@ class MYSQL_DB
 		}
 	}
 	
+	//	更新地图方块的占领状态
 	function setFieldTaken($id)
 	{
 		$q = "UPDATE ".TB_PREFIX."wdata set occupied = 1 where id = $id";
 		return mysql_query($q, $this->connection);
 	}
 	
+	//	获得地图方块的占领状态
+	function getVillageState($wref)
+	{
+		$q = "SELECT occupied FROM ".TB_PREFIX."wdata where id = $wref";
+		$result = mysql_query($q, $this->connection);
+		$dbarray = mysql_fetch_array($result);
+		return $dbarray['occupied'];
+	}
+	
+	//	获得村庄类型
+	function getVillageType($wref)
+	{
+		$q = "SELECT id, fieldtype FROM ".TB_PREFIX."wdata where id = $wref";
+		$result = mysql_query($q, $this->connection);
+		$dbarray = mysql_fetch_array($result);
+		return $dbarray['fieldtype'];
+	}
+	
+	//--------------------------------------------------------------------
+	//	vdata表
+	//--------------------------------------------------------------------
+	
+	//	增加新的村庄
 	function addVillage($wid, $uid, $username, $capital)
 	{
 		$total = count($this->getVillagesID($uid));
@@ -439,6 +499,58 @@ class MYSQL_DB
 		return mysql_query($q, $this->connection) or die(mysql_error());
 	}
 	
+	//	获得某用户的村庄列表
+	function getProfileVillages($uid)
+	{
+      $q = "SELECT capital, wref, name, pop, created from ".TB_PREFIX."vdata where owner = $uid order by pop desc";
+      $result = mysql_query($q, $this->connection);
+      return $this->mysql_fetch_all($result);
+	}
+	
+	//	获得某用户所有村庄的ID
+	function getVillagesID($uid)
+	{
+		$q = "SELECT wref from ".TB_PREFIX."vdata where owner = $uid order by capital DESC";
+		$result = mysql_query($q, $this->connection);
+		$array = $this->mysql_fetch_all($result);
+		$newarray = array();
+		for ($i = 0; $i < count($array); $i++)
+		{
+			array_push($newarray, $array[$i]['wref']);
+		}
+		return $newarray;
+	}
+	
+	//	获得某个村庄的信息
+	function getVillage($vid)
+	{
+		$q = "SELECT * FROM ".TB_PREFIX."vdata where wref = $vid";
+		$result = mysql_query($q, $this->connection);
+		return mysql_fetch_array($result);
+	}
+	
+	//	获得某村庄的地图信息
+	function getMInfo($id)
+	{
+		$q = "SELECT * FROM ".TB_PREFIX."wdata left JOIN ".TB_PREFIX."vdata ON ".TB_PREFIX."vdata.wref = ".TB_PREFIX."wdata.id where ".TB_PREFIX."wdata.id = $id";
+		$result = mysql_query($q, $this->connection);
+		return mysql_fetch_array($result);
+	}
+	
+	//	查找通过地图ID查找村庄信息
+	function getVillageField($ref, $field)
+	{
+		$q = "SELECT $field FROM ".TB_PREFIX."vdata where wref = $ref";
+		$result = mysql_query($q, $this->connection);
+		$dbarray = mysql_fetch_array($result);
+		return $dbarray[$field];
+	}
+	
+	//--------------------------------------------------------------------
+	//	fdata表
+	//--------------------------------------------------------------------
+	
+	//	增加村庄的资源类型
 	function addResourceFields($vid, $type)
 	{
 		switch ($type)
@@ -483,64 +595,23 @@ class MYSQL_DB
 		return mysql_query($q, $this->connection);
 	}
 	
-	function getVillageType($wref)
+	//--------------------------------------------------------------------
+	//	fdata表
+	//--------------------------------------------------------------------
+	
+	//	获得某用户的所有奖牌
+	function getProfileMedal($uid)
 	{
-		$q = "SELECT id, fieldtype FROM ".TB_PREFIX."wdata where id = $wref";
+		$q = "SELECT id, categorie, plaats, week, img, points from ".TB_PREFIX."medal where userid = $uid order by id desc";
 		$result = mysql_query($q, $this->connection);
-		$dbarray = mysql_fetch_array($result);
-		return $dbarray['fieldtype'];
+		return $this->mysql_fetch_all($result);
 	}
 	
-	function getVillageState($wref)
-	{
-		$q = "SELECT occupied FROM ".TB_PREFIX."wdata where id = $wref";
-		$result = mysql_query($q, $this->connection);
-		$dbarray = mysql_fetch_array($result);
-		return $dbarray['occupied'];
-	}	
+	//--------------------------------------------------------------------
+	//	odata表
+	//--------------------------------------------------------------------
 	
-	function getProfileVillages($uid)
-	{
-      $q = "SELECT capital, wref, name, pop, created from ".TB_PREFIX."vdata where owner = $uid order by pop desc";
-      $result = mysql_query($q,$this->connection);
-      return $this->mysql_fetch_all($result);
-	}
-	
-   function getProfileMedal($uid)
-   {
-      $q = "SELECT id,categorie,plaats,week,img,points from ".TB_PREFIX."medal where userid = $uid order by id desc";
-      $result = mysql_query($q,$this->connection);
-	  return $this->mysql_fetch_all($result);
-
-   }
-   
-	function getVillagesID($uid)
-	{
-		$q = "SELECT wref from ".TB_PREFIX."vdata where owner = $uid order by capital DESC";
-		$result = mysql_query($q, $this->connection);
-		$array = $this->mysql_fetch_all($result);
-		$newarray = array();
-		for ($i = 0; $i < count($array); $i++)
-		{
-			array_push($newarray, $array[$i]['wref']);
-		}
-		return $newarray;
-	}
-	
-	function getVillage($vid)
-	{
-		$q = "SELECT * FROM ".TB_PREFIX."vdata where wref = $vid";
-		$result = mysql_query($q, $this->connection);
-		return mysql_fetch_array($result);
-	}
-	
-	function getMInfo($id)
-	{
-		$q = "SELECT * FROM ".TB_PREFIX."wdata left JOIN ".TB_PREFIX."vdata ON ".TB_PREFIX."vdata.wref = ".TB_PREFIX."wdata.id where ".TB_PREFIX."wdata.id = $id";
-		$result = mysql_query($q, $this->connection);
-		return mysql_fetch_array($result);
-	}
-	
+	//	获得绿洲占领的信息
 	function getOasis($vid)
 	{
 		$q = "SELECT * FROM ".TB_PREFIX."odata where conqured = $vid";
@@ -548,19 +619,12 @@ class MYSQL_DB
 		return $this->mysql_fetch_all($result);
 	}
 	
+	//	根据地图ID查询绿洲信息
 	function getOasisInfo($wid)
 	{
 		$q = "SELECT * FROM ".TB_PREFIX."odata where wref = $wid";
 		$result = mysql_query($q, $this->connection);
 		return mysql_fetch_assoc($result);
-	}
-	
-	function getVillageField($ref, $field)
-	{
-		$q = "SELECT $field FROM ".TB_PREFIX."vdata where wref = $ref";
-		$result = mysql_query($q, $this->connection);
-		$dbarray = mysql_fetch_array($result);
-		return $dbarray[$field];
 	}
 	
 	function setVillageField($ref, $field, $value)
@@ -1619,6 +1683,19 @@ class MYSQL_DB
 		$result = mysql_query($q, $this->connection);
 		$row = mysql_fetch_row($result);
 		return $row[0];
+	}
+	
+	function deleteReinf($id)
+	{
+		$q = "DELETE from ".TB_PREFIX."enforcement where id = '$id'";
+		mysql_query($q, $this->connection);
+	}
+	
+	function updateResource($vid, $what, $number)
+	{
+		$q = "UPDATE ".TB_PREFIX."vdata set ".$what."=".$number." where wref = $vid";
+		$result = mysql_query($q, $this->connection);
+		return mysql_query($q, $this->connection);
 	}
 
 	function mysql_fetch_all($result)
