@@ -9,6 +9,35 @@ class MYSQL_DB
 		mysql_select_db(SQL_DB, $this->connection) or die(mysql_error());
 	}
 
+	function mysql_fetch_all($result)
+	{
+		$all = array();
+		if ($result)
+		{
+			while ($row = mysql_fetch_assoc($result))
+			{
+				$all[] = $row;
+			}
+			return $all;
+		}
+	}
+	
+	function query_return($q)
+	{
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+
+	function query($query)
+	{
+		return mysql_query($query, $this->connection);
+	}
+	
+	function RemoveXSS($val)
+	{
+		return htmlspecialchars($val, ENT_QUOTES);
+	}
+	
 	//--------------------------------------------------------------------
 	//	user表
 	//--------------------------------------------------------------------
@@ -209,6 +238,47 @@ class MYSQL_DB
 		return mysql_query($q, $this->connection);
 	}
 	
+	function modifyPoints($aid, $points, $amt)
+	{
+		$q = "UPDATE ".TB_PREFIX."users set $points = $points + $amt where id = $aid";
+		return mysql_query($q, $this->connection);
+	}
+	
+	function setCelCp($user, $cp)
+	{
+		$q = "UPDATE ".TB_PREFIX."users set cp = cp + $cp where id = $user";
+		return mysql_query($q, $this->connection);
+	}
+	
+	function getRanking()
+	{
+		if (INCLUDE_ADMIN)
+		{
+			$q = "SELECT id, username, alliance, ap, dp, access FROM ".TB_PREFIX."users";
+		}
+		else
+		{
+			$q = "SELECT id, username, alliance, ap, dp, access FROM ".TB_PREFIX."users where access != ".ADMIN;
+		}
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+	
+	function getAllMember($aid)
+	{
+		$q = "SELECT * FROM ".TB_PREFIX."users where alliance = $aid order  by (SELECT sum(pop) FROM ".TB_PREFIX."vdata WHERE owner =  ".TB_PREFIX."users.id) desc";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+	
+	function countUser()
+	{
+		$q = "SELECT count(id) FROM ".TB_PREFIX."users where id != 0";
+		$result = mysql_query($q, $this->connection);
+		$row = mysql_fetch_row($result);
+		return $row[0];
+	}
+	
 	//--------------------------------------------------------------------
 	//	activate表
 	//--------------------------------------------------------------------
@@ -308,6 +378,14 @@ class MYSQL_DB
 		$result = mysql_query($q, $this->connection);
 		$dbarray = mysql_fetch_array($result);
 		return $dbarray['timestamp'];
+	}
+	
+	function getNeedDelete()
+	{
+		$time = time();
+		$q = "SELECT uid FROM ".TB_PREFIX."deleting where timestamp < $time";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
 	}
 	
 	//--------------------------------------------------------------------
@@ -477,6 +555,14 @@ class MYSQL_DB
 		return $dbarray['fieldtype'];
 	}
 	
+	//	获得某地图ID的坐标
+	function getCoor($wref)
+	{
+		$q = "SELECT x, y FROM ".TB_PREFIX."wdata where id = $wref";
+		$result = mysql_query($q, $this->connection);
+		return mysql_fetch_array($result);
+	}
+	
 	//--------------------------------------------------------------------
 	//	vdata表
 	//--------------------------------------------------------------------
@@ -537,7 +623,7 @@ class MYSQL_DB
 		return mysql_fetch_array($result);
 	}
 	
-	//	查找通过地图ID查找村庄信息
+	//	通过地图ID查找村庄信息
 	function getVillageField($ref, $field)
 	{
 		$q = "SELECT $field FROM ".TB_PREFIX."vdata where wref = $ref";
@@ -546,520 +632,11 @@ class MYSQL_DB
 		return $dbarray[$field];
 	}
 	
-	//--------------------------------------------------------------------
-	//	fdata表
-	//--------------------------------------------------------------------
-	
-	//	增加村庄的资源类型
-	function addResourceFields($vid, $type)
-	{
-		switch ($type)
-		{
-		case 1:
-			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,4,4,1,4,4,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
-			break;
-		case 2:
-			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,3,4,1,3,2,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
-			break;
-		case 3:
-			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,1,4,1,3,2,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
-			break;
-		case 4:
-			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,1,4,1,2,2,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
-			break;
-		case 5:
-			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,1,4,1,3,1,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
-			break;
-		case 6:
-			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,4,4,1,3,4,4,4,4,4,4,4,4,4,4,4,2,4,4,1,15)";
-			break;
-		case 7:
-			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,1,4,4,1,2,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
-			break;
-		case 8:
-			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,3,4,4,1,2,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
-			break;
-		case 9:
-			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,3,4,4,1,1,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
-			break;
-		case 10:
-			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,3,4,1,2,2,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
-			break;
-		case 11:
-			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,3,1,1,3,1,4,4,3,3,4,4,3,1,4,4,2,4,4,1,15)";
-			break;
-		case 12:
-			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,1,4,1,1,2,2,3,4,4,3,3,4,4,1,4,1,2,1,1,15)";
-			break;
-		}
-		return mysql_query($q, $this->connection);
-	}
-	
-	//--------------------------------------------------------------------
-	//	fdata表
-	//--------------------------------------------------------------------
-	
-	//	获得某用户的所有奖牌
-	function getProfileMedal($uid)
-	{
-		$q = "SELECT id, categorie, plaats, week, img, points from ".TB_PREFIX."medal where userid = $uid order by id desc";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-	
-	//--------------------------------------------------------------------
-	//	odata表
-	//--------------------------------------------------------------------
-	
-	//	获得绿洲占领的信息
-	function getOasis($vid)
-	{
-		$q = "SELECT * FROM ".TB_PREFIX."odata where conqured = $vid";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-	
-	//	根据地图ID查询绿洲信息
-	function getOasisInfo($wid)
-	{
-		$q = "SELECT * FROM ".TB_PREFIX."odata where wref = $wid";
-		$result = mysql_query($q, $this->connection);
-		return mysql_fetch_assoc($result);
-	}
-	
+	//	通过地图ID更新村庄信息
 	function setVillageField($ref, $field, $value)
 	{
 		$q = "UPDATE ".TB_PREFIX."vdata set $field = '$value' where wref = $ref";
 		return mysql_query($q,$this->connection);
-	}
-	
-	function setVillageLevel($ref, $field, $value)
-	{
-		$q = "UPDATE ".TB_PREFIX."fdata set ".$field." = '".$value."' where vref = ".$ref."";
-		return mysql_query($q,$this->connection);
-	}
-		
-	function getResourceLevel($vid)
-	{
-		$q = "SELECT * from ".TB_PREFIX."fdata where vref = $vid";
-		$result = mysql_query($q, $this->connection);
-		return mysql_fetch_assoc($result);
-	}
-	
-	function getCoor($wref)
-	{
-		$q = "SELECT x, y FROM ".TB_PREFIX."wdata where id = $wref";
-		$result = mysql_query($q, $this->connection);
-		return mysql_fetch_array($result);
-	}
-   
-	function CheckForum($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_cat where alliance = '$id'";
-		$result = mysql_query($q, $this->connection);
-		if (mysql_num_rows($result))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-   
-	function CountCat($id)
-	{
-		$q = "SELECT count(id) FROM ".TB_PREFIX."forum_topic where cat = '$id'";
-		$result = mysql_query($q, $this->connection);
-		$row = mysql_fetch_row($result);
-		return $row[0];
-	}
-   
-	function LastTopic($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_topic where cat = '$id' order by post_date";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-   
-	function CheckLastTopic($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_topic where cat = '$id'";
-		$result = mysql_query($q, $this->connection);
-		if (mysql_num_rows($result))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-   
-	function CheckLastPost($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_post where topic = '$id'";
-		$result = mysql_query($q, $this->connection);
-		if (mysql_num_rows($result))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-   
-	function LastPost($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_post where topic = '$id'";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-   
-	function CountTopic($id)
-	{
-		$q = "SELECT count(id) FROM ".TB_PREFIX."forum_post where owner = '$id'";
-		$result = mysql_query($q, $this->connection);
-		$row = mysql_fetch_row($result);
-
-		$qs = "SELECT count(id) FROM ".TB_PREFIX."forum_topic where owner = '$id'";
-		$results = mysql_query($qs, $this->connection);
-		$rows = mysql_fetch_row($results);
-		return $row[0] + $rows[0];
-	}
-   
-	function CountPost($id)
-	{
-		$q = "SELECT count(id) FROM ".TB_PREFIX."forum_post where topic = '$id'";
-		$result = mysql_query($q, $this->connection);
-		$row = mysql_fetch_row($result);
-		return $row[0];
-	}
-
-	function ForumCat($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_cat where alliance = '$id' ORDER BY id";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-   
-	function ForumCatEdit($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_cat where id = '$id'";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-   
-	function ForumCatName($id)
-	{
-		$q = "SELECT forum_name from ".TB_PREFIX."forum_cat where id = $id";
-		$result = mysql_query($q, $this->connection);
-		$dbarray = mysql_fetch_array($result);
-		return $dbarray['forum_name'];
-	}
-   
-	function CheckCatTopic($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_topic where cat = '$id'";
-		$result = mysql_query($q, $this->connection);
-		if (mysql_num_rows($result))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-   
-	function CheckResultEdit($alli)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_edit where alliance = '$alli'";
-		$result = mysql_query($q, $this->connection);
-		if (mysql_num_rows($result))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-   
-	function CheckCloseTopic($id)
-	{
-		$q = "SELECT close from ".TB_PREFIX."forum_topic where id = '$id'";
-		$result = mysql_query($q, $this->connection);
-		$dbarray = mysql_fetch_array($result);
-		return $dbarray['close'];
-	}
-   
-	function CheckEditRes($alli)
-	{
-		$q = "SELECT result from ".TB_PREFIX."forum_edit where alliance = '$alli'";
-		$result = mysql_query($q, $this->connection);
-		$dbarray = mysql_fetch_array($result);
-		return $dbarray['result'];
-	}
-   
-	function CreatResultEdit($alli, $result)
-	{
-		$q = "INSERT into ".TB_PREFIX."forum_edit values (0, '$alli', '$result')";
-		mysql_query($q, $this->connection);
-		return mysql_insert_id($this->connection);
-	}
-   
-	function UpdateResultEdit($alli, $result)
-	{
-		$date = time();
-		$q = "UPDATE ".TB_PREFIX."forum_edit set result = '$result' where alliance = '$alli'";
-		return mysql_query($q, $this->connection);
-	}
-   
-	function UpdateEditTopic($id, $title, $cat)
-	{
-		$q = "UPDATE ".TB_PREFIX."forum_topic set title = '$title', cat = '$cat' where id = $id";
-		return mysql_query($q, $this->connection);
-	}
-   
-	function UpdateEditForum($id, $name, $des)
-	{
-		$q = "UPDATE ".TB_PREFIX."forum_cat set forum_name = '$name', forum_des = '$des' where id = $id";
-		return mysql_query($q, $this->connection);
-	}
-   
-	function StickTopic($id, $mode)
-	{
-		$q = "UPDATE ".TB_PREFIX."forum_topic set stick = '$mode' where id = '$id'";
-		return mysql_query($q, $this->connection);
-	}
-   
-	function ForumCatTopic($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_topic where cat = '$id' AND stick = '' ORDER BY post_date desc";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-   
-	function ForumCatTopicStick($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_topic where cat = '$id' AND stick = '1' ORDER BY post_date desc";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-   
-	function ShowTopic($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_topic where id = '$id'";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-   
-	function ShowPost($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_post where topic = '$id'";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-
-	function ShowPostEdit($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."forum_post where id = '$id'";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-
-	function CreatForum($owner, $alli, $name, $des, $area)
-	{
-		$q = "INSERT into ".TB_PREFIX."forum_cat values (0, '$owner', '$alli', '$name', '$des', '$area')";
-		mysql_query($q, $this->connection);
-		return mysql_insert_id($this->connection);
-	}
-
-	function CreatTopic($title, $post, $cat, $owner, $alli, $ends)
-	{
-		$date = time();
-		$q = "INSERT into ".TB_PREFIX."forum_topic values (0, '$title', '$post', '$date', '$date', '$cat', '$owner', '$alli', '$ends', '', '')";
-		mysql_query($q, $this->connection);
-		return mysql_insert_id($this->connection);
-	}
-
-	function CreatPost($post, $tids, $owner)
-	{
-		$date = time();
-		$q = "INSERT into ".TB_PREFIX."forum_post values (0, '$post', '$tids', '$owner', '$date')";
-		mysql_query($q, $this->connection);
-		return mysql_insert_id($this->connection);
-	}
-
-	function UpdatePostDate($id)
-	{
-		$date = time();
-		$q = "UPDATE ".TB_PREFIX."forum_topic set post_date = '$date' where id = $id";
-		return mysql_query($q, $this->connection);
-	}
-
-	function EditUpdateTopic($id, $post)
-	{
-		$q = "UPDATE ".TB_PREFIX."forum_topic set post = '$post' where id = $id";
-		return mysql_query($q, $this->connection);
-	}
-
-	function EditUpdatePost($id, $post)
-	{
-		$q = "UPDATE ".TB_PREFIX."forum_post set post = '$post' where id = $id";
-		return mysql_query($q, $this->connection);
-	}
-
-	function LockTopic($id, $mode)
-	{
-		$q = "UPDATE ".TB_PREFIX."forum_topic set close = '$mode' where id = '$id'";
-		return mysql_query($q, $this->connection);
-	}
-
-	function DeleteCat($id)
-	{
-		$qs = "DELETE from ".TB_PREFIX."forum_cat where id = '$id'";
-		$q = "DELETE from ".TB_PREFIX."forum_topic where cat = '$id'";
-		mysql_query($qs, $this->connection);
-		return mysql_query($q, $this->connection);
-	}
-
-	function DeleteTopic($id)
-	{
-		$q = "DELETE from ".TB_PREFIX."forum_post where topic = '$id'";
-		return mysql_query($q, $this->connection);
-	}
-
-	function DeletePost($id)
-	{
-		$q = "DELETE from ".TB_PREFIX."forum_post where id = '$id'";
-		return mysql_query($q, $this->connection);
-	}
-
-	function getAllianceName($id)
-	{
-		$q = "SELECT tag from ".TB_PREFIX."alidata where id = $id";
-		$result = mysql_query($q, $this->connection);
-		$dbarray = mysql_fetch_array($result);
-		return $dbarray['tag'];
-	}
-	
-	function getAlliance($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."alidata where id = $id";
-		$result = mysql_query($q, $this->connection);
-		return mysql_fetch_assoc($result);
-	}
-	
-	function setAlliName($aid, $name, $tag)
-	{
-		$q = "UPDATE ".TB_PREFIX."alidata set name = '$name', tag = '$tag' where id = $aid";
-		return mysql_query($q, $this->connection);
-	}
-	
-	function isAllianceOwner($id)
-	{
-		$q = "SELECT * from ".TB_PREFIX."alidata where leader = '$id'";
-		$result = mysql_query($q, $this->connection);
-		if (mysql_num_rows($result))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	
-	function aExist($ref, $type)
-	{
-		$q = "SELECT $type FROM ".TB_PREFIX."alidata where $type = '$ref'";
-		$result = mysql_query($q, $this->connection);
-		if (mysql_num_rows($result))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	
-	function modifyPoints($aid, $points, $amt)
-	{
-		$q = "UPDATE ".TB_PREFIX."users set $points = $points + $amt where id = $aid";
-		return mysql_query($q, $this->connection);
-	}  
-	
-	function createAlliance($tag, $name, $uid, $max)
-	{
-		$q = "INSERT into ".TB_PREFIX."alidata values (0, '$name', '$tag', $uid, 0, 0, 0, '', '', $max)";
-		mysql_query($q, $this->connection);
-		return mysql_insert_id($this->connection);
-	}
-	
-	function insertAlliNotice($aid, $notice)
-	{
-		$time = time();
-		$q = "INSERT into ".TB_PREFIX."ali_log values (0, '$aid', '$notice', $time)";
-		mysql_query($q, $this->connection);
-		return mysql_insert_id($this->connection);
-	}
-	
-	function readAlliNotice($aid)
-	{
-		$q = "SELECT * from ".TB_PREFIX."ali_log where aid = $aid ORDER BY date DESC";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-
-	function createAlliPermissions($uid, $aid, $rank, $opt1, $opt2, $opt3, $opt4, $opt5, $opt6, $opt7, $opt8)
-	{	
-		$q = "INSERT into ".TB_PREFIX."ali_permission values(0, '$uid', '$aid', '$rank', '$opt1', '$opt2', '$opt3', '$opt4', '$opt5', '$opt6', '$opt7', '$opt8')";
-		mysql_query($q, $this->connection);
-		return mysql_insert_id($this->connection);
-	}
-
-	function deleteAlliPermissions($uid)
-	{
-		$q = "DELETE from ".TB_PREFIX."ali_permission where uid = '$uid'";
-		return mysql_query($q, $this->connection);
-	}	
-
-	function updateAlliPermissions($uid, $aid, $rank, $opt1, $opt2, $opt3, $opt4, $opt5, $opt6, $opt7)
-	{	
-		$q = "UPDATE ".TB_PREFIX."ali_permission SET rank = '$rank', opt1 = '$opt1', opt2 = '$opt2', opt3 = '$opt3', opt4 = '$opt4', opt5 = '$opt5', opt6 = '$opt6', opt7 = '$opt7' where uid = $uid && alliance = $aid";
-		return mysql_query($q, $this->connection);
-	}
-
-	function getAlliPermissions($uid, $aid)
-	{
-		$q = "SELECT * FROM ".TB_PREFIX."ali_permission where uid = $uid && alliance = $aid";
-		$result = mysql_query($q, $this->connection);
-		return mysql_fetch_assoc($result);
-	}			
-	
-	function submitAlliProfile($aid, $notice, $desc)
-	{
-		$q = "UPDATE ".TB_PREFIX."alidata SET `notice` = '$notice', `desc` = '$desc' where id = $aid";
-		return mysql_query($q, $this->connection);
-	}	
-		
-	function getUserAlliance($id)
-	{
-		$q = "SELECT ".TB_PREFIX."alidata.tag from ".TB_PREFIX."users join ".TB_PREFIX."alidata where ".TB_PREFIX."users.alliance = ".TB_PREFIX."alidata.id and ".TB_PREFIX."users.id = $id";
-		$result = mysql_query($q, $this->connection);
-		$dbarray = mysql_fetch_array($result);
-		if ($dbarray['tag'] == "")
-		{
-			return "-";
-		}
-		else
-		{
-			return $dbarray['tag'];
-		}
 	}
 	
 	function modifyResource($vid, $wood, $clay, $iron, $crop, $mode)
@@ -1073,13 +650,6 @@ class MYSQL_DB
 			$q = "UPDATE ".TB_PREFIX."vdata set wood = wood + $wood, clay = clay + $clay, iron = iron + $iron, crop = crop + $crop where wref = $vid";
 		}
 		return mysql_query($q, $this->connection);
-	}
-	
-	function getFieldLevel($vid, $field)
-	{
-		$q = "SELECT f".$field." from ".TB_PREFIX."fdata where vref = $vid";
-		$result = mysql_query($q, $this->connection);
-		return mysql_result($result, 0);
 	}
 	
 	function getVSumField($uid, $field)
@@ -1141,13 +711,579 @@ class MYSQL_DB
 		$q = "UPDATE ".TB_PREFIX."vdata set celebration = 0, type = 0 where wref = $ref";
 		return mysql_query($q, $this->connection);
 	}
-
-	function setCelCp($user, $cp)
+	
+	function getVillageByName($name)
 	{
-		$q = "UPDATE ".TB_PREFIX."users set cp = cp + $cp where id = $user";
+		$name = mysql_real_escape_string($name, $this->connection); 
+		$q = "SELECT wref FROM ".TB_PREFIX."vdata where name = '$name' limit 1";
+		$result = mysql_query($q, $this->connection);
+		$dbarray = mysql_fetch_array($result);
+		return $dbarray['wref'];
+	}
+	
+	function getVRanking()
+	{
+		$q = "SELECT wref, name, owner, pop FROM ".TB_PREFIX."vdata where wref != ''";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+	
+	function updateResource($vid, $what, $number)
+	{
+		$q = "UPDATE ".TB_PREFIX."vdata set ".$what."=".$number." where wref = $vid";
+		$result = mysql_query($q, $this->connection);
 		return mysql_query($q, $this->connection);
 	}
 	
+	//--------------------------------------------------------------------
+	//	fdata表
+	//--------------------------------------------------------------------
+	
+	//	增加村庄的资源类型
+	function addResourceFields($vid, $type)
+	{
+		switch ($type)
+		{
+		case 1:
+			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,4,4,1,4,4,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
+			break;
+		case 2:
+			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,3,4,1,3,2,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
+			break;
+		case 3:
+			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,1,4,1,3,2,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
+			break;
+		case 4:
+			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,1,4,1,2,2,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
+			break;
+		case 5:
+			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,1,4,1,3,1,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
+			break;
+		case 6:
+			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,4,4,1,3,4,4,4,4,4,4,4,4,4,4,4,2,4,4,1,15)";
+			break;
+		case 7:
+			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,1,4,4,1,2,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
+			break;
+		case 8:
+			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,3,4,4,1,2,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
+			break;
+		case 9:
+			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,3,4,4,1,1,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
+			break;
+		case 10:
+			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,3,4,1,2,2,2,3,4,4,3,3,4,4,1,4,2,1,2,1,15)";
+			break;
+		case 11:
+			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,3,1,1,3,1,4,4,3,3,4,4,3,1,4,4,2,4,4,1,15)";
+			break;
+		case 12:
+			$q = "INSERT into ".TB_PREFIX."fdata (vref,f1t,f2t,f3t,f4t,f5t,f6t,f7t,f8t,f9t,f10t,f11t,f12t,f13t,f14t,f15t,f16t,f17t,f18t,f26,f26t) values($vid,1,4,1,1,2,2,3,4,4,3,3,4,4,1,4,1,2,1,1,15)";
+			break;
+		}
+		return mysql_query($q, $this->connection);
+	}
+	
+	//	改变资源田的等级
+	function setVillageLevel($ref, $field, $value)
+	{
+		$q = "UPDATE ".TB_PREFIX."fdata set ".$field." = '".$value."' where vref = ".$ref."";
+		return mysql_query($q,$this->connection);
+	}
+	
+	//	获得资源田的等级
+	function getResourceLevel($vid)
+	{
+		$q = "SELECT * from ".TB_PREFIX."fdata where vref = $vid";
+		$result = mysql_query($q, $this->connection);
+		return mysql_fetch_assoc($result);
+	}
+	
+	function getFieldLevel($vid, $field)
+	{
+		$q = "SELECT f".$field." from ".TB_PREFIX."fdata where vref = $vid";
+		$result = mysql_query($q, $this->connection);
+		return mysql_result($result, 0);
+	}
+	
+	//--------------------------------------------------------------------
+	//	odata表
+	//--------------------------------------------------------------------
+	
+	//	获得绿洲占领的信息
+	function getOasis($vid)
+	{
+		$q = "SELECT * FROM ".TB_PREFIX."odata where conqured = $vid";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+	
+	//	根据地图ID查询绿洲信息
+	function getOasisInfo($wid)
+	{
+		$q = "SELECT * FROM ".TB_PREFIX."odata where wref = $wid";
+		$result = mysql_query($q, $this->connection);
+		return mysql_fetch_assoc($result);
+	}
+	
+	//--------------------------------------------------------------------
+	//	medal表
+	//--------------------------------------------------------------------
+	
+	//	获得某用户的所有奖牌
+	function getProfileMedal($uid)
+	{
+		$q = "SELECT id, categorie, plaats, week, img, points from ".TB_PREFIX."medal where userid = $uid order by id desc";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+	
+	//--------------------------------------------------------------------
+	//	forum_cat表
+	//--------------------------------------------------------------------
+
+	function CheckForum($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_cat where alliance = '$id'";
+		$result = mysql_query($q, $this->connection);
+		if (mysql_num_rows($result))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	function ForumCat($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_cat where alliance = '$id' ORDER BY id";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+   
+	function ForumCatEdit($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_cat where id = '$id'";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+   
+	function ForumCatName($id)
+	{
+		$q = "SELECT forum_name from ".TB_PREFIX."forum_cat where id = $id";
+		$result = mysql_query($q, $this->connection);
+		$dbarray = mysql_fetch_array($result);
+		return $dbarray['forum_name'];
+	}
+
+	function UpdateEditForum($id, $name, $des)
+	{
+		$q = "UPDATE ".TB_PREFIX."forum_cat set forum_name = '$name', forum_des = '$des' where id = $id";
+		return mysql_query($q, $this->connection);
+	}
+	
+	function CreatForum($owner, $alli, $name, $des, $area)
+	{
+		$q = "INSERT into ".TB_PREFIX."forum_cat values (0, '$owner', '$alli', '$name', '$des', '$area')";
+		mysql_query($q, $this->connection);
+		return mysql_insert_id($this->connection);
+	}
+	
+	function DeleteCat($id)
+	{
+		$qs = "DELETE from ".TB_PREFIX."forum_cat where id = '$id'";
+		$q = "DELETE from ".TB_PREFIX."forum_topic where cat = '$id'";
+		mysql_query($qs, $this->connection);
+		return mysql_query($q, $this->connection);
+	}
+	
+	//--------------------------------------------------------------------
+	//	forum_topic表
+	//--------------------------------------------------------------------
+   
+	function CountCat($id)
+	{
+		$q = "SELECT count(id) FROM ".TB_PREFIX."forum_topic where cat = '$id'";
+		$result = mysql_query($q, $this->connection);
+		$row = mysql_fetch_row($result);
+		return $row[0];
+	}
+   
+	function LastTopic($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_topic where cat = '$id' order by post_date";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+	
+	function CheckCatTopic($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_topic where cat = '$id'";
+		$result = mysql_query($q, $this->connection);
+		if (mysql_num_rows($result))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	function CheckLastTopic($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_topic where cat = '$id'";
+		$result = mysql_query($q, $this->connection);
+		if (mysql_num_rows($result))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	function CheckCloseTopic($id)
+	{
+		$q = "SELECT close from ".TB_PREFIX."forum_topic where id = '$id'";
+		$result = mysql_query($q, $this->connection);
+		$dbarray = mysql_fetch_array($result);
+		return $dbarray['close'];
+	}
+	
+	function UpdateEditTopic($id, $title, $cat)
+	{
+		$q = "UPDATE ".TB_PREFIX."forum_topic set title = '$title', cat = '$cat' where id = $id";
+		return mysql_query($q, $this->connection);
+	}
+	
+	function StickTopic($id, $mode)
+	{
+		$q = "UPDATE ".TB_PREFIX."forum_topic set stick = '$mode' where id = '$id'";
+		return mysql_query($q, $this->connection);
+	}
+   
+	function ForumCatTopic($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_topic where cat = '$id' AND stick = '' ORDER BY post_date desc";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+   
+	function ForumCatTopicStick($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_topic where cat = '$id' AND stick = '1' ORDER BY post_date desc";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+   
+	function ShowTopic($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_topic where id = '$id'";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+
+	function CreatTopic($title, $post, $cat, $owner, $alli, $ends)
+	{
+		$date = time();
+		$q = "INSERT into ".TB_PREFIX."forum_topic values (0, '$title', '$post', '$date', '$date', '$cat', '$owner', '$alli', '$ends', '', '')";
+		mysql_query($q, $this->connection);
+		return mysql_insert_id($this->connection);
+	}
+	
+	function UpdatePostDate($id)
+	{
+		$date = time();
+		$q = "UPDATE ".TB_PREFIX."forum_topic set post_date = '$date' where id = $id";
+		return mysql_query($q, $this->connection);
+	}
+
+	function EditUpdateTopic($id, $post)
+	{
+		$q = "UPDATE ".TB_PREFIX."forum_topic set post = '$post' where id = $id";
+		return mysql_query($q, $this->connection);
+	}
+	
+	function LockTopic($id, $mode)
+	{
+		$q = "UPDATE ".TB_PREFIX."forum_topic set close = '$mode' where id = '$id'";
+		return mysql_query($q, $this->connection);
+	}
+	
+	//--------------------------------------------------------------------
+	//	forum_post表
+	//--------------------------------------------------------------------
+	
+	function CheckLastPost($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_post where topic = '$id'";
+		$result = mysql_query($q, $this->connection);
+		if (mysql_num_rows($result))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+   
+	function LastPost($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_post where topic = '$id'";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+   
+	function CountTopic($id)
+	{
+		$q = "SELECT count(id) FROM ".TB_PREFIX."forum_post where owner = '$id'";
+		$result = mysql_query($q, $this->connection);
+		$row = mysql_fetch_row($result);
+
+		$qs = "SELECT count(id) FROM ".TB_PREFIX."forum_topic where owner = '$id'";
+		$results = mysql_query($qs, $this->connection);
+		$rows = mysql_fetch_row($results);
+		return $row[0] + $rows[0];
+	}
+   
+	function CountPost($id)
+	{
+		$q = "SELECT count(id) FROM ".TB_PREFIX."forum_post where topic = '$id'";
+		$result = mysql_query($q, $this->connection);
+		$row = mysql_fetch_row($result);
+		return $row[0];
+	}
+	
+	function ShowPost($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_post where topic = '$id'";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+
+	function ShowPostEdit($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_post where id = '$id'";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+
+	function CreatPost($post, $tids, $owner)
+	{
+		$date = time();
+		$q = "INSERT into ".TB_PREFIX."forum_post values (0, '$post', '$tids', '$owner', '$date')";
+		mysql_query($q, $this->connection);
+		return mysql_insert_id($this->connection);
+	}
+	
+	function EditUpdatePost($id, $post)
+	{
+		$q = "UPDATE ".TB_PREFIX."forum_post set post = '$post' where id = $id";
+		return mysql_query($q, $this->connection);
+	}
+	
+	function DeleteTopic($id)
+	{
+		$q = "DELETE from ".TB_PREFIX."forum_post where topic = '$id'";
+		return mysql_query($q, $this->connection);
+	}
+
+	function DeletePost($id)
+	{
+		$q = "DELETE from ".TB_PREFIX."forum_post where id = '$id'";
+		return mysql_query($q, $this->connection);
+	}
+	
+	//--------------------------------------------------------------------
+	//	forum_edit表
+	//--------------------------------------------------------------------
+	
+	function CheckResultEdit($alli)
+	{
+		$q = "SELECT * from ".TB_PREFIX."forum_edit where alliance = '$alli'";
+		$result = mysql_query($q, $this->connection);
+		if (mysql_num_rows($result))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+   
+	function CheckEditRes($alli)
+	{
+		$q = "SELECT result from ".TB_PREFIX."forum_edit where alliance = '$alli'";
+		$result = mysql_query($q, $this->connection);
+		$dbarray = mysql_fetch_array($result);
+		return $dbarray['result'];
+	}
+   
+	function CreatResultEdit($alli, $result)
+	{
+		$q = "INSERT into ".TB_PREFIX."forum_edit values (0, '$alli', '$result')";
+		mysql_query($q, $this->connection);
+		return mysql_insert_id($this->connection);
+	}
+   
+	function UpdateResultEdit($alli, $result)
+	{
+		$date = time();
+		$q = "UPDATE ".TB_PREFIX."forum_edit set result = '$result' where alliance = '$alli'";
+		return mysql_query($q, $this->connection);
+	}
+
+	//--------------------------------------------------------------------
+	//	alidata表
+	//--------------------------------------------------------------------
+	function getAllianceName($id)
+	{
+		$q = "SELECT tag from ".TB_PREFIX."alidata where id = $id";
+		$result = mysql_query($q, $this->connection);
+		$dbarray = mysql_fetch_array($result);
+		return $dbarray['tag'];
+	}
+	
+	function getAlliance($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."alidata where id = $id";
+		$result = mysql_query($q, $this->connection);
+		return mysql_fetch_assoc($result);
+	}
+	
+	function setAlliName($aid, $name, $tag)
+	{
+		$q = "UPDATE ".TB_PREFIX."alidata set name = '$name', tag = '$tag' where id = $aid";
+		return mysql_query($q, $this->connection);
+	}
+	
+	function isAllianceOwner($id)
+	{
+		$q = "SELECT * from ".TB_PREFIX."alidata where leader = '$id'";
+		$result = mysql_query($q, $this->connection);
+		if (mysql_num_rows($result))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	function aExist($ref, $type)
+	{
+		$q = "SELECT $type FROM ".TB_PREFIX."alidata where $type = '$ref'";
+		$result = mysql_query($q, $this->connection);
+		if (mysql_num_rows($result))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	function createAlliance($tag, $name, $uid, $max)
+	{
+		$q = "INSERT into ".TB_PREFIX."alidata values (0, '$name', '$tag', $uid, 0, 0, 0, '', '', $max)";
+		mysql_query($q, $this->connection);
+		return mysql_insert_id($this->connection);
+	}
+	
+	function submitAlliProfile($aid, $notice, $desc)
+	{
+		$q = "UPDATE ".TB_PREFIX."alidata SET `notice` = '$notice', `desc` = '$desc' where id = $aid";
+		return mysql_query($q, $this->connection);
+	}
+		
+	function getUserAlliance($id)
+	{
+		$q = "SELECT ".TB_PREFIX."alidata.tag from ".TB_PREFIX."users join ".TB_PREFIX."alidata where ".TB_PREFIX."users.alliance = ".TB_PREFIX."alidata.id and ".TB_PREFIX."users.id = $id";
+		$result = mysql_query($q, $this->connection);
+		$dbarray = mysql_fetch_array($result);
+		if ($dbarray['tag'] == "")
+		{
+			return "-";
+		}
+		else
+		{
+			return $dbarray['tag'];
+		}
+	}
+	
+	function getARanking()
+	{
+		$q = "SELECT id, name, tag FROM ".TB_PREFIX."alidata where id != ''";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+	
+	function countAlli()
+	{
+		$q = "SELECT count(id) FROM ".TB_PREFIX."alidata where id != 0";
+		$result = mysql_query($q, $this->connection);
+		$row = mysql_fetch_row($result);
+		return $row[0];
+	}
+	
+	//--------------------------------------------------------------------
+	//	ali_log表
+	//--------------------------------------------------------------------
+	function insertAlliNotice($aid, $notice)
+	{
+		$time = time();
+		$q = "INSERT into ".TB_PREFIX."ali_log values (0, '$aid', '$notice', $time)";
+		mysql_query($q, $this->connection);
+		return mysql_insert_id($this->connection);
+	}
+	
+	function readAlliNotice($aid)
+	{
+		$q = "SELECT * from ".TB_PREFIX."ali_log where aid = $aid ORDER BY date DESC";
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);
+	}
+
+	//--------------------------------------------------------------------
+	//	ali_permission表
+	//--------------------------------------------------------------------
+	function createAlliPermissions($uid, $aid, $rank, $opt1, $opt2, $opt3, $opt4, $opt5, $opt6, $opt7, $opt8)
+	{	
+		$q = "INSERT into ".TB_PREFIX."ali_permission values(0, '$uid', '$aid', '$rank', '$opt1', '$opt2', '$opt3', '$opt4', '$opt5', '$opt6', '$opt7', '$opt8')";
+		mysql_query($q, $this->connection);
+		return mysql_insert_id($this->connection);
+	}
+
+	function deleteAlliPermissions($uid)
+	{
+		$q = "DELETE from ".TB_PREFIX."ali_permission where uid = '$uid'";
+		return mysql_query($q, $this->connection);
+	}	
+
+	function updateAlliPermissions($uid, $aid, $rank, $opt1, $opt2, $opt3, $opt4, $opt5, $opt6, $opt7)
+	{	
+		$q = "UPDATE ".TB_PREFIX."ali_permission SET rank = '$rank', opt1 = '$opt1', opt2 = '$opt2', opt3 = '$opt3', opt4 = '$opt4', opt5 = '$opt5', opt6 = '$opt6', opt7 = '$opt7' where uid = $uid && alliance = $aid";
+		return mysql_query($q, $this->connection);
+	}
+
+	function getAlliPermissions($uid, $aid)
+	{
+		$q = "SELECT * FROM ".TB_PREFIX."ali_permission where uid = $uid && alliance = $aid";
+		$result = mysql_query($q, $this->connection);
+		return mysql_fetch_assoc($result);
+	}			
+	
+	//--------------------------------------------------------------------
+	//	ali_invite表
+	//--------------------------------------------------------------------
 	function getInvitation($uid)
 	{
 		$q = "SELECT * FROM ".TB_PREFIX."ali_invite where uid = $uid";
@@ -1175,6 +1311,9 @@ class MYSQL_DB
 		return mysql_query($q, $this->connection);
 	}
 	
+	//--------------------------------------------------------------------
+	//	mdata表
+	//--------------------------------------------------------------------
 	function sendMessage($client, $owner, $topic, $message, $send)
 	{
 		$time = time();
@@ -1229,6 +1368,9 @@ class MYSQL_DB
 		}
 	}
 	
+	//--------------------------------------------------------------------
+	//	ndata表
+	//--------------------------------------------------------------------
 	function unarchiveNotice($id)
 	{
 		$q = "UPDATE ".TB_PREFIX."ndata set ntype = archive, archive = 0 where id = $id";
@@ -1273,6 +1415,9 @@ class MYSQL_DB
 		return mysql_query($q, $this->connection);
 	}
 	
+	//--------------------------------------------------------------------
+	//	bdata表
+	//--------------------------------------------------------------------
 	function removeBuilding($d)
 	{
 		$q = "DELETE FROM ".TB_PREFIX."bdata where id = $d";
@@ -1286,34 +1431,13 @@ class MYSQL_DB
 		return $this->mysql_fetch_all($result);
 	}
 	
-	function getVillageByName($name)
-	{
-		$name = mysql_real_escape_string($name, $this->connection); 
-		$q = "SELECT wref FROM ".TB_PREFIX."vdata where name = '$name' limit 1";
-		$result = mysql_query($q, $this->connection);
-		$dbarray = mysql_fetch_array($result);
-		return $dbarray['wref'];
-	}
-	
+	//--------------------------------------------------------------------
+	//	market表
+	//--------------------------------------------------------------------
 	function setMarketAcc($id)
 	{
 		$q = "UPDATE ".TB_PREFIX."market set accept = 1 where id = $id";
 		return mysql_query($q, $this->connection);
-	}
-
-	function sendResource($ref, $clay, $iron, $crop, $merchant, $mode)
-	{
-		if (!$mode)
-		{
-			$q = "INSERT INTO ".TB_PREFIX."send values (0, $ref, $clay, $iron, $crop, $merchant)";
-			mysql_query($q, $this->connection);
-			return mysql_insert_id($this->connection);
-		}
-		else
-		{
-			$q = "DELETE FROM ".TB_PREFIX."send where id = $ref";
-			return mysql_query($q, $this->connection);
-		}
 	}
 
 	function addMarket($vid, $gtype, $gamt, $wtype, $wamt, $time, $alliance, $merchant, $mode)
@@ -1352,6 +1476,28 @@ class MYSQL_DB
 		$result = mysql_query($q, $this->connection);
 		return mysql_fetch_assoc($result);
 	}
+	
+	//--------------------------------------------------------------------
+	//	send表
+	//--------------------------------------------------------------------
+	function sendResource($ref, $clay, $iron, $crop, $merchant, $mode)
+	{
+		if (!$mode)
+		{
+			$q = "INSERT INTO ".TB_PREFIX."send values (0, $ref, $clay, $iron, $crop, $merchant)";
+			mysql_query($q, $this->connection);
+			return mysql_insert_id($this->connection);
+		}
+		else
+		{
+			$q = "DELETE FROM ".TB_PREFIX."send where id = $ref";
+			return mysql_query($q, $this->connection);
+		}
+	}
+
+	//--------------------------------------------------------------------
+	//	movement表
+	//--------------------------------------------------------------------
 	
 	function setMovementProc($moveid)
 	{
@@ -1415,6 +1561,15 @@ class MYSQL_DB
 		return $array;
 	}
 
+	function addMovement($type, $from, $to, $ref, $endtime)
+	{
+		$q = "INSERT INTO ".TB_PREFIX."movement values (0, $type, $from, $to, $ref, $endtime, 0)";
+		return mysql_query($q, $this->connection);
+	}
+	
+	//--------------------------------------------------------------------
+	//	a2b表
+	//--------------------------------------------------------------------
 	function addA2b($ckey, $timestamp, $to, $t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9, $t10, $t11, $type)
 	{
 		$q = "INSERT INTO ".TB_PREFIX."a2b (ckey, time_check, to_vid, u1, u2, u3, u4, u5, u6, u7, u8, u9, u10, u11, type) VALUES ('$ckey', '$timestamp', '$to', '$t1', '$t2', '$t3', '$t4', '$t5', '$t6', '$t7', '$t8', '$t9', '$t10', '$t11', '$type')";
@@ -1436,12 +1591,9 @@ class MYSQL_DB
 		}
 	}
 	
-	function addMovement($type, $from, $to, $ref, $endtime)
-	{
-		$q = "INSERT INTO ".TB_PREFIX."movement values (0, $type, $from, $to, $ref, $endtime, 0)";
-		return mysql_query($q, $this->connection);
-	}
-	
+	//--------------------------------------------------------------------
+	//	attacks表
+	//--------------------------------------------------------------------
 	function addAttack($vid, $t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9, $t10, $t11, $type)
 	{
 		$q = "INSERT INTO ".TB_PREFIX."attacks values (0, $vid, $t1, $t2, $t3, $t4, $t5, $t6, $t7, $t8, $t9, $t10, $t11, $type)";
@@ -1456,34 +1608,85 @@ class MYSQL_DB
 		return mysql_query($q, $this->connection);
 	}
 	
-	function getRanking()
+	//--------------------------------------------------------------------
+	//	enforcement表
+	//--------------------------------------------------------------------
+	function getEnforce($vid, $from)
+	{		
+		$q = "SELECT * FROM ".TB_PREFIX."enforcement WHERE `from` = $from and vref = $vid";
+		$result = mysql_query($q, $this->connection);
+		return mysql_fetch_assoc($result);
+	}
+
+	function addEnforce($data)
 	{
-		if (INCLUDE_ADMIN)
+		$q = "INSERT INTO ".TB_PREFIX."enforcement (vref,`from`) VALUES (".$data['to'].",".$data['from'].")";
+		mysql_query($q, $this->connection);
+		$id = mysql_insert_id($this->connection);
+		$owntribe = $this->getUserField($this->getVillageField($data['from'], "owner"), "tribe", 0);
+		$start = ($owntribe == 1)? 1 : (($owntribe == 2)? 11 : 21);
+		$end = ($owntribe == 1)? 10 : (($owntribe == 2)? 20 : 30);
+
+		$j = '1';			
+		for ($i = $start; $i <= $end; $i++)
 		{
-			$q = "SELECT id, username, alliance, ap, dp, access FROM ".TB_PREFIX."users";
+			$this->modifyEnforce($id, $i, $data['t'.$j], 1);
+			$j++;
+		}
+		return mysql_insert_id($this->connection);
+	}
+	
+	function modifyEnforce($id, $unit, $amt, $mode)
+	{
+		$unit = 'u'.$unit;
+		if (!$mode)
+		{
+			$q = "UPDATE ".TB_PREFIX."enforcement set $unit = $unit - $amt where id = $id";
 		}
 		else
 		{
-			$q = "SELECT id, username, alliance, ap, dp, access FROM ".TB_PREFIX."users where access != ".ADMIN;
+			$q = "UPDATE ".TB_PREFIX."enforcement set $unit = $unit + $amt where id = $id";
 		}
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
+		mysql_query($q, $this->connection);
 	}
-	
-	function getVRanking()
+
+	function getEnforceArray($id, $mode)
 	{
-		$q = "SELECT wref, name, owner, pop FROM ".TB_PREFIX."vdata where wref != ''";
+		if (!$mode)
+		{
+			$q = "SELECT * from ".TB_PREFIX."enforcement where id = $id";
+		}
+		else
+		{	
+			$q = "SELECT * from ".TB_PREFIX."enforcement where `from` = $id";
+		}	
 		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
+		return mysql_fetch_assoc($result);
+	}
+
+	function getEnforceVillage($id, $mode)
+	{	
+		if (!$mode)
+		{
+			$q = "SELECT * from ".TB_PREFIX."enforcement where vref = $id";
+		}
+		else
+		{	
+			$q = "SELECT * from ".TB_PREFIX."enforcement where `from` = $id";	
+		}	
+		$result = mysql_query($q, $this->connection);
+		return $this->mysql_fetch_all($result);	
 	}
 	
-	function getARanking()
+	function deleteReinf($id)
 	{
-		$q = "SELECT id, name, tag FROM ".TB_PREFIX."alidata where id != ''";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
+		$q = "DELETE from ".TB_PREFIX."enforcement where id = '$id'";
+		mysql_query($q, $this->connection);
 	}
-	
+
+	//--------------------------------------------------------------------
+	//	hero表
+	//--------------------------------------------------------------------
 	function getHeroRanking()
 	{
 		$q = "SELECT * FROM ".TB_PREFIX."hero";
@@ -1491,13 +1694,9 @@ class MYSQL_DB
 		return $this->mysql_fetch_all($result);
 	}
 	
-	function getAllMember($aid)
-	{
-		$q = "SELECT * FROM ".TB_PREFIX."users where alliance = $aid order  by (SELECT sum(pop) FROM ".TB_PREFIX."vdata WHERE owner =  ".TB_PREFIX."users.id) desc";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-	
+	//--------------------------------------------------------------------
+	//	units表
+	//--------------------------------------------------------------------
 	function addUnits($vid)
 	{
 		$q = "INSERT INTO ".TB_PREFIX."units (vref) values ($vid)";
@@ -1511,12 +1710,43 @@ class MYSQL_DB
 		return mysql_fetch_assoc($result);
 	}
 	
+	function modifyUnit($vref, $unit, $amt, $mode)
+	{
+		if ($unit == 230) { $unit = 30; }
+		if ($unit == 231) { $unit = 31; }
+		if ($unit == 120) { $unit = 20; }
+		if ($unit == 121) { $unit = 21; }
+		$unit = 'u'.$unit;
+		if (!$mode)
+		{
+			$q = "UPDATE ".TB_PREFIX."units SET $unit = $unit - $amt WHERE vref = $vref";
+		}
+		else
+		{
+			$q = "UPDATE ".TB_PREFIX."units SET $unit = $unit + $amt WHERE vref = $vref";
+		}
+		return mysql_query($q, $this->connection);
+	}
+	
+	//--------------------------------------------------------------------
+	//	tdata表
+	//--------------------------------------------------------------------
 	function addTech($vid)
 	{
 		$q = "INSERT into ".TB_PREFIX."tdata (vref) values ($vid)";
 		return mysql_query($q, $this->connection);
 	}
 	
+	function getTech($vid)
+	{
+		$q = "SELECT * from ".TB_PREFIX."tdata where vref = $vid";
+		$result = mysql_query($q, $this->connection);
+		return mysql_fetch_assoc($result);
+	}
+	
+	//--------------------------------------------------------------------
+	//	abdata表
+	//--------------------------------------------------------------------
 	function addABTech($vid)
 	{
 		$q = "INSERT into ".TB_PREFIX."abdata (vref) values ($vid)";
@@ -1530,6 +1760,9 @@ class MYSQL_DB
 		return mysql_fetch_assoc($result);
 	}
 	
+	//--------------------------------------------------------------------
+	//	research表
+	//--------------------------------------------------------------------
 	function addResearch($vid, $tech, $time)
 	{
 		$q = "INSERT into ".TB_PREFIX."research values (0, $vid, '$tech', $time)";
@@ -1543,13 +1776,9 @@ class MYSQL_DB
 		return $this->mysql_fetch_all($result);
 	}
 	
-	function getTech($vid)
-	{
-		$q = "SELECT * from ".TB_PREFIX."tdata where vref = $vid";
-		$result = mysql_query($q, $this->connection);
-		return mysql_fetch_assoc($result);
-	}
-	
+	//--------------------------------------------------------------------
+	//	training表
+	//--------------------------------------------------------------------
 	function getTraining($vid)
 	{
 		$q = "SELECT * FROM ".TB_PREFIX."training where vref = $vid";
@@ -1617,114 +1846,13 @@ class MYSQL_DB
 		$q = "UPDATE ".TB_PREFIX."training SET amt = amt - $trained, timestamp = $time WHERE id = $id";
 		return mysql_query($q, $this->connection);
 	}
-	
-	function modifyUnit($vref, $unit, $amt, $mode)
-	{
-		if ($unit == 230) { $unit = 30; }
-		if ($unit == 231) { $unit = 31; }
-		if ($unit == 120) { $unit = 20; }
-		if ($unit == 121) { $unit = 21; }
-		$unit = 'u'.$unit;
-		if (!$mode)
-		{
-			$q = "UPDATE ".TB_PREFIX."units SET $unit = $unit - $amt WHERE vref = $vref";
-		}
-		else
-		{
-			$q = "UPDATE ".TB_PREFIX."units SET $unit = $unit + $amt WHERE vref = $vref";
-		}
-		return mysql_query($q, $this->connection);
-	}
-	function getEnforce($vid, $from)
-	{				$q = "SELECT * FROM ".TB_PREFIX."enforcement WHERE `from` = $from and vref = $vid";		$result = mysql_query($q, $this->connection);		return mysql_fetch_assoc($result);	}	function addEnforce($data)
-	{		$q = "INSERT INTO ".TB_PREFIX."enforcement (vref,`from`) VALUES (".$data['to'].",".$data['from'].")";		mysql_query($q, $this->connection);		$id = mysql_insert_id($this->connection);		$owntribe = $this->getUserField($this->getVillageField($data['from'], "owner"), "tribe", 0);		$start = ($owntribe == 1)? 1 : (($owntribe == 2)? 11 : 21);		$end = ($owntribe == 1)? 10 : (($owntribe == 2)? 20 : 30);		$j = '1';					for ($i = $start; $i <= $end; $i++)
-		{			$this->modifyEnforce($id, $i, $data['t'.$j], 1);
-			$j++;		}		return mysql_insert_id($this->connection);	}		function modifyEnforce($id, $unit, $amt, $mode)
-	{		$unit = 'u'.$unit;		if (!$mode)
-		{			$q = "UPDATE ".TB_PREFIX."enforcement set $unit = $unit - $amt where id = $id";		}
-		else
-		{			$q = "UPDATE ".TB_PREFIX."enforcement set $unit = $unit + $amt where id = $id";		}		mysql_query($q, $this->connection);	}	function getEnforceArray($id, $mode)
-	{		if (!$mode)
-		{			$q = "SELECT * from ".TB_PREFIX."enforcement where id = $id";		}
-		else
-		{				$q = "SELECT * from ".TB_PREFIX."enforcement where `from` = $id";		}			$result = mysql_query($q, $this->connection);		return mysql_fetch_assoc($result);	}	function getEnforceVillage($id, $mode)
-	{			if (!$mode)
-		{			$q = "SELECT * from ".TB_PREFIX."enforcement where vref = $id";		}
-		else
-		{				$q = "SELECT * from ".TB_PREFIX."enforcement where `from` = $id";			}			$result = mysql_query($q, $this->connection);		return $this->mysql_fetch_all($result);	
-	}		function modifyCommence($id)
+	function modifyCommence($id)
 	{			$time = time();				$q = "UPDATE ".TB_PREFIX."training set commence = $time";			return mysql_query($q, $this->connection);	}
 		function getTrainingList()
 	{
 		$q = "SELECT * FROM ".TB_PREFIX."training where vref != ''";
 		$result = mysql_query($q, $this->connection);
 		return $this->mysql_fetch_all($result);
-	}
-	
-	function getNeedDelete()
-	{
-		$time = time();
-		$q = "SELECT uid FROM ".TB_PREFIX."deleting where timestamp < $time";
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-	
-	function countUser()
-	{
-		$q = "SELECT count(id) FROM ".TB_PREFIX."users where id != 0";
-		$result = mysql_query($q, $this->connection);
-		$row = mysql_fetch_row($result);
-		return $row[0];
-	}
-	
-	function countAlli()
-	{
-		$q = "SELECT count(id) FROM ".TB_PREFIX."alidata where id != 0";
-		$result = mysql_query($q, $this->connection);
-		$row = mysql_fetch_row($result);
-		return $row[0];
-	}
-	
-	function deleteReinf($id)
-	{
-		$q = "DELETE from ".TB_PREFIX."enforcement where id = '$id'";
-		mysql_query($q, $this->connection);
-	}
-	
-	function updateResource($vid, $what, $number)
-	{
-		$q = "UPDATE ".TB_PREFIX."vdata set ".$what."=".$number." where wref = $vid";
-		$result = mysql_query($q, $this->connection);
-		return mysql_query($q, $this->connection);
-	}
-
-	function mysql_fetch_all($result)
-	{
-		$all = array();
-		if ($result)
-		{
-			while ($row = mysql_fetch_assoc($result))
-			{
-				$all[] = $row;
-			}
-			return $all;
-		}
-	}
-	
-	function query_return($q)
-	{
-		$result = mysql_query($q, $this->connection);
-		return $this->mysql_fetch_all($result);
-	}
-
-	function query($query)
-	{
-		return mysql_query($query, $this->connection);
-	}
-	
-	function RemoveXSS($val)
-	{
-		return htmlspecialchars($val, ENT_QUOTES);
 	}
 };
 

@@ -3,19 +3,20 @@ if (!file_exists(dirname(__FILE__).'/config.php'))
 {
 	header("Location: install/");
 }
-include_once(dirname(__FILE__)."/Battle.php");
 include_once(dirname(__FILE__)."/Data/buidata.php");
 include_once(dirname(__FILE__)."/Data/cp.php");
 include_once(dirname(__FILE__)."/Data/cel.php");
 include_once(dirname(__FILE__)."/Data/resdata.php");
 include_once(dirname(__FILE__)."/Data/unitdata.php");
-include_once(dirname(__FILE__)."/config.php");
 include_once(dirname(__FILE__)."/Database.php");
+include_once(dirname(__FILE__)."/config.php");
+include_once(dirname(__FILE__)."/Lang/".LANG.".php");
+
+include_once(dirname(__FILE__)."/Battle.php");
 include_once(dirname(__FILE__)."/Mailer.php");
 include_once(dirname(__FILE__)."/Form.php");
 include_once(dirname(__FILE__)."/Generator.php");
 include_once(dirname(__FILE__)."/Automation.php");
-include_once(dirname(__FILE__)."/Lang/".LANG.".php");
 include_once(dirname(__FILE__)."/Logging.php");
 include_once(dirname(__FILE__)."/Message.php");
 include_once(dirname(__FILE__)."/Multisort.php");
@@ -41,12 +42,13 @@ class Session
 		$this->time = time();
 		session_start();
 		
+		//	检查登入权限
 		$this->logged_in = $this->checkLogin();
-		
 		if ($this->logged_in && TRACK_USR)
 		{
 			$database->updateActiveUser($this->username, $this->time);
-		}	
+		}
+		//	检查封号
 		$banned = mysql_query("SELECT reason, end FROM ".TB_PREFIX."banlist WHERE active = 1 and time - ".time()." < 1 and uid = '".$this->uid."';");
 		if (mysql_num_rows($banned))
 		{
@@ -60,6 +62,7 @@ class Session
 			}
 			die("很遗憾你已经被永久封号。<br /><br /><b>原因：</b> ".$ban['reason']."<br/><b>解封时间：</B>".date("d.m.Y G:i:s", $ban['end'])."</div></div></body><html>");
 		}
+		//	设置引用页
 		if (isset($_SESSION['url']))
 		{
 			$this->referrer = $_SESSION['url'];
@@ -68,37 +71,46 @@ class Session
 		{
 			$this->referrer = "/";
 		}
+		//	设置当前页
 		$this->url = $_SESSION['url'] = $_SERVER['PHP_SELF'];
+		//	执行页面跳转控制
 		$this->SurfControl();
 	}
 	
 	public function Login($user)
 	{
 		global $database, $generator, $logging;
+		
 		$this->logged_in = true;
+		
+		//	生成会话参数
 		$_SESSION['sessid'] = $generator->generateRandID();
 		$_SESSION['username'] = $user;	
 		$_SESSION['checker'] = $generator->generateRandStr(3);
 		$_SESSION['mchecker'] = $generator->generateRandStr(5);
 		$_SESSION['qst'] = $database->getUserField($_SESSION['username'], "quest", 1);
+		//	如果没有设定村庄ID，选择第一个村的ID作为会话参数
 		if (!isset($_SESSION['wid']))
 		{
-			$query = mysql_query('SELECT * FROM `' . TB_PREFIX . 'vdata` WHERE `owner` = ' . $database->getUserField($_SESSION['username'],"id",1) . ' LIMIT 1');
+			$query = mysql_query('SELECT * FROM `'.TB_PREFIX.'vdata` WHERE `owner` = '.$database->getUserField($_SESSION['username'], "id", 1).' LIMIT 1');
 			$data = mysql_fetch_assoc($query);
 			$_SESSION['wid'] = $data['wref'];
 		}
-		else if ($_SESSION['wid'] == '')
+		elseif ($_SESSION['wid'] == '')
 		{
-			$query = mysql_query('SELECT * FROM `' . TB_PREFIX . 'vdata` WHERE `owner` = ' . $database->getUserField($_SESSION['username'], "id", 1) . ' LIMIT 1');
+			$query = mysql_query('SELECT * FROM `'.TB_PREFIX.'vdata` WHERE `owner` = '.$database->getUserField($_SESSION['username'], "id", 1).' LIMIT 1');
 			$data = mysql_fetch_assoc($query);
 			$_SESSION['wid'] = $data['wref'];
 		}
+		//	
 		$this->PopulateVar();
-		
+		//	添加登录日志
 		$logging->addLoginLog($this->uid, $_SERVER['REMOTE_ADDR']);
+		//	添加活跃用户
 		$database->addActiveUser($_SESSION['username'], $this->time);
+		//	更新用户会话ID
 		$database->updateUserField($_SESSION['username'], "sessid", $_SESSION['sessid'], 0);
-		
+		//	跳转到资源页面
 		header("Location: dorf1.php");
 	}
 	
@@ -106,6 +118,7 @@ class Session
 	{
 		global $database;
 		$this->logged_in = false;
+		//	重设会话ID
 		$database->updateUserField($_SESSION['username'], "sessid", "", 0);
 		if (ini_get("session.use_cookies"))
 		{
@@ -115,6 +128,7 @@ class Session
 				$params["secure"], $params["httponly"]
 			);
 		}
+		//	清空会话
 		session_destroy();
 		session_start();
 	}
