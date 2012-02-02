@@ -1,13 +1,13 @@
 <?php
-include("config.php");
+include(dirname(__FILE__)."/config.php");
 
 switch (DB_TYPE)
 {
 case 1:
-	include("Database/db_MYSQLi.php");
+	include(dirname(__FILE__)."/Database/db_MYSQLi.php");
 	break;
 default:
-	include("Database/db_MYSQL.php");
+	include(dirname(__FILE__)."/Database/db_MYSQL.php");
 	break;
 }
 ?>

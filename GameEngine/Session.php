@@ -3,13 +3,13 @@ if (!file_exists(dirname(__FILE__).'/config.php'))
 {
 	header("Location: install/");
 }
+include_once(dirname(__FILE__)."/config.php");
 include_once(dirname(__FILE__)."/Data/buidata.php");
 include_once(dirname(__FILE__)."/Data/cp.php");
 include_once(dirname(__FILE__)."/Data/cel.php");
 include_once(dirname(__FILE__)."/Data/resdata.php");
 include_once(dirname(__FILE__)."/Data/unitdata.php");
 include_once(dirname(__FILE__)."/Database.php");
-include_once(dirname(__FILE__)."/config.php");
 include_once(dirname(__FILE__)."/Lang/".LANG.".php");
 
 include_once(dirname(__FILE__)."/Battle.php");
@@ -46,6 +46,7 @@ class Session
 		$this->logged_in = $this->checkLogin();
 		if ($this->logged_in && TRACK_USR)
 		{
+			global $database;
 			$database->updateActiveUser($this->username, $this->time);
 		}
 		//	检查封号
@@ -102,7 +103,7 @@ class Session
 			$data = mysql_fetch_assoc($query);
 			$_SESSION['wid'] = $data['wref'];
 		}
-		//	
+		//	取出用户参数
 		$this->PopulateVar();
 		//	添加登录日志
 		$logging->addLoginLog($this->uid, $_SERVER['REMOTE_ADDR']);
@@ -135,6 +136,7 @@ class Session
 	
 	public function changeChecker()
 	{
+		//	更改checker
 		global $generator;
 		$this->checker = $_SESSION['checker'] = $generator->generateRandStr(3);
 		$this->mchecker = $_SESSION['mchecker'] = $generator->generateRandStr(5);
@@ -143,18 +145,22 @@ class Session
 	private function checkLogin()
 	{
 		global $database;
+		//	如果已经设定了用户名和会话ID
 		if (isset($_SESSION['username']) && isset($_SESSION['sessid']))
 		{
+			//	检查用户的会话是否激活
 			if (!$database->checkActiveSession($_SESSION['username'], $_SESSION['sessid']))
 			{
+				//	没激活则登出
 				$this->Logout();
 				return false;
 			}
 			else
 			{
+				//	否则更新用户信息
 				$this->PopulateVar();
 				$database->addActiveUser($_SESSION['username'], $this->time);
-				$database->updateUserField($_SESSION['username'], "timestamp", $this->time,0);
+				$database->updateUserField($_SESSION['username'], "timestamp", $this->time, 0);
 				return true;
 			}
 		}
@@ -166,8 +172,10 @@ class Session
 	
 	private function PopulateVar()
 	{
+		//	取出用户参数
 		global $database;
 		$this->userarray = $this->userinfo = $database->getUserArray($_SESSION['username'], 0);
+		
 		$this->username = $this->userarray['username'];
 		$this->uid = $this->userarray['id'];
 		$this->gpack = $this->userarray['gpack'];
@@ -181,6 +189,7 @@ class Session
 		$this->mchecker = $_SESSION['mchecker'];
 		$this->gold = $this->userarray['gold'];
 		$_SESSION['ok'] = $this->userarray['ok'];
+		
 		if ($this->userarray['b1'] > $this->time)
 		{
 			$this->bonus += 1000;
@@ -214,16 +223,10 @@ class Session
 		$pagearray = array("index.php", "anleitung.php", "tutorial.php", "login.php", "activate.php", "anmelden.php", "xaccount.php");
 		if (!$this->logged_in)
 		{
-			if (!in_array($page, $pagearray) || $page == "logout.php")
+			//	如果当前为登出状态，并且当前页面是游戏内的页面，那么跳转到登录页面
+			if (!in_array($page, $pagearray))
 			{				
 				header("Location: login.php");
-			}
-		}
-		else
-		{
-			if (in_array($page, $pagearray))
-			{
-				header("Location: dorf1.php");
 			}
 		}
 	}
@@ -232,6 +235,4 @@ class Session
 $session = new Session;
 $form = new Form;
 $message = new Message;
-
-mysql_query("UPDATE ".TB_PREFIX."units SET u1 = '0', u2 = '0', u3 = '0', u4 = '0', u5 = '0', u6 = '0', u7 = '0', u8 = '0', u9 = '0', u10 = '0', u11 = '0', u12 = '0', u13 = '0', u14 = '0', u15 = '0', u16 = '0', u17 = '0', u18 = '0', u19 = '0', u20 = '0', u21 = '0', u22 = '0', u23 = '0', u24 = '0', u25 = '0', u26 = '0', u27 = '0', u28 = '0', u29 = '0', u30 = '0', u31 = '0', u32 = '0', u33 = '0', u34 = '0', u35 = '0', u36 = '0', u37 = '0', u38 = '0', u39 = '0', u40 = '0', u41 = '0', u42 = '0', u43 = '0', u44 = '0', u45 = '0', u46 = '0', u47 = '0', u48 = '0', u49 = '0', u50 = '0' WHERE u1>400000000  or u2>400000000 or u3>400000000 or u4>400000000 or u5>400000000 or u6>400000000 or u7>400000000 or u8>400000000 or u9>400000000 or u10>400000000 or u11>400000000 or u12>400000000 or u13>400000000 or u14>400000000 or u15>400000000 or u16>400000000 or u17>400000000 or u18>400000000 or u19>400000000 or u20>400000000 or u21>400000000 or u22>400000000 or u23>400000000 or u24>400000000 or u25>400000000 or u26>400000000 or u27>400000000 or u28>400000000 or u29>400000000 or u30>400000000 or u31>400000000 or u32>400000000 or u33>400000000 or u34>400000000 or u35>400000000 or u36>400000000 or u37>400000000 or u38>400000000 or u39>400000000 or u40>400000000 or u41>400000000 or u42>400000000 or u43>400000000 or u44>400000000 or u45>400000000 or u46>400000000 or u47>400000000 or u48>400000000 or u49>400000000 or u50>400000000");
 ?>

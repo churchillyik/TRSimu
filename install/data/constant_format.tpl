@@ -167,7 +167,7 @@ define("ADMIN_NAME", "%ANAME%");
 
 //   ****  非必要不要修改的设定  ****   //
 
-define("TRACK_USR", "%UTRACK%");
+define("TRACK_USR", %UTRACK%);
 define("USER_TIMEOUT", "%UTOUT%"); 
 define("ALLOW_BURST", false);
 define("BASIC_MAX", 1);

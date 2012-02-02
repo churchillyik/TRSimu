@@ -278,29 +278,30 @@ if (isset($_GET['c']) && $_GET['c'] == 1)
 		</select></td>
 	</tr>
 	
-	<!--
 	<tr>
-		<td><span class="f9 c6">Auto del. User:</span></td>
+		<td><span class="f9 c6">自动删除用户：</span></td>
 		<td><select name="autodel">
-			<option value="false">No</option>
-			<option value="true" selected="selected">Yes</option>
+			<option value="false">否</option>
+			<option value="true" selected="selected">是</option>
 		</select></td>
 	</tr>
 	<tr>
-		<td><span class="f9 c6">Auto del. Users (days):</span></td>
+		<td><span class="f9 c6">自动删除用户的时间：</span></td>
 		<td><input name="autodeltime" type="text" id="autodeltime" value="3600*24*7" size="15"></td>
 	</tr>
 	<tr>
-		<td><span class="f9 c6">Track User:</span></td><td><select name="trackusers">
-			<option value="false" selected="selected">No</option>
-			<option value="true">Yes</option>
-		</select></td>
+		<td><span class="f9 c6">跟踪用户：</span></td>
+		<td>
+		<select name="trackusers">
+			<option value="false" selected="selected">否</option>
+			<option value="true">是</option>
+		</select>
+		</td>
 	</tr>
 	<tr>
-		<td><span class="f9 c6">User Timeout(min):</span></td>
+		<td><span class="f9 c6">超时时间：</span></td>
 		<td><input name="timeout" type="text" id="timeout" value="10" size="15"></td>
 	</tr>
-	-->
 	
 	</table>
 </div>
