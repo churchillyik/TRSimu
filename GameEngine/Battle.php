@@ -204,6 +204,7 @@ class Battle
 		
 		if ($type == 1)
 		{
+			//	计算攻击方的侦查力
 			for ($i = $start; $i <= $end; $i++)
 			{
 				global ${'u'.$i};
@@ -215,17 +216,16 @@ class Battle
 				{
 					$ap += $Attacker['u'.$i] * 35;
 				}
-				//	
 				$abcount += 1;
 				$units['Att_unit'][$i] = $Attacker['u'.$i];
 			}
 		}
 		else
 		{
+			//	计算攻击方的步兵攻击和骑兵攻击
 			for ($i = $start; $i <= $end; $i++)
 			{
 				global ${'u'.$i};
-				//	计算攻击方的步兵攻击和骑兵攻击
 				if ($abcount <= 8 && $att_ab['a'.$abcount] > 0)
 				{
 					if (in_array($i, $calvary))
@@ -265,13 +265,11 @@ class Battle
 				$units['Att_unit'][$i] = $Attacker['u'.$i];
 			}
 		}
-		
-		$start = ($def_tribe == 1)? 1 : (($def_tribe == 2)? 11 : 21);
-		$end = ($def_tribe == 1)? 10 : (($def_tribe == 2)? 20 : 30);
+
 		$abcount = 1;
-		
 		if ($type == 1)
 		{
+			//	计算防御方的反侦查力
 			for ($y = 4; $y <= 24; $y++)
 			{
 				if ($y == 4 || $y == 14 || $y == 23)
@@ -292,6 +290,7 @@ class Battle
 		}
 		else
 		{
+			//	计算防御方的步兵防御和骑兵防御
 			for ($y = 1; $y <= 50; $y++)
 			{
 				global ${'u'.$y};
@@ -303,14 +302,14 @@ class Battle
 				}
 				else
 				{
-					$dp += $Defender['u'.$y]*${'u'.$y}['di'];
-					$cdp += $Defender['u'.$y]*${'u'.$y}['dc'];
+					$dp += $Defender['u'.$y] * ${'u'.$y}['di'];
+					$cdp += $Defender['u'.$y] * ${'u'.$y}['dc'];
 				}
 				$involve += $Defender['u'.$y]; 
 				$units['Def_unit'][$y] = $Defender['u'.$y];
 			}
 		}
-				
+		
 		if ($def_wall > 0)
 		{					
 			$factor = ($def_tribe == 1)? 1.030 : (($def_tribe == 2)? 1.020 : 1.025);
