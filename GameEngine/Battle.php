@@ -310,6 +310,7 @@ class Battle
 			}
 		}
 		
+		//	根据城墙等级和皇宫/行宫等级，计算防御方的步兵防御和骑兵防御
 		if ($def_wall > 0)
 		{					
 			$factor = ($def_tribe == 1)? 1.030 : (($def_tribe == 2)? 1.020 : 1.025);
@@ -324,14 +325,17 @@ class Battle
 			$cdp += 2 * pow($residence, 2);
 		}
 		
+		//	计算攻击点数和防御点数
 		$rap = $ap + $cap;
 		$rdp = $dp * ($ap / $rap) + $cdp * ($cap / $rap) + 10;
 		$result['Attack_points'] = $rap;
 		$result['Defend_points'] = $rdp;
 		
+		//	点数大者为胜方
 		$winner = ($rap > $rdp);
 		$result['Winner'] = $winner? "attacker" : "defender";
 		
+		//	计算参议员、执政官、首领的说服力加成
 		if ($attpop > $defpop)
 		{
 			if ($rap < $rdp)
@@ -348,6 +352,7 @@ class Battle
 			$moralbonus = 1.0;
 		}
 
+		//	计算参议员、执政官、首领的说服力指数
 		if ($involve >= 1000)
 		{
 			$Mfactor = round(2 * (1.8592 - pow($involve, 0.015)), 4);
@@ -357,6 +362,8 @@ class Battle
 			$Mfactor = 1.5;
 		}
 
+		//	下面计算各种攻击类型的攻防双方的战斗损失系数（$result[1]和$result[2]）
+		//	侦查
 		if ($type == 1)
 		{
 			$holder = pow($rdp * $moralbonus / $rap, $Mfactor);
@@ -368,6 +375,7 @@ class Battle
 		{
 			
 		}
+		//	掠夺攻击
 		elseif ($type == 4)
 		{
 			$holder = $winner? pow(($rdp * $moralbonus) / $rap, $Mfactor) : pow($rap / ($rdp * $moralbonus), $Mfactor);
@@ -376,6 +384,7 @@ class Battle
 			$result[2] = $winner? 1 - $holder : $holder;
 			$catp -= round($catp * $result[1] / 100);
 		}
+		//	普通攻击
 		elseif ($type == 3)
 		{
 			$result[1] = $winner? pow($rdp * $moralbonus / $rap, $Mfactor) : 1;
@@ -383,6 +392,7 @@ class Battle
 			$result[2] = !$winner? pow($rap / ($rdp * $moralbonus), $Mfactor) : 1;
 			$result[2] = round($result[2], 8);
 
+			//	有参议员、执政官、首领的情况下，计算忠诚度
 			$kings = ($att_tribe == 1)? $Attacker['u9'] : (($att_tribe == 2)? $Attacker['u19'] : $Attacker['u29']);
 			$aviables = $kings - round($kings * $result[1]);
 			if ($aviables > 0)
@@ -410,19 +420,21 @@ class Battle
 			$catp -= $winner? round($catp * $result[1] / 100) : round($catp * $result[2] / 100);
 		}
 
+		//	计算投石器的效果
 		if ($catp > 0 && $tblevel != 0)
 		{
 			$wctp = pow($rap / $rdp, 1.5);
 			$wctp = ($wctp >= 1)? 1 - 0.5 / $wctp : 0.5 * $wctp;
 			$wctp *= $catp;
 
-			$need = round(($moralbonus * (pow($tblevel,2) + $tblevel + 1) / (8 * (round(200 * pow(1.0205,$att_ab['a8'])) / 200) / (1 * $bid34[$stonemason]['attri'] / 100))) + 0.5);
+			$need = round(($moralbonus * (pow($tblevel, 2) + $tblevel + 1) / (8 * (round(200 * pow(1.0205, $att_ab['a8'])) / 200) / (1 * $bid34[$stonemason]['attri'] / 100))) + 0.5);
 			$result[3] = $need;
 			$result[4] = $wctp;
 		}
 		
 		$result[6] = pow($rap / $rdp * $moralbonus, $Mfactor);
 
+		//	计算攻击方的部队损失
 		$total_att_units = count($units['Att_unit']);
 		$start = ($att_tribe == 1)? 1 : (($att_tribe == 2)? 11 : 21);
 		$end = ($att_tribe == 1)? 10 : (($att_tribe == 2)? 20 : 30);
@@ -440,13 +452,13 @@ class Battle
 			{
 				$y = $i - 20;
 			}
-			$result['casualties_attacker'][$y] = round($result[1]*$units['Att_unit'][$i]);
+			$result['casualties_attacker'][$y] = round($result[1] * $units['Att_unit'][$i]);
 		}
 		
+		//	计算物资掠夺总数掠夺
 		$start = ($att_tribe == 1)? 1 : (($att_tribe == 2)? 11: 21);
 		$end = ($att_tribe == 1)? 10 : (($att_tribe == 2)? 20: 30);
 		$max_bounty = 0;
-		
 		for ($i = $start; $i <= $end; $i++)
 		{
 			if ($att_tribe == 1)
@@ -464,6 +476,7 @@ class Battle
 			$max_bounty += ($Attacker['u'.$i] - $result['casualties_attacker'][$y]) * ${'u'.$i}['cap'];
 		}
 		$result['bounty'] = $max_bounty;
+		
 		return $result;
 	}
 };
