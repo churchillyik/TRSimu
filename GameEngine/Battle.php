@@ -189,7 +189,7 @@ class Battle
 
 		//	输出结果序列
 		$result = array();
-		//	
+		//	参与战斗的兵力总数
 		$involve = 0;
 		//	攻击方是否获胜
 		$winner = false;
@@ -250,17 +250,19 @@ class Battle
 				}
 				
 				$abcount += 1;
-				//	投石器的攻击力
+				//	投石器的数量
 				if (in_array($i, $catapult))
 				{
 					$catp += $Attacker['u'.$i];
 				}
 				
-				//	冲撞车的攻击力
+				//	冲撞车的数量
 				if (in_array($i, $rams))
 				{
 					$ram += $Attacker['u'.$i];
 				}
+				
+				//	攻击方参与战斗的兵力总数
 				$involve += $Attacker['u'.$i];
 				$units['Att_unit'][$i] = $Attacker['u'.$i];
 			}
@@ -305,6 +307,8 @@ class Battle
 					$dp += $Defender['u'.$y] * ${'u'.$y}['di'];
 					$cdp += $Defender['u'.$y] * ${'u'.$y}['dc'];
 				}
+				
+				//	防御方参与战斗的兵力总数
 				$involve += $Defender['u'.$y]; 
 				$units['Def_unit'][$y] = $Defender['u'.$y];
 			}
@@ -335,7 +339,9 @@ class Battle
 		$winner = ($rap > $rdp);
 		$result['Winner'] = $winner? "attacker" : "defender";
 		
-		//	计算参议员、执政官、首领的说服力加成
+		echo "攻击点数：".$ap."+".$cap."=".$rap."<br>";
+		echo "防御点数：".($dp * ($ap / $rap))."+".($cdp * ($cap / $rap))."+10=".$rdp."<br>";
+		//	计算人口惩罚
 		if ($attpop > $defpop)
 		{
 			if ($rap < $rdp)
@@ -351,8 +357,9 @@ class Battle
 		{
 			$moralbonus = 1.0;
 		}
-
-		//	计算参议员、执政官、首领的说服力指数
+		
+		echo "参与战斗的兵力总数：".$involve."<br>";
+		//	计算兵力损失指数，在攻防双方兵力超过1000的时候，指数会衰减
 		if ($involve >= 1000)
 		{
 			$Mfactor = round(2 * (1.8592 - pow($involve, 0.015)), 4);
@@ -361,6 +368,7 @@ class Battle
 		{
 			$Mfactor = 1.5;
 		}
+		echo "兵力损失指数：".$Mfactor." ".round(2 * (1.8592 - pow(1000, 0.015)), 4)."<br>";
 
 		//	下面计算各种攻击类型的攻防双方的战斗损失系数（$result[1]和$result[2]）
 		//	侦查
@@ -382,16 +390,19 @@ class Battle
 			$holder = $holder / (1 + $holder);
 			$result[1] = $winner? $holder : 1 - $holder;
 			$result[2] = $winner? 1 - $holder : $holder;
-			$catp -= round($catp * $result[1] / 100);
+			
+			//	投石器剩余的数量
+			//$catp -= round($catp * $result[1] / 100);
 		}
 		//	普通攻击
 		elseif ($type == 3)
 		{
-			$result[1] = $winner? pow($rdp * $moralbonus / $rap, $Mfactor) : 1;
-			$result[1] = round($result[1], 8);
-			$result[2] = !$winner? pow($rap / ($rdp * $moralbonus), $Mfactor) : 1;
-			$result[2] = round($result[2], 8);
-
+			$holder = $winner? pow(($rdp * $moralbonus) / $rap, $Mfactor) : pow($rap / ($rdp * $moralbonus), $Mfactor);
+			$holder = round($holder, 8);
+			$result[1] = $winner? $holder : 1;
+			$result[2] = $winner? 1 : $holder;
+			echo $result['Winner']."<br>";
+			echo "兵力损失比率：".$result[1]."<br>";
 			//	有参议员、执政官、首领的情况下，计算忠诚度
 			$kings = ($att_tribe == 1)? $Attacker['u9'] : (($att_tribe == 2)? $Attacker['u19'] : $Attacker['u29']);
 			$aviables = $kings - round($kings * $result[1]);
@@ -417,7 +428,9 @@ class Battle
 				}
 				$result['hero_fealthy'] = $fealthy;
 			}
-			$catp -= $winner? round($catp * $result[1] / 100) : round($catp * $result[2] / 100);
+			
+			//	投石器剩余的数量
+			//$catp -= $winner? round($catp * $result[1] / 100) : round($catp * $result[2] / 100);
 		}
 
 		//	计算投石器的效果
@@ -425,10 +438,14 @@ class Battle
 		{
 			$wctp = pow($rap / $rdp, 1.5);
 			$wctp = ($wctp >= 1)? 1 - 0.5 / $wctp : 0.5 * $wctp;
+			echo $wctp." * ";
 			$wctp *= $catp;
-
-			$need = round(($moralbonus * (pow($tblevel, 2) + $tblevel + 1) / (8 * (round(200 * pow(1.0205, $att_ab['a8'])) / 200) / (1 * $bid34[$stonemason]['attri'] / 100))) + 0.5);
+			echo $catp." = ".$wctp."[r4]<br>";
+			$need = round($moralbonus * (pow($tblevel, 2) + $tblevel + 1) / (8 * (round(200 * pow(1.0205, $att_ab['a8'])) / 200)) * (1 + $bid34[$stonemason]['attri'] / 100) + 0.5);
+			echo $need."[r3]<br>";
+			//	完全摧毁建筑需要的投石车数量
 			$result[3] = $need;
+			//	发挥作用的投石车数量
 			$result[4] = $wctp;
 		}
 		

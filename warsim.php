@@ -65,19 +65,19 @@ $battle->procSim($_POST);
 					{
 						if ($_POST['result'][4] > $_POST['result'][3])
 						{
-							echo "建筑摧毁";
+							echo "<p>建筑摧毁</p>";
 						}
-						elseif ($_POST['result'][4]==0)
+						elseif ($_POST['result'][4] == 0)
 						{
-							echo "建筑未摧毁";
+							echo "<p>建筑未摧毁</p>";
 						}
 						else
 						{
-							$demolish = $_POST['result'][4] / $_POST['result'][3];
-							$Katalife = round($_POST['result'][4] - ($_POST['result'][4] * $_POST['result'][1]));
-							$totallvl = round($form->getValue('kata') - $form->getValue('kata') * $demolish);
-							$totallvl = round(sqrt(pow(($form->getValue('kata') + 0.5), 2) - $_POST['result'][4] * 8));
-							echo "<p>投石器的伤害输出：从等级 <b>".$form->getValue('kata')."</b> 到等级 <b>".$totallvl."</b></p>";
+							//$demolish = $_POST['result'][4] / $_POST['result'][3];
+							//$Katalife = round($_POST['result'][4] - ($_POST['result'][4] * $_POST['result'][1]));
+							//$totallvl = round($form->getValue('kata') - $form->getValue('kata') * $demolish);
+							$totallvl = round(sqrt(pow($form->getValue('kata') + 0.5, 2) - $_POST['result'][4] * 8));
+							echo "<p>建筑的损坏程度：从等级 <b>".$form->getValue('kata')."</b> 到等级 <b>".$totallvl."</b></p>";
 						}
 					}
 				}
