@@ -1,42 +1,43 @@
 <?php
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                             TRAVIANX                                             //
-//            Only for advanced users, do not edit if you dont know what are you doing!             //
-//                                Made by: Dzoki & Dixie (TravianX)                                 //
-//                              - TravianX = Travian Clone Project -                                //
-//                                 DO NOT REMOVE COPYRIGHT NOTICE!                                  //
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-class Mailer {
-	
-	function sendActivate($email,$username,$pass,$act) {
-		
-		$subject = "Welcome to ".SERVER_NAME;
-		
-		$message = "Hello ".$username."
-
-Thank you for your registration.
-
-----------------------------
-Name: ".$username."
-Password: ".$pass."
-Activation code: ".$act."
-----------------------------
-
-Click the following link in order to activate your account:
-".SERVER."activate.php?code=".$act."
-
-Greetings,
-TravianX";
-				
-		$headers = "From: Mailer@".SERVER_NAME."\n";
-		//$headers .= 'MIME-Version: 1.0' . "\r\n";
-		//$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-		
+class Mailer
+{
+	function sendActivate($email, $username, $pass, $act)
+	{
+		$subject = "欢迎来到 ".SERVER_NAME;
+		$message = "
+		<html>
+		<head>
+		<title>欢迎来到 ".SERVER_NAME."</title>
+		</head>
+		<body>
+		<p>感谢您的注册！</p>
+		<table>
+		<tr>
+			<td>昵称：</td>
+			<td>$username</td>
+			
+		</tr>
+		<tr>
+			<td>密码：</td>
+			<td>$pass</td>
+		</tr>
+		<tr>
+			<td>激活码：</td>
+			<td>$act</td>
+		</tr>
+		</table>
+		<p>
+		请点击下面的链接来激活您的帐号<br />
+		".SERVER."activate.php?code=$act
+		</p>
+		<p>祝好，<br />Travian</p>
+		</body>
+		</html>";
+		$headers = "MIME-Version: 1.0"."\r\n";
+		$headers .= "Content-type:text/html;charset=utf8"."\r\n";
+		$headers .= "From: 部落战争<Mailer@".SERVER_NAME.".com>\r\n";
 		mail($email, $subject, $message, $headers);
 	}
-	
 };
 $mailer = new Mailer;
 ?>

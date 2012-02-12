@@ -109,7 +109,7 @@ class Battle
 			$index += 1;
 		}
 		
-		//	设置防御方的兵力
+		//	设置防御方的兵力和兵种科技等级
 		$defender = array();
 		for ($i = 1; $i <= 50; $i++)
 		{
@@ -121,17 +121,22 @@ class Battle
 			{
 				$defender['u'.$i] = 0;
 			}
+			
+			if (isset($post['f2_'.$i]) && $post['f2_'.$i] != "")
+			{
+				$def_ab['b'.$i] = $post['f2_'.$i];
+			}
+			else
+			{
+				$def_ab['b'.$i] = 0;
+			}
 		}
-		//	设置防御方的兵种科技等级和城墙等级
+		//	设置防御方的城墙等级
 		$deftribe = $post['tribe'];
 		$wall = 0;
 		if ($deftribe != 4)
 		{
 			$wall = $post['wall'.$deftribe];
-		}
-		for ($i = 1; $i <= 8; $i++)
-		{
-			$def_ab['b'.$i] = $post['f2_'.($start + $i - 1)];
 		}
 		
 		if ($post['kata'] == "")
@@ -140,14 +145,14 @@ class Battle
 		}
 		
 		//	检查是否有侦查部队
-		$scout = 0;
+		$scout = 1;
 		for ($i = $start; $i <= $start + 9; $i++)
 		{
-			if ($i == 4 || $i == 14 || $i == 23)
+			if ($i != 4 && $i != 14 && $i != 23)
 			{
 				if ($attacker['u'.$i] > 0)
 				{
-					$scout = 1;
+					$scout = 0;
 					break;
 				}
 			}
@@ -268,7 +273,6 @@ class Battle
 			}
 		}
 
-		$abcount = 1;
 		if ($type == 1)
 		{
 			//	计算防御方的反侦查力
@@ -277,10 +281,10 @@ class Battle
 				if ($y == 4 || $y == 14 || $y == 23)
 				{
 					global ${'u'.$y};
-					if ($y >= $start && $y <= ($end - 2) && $def_ab['b'.$abcount] > 0)
+					if ($def_ab['b'.$y] > 0)
 					{
 						$dp +=  (20 + (20 + 300 * ${'u'.$y}['pop'] / 7) * (pow(1.007, $def_ab['b'.$y]) - 1)) * $Defender['u'.$y];
-						$abcount +=1;
+						
 					}
 					else
 					{
@@ -296,11 +300,10 @@ class Battle
 			for ($y = 1; $y <= 50; $y++)
 			{
 				global ${'u'.$y};
-				if ($y >= $start && $y <= $end - 2 && $def_ab['b'.$abcount] > 0)
+				if ($def_ab['b'.$y] > 0)
 				{
 					$dp += (${'u'.$y}['di'] + (${'u'.$y}['di'] + 300 * ${'u'.$y}['pop'] / 7) * (pow(1.007, $def_ab['b'.$y]) - 1)) * $Defender['u'.$y];
 					$cdp += (${'u'.$y}['dc'] + (${'u'.$y}['dc'] + 300 * ${'u'.$y}['pop'] / 7) * (pow(1.007, $def_ab['b'.$y]) - 1)) * $Defender['u'.$y];
-					$abcount +=1;
 				}
 				else
 				{
@@ -334,13 +337,11 @@ class Battle
 		$rdp = $dp * ($ap / $rap) + $cdp * ($cap / $rap) + 10;
 		$result['Attack_points'] = $rap;
 		$result['Defend_points'] = $rdp;
-		
+		//echo $rdp;
 		//	点数大者为胜方
 		$winner = ($rap > $rdp);
 		$result['Winner'] = $winner? "attacker" : "defender";
 		
-		echo "攻击点数：".$ap."+".$cap."=".$rap."<br>";
-		echo "防御点数：".($dp * ($ap / $rap))."+".($cdp * ($cap / $rap))."+10=".$rdp."<br>";
 		//	计算人口惩罚
 		if ($attpop > $defpop)
 		{
@@ -358,7 +359,6 @@ class Battle
 			$moralbonus = 1.0;
 		}
 		
-		echo "参与战斗的兵力总数：".$involve."<br>";
 		//	计算兵力损失指数，在攻防双方兵力超过1000的时候，指数会衰减
 		if ($involve >= 1000)
 		{
@@ -368,15 +368,16 @@ class Battle
 		{
 			$Mfactor = 1.5;
 		}
-		echo "兵力损失指数：".$Mfactor." ".round(2 * (1.8592 - pow(1000, 0.015)), 4)."<br>";
 
 		//	下面计算各种攻击类型的攻防双方的战斗损失系数（$result[1]和$result[2]）
 		//	侦查
 		if ($type == 1)
 		{
-			$holder = pow($rdp * $moralbonus / $rap, $Mfactor);
-			$holder = $holder / (1 + $holder);
-			$result[1] = $holder;
+			$holder = $winner? pow(($rdp * $moralbonus) / $rap, $Mfactor) : pow($rap / ($rdp * $moralbonus), $Mfactor);
+			//$holder = pow($rdp * $moralbonus / $rap, $Mfactor);
+			//$holder = $holder / (1 + $holder);
+			//$result[1] = $holder;
+			$result[1] = $winner? $holder : 1;
 			$result[2] = 0;
 		}
 		elseif ($type == 2)
@@ -392,7 +393,7 @@ class Battle
 			$result[2] = $winner? 1 - $holder : $holder;
 			
 			//	投石器剩余的数量
-			//$catp -= round($catp * $result[1] / 100);
+			$catp -= round($catp * $result[1] / 100);
 		}
 		//	普通攻击
 		elseif ($type == 3)
@@ -401,8 +402,6 @@ class Battle
 			$holder = round($holder, 8);
 			$result[1] = $winner? $holder : 1;
 			$result[2] = $winner? 1 : $holder;
-			echo $result['Winner']."<br>";
-			echo "兵力损失比率：".$result[1]."<br>";
 			//	有参议员、执政官、首领的情况下，计算忠诚度
 			$kings = ($att_tribe == 1)? $Attacker['u9'] : (($att_tribe == 2)? $Attacker['u19'] : $Attacker['u29']);
 			$aviables = $kings - round($kings * $result[1]);
@@ -430,7 +429,7 @@ class Battle
 			}
 			
 			//	投石器剩余的数量
-			//$catp -= $winner? round($catp * $result[1] / 100) : round($catp * $result[2] / 100);
+			$catp -= $winner? round($catp * $result[1] / 100) : round($catp * $result[2] / 100);
 		}
 
 		//	计算投石器的效果
@@ -438,11 +437,8 @@ class Battle
 		{
 			$wctp = pow($rap / $rdp, 1.5);
 			$wctp = ($wctp >= 1)? 1 - 0.5 / $wctp : 0.5 * $wctp;
-			echo $wctp." * ";
 			$wctp *= $catp;
-			echo $catp." = ".$wctp."[r4]<br>";
 			$need = round($moralbonus * (pow($tblevel, 2) + $tblevel + 1) / (8 * (round(200 * pow(1.0205, $att_ab['a8'])) / 200)) * (1 + $bid34[$stonemason]['attri'] / 100) + 0.5);
-			echo $need."[r3]<br>";
 			//	完全摧毁建筑需要的投石车数量
 			$result[3] = $need;
 			//	发挥作用的投石车数量

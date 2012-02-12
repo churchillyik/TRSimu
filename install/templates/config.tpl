@@ -31,11 +31,11 @@ if (isset($_GET['c']) && $_GET['c'] == 1)
 	</tr>
 	<tr>
 		<td><span class="f9 c6">域名：</span></td>
-		<td><input name="domain" type="text" id="domain" value="http://<?php echo $_SERVER['HTTP_HOST']; ?>/trsimu/"></td>
+		<td><input name="domain" type="text" id="domain" value="http://<?php echo $_SERVER['HTTP_HOST']; ?>/"></td>
 	</tr>
 	<tr>
 		<td><span class="f9 c6">主页：</span></td>
-		<td><input name="homepage" type="text" id="homepage" value="http://<?php echo $_SERVER['HTTP_HOST']; ?>/trsimu/"></td>
+		<td><input name="homepage" type="text" id="homepage" value="http://<?php echo $_SERVER['HTTP_HOST']; ?>/"></td>
 	</tr>
 	<tr>
 		<td><span class="f9 c6">语言：</span></td>
@@ -232,8 +232,8 @@ if (isset($_GET['c']) && $_GET['c'] == 1)
 	<tr>
 		<td><span class="f9 c6">帐号激活：</span></td>
 		<td><select name="activate">
-			<option value="false" selected="selected">禁用</option>
-			<option value="true">启用</option>
+			<option value="false">禁用</option>
+			<option value="true" selected="selected">启用</option>
 		</select></td>
 	</tr>
 	<tr>
