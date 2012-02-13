@@ -53,7 +53,7 @@ if (isset($_GET['rank']))
 }
 else
 {
-	$start = $_SESSION['start'] + 1; 
+	$start = $_SESSION['start'] + 1;
 }
 if (count($ranking->getRank()) > 0)
 {

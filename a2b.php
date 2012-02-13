@@ -2,7 +2,7 @@
 include("GameEngine/Village.php");
 include("GameEngine/Units.php");
 
-$start = $generator->pageLoadTimeStart();
+include("Templates/time_start.tpl");
 if (isset($_GET['newdid']))
 {
 	$_SESSION['wid'] = $_GET['newdid'];

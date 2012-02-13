@@ -8,7 +8,7 @@ if (isset($_GET['newdid']))
 	header("Location: ".$_SERVER['PHP_SELF']);
 }
 
-$start = $generator->pageLoadTimeStart();
+include("Templates/time_start.tpl");
 
 $alliance->procAlliForm($_POST);
 $technology->procTech($_POST);

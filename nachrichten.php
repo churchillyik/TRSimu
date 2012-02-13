@@ -1,6 +1,6 @@
 <?php
 include("GameEngine/Village.php");
-$start = $generator->pageLoadTimeStart();
+include("Templates/time_start.tpl");
 $message->procMessage($_POST);
 ?>
 

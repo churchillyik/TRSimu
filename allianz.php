@@ -1,16 +1,7 @@
 <?php
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                             TRAVIANX                                             //
-//            Only for advanced users, do not edit if you dont know what are you doing!             //
-//                                Made by: Dzoki & Dixie (TravianX)                                 //
-//                              - TravianX = Travian Clone Project -                                //
-//                                 DO NOT REMOVE COPYRIGHT NOTICE!                                  //
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
 include("GameEngine/Village.php");
 include("GameEngine/Chat.php");
-$start = $generator->pageLoadTimeStart();
+include("Templates/time_start.tpl");
 $alliance->procAlliance($_GET);
 
 ?>

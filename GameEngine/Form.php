@@ -1,21 +1,19 @@
 <?php
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                             TRAVIANX                                             //
-//            Only for advanced users, do not edit if you dont know what are you doing!             //
-//                                Made by: Dzoki & Dixie (TravianX)                                 //
-//                              - TravianX = Travian Clone Project -                                //
-//                                 DO NOT REMOVE COPYRIGHT NOTICE!                                  //
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-class Form {
-	
-	private $errorarray = array();
+//	表操作类
+class Form
+{
+	//	表存储数组
 	public $valuearray = array();
+	//	表出错存储数组
+	private $errorarray = array();
+	//	表出错数量
 	private $errorcount;
 	
-	public function Form() {
-		if(isset($_SESSION['errorarray']) && isset($_SESSION['valuearray'])) {
+	//	表构造函数
+	public function Form()
+	{
+		if (isset($_SESSION['errorarray']) && isset($_SESSION['valuearray']))
+		{
 			$this->errorarray = $_SESSION['errorarray'];
 			$this->valuearray = $_SESSION['valuearray'];
 			$this->errorcount = count($this->errorarray);
@@ -23,57 +21,80 @@ class Form {
 			unset($_SESSION['errorarray']);
 			unset($_SESSION['valuearray']);
 		}
-		else {
+		else
+		{
 			$this->errorcount = 0;
 		}
 	}
 	
-	public function addError($field,$error) {
+	//	添加出错字段
+	public function addError($field, $error)
+	{
 		$this->errorarray[$field] = $error;
 		$this->errorcount = count($this->errorarray);
 	}
 	
-	public function getError($field) {
-		if(array_key_exists($field,$this->errorarray)) {
+	//	获取出错字段
+	public function getError($field)
+	{
+		if (array_key_exists($field, $this->errorarray))
+		{
 			return $this->errorarray[$field];
 		}
-		else {
+		else
+		{
 			return "";
 		}
 	}
 	
-	public function getValue($field) {
-		if(array_key_exists($field,$this->valuearray)) {
+	//	获取字段值
+	public function getValue($field)
+	{
+		if (array_key_exists($field, $this->valuearray))
+		{
 			return $this->valuearray[$field];
 		}
-		else {
+		else
+		{
 			return "";
 		}
 	}
 	
-	public function getDiff($field,$cookie) {
-		if(array_key_exists($field,$this->valuearray) && $this->valuearray[$field] != $cookie) {
+	//	如果当前Cookie不同于表中存储的值，返回表中的值
+	public function getDiff($field, $cookie)
+	{
+		if (array_key_exists($field, $this->valuearray) && $this->valuearray[$field] != $cookie)
+		{
 			return $this->valuearray[$field];
 		}
-		else {
+		else
+		{
 			return $cookie;
 		}
 	}
 	
-	public function getRadio($field,$value) {
-		if(array_key_exists($field,$this->valuearray) && $this->valuearray[$field] == $value) {
+	//	检查对应字段的值和表中的值是否相同
+	public function getRadio($field, $value)
+	{
+		if (array_key_exists($field, $this->valuearray) && $this->valuearray[$field] == $value)
+		{
 			return "checked";
 		}
-		else {
+		else
+		{
 			return "";
 		}
 	}
 	
-	public function returnErrors() {
+	//	获取出错的数量
+	public function returnErrors()
+	{
 		return $this->errorcount;
 	}
 	
-	public function getErrors() {
+	//	获取出错存储数组
+	public function getErrors()
+	{
 		return $this->errorarray;
 	}
 };

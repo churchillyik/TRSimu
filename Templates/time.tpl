@@ -4,7 +4,8 @@
 		载入时间：
 		<b>
 		<?php
-		echo round(($generator->pageLoadTimeEnd() - $start) * 1000);
+		$pg_ld_end = $generator->pageLoadTimeEnd();
+		echo round(($pg_ld_end - $pg_ld_start) * 1000);
 		?>
 		</b>毫秒
 		<br />
