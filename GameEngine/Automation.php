@@ -9,6 +9,7 @@ class Automation
 	private $bountyunitall = array();
 	private $bountypop;
 	
+	//	获得建筑的名称
 	public function procResType($ref)
 	{
 		global $session;
@@ -60,6 +61,7 @@ class Automation
 		return $build;
 	}
 	
+	//	计算所有建筑所占的总人口数
 	function recountPop($vid)
 	{
 		global $database;
@@ -81,7 +83,8 @@ class Automation
 		
 		return $popTot;
 	}
-  
+
+	//	计算某建筑在某等级时人口数
 	function buildingPOP($f, $lvl)
 	{
 		$name = "bid".$f;
@@ -96,61 +99,76 @@ class Automation
 		return $popT;
 	}
 	
+	//	执行定时任务
 	public function Automation()
-	{ 
+	{
+		//	删除不活跃的用户
         $this->ClearUser();
+		
+		//	删除较长时间未激活的用户
         $this->ClearInactive();
         $this->pruneResource();
+		//	更新文明度
         if (!file_exists(dirname(__FILE__)."/../GameEngine/Prevention/culturepoints.txt")
 			or time() - filemtime("GameEngine/Prevention/culturepoints.txt") > 10)
 		{
             $this->culturePoints();
         }
+		//	科技研发完成
         if (!file_exists(dirname(__FILE__)."/../GameEngine/Prevention/research.txt")
 			or time() - filemtime("GameEngine/Prevention/research.txt") > 10)
 		{
             $this->researchComplete();
         }
+		//	帐号删除时间到
         if (!file_exists(dirname(__FILE__)."/../GameEngine/Prevention/cleardeleting.txt")
 			or time() - filemtime("GameEngine/Prevention/cleardeleting.txt") > 10)
 		{
             $this->clearDeleting();
         }
+		//	建筑建造完成
         if (!file_exists(dirname(__FILE__)."/../GameEngine/Prevention/build.txt")
 			or time() - filemtime(dirname(__FILE__)."/../ameEngine/Prevention/build.txt") > 10)
 		{
             $this->buildComplete();
         }
+		//	市场运输
         if (!file_exists(dirname(__FILE__)."/../GameEngine/Prevention/market.txt")
 			or time() - filemtime(dirname(__FILE__)."/../GameEngine/Prevention/market.txt") > 10)
 		{
             $this->marketComplete();
         }
+		//	军队训练
         if (!file_exists(dirname(__FILE__)."/../GameEngine/Prevention/training.txt")
 			or time() - filemtime(dirname(__FILE__)."/../GameEngine/Prevention/training.txt") > 10)
 		{
             $this->trainingComplete();
         }
+		//	部队攻击抵达
         if (!file_exists(dirname(__FILE__)."/../GameEngine/Prevention/sendunits.txt")
 			or time() - filemtime(dirname(__FILE__)."/../GameEngine/Prevention/sendunits.txt") > 10)
 		{
             $this->sendunitsComplete();
         }
+		//	增援部队抵达
         if (!file_exists(dirname(__FILE__)."/../GameEngine/Prevention/sendreinfunits.txt")
 			or time() - filemtime(dirname(__FILE__)."/../GameEngine/Prevention/sendreinfunits.txt") > 10)
 		{
             $this->sendreinfunitsComplete();
         }
+		//	返回部队抵达
         if (!file_exists(dirname(__FILE__)."/../GameEngine/Prevention/returnunits.txt")
 			or time() - filemtime(dirname(__FILE__)."/../GameEngine/Prevention/returnunits.txt") > 10)
 		{
             $this->returnunitsComplete();
         }
+		//	拓荒者抵达
         if (!file_exists(dirname(__FILE__)."/../GameEngine/Prevention/settlers.txt")
 			or time() - filemtime(dirname(__FILE__)."/../GameEngine/Prevention/settlers.txt") > 10)
 		{
             $this->sendSettlersComplete();
-        }    
+        }
+		//	活动完成
         if (!file_exists(dirname(__FILE__)."/../GameEngine/Prevention/celebration.txt")
 			or time() - filemtime(dirname(__FILE__)."/../GameEngine/Prevention/celebration.txt") > 10)
 		{
@@ -158,16 +176,19 @@ class Automation
 		}
     }
 	
+	//	帐号删除时间到
 	private function clearDeleting()
 	{
 		global $database;
 		$ourFileHandle = fopen(dirname(__FILE__)."/../GameEngine/Prevention/cleardeleting.txt", 'w');
 		fclose($ourFileHandle);
+		//	删除所有需要删除的帐号
 		$needDelete = $database->getNeedDelete();
 		if (count($needDelete) > 0)
 		{
 			foreach ($needDelete as $need)
 			{
+				//	删除该帐号下的所有村庄和与村庄有关的信息
 				$needVillage = $database->getVillagesID($need['uid']);
 				foreach ($needVillage as $village)
 				{
@@ -206,23 +227,28 @@ class Automation
 				$database->query($q);
 			}
 		}
+		
 		if (file_exists(dirname(__FILE__)."/../GameEngine/Prevention/cleardeleting.txt"))
 		{
 			unlink(dirname(__FILE__)."/../GameEngine/Prevention/cleardeleting.txt");
 		}
 	}
 	
+	//	删除不活跃的用户
 	private function ClearUser()
 	{
 		global $database;
+		//	目前还未定义
 		if (AUTO_DEL_INACTIVE)
 		{
+			//	
 			$time = time() + UN_ACT_TIME;
 			$q = "DELETE from ".TB_PREFIX."users where timestamp >= $time and act != ''";
 			$database->query($q);
 		}
 	}
 	
+	//	删除较长时间未激活的用户
 	private function ClearInactive()
 	{
 		global $database;
