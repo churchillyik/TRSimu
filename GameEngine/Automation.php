@@ -1,5 +1,6 @@
 <?php
 
+//	定时器类
 class Automation
 {	
 	private $bountyresarray = array();
@@ -260,6 +261,7 @@ class Automation
 		}
 	}
 	
+	//	截断超过仓库、粮仓容积上限的资源量
 	private function pruneResource()
 	{
 		global $database;
@@ -276,6 +278,7 @@ class Automation
 		}
 	}
 	
+	//	更新文明点
 	private function culturePoints()
 	{
 		global $database;
@@ -302,11 +305,13 @@ class Automation
 		}
 	}
 	
+	//	建筑建造完毕
 	private function buildComplete()
 	{
-		global $database,$bid18,$bid10,$bid11;
+		global $database, $bid18, $bid10, $bid11;
 		$ourFileHandle = fopen(dirname(__FILE__)."/../GameEngine/Prevention/build.txt", 'w');
 		fclose($ourFileHandle);
+		
 		$time = time();
 		$array = array();
 		$q = "SELECT * FROM ".TB_PREFIX."bdata where timestamp < $time";
@@ -364,6 +369,7 @@ class Automation
 		}
 	}
 	
+	//	获得人口
 	private function getPop($tid, $level)
 	{
 		$name = "bid".$tid;
@@ -374,6 +380,7 @@ class Automation
 		return array($pop, $cp);
 	}
 	
+	//	市场运输完毕
 	private function marketComplete()
 	{
 		global $database, $generator;
@@ -382,8 +389,8 @@ class Automation
 		$time = time();
 		$q = "SELECT * FROM ".TB_PREFIX."movement, ".TB_PREFIX."send where ".TB_PREFIX."movement.ref = ".TB_PREFIX."send.id and ".TB_PREFIX."movement.proc = 0 and sort_type = 0 and endtime < $time";
 		$dataarray = $database->query_return($q);
-		foreach($dataarray as $data) {
-			
+		foreach ($dataarray as $data)
+		{	
 			if ($data['wood'] >= $data['clay'] && $data['wood'] >= $data['iron'] && $data['wood'] >= $data['crop'])
 			{
 				$sort_type = "11";
@@ -422,6 +429,7 @@ class Automation
 		}
 	}
 	
+	//	部队抵达目的地
 	private function sendunitsComplete()
 	{
 		global $bid23, $database, $battle, $village, $technology;
@@ -1061,6 +1069,7 @@ class Automation
 		}
 	}
 	
+	//	增援部队抵达自己的村庄
 	private function sendreinfunitsComplete()
 	{
 		global $bid23, $database, $battle;
@@ -1112,6 +1121,7 @@ class Automation
 		}
 	}
 	
+	//	部队返回自己的村庄
 	private function returnunitsComplete()
 	{
 		global $database;
@@ -1186,6 +1196,7 @@ class Automation
 		}
 	}	
 	
+	//	拓荒者抵达目的地
 	private function sendSettlersComplete()
 	{
 		global $database, $building;
@@ -1242,6 +1253,7 @@ class Automation
 		}
 	}
 	
+	//	科技研发完成
 	private function researchComplete()
 	{
 		global $database;
@@ -1274,6 +1286,7 @@ class Automation
 		}
 	}
 	
+	//	资源建筑升级完成
 	private function updateRes($bountywid)
 	{
 		global $session;
@@ -1282,6 +1295,7 @@ class Automation
 		$this->bountyprocessProduction($bountywid);
 	}
 	
+	//	计算掠夺村庄获得的资源量
 	private function bountyLoadTown($bountywid)
 	{
 		global $database, $session, $logging, $technology;
@@ -1305,6 +1319,7 @@ class Automation
 		}
 	}
 	
+	//	掠夺绿洲获得的资源量
 	private function bountysortOasis()
 	{
 		$crop = $clay = $wood = $iron = 0;
@@ -1356,6 +1371,7 @@ class Automation
 		return array($wood, $clay, $iron, $crop);
 	}
 	
+	//	计算掠夺的资源量
 	private function bountycalculateProduction($bountywid)
 	{
 		global $technology, $database;
@@ -1378,6 +1394,7 @@ class Automation
 		$this->bountyproduction['crop'] = $this->bountyGetCropProd() - $this->bountypop - $upkeep;
 	}
 	
+	//	掠夺资源加入到总资源量中
 	private function bountyprocessProduction($bountywid)
 	{
 		global $database;
@@ -1390,6 +1407,7 @@ class Automation
 		$database->updateVillage($bountywid);
 	}
 	
+	//	获得木材的掠夺量
 	private function bountyGetWoodProd()
 	{
 		global $bid1, $bid5, $session;
@@ -1423,6 +1441,7 @@ class Automation
 		return round($wood);
 	}
 	
+	//	获得泥土的掠夺量
 	private function bountyGetClayProd()
 	{
 		global $bid2, $bid6, $session;
@@ -1457,6 +1476,7 @@ class Automation
 		return round($clay);
 	}
 	
+	//	获得铁矿的掠夺量
 	private function bountyGetIronProd()
 	{
 		global $bid3, $bid7, $session;
@@ -1491,6 +1511,7 @@ class Automation
 		return round($iron);
 	}
 	
+	//	获得粮食的掠夺量
 	private function bountyGetCropProd()
 	{
 		global $bid4, $bid8, $bid9, $session;
@@ -1534,6 +1555,7 @@ class Automation
 		return round($crop);
 	}
 
+	//	军队训练完成
 	private function trainingComplete()
 	{
 		global $database;
@@ -1574,6 +1596,7 @@ class Automation
 		}
 	}
 	
+	//	计算行军时间
 	private function procDistanceTime($coor, $thiscoor, $ref, $mode)
 	{
 		global $bid28, $bid14, $database, $generator;
@@ -1646,6 +1669,7 @@ class Automation
 		return round(($distance / $speed) * 3600 / INCREASE_SPEED);
 	}
 	
+	//	
 	private function getsort_typeLevel($tid, $resarray)
 	{	
 		global $village;
@@ -1706,6 +1730,7 @@ class Automation
 		}
 	}
 	
+	//	活动完成
 	private function celebrationComplete()
 	{
 		global $database;

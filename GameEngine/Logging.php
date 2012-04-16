@@ -1,107 +1,130 @@
 <?php
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                             TRAVIANX                                             //
-//            Only for advanced users, do not edit if you dont know what are you doing!             //
-//                                Made by: Dzoki & Dixie (TravianX)                                 //
-//                              - TravianX = Travian Clone Project -                                //
-//                                 DO NOT REMOVE COPYRIGHT NOTICE!                                  //
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-
-class Logging {
-	
-	public function addIllegal($uid,$ref,$type) {
+//	日志类
+class Logging
+{
+	//	非法操作记录
+	public function addIllegal($uid, $ref, $type)
+	{
 		global $database;
-		if(LOG_ILLEGAL) {
-			$log = "Attempted to ";
-			switch($type) {
+		if (LOG_ILLEGAL)
+		{
+			$log = "试图 ";
+			switch ($type)
+			{
 				case 1:
-				$log .= "access village $ref";
-				break;
+					$log .= "访问村庄 $ref";
+					break;
 			}
-			$q = "Insert into ".TB_PREFIX."illegal_log values (0,$uid,'$log')";
+			$q = "Insert into ".TB_PREFIX."illegal_log values (0, $uid, '$log')";
 			$database->query($q);
 		}
 	}
 	
-	public function addLoginLog($id,$ip) {
+	//	登录记录
+	public function addLoginLog($id, $ip)
+	{
 		global $database;
-		if(LOG_LOGIN) {
-			$q = "Insert into ".TB_PREFIX."login_log values (0,$id,'$ip')";
+		if (LOG_LOGIN)
+		{
+			$q = "Insert into ".TB_PREFIX."login_log values (0, $id, '$ip')";
 			$database->query($q);
 		}
 	}
 	
-	public function addBuildLog($wid,$building,$level,$type) {
+	//	建造记录
+	public function addBuildLog($wid, $building, $level, $type)
+	{
 		global $database;
-		if(LOG_BUILD) {
-			if($type) {
-				$log = "Start Construction of ";
+		if (LOG_BUILD)
+		{
+			if ($type)
+			{
+				$log = "开始新建 ";
 			}
-			else {
-				$log = "Start Upgrade of ";
+			else
+			{
+				$log = "开始升级 ";
 			}
-			$log .= $building." at level ".$level;
-			$q = "Insert into ".TB_PREFIX."build_log values (0,$wid,'$log')";
+			$log .= $building." 于等级 ".$level;
+			$q = "Insert into ".TB_PREFIX."build_log values (0, $wid, '$log')";
 			$database->query($q);
 		}
 	}
 	
-	public function addTechLog($wid,$tech,$level) {
+	//	升级科技记录
+	public function addTechLog($wid, $tech, $level)
+	{
 		global $database;
-		if(LOG_TECH) {
-			$log = "Upgrading of tech ".$tech." to level ".$level;
+		if (LOG_TECH)
+		{
+			$log = "升级科技 ".$tech." 到等级 ".$level;
 			$q = "Insert into ".TB_PREFIX."tech_log values (0,$wid,'$log')";
 			$database->query($q);
 		}
 	}
 	
-	public function goldFinLog($wid) {
+	//	秒建记录
+	public function goldFinLog($wid)
+	{
 		global $database;
-		if(LOG_GOLD_FIN) {
-			$log = "Finish construction and research with gold";
-			$q = "Insert into ".TB_PREFIX."gold_fin_log values (0,$wid,'$log')";
+		if (LOG_GOLD_FIN)
+		{
+			$log = "用金币秒建";
+			$q = "Insert into ".TB_PREFIX."gold_fin_log values (0, $wid, '$log')";
 			$database->query($q);
 		}
 	}
 	
-	public function addAdminLog() {
+	//	管理员操作记录
+	public function addAdminLog()
+	{
 		global $database;
 	}
 	
-	public function addMarketLog($wid,$type,$data) {
+	//	市场运输记录
+	public function addMarketLog($wid, $type, $data)
+	{
 		global $database;
-		if(LOG_MARKET) {
-			if($type == 1) {
-				$log = "Sent ".$data[0].",".$data[1].",".$data[2].",".$data[3]." to village ".$data[4];
+		if (LOG_MARKET)
+		{
+			if ($type == 1)
+			{
+				$log = "送 ".$data[0].",".$data[1].",".$data[2].",".$data[3]." 到村庄 ".$data[4];
 			}
-			else if($type == 2) {
-				$log = "Traded resource between ".$wid." and ".$data[0]." market ref is ".$data[1];
+			elseif ($type == 2)
+			{
+				$log = "交易资源发生于村庄 ".$wid." 和 ".$data[0]." 市场引用为 ".$data[1];
 			}
-			$q = "Insert into ".TB_PREFIX."market_log values (0,$wid,'$log')";
+			$q = "Insert into ".TB_PREFIX."market_log values (0, $wid, '$log')";
 			$database->query($q);
 		}
 	}
 
-	public function VillageDestroyCatalog($wid) {
+	//	村庄摧毁记录
+	public function VillageDestroyCatalog($wid)
+	{
 		global $database;
-		if(LOG_GOLD_FIN) {
-			$log = "Village destroyed";
-			$q = "Insert into ".TB_PREFIX."destroy_log values (0,$wid,'$log')";
+		if (LOG_GOLD_FIN)
+		{
+			$log = "村庄已被摧毁";
+			$q = "Insert into ".TB_PREFIX."destroy_log values (0, $wid, '$log')";
 			$database->query($q);
 		}
 	}
 	
-	public function addWarLog() {
+	//	战报记录
+	public function addWarLog()
+	{
 		global $database;
 	}
 	
-	public function clearLogs() {
+	public function clearLogs()
+	{
 		global $database;
 	}
 	
 };
-
 
 $logging = new Logging;
 ?>
