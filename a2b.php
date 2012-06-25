@@ -84,7 +84,7 @@ $process = $units->procUnits($_POST);
 				if ($enforce['vref'] == $village->wid)
 				{
 					$to = $database->getVillage($enforce['from']);
-					$ckey=$w;
+					$ckey = $w;
 					include("Templates/a2b/sendback_".$database->getUserField($to['owner'], 'tribe', 0).".tpl");
 				}
 				else

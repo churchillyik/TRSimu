@@ -1409,15 +1409,15 @@ class MYSQL_DB
 		return $this->mysql_fetch_all($result);
 	}
 	
+	//--------------------------------------------------------------------
+	//	bdata表
+	//--------------------------------------------------------------------
 	function addBuilding($wid, $field, $type, $loop, $time)
 	{
 		$q = "INSERT into ".TB_PREFIX."bdata values (0, $wid, $field, $type, $loop, $time)";
 		return mysql_query($q, $this->connection);
 	}
 	
-	//--------------------------------------------------------------------
-	//	bdata表
-	//--------------------------------------------------------------------
 	function removeBuilding($d)
 	{
 		$q = "DELETE FROM ".TB_PREFIX."bdata where id = $d";
@@ -1505,6 +1505,7 @@ class MYSQL_DB
 		return mysql_query($q, $this->connection);
 	}
 
+	//	获得当前已使用的所有商人
 	function totalMerchantUsed($vid)
 	{
 		$time = time();
@@ -1524,6 +1525,7 @@ class MYSQL_DB
 		return $row[0] + $row2[0] + $row3[0];
 	}
 
+	//	获得商人或军队的移动信息
 	function getMovement($type, $village, $mode)
 	{
 		$time = time();
@@ -1537,21 +1539,27 @@ class MYSQL_DB
 		}
 		switch ($type)
 		{
+		//	己村商人出去或别村商人过来
 		case 0:
 			$q = "SELECT * FROM ".TB_PREFIX."movement, ".TB_PREFIX."send where ".TB_PREFIX."movement.".$where." = $village and ".TB_PREFIX."movement.ref = ".TB_PREFIX."send.id and ".TB_PREFIX."movement.proc = 0 and ".TB_PREFIX."movement.sort_type = 0";
 			break;
+		//	己村商人返回
 		case 2:
 			$q = "SELECT * FROM ".TB_PREFIX."movement where ".TB_PREFIX."movement.".$where." = $village and ".TB_PREFIX."movement.proc = 0 and ".TB_PREFIX."movement.sort_type = 2";
 			break;
+		//	己村的军队出去或返回
 		case 3:
 			$q = "SELECT * FROM ".TB_PREFIX."movement, ".TB_PREFIX."attacks where ".TB_PREFIX."movement.".$where." = $village and ".TB_PREFIX."movement.ref = ".TB_PREFIX."attacks.id and ".TB_PREFIX."movement.proc = 0 and ".TB_PREFIX."movement.sort_type = 3 ORDER BY endtime DESC";
 			break;
+		//	对自己增援的军队
 		case 4:
 			$q = "SELECT * FROM ".TB_PREFIX."movement, ".TB_PREFIX."attacks where ".TB_PREFIX."movement.".$where." = $village and ".TB_PREFIX."movement.ref = ".TB_PREFIX."attacks.id and ".TB_PREFIX."movement.proc = 0 and ".TB_PREFIX."movement.sort_type = 4 ORDER BY endtime DESC";
 			break;
+		//	拓荒者出去开村
 		case 5:
 			$q = "SELECT * FROM ".TB_PREFIX."movement where ".TB_PREFIX."movement.".$where." = $village and sort_type = 5 and proc = 0";
 			break;
+		//	包括3类型和4类型的所有军队
 		case 34:
 			$q = "SELECT * FROM ".TB_PREFIX."movement, ".TB_PREFIX."attacks where ".TB_PREFIX."movement.".$where." = $village and ".TB_PREFIX."movement.ref = ".TB_PREFIX."attacks.id and ".TB_PREFIX."movement.proc = 0 and ".TB_PREFIX."movement.sort_type = 3 or ".TB_PREFIX."movement.".$where." = $village and ".TB_PREFIX."movement.ref = ".TB_PREFIX."attacks.id and ".TB_PREFIX."movement.proc = 0 and ".TB_PREFIX."movement.sort_type = 4 ORDER BY endtime DESC";
 			break;
@@ -1561,6 +1569,7 @@ class MYSQL_DB
 		return $array;
 	}
 
+	//	添加商人或军队的移动信息
 	function addMovement($type, $from, $to, $ref, $endtime)
 	{
 		$q = "INSERT INTO ".TB_PREFIX."movement values (0, $type, $from, $to, $ref, $endtime, 0)";
@@ -1846,9 +1855,15 @@ class MYSQL_DB
 		$q = "UPDATE ".TB_PREFIX."training SET amt = amt - $trained, timestamp = $time WHERE id = $id";
 		return mysql_query($q, $this->connection);
 	}
-	function modifyCommence($id)
-	{			$time = time();				$q = "UPDATE ".TB_PREFIX."training set commence = $time";			return mysql_query($q, $this->connection);	}
-		function getTrainingList()
+
+	function modifyCommence($id)
+	{	
+		$time = time();		
+		$q = "UPDATE ".TB_PREFIX."training set commence = $time";	
+		return mysql_query($q, $this->connection);
+	}
+	
+	function getTrainingList()
 	{
 		$q = "SELECT * FROM ".TB_PREFIX."training where vref != ''";
 		$result = mysql_query($q, $this->connection);
