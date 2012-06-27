@@ -1,15 +1,15 @@
 <?php
-//	表操作类
+//	表单类
 class Form
 {
-	//	表存储数组
+	//	表单键值数组
 	public $valuearray = array();
-	//	表出错存储数组
+	//	错误信息数组
 	private $errorarray = array();
-	//	表出错数量
+	//	表错误信息数量
 	private $errorcount;
 	
-	//	表构造函数
+	//	构造函数
 	public function Form()
 	{
 		if (isset($_SESSION['errorarray']) && isset($_SESSION['valuearray']))
@@ -27,14 +27,14 @@ class Form
 		}
 	}
 	
-	//	添加出错字段
+	//	添加错误信息
 	public function addError($field, $error)
 	{
 		$this->errorarray[$field] = $error;
 		$this->errorcount = count($this->errorarray);
 	}
 	
-	//	获取出错字段
+	//	获取错误信息
 	public function getError($field)
 	{
 		if (array_key_exists($field, $this->errorarray))
@@ -47,7 +47,7 @@ class Form
 		}
 	}
 	
-	//	获取字段值
+	//	获取表单键值
 	public function getValue($field)
 	{
 		if (array_key_exists($field, $this->valuearray))
@@ -60,7 +60,7 @@ class Form
 		}
 	}
 	
-	//	如果当前Cookie不同于表中存储的值，返回表中的值
+	//	如果当前Cookie的某个键值不同于表单中对应的键值，返回表单键值
 	public function getDiff($field, $cookie)
 	{
 		if (array_key_exists($field, $this->valuearray) && $this->valuearray[$field] != $cookie)

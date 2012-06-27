@@ -99,11 +99,11 @@ define("TROOPS_DORF","军队");
 define("COOKIES","游戏登录是依赖于Cookies的，如果你与其他用户共用同一台计算机，为安全起见，请在每次登出后把Cookies删除。");
 define("NAME","用户名");
 define("PW_FORGOTTEN","忘记密码？");
-define("PW_REQUEST","Then you can request a new one which will be sent to your email address.");
-define("PW_GENERATE","All fields required");
-define("EMAIL_NOT_VERIFIED","电子邮箱未修改!");
-define("EMAIL_FOLLOW","点击以下链接来激活帐号。");
-define("VERIFY_EMAIL","更改电子邮箱。");
+define("PW_REQUEST","您可以再申请一个帐号，我们将会把该帐号发送到您的电子邮箱中。");
+define("PW_GENERATE","或者重新激活帐号。");
+define("EMAIL_NOT_VERIFIED","该帐号尚未激活！");
+define("EMAIL_FOLLOW","请登录您的电子邮箱激活帐号");
+define("VERIFY_EMAIL","或点击本链接更改电子邮箱。");
 
 //	404.php
 define("NOTHING_HERE","什么也找不到！");

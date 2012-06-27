@@ -41,100 +41,99 @@ include("GameEngine/Account.php");
 		<span><?php echo PLAY_NOW; ?></span>
 	</div>
 	<div id="content">
-	<div class="grit">
-	<div class="infobox">
-	<div id="what_is_travian">
-		<h2><?php echo WHAT_IS; ?></h2>
-		<p><?php echo WHAT_IS_ANSWER; ?></p>
-		<p class="play_now"><a href="anmelden.php" class="signup_link"><?php echo CLICK_HERE; ?></a></p>
-	</div>
-	<div id="player_counter">
-		<table>
-			<tbody>
-				<tr>
-				<th><?php echo TOTAL_PLAYERS; ?></th>
-				<td>
-					<?php
-					$users = mysql_num_rows(mysql_query("SELECT SQL_CACHE * FROM ".TB_PREFIX."users")) - 2;
-					echo $users;
-					?>
-				</td>
-				</tr>
-				<!---->
-				<tr>
-					<th><?php echo ACTIVE_PLAYERS; ?></th>
-					<td>0
-					</td></tr>
-				<tr>
-				<th><?php echo ONLINE_PLAYERS; ?></th>
-				<td>
-				<?php
-				$result = mysql_query("SELECT * FROM ".TB_PREFIX."online");
-				$num_rows = mysql_num_rows($result);
-				echo $num_rows;
-				?>
-				</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	</div>
-	<div class="secondarybox">
-	<div id="screenshots">
-		<h2><?php echo SCREENSHOTS; ?></h2>
-		<div id="screenshots_preview">
-			<ul id="screenshot_list" style="position:absolute; left:0px; width: 686px;">
-				<li ><a href="#"><img src="img/un/s/s1s.jpg" alt="Screenshot"/></a></li>
-				<li ><a href="#"><img src="img/un/s/s2s.jpg" alt="Screenshot"/></a></li>
-				<li ><a href="#"><img src="img/un/s/s4s.jpg" alt="Screenshot"/></a></li>
-				<li ><a href="#"><img src="img/un/s/s3s.jpg" alt="Screenshot"/></a></li>
-				<li ><a href="#"><img src="img/un/s/s5s.jpg" alt="Screenshot"/></a></li>
-				<li ><a href="#"><img src="img/un/s/s7s.jpg" alt="Screenshot"/></a></li>
-				<li ><a href="#"><img src="img/un/s/s8s.jpg" alt="Screenshot"/></a></li>
-			</ul> 
+		<div class="grit">
+			<div class="infobox">
+				<div id="what_is_travian">
+					<h2><?php echo WHAT_IS; ?></h2>
+					<p><?php echo WHAT_IS_ANSWER; ?></p>
+					<p class="play_now"><a href="anmelden.php" class="signup_link"><?php echo CLICK_HERE; ?></a></p>
+				</div>
+				<div id="player_counter">
+					<table>
+					<tbody>
+					<tr>
+						<th><?php echo TOTAL_PLAYERS; ?></th>
+						<td>
+							<?php
+							$users = mysql_num_rows(mysql_query("SELECT SQL_CACHE * FROM ".TB_PREFIX."users")) - 2;
+							echo $users;
+							?>
+						</td>
+					</tr>
+					<tr>
+						<th><?php echo ACTIVE_PLAYERS; ?></th>
+						<td>0</td>
+					</tr>
+					<tr>
+						<th><?php echo ONLINE_PLAYERS; ?></th>
+						<td>
+							<?php
+							$result = mysql_query("SELECT * FROM ".TB_PREFIX."online");
+							$num_rows = mysql_num_rows($result);
+							echo $num_rows;
+							?>
+						</td>
+					</tr>
+					</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="secondarybox">
+				<div id="screenshots">
+					<h2><?php echo SCREENSHOTS; ?></h2>
+					<div id="screenshots_preview">
+						<ul id="screenshot_list" style="position:absolute; left:0px; width: 686px;">
+							<li ><a href="#"><img src="img/un/s/s1s.jpg" alt="Screenshot"/></a></li>
+							<li ><a href="#"><img src="img/un/s/s2s.jpg" alt="Screenshot"/></a></li>
+							<li ><a href="#"><img src="img/un/s/s4s.jpg" alt="Screenshot"/></a></li>
+							<li ><a href="#"><img src="img/un/s/s3s.jpg" alt="Screenshot"/></a></li>
+							<li ><a href="#"><img src="img/un/s/s5s.jpg" alt="Screenshot"/></a></li>
+							<li ><a href="#"><img src="img/un/s/s7s.jpg" alt="Screenshot"/></a></li>
+							<li ><a href="#"><img src="img/un/s/s8s.jpg" alt="Screenshot"/></a></li>
+						</ul> 
+					</div>
+				</div>
+				<div id="newsbox">
+					<!--
+					<h2><center>Donate for this script:</center></h2>
+					<div class="news">
+						<h4><center></center></h4>
+						<p class="date"></p>
+						<p><p>
+						<center>
+						<b>You are using TravianX for free at the moment.<br /> Lets keep it that way by donating small anmount!</b>
+						<p><p>
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="B2UG5JHKGMQUE">
+							<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" 
+							name="submit" alt="PayPal - The safer, easier way to pay online.">
+							<img alt="" border="0" src="https://www.paypalobjects.com/nl_NL/i/scr/pixel.gif" width="1" height="1">
+						</form>
+						</center>
+						<p><p>
+					</div>
+					-->
+				</div>
+			</div>
+			<div class="clear"></div>
 		</div>
-	</div>
-	<div id="newsbox">
-		<!--
-		<h2><center>Donate for this script:</center></h2>
-		<div class="news">
-			<h4><center></center></h4>
-			<p class="date"></p>
-			<p><p>
-			<center>
-			<b>You are using TravianX for free at the moment.<br /> Lets keep it that way by donating small anmount!</b>
-			<p><p>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="B2UG5JHKGMQUE">
-				<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" 
-				name="submit" alt="PayPal - The safer, easier way to pay online.">
-				<img alt="" border="0" src="https://www.paypalobjects.com/nl_NL/i/scr/pixel.gif" width="1" height="1">
-			</form>
-			</center>
-			<p><p>
+		<div id="footer">
+			<div class="container">
+				<!--
+				<a href="#" class="logo"><img src="img/x.gif" alt="<?php echo SERVER_NAME; ?> Games" class="logo_traviangames" /></a>
+				-->
+				<li class="copyright">&copy; 2010 - 2011 <?php echo TRAVIAN_COPYRIGHT; ?> </li>
+			</div>
 		</div>
-		-->
-	</div>
-	</div>
-	<div class="clear"></div>
-	</div>
-	<div id="footer">
-	<div class="container">
-		<!--
-		<a href="#" class="logo"><img src="img/x.gif" alt="<?php echo SERVER_NAME; ?> Games" class="logo_traviangames" /></a>
-		-->
-		<li class="copyright">&copy; 2010 - 2011 <?php echo TRAVIAN_COPYRIGHT; ?> </li>
-	</div>
-	</div>
 	</div>
 	<div id="login_layer" class="overlay">
-	<div class="mask closer"></div>
-	<div id="login_list" class="overlay_content">
-		<h2>Choose your world</h2>
-		<a href="index.php" class="closer"><img class="dynamic_img" alt="Close" src="img/un/x.gif" /></a>
-		<div class="footer"></div>
-	</div>
+		<div class="mask closer"></div>
+		<div id="login_list" class="overlay_content">
+			<h2>Choose your world</h2>
+			<a href="index.php" class="closer"><img class="dynamic_img" alt="Close" src="img/un/x.gif" /></a>
+			<div class="footer"></div>
+		</div>
 	</div>
 	<div id="signup_layer" class="overlay">
 	<div class="mask closer"></div>

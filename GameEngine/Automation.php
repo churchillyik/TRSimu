@@ -933,7 +933,7 @@ class Automation
 				}
 			}
 
-			if ($data['t9'] - $dead9) > 0)
+			if ($data['t9'] - $dead9 > 0)
 			{
 				$varray = $database->getProfileVillages($to['owner']);
 				if (count($varray) != '1' and $to['capital'] != '1')

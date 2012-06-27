@@ -1,12 +1,13 @@
 <?php
 error_reporting(E_ALL);
 include("GameEngine/Account.php");
-if(isset($_GET['del_cookie']))
+if (isset($_GET['del_cookie']))
 {
-	setcookie("COOKUSR", "", time() - 3600 * 24, "/");
+	//	如果要删除登录信息，则把COOKUSR键置空，并规定服务器路径为根目录
+	setcookie("COOKUSR", "", time() + COOKIE_EXPIRE, COOKIE_PATH);
 	header("Location: login.php");
 }
-if(!isset($_COOKIE['COOKUSR']))
+if (!isset($_COOKIE['COOKUSR']))
 {
 	$_COOKIE['COOKUSR'] = "";
 }
@@ -46,25 +47,24 @@ if(!isset($_COOKIE['COOKUSR']))
 				<input type="hidden" name="ft" value="a4" />
 				<table cellpadding="1" cellspacing="1" id="login_form">
 				<tbody>
-					<tr class="top">
-						<th><?php echo NAME; ?></th>
-						<td>
-							<input class="text" type="text" name="user" value="<?php echo $form->getDiff("user",$_COOKIE['COOKUSR']); ?>" maxlength="15" autocomplete='off' />
-							<span class="error"> <?php echo $form->getError("user"); ?></span>
-						</td>
-					</tr>
-					<tr class="btm">
-						<th><?php echo PASSWORD; ?></th>
-						<td>
-							<input class="text" type="password" name="pw" value="<?php echo $form->getValue("pw");?>" maxlength="20" autocomplete='off' /> 
-							<span class="error"><?php echo $form->getError("pw"); ?></span>
-						</td>
-					</tr>
+				<tr class="top">
+					<th><?php echo NAME; ?></th>
+					<td>
+						<input class="text" type="text" name="user" value="<?php echo $form->getDiff("user", $_COOKIE['COOKUSR']); ?>" maxlength="15" autocomplete='off' />
+						<span class="error"> <?php echo $form->getError("user"); ?></span>
+					</td>
+				</tr>
+				<tr class="btm">
+					<th><?php echo PASSWORD; ?></th>
+					<td>
+						<input class="text" type="password" name="pw" value="<?php echo $form->getValue("pw");?>" maxlength="20" autocomplete='off' /> 
+						<span class="error"><?php echo $form->getError("pw"); ?></span>
+					</td>
+				</tr>
 				</tbody>
 				</table>
 				<p class="btn">
-				<!--<input type="hidden" name="e1d9d0c" value="" />-->
-				<input type="image" value="<?php echo LOGIN; ?>" name="s1" onclick="xy();" id="btn_login" class="dynamic_img" src="img/x.gif" alt="登录按钮" />
+					<input type="image" value="<?php echo LOGIN; ?>" name="s1" onclick="xy();" id="btn_login" class="dynamic_img" src="img/x.gif" alt="登录按钮" />
 				</p>
 			</form>
 			<?php
@@ -78,7 +78,7 @@ if(!isset($_COOKIE['COOKUSR']))
 				.PW_GENERATE
 				."</a></p>";
 			}
-			if($form->getError("activate") != "")
+			if ($form->getError("activate") != "")
 			{
 				echo "<p class=\"error_box\"><span class=\"error\">"
 				.EMAIL_NOT_VERIFIED
@@ -108,5 +108,6 @@ if(!isset($_COOKIE['COOKUSR']))
 	<?php include("Templates/footer.tpl"); ?>
 	<div id="ce"></div>
 </div>
+
 </body>
 </html>
