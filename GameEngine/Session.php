@@ -72,6 +72,7 @@ class Session
 		{
 			$this->referrer = "/";
 		}
+		
 		//	设置当前页
 		$this->url = $_SESSION['url'] = $_SERVER['PHP_SELF'];
 		//	执行页面跳转控制

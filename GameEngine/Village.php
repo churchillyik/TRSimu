@@ -1,4 +1,5 @@
 <?php
+//	设定时区为中国香港
 date_default_timezone_set('Asia/Hong_Kong');
 
 include("Session.php");
@@ -6,16 +7,26 @@ include("Building.php");
 include("Market.php");
 include("Technology.php");
 
+//	村庄类
 class Village
 {
+	//	村庄类型
 	public $type;
+	//	村庄坐标
 	public $coor = array();
+	//	各种资源的产量/人口/仓库、粮仓的总容量
 	public $awood, $aclay, $airon, $acrop, $pop, $maxstore, $maxcrop;
+	//	村庄的世界ID，村庄名，是否为主村
 	public $wid, $vname, $capital;
+	//	村庄资源
 	public $resarray = array();
+	//	军队数据、科技数据、兵种数据、研发数据、兵种攻防数据
 	public $unitarray, $techarray, $unitall, $researching, $abarray = array();
+	//	
 	private $infoarray = array();
+	//	村庄产量
 	private $production = array();
+	//	拥有的绿洲、已开拓的村庄
 	private $oasisowned, $ocounter = array();
 	
 	function Village()
