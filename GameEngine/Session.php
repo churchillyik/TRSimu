@@ -50,18 +50,21 @@ class Session
 			$database->updateActiveUser($this->username, $this->time);
 		}
 		//	检查封号
-		$banned = mysql_query("SELECT reason, end FROM ".TB_PREFIX."banlist WHERE active = 1 and time - ".time()." < 1 and uid = '".$this->uid."';");
-		if (mysql_num_rows($banned))
+		if ($this->logged_in)
 		{
-			$ban = mysql_fetch_assoc($banned);
-			echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title></title><link REL="shortcut icon" HREF="favicon.ico"/><meta name="content-language" content="en" /><meta http-equiv="cache-control" content="max-age=0" /><meta http-equiv="imagetoolbar" content="no" /><meta http-equiv="content-type" content="text/html; charset=UTF-8" /><link href="gpack/travian_basic/lang/en/compact.css?f4b7c" rel="stylesheet" type="text/css" />  <link href="gpack/travian_default/lang/en/compact.css?f4b7c" rel="stylesheet" type="text/css" /><link href="img/travian_basics.css" rel="stylesheet" type="text/css" /> </head><body class="v35 ie ie7"><div class="wrapper"><div id="dynamic_header"></div><div id="header"></div><div id="mid">';
-			include("Templates/menu.tpl"); 
-			echo '<div id="content"  class="login">';
-			if ($ban['end'] == 0)
+			$banned = mysql_query("SELECT reason, end FROM ".TB_PREFIX."banlist WHERE active = 1 and time - ".time()." < 1 and uid = '".$this->uid."';");
+			if (mysql_num_rows($banned))
 			{
-				die("很遗憾你已经被永久封号。<br /><br /><b>原因：</b> ".$ban['reason']."<br/><b>解封时间：</B>永久</div></div></body><html>");
+				$ban = mysql_fetch_assoc($banned);
+				echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><title></title><link REL="shortcut icon" HREF="favicon.ico"/><meta name="content-language" content="en" /><meta http-equiv="cache-control" content="max-age=0" /><meta http-equiv="imagetoolbar" content="no" /><meta http-equiv="content-type" content="text/html; charset=UTF-8" /><link href="gpack/travian_basic/lang/en/compact.css?f4b7c" rel="stylesheet" type="text/css" />  <link href="gpack/travian_default/lang/en/compact.css?f4b7c" rel="stylesheet" type="text/css" /><link href="img/travian_basics.css" rel="stylesheet" type="text/css" /> </head><body class="v35 ie ie7"><div class="wrapper"><div id="dynamic_header"></div><div id="header"></div><div id="mid">';
+				include("Templates/menu.tpl"); 
+				echo '<div id="content" class="login">';
+				if ($ban['end'] == 0)
+				{
+					die("很遗憾你已经被永久封号。<br /><br /><b>原因：</b> ".$ban['reason']."<br/><b>解封时间：</B>永久</div></div></body><html>");
+				}
+				die("很遗憾你已经被封号。<br /><br /><b>原因：</b> ".$ban['reason']."<br/><b>解封时间：</B>".date("d.m.Y G:i:s", $ban['end'])."</div></div></body><html>");
 			}
-			die("很遗憾你已经被永久封号。<br /><br /><b>原因：</b> ".$ban['reason']."<br/><b>解封时间：</B>".date("d.m.Y G:i:s", $ban['end'])."</div></div></body><html>");
 		}
 		//	设置引用页
 		if (isset($_SESSION['url']))
@@ -122,10 +125,11 @@ class Session
 		$this->logged_in = false;
 		//	重设会话ID
 		$database->updateUserField($_SESSION['username'], "sessid", "", 0);
+		//	删除当前会话的COOKIE
 		if (ini_get("session.use_cookies"))
 		{
 			$params = session_get_cookie_params();
-			setcookie(session_name(), '', time() - 42000,
+			setcookie(session_name(), '', time() - 3600,
 				$params["path"], $params["domain"],
 				$params["secure"], $params["httponly"]
 			);
@@ -160,7 +164,9 @@ class Session
 			{
 				//	否则更新用户信息
 				$this->PopulateVar();
+				//	添加到活跃用户
 				$database->addActiveUser($_SESSION['username'], $this->time);
+				//	更新最近一次的登录时刻
 				$database->updateUserField($_SESSION['username'], "timestamp", $this->time, 0);
 				return true;
 			}
@@ -211,6 +217,7 @@ class Session
 	
 	private function SurfControl()
 	{
+		//	获得当前所访问页面的文件名
 		if (SERVER_WEB_ROOT)
 		{
 			$page = $_SERVER['SCRIPT_NAME'];
@@ -221,6 +228,7 @@ class Session
 			$i = count($explode) - 1;
 			$page = $explode[$i];
 		}
+		
 		$pagearray = array("index.php", "anleitung.php", "tutorial.php", "login.php", "activate.php", "anmelden.php", "xaccount.php");
 		if (!$this->logged_in)
 		{

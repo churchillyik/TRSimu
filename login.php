@@ -3,8 +3,8 @@ error_reporting(E_ALL);
 include("GameEngine/Account.php");
 if (isset($_GET['del_cookie']))
 {
-	//	如果要删除登录信息，则把COOKUSR键置空，并规定服务器路径为根目录
-	setcookie("COOKUSR", "", time() + COOKIE_EXPIRE, COOKIE_PATH);
+	//	如果要删除登录cookie
+	setcookie("COOKUSR", "", time() - 3600, COOKIE_PATH);
 	header("Location: login.php");
 }
 if (!isset($_COOKIE['COOKUSR']))
